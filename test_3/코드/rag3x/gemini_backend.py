@@ -42,7 +42,7 @@ def _load_api_key() -> str:
         # 프로젝트 루트 .env 직접 파싱(python-dotenv 없이도 동작)
         try:
             from dotenv import dotenv_values
-            root = Path(__file__).resolve().parents[2]  # .../챗봇
+            root = Path(__file__).resolve().parents[3]  # .../챗봇
             key = (dotenv_values(root / ".env").get("GEMINI_API_KEY") or "").strip()
         except Exception:
             pass
