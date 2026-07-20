@@ -1,0 +1,70 @@
+{
+  "pipeline": "test2",
+  "mode": "no_catalog",
+  "qid": "vp_008",
+  "question": "이용관리 화면의 회선 서비스 신규 이용신청 상세(접수대기) 예시(신청기관: 테스트고등학교, 신청번호 2026010800002)에서 신청된 서비스 종류, 속도, 설치장소, 개통 희망일은 각각 무엇인가요?",
+  "error": null,
+  "final_answer": "신청번호 2026010800002(신청기관: 테스트고등학교)의 예시에서 확인되는 정보는 다음과 같습니다.\n\n*   **서비스 종류**: 인터넷서비스\n*   **속도**: 10G\n*   **설치장소**: 제공된 근거에서 확인할 수 없습니다.\n*   **개통 희망일**: 제공된 근거에서 확인할 수 없습니다.",
+  "answer_path": "text",
+  "abstained": false,
+  "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+  "selected_documents": [
+    "이용관리_20260702.pdf"
+  ],
+  "selected_pages": [
+    21,
+    78,
+    47
+  ],
+  "doc_match": true,
+  "page_match": false,
+  "keyword_recall": 0.5,
+  "keywords_found": [
+    "인터넷서비스",
+    "10G"
+  ],
+  "keywords_missing": [
+    "대강당",
+    "2026-01-30"
+  ],
+  "is_answer_supported": null,
+  "stage_timings_seconds": {
+    "retrieve": 8.0,
+    "answer": 121.516,
+    "total": 129.516
+  },
+  "model_calls": {
+    "embed_calls": 1,
+    "text_answer_calls": 1,
+    "vision_answer_calls": 0,
+    "llm_calls_total": 1,
+    "vlm_calls_total": 0,
+    "total_model_calls": 2
+  },
+  "evidence": [
+    {
+      "document_name": "이용관리_20260702.pdf",
+      "page_number": 21,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\pages\\p0021.png",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\mineru\\20260702-336b732d\\auto\\images\\381e2911cdd5ac542aa41c33e7fb4e7627b0fb4683de25d794a3fc8c8c33bdf1.jpg"
+    },
+    {
+      "document_name": "이용관리_20260702.pdf",
+      "page_number": 78,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\pages\\p0078.png",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\mineru\\20260702-336b732d\\auto\\images\\39332cc61495aaa153cfb55b12aa8f2ba2364dd66411ae3a657f3d1a7cc555a6.jpg"
+    },
+    {
+      "document_name": "이용관리_20260702.pdf",
+      "page_number": 47,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\pages\\p0047.png",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\mineru\\20260702-336b732d\\auto\\images\\bf21026820a34e6e261a62113ba873dec0e9a22c698be83e7fef68a5fdd009c6.jpg"
+    }
+  ],
+  "process_wall_seconds": 130.859,
+  "subprocess_returncode": 0,
+  "expected_answer_path": "vision",
+  "route_match": false,
+  "question_type": "scan_table",
+  "category": "이용관리_신청현황"
+}

@@ -1,0 +1,182 @@
+{
+  "gate_attr": {
+    "catalog": "min_dense_similarity",
+    "filename_only": "min_filename_dense_similarity",
+    "no_catalog": "min_page_dense_similarity"
+  },
+  "rows": [
+    {
+      "id": "human_001",
+      "mode": "filename_only",
+      "dense_similarity": 0.3604557514190674,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_002",
+      "mode": "filename_only",
+      "dense_similarity": 0.3681497573852539,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_003",
+      "mode": "filename_only",
+      "dense_similarity": 0.4117553234100342,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_004",
+      "mode": "filename_only",
+      "dense_similarity": 0.2230358123779297,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_005",
+      "mode": "filename_only",
+      "dense_similarity": 0.4374570846557617,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_006",
+      "mode": "filename_only",
+      "dense_similarity": 0.4260365962982178,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_007",
+      "mode": "filename_only",
+      "dense_similarity": 0.538251519203186,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_008",
+      "mode": "filename_only",
+      "dense_similarity": 0.42613983154296875,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_009",
+      "mode": "filename_only",
+      "dense_similarity": 0.4566599726676941,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_010",
+      "mode": "filename_only",
+      "dense_similarity": 0.43069368600845337,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_011",
+      "mode": "filename_only",
+      "dense_similarity": 0.3854243755340576,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_012",
+      "mode": "filename_only",
+      "dense_similarity": 0.42127299308776855,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_013",
+      "mode": "filename_only",
+      "dense_similarity": 0.3555144667625427,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_014",
+      "mode": "filename_only",
+      "dense_similarity": 0.31820791959762573,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_015",
+      "mode": "filename_only",
+      "dense_similarity": 0.24386298656463623,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_016",
+      "mode": "filename_only",
+      "dense_similarity": 0.35403531789779663,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_irr_001",
+      "mode": "filename_only",
+      "dense_similarity": 0.027605950832366943,
+      "is_irrelevant": true,
+      "has_expected_doc": false,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_irr_002",
+      "mode": "filename_only",
+      "dense_similarity": 0.06901204586029053,
+      "is_irrelevant": true,
+      "has_expected_doc": false,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_irr_003",
+      "mode": "filename_only",
+      "dense_similarity": 0.09600311517715454,
+      "is_irrelevant": true,
+      "has_expected_doc": false,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_irr_004",
+      "mode": "filename_only",
+      "dense_similarity": 0.07622206211090088,
+      "is_irrelevant": true,
+      "has_expected_doc": false,
+      "current_gate": 0.3
+    }
+  ],
+  "by_mode": {
+    "filename_only": {
+      "current_gate": 0.3,
+      "n_relevant": 16,
+      "n_irrelevant": 4,
+      "relevant_min": 0.2230358123779297,
+      "relevant_max": 0.538251519203186,
+      "irrelevant_min": 0.027605950832366943,
+      "irrelevant_max": 0.09600311517715454,
+      "threshold_at_95pct_relevant_retention": 0.2230358123779297,
+      "irrelevant_rejection_rate_at_that_threshold": 1.0
+    }
+  }
+}

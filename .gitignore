@@ -1,0 +1,33 @@
+# --- 비밀키 / 환경 ---
+.env
+*.key
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# --- 대용량 빌드 산출물 (재생성 가능) ---
+# 파싱 캐시 / 벡터 인덱스는 원본 PDF + ingest로 재생성됨. 저장소엔 코드·데이터만 추적 권장.
+**/cache/
+**/index/
+**/parsed_v25/
+**/chroma/
+
+# --- 실행 로그 / 임시 ---
+*.log
+tmp/
+**/tmp/
+**/outputs/runs/
+**/outputs/evidence/
+
+# --- OS / 에디터 ---
+.DS_Store
+Thumbs.db
+.claude/
+
+# --- 로컬 전용(GitHub 미게시) ---
+_git_history/

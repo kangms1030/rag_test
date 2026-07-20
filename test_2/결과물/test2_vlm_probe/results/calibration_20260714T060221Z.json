@@ -1,0 +1,864 @@
+[
+  {
+    "id": "vp_001",
+    "mode": "catalog",
+    "question_type": "scan_table",
+    "expected_path": "vision",
+    "actual_path": "text",
+    "route_match": false,
+    "expected_pages": [
+      9
+    ],
+    "selected_pages": [
+      16,
+      5,
+      14
+    ],
+    "top1_page_hit": false,
+    "any_page_hit": false,
+    "selected_documents": [
+      "WEISS-DS-001-현황분석서-v0.91.pdf",
+      "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf"
+    ],
+    "route_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)"
+  },
+  {
+    "id": "vp_001",
+    "mode": "no_catalog",
+    "question_type": "scan_table",
+    "expected_path": "vision",
+    "actual_path": "vision",
+    "route_match": true,
+    "expected_pages": [
+      9
+    ],
+    "selected_pages": [
+      24,
+      34,
+      59
+    ],
+    "top1_page_hit": false,
+    "any_page_hit": false,
+    "selected_documents": [
+      "WEISS-DS-001-현황분석서-v0.91.pdf"
+    ],
+    "route_reason": "1순위 페이지가 스캔+표 -> 숫자 교차확인을 위해 비전 경로"
+  },
+  {
+    "id": "vp_002",
+    "mode": "catalog",
+    "question_type": "scan_table",
+    "expected_path": "vision",
+    "actual_path": "text",
+    "route_match": false,
+    "expected_pages": [
+      14
+    ],
+    "selected_pages": [
+      58,
+      14,
+      54
+    ],
+    "top1_page_hit": false,
+    "any_page_hit": true,
+    "selected_documents": [
+      "WEISS-DS-001-현황분석서-v0.91.pdf",
+      "통합관제(사용자)_20260702.pdf"
+    ],
+    "route_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)"
+  },
+  {
+    "id": "vp_002",
+    "mode": "no_catalog",
+    "question_type": "scan_table",
+    "expected_path": "vision",
+    "actual_path": "vision",
+    "route_match": true,
+    "expected_pages": [
+      14
+    ],
+    "selected_pages": [
+      54,
+      44,
+      14
+    ],
+    "top1_page_hit": false,
+    "any_page_hit": true,
+    "selected_documents": [
+      "WEISS-DS-001-현황분석서-v0.91.pdf"
+    ],
+    "route_reason": "1순위 페이지가 스캔+표 -> 숫자 교차확인을 위해 비전 경로"
+  },
+  {
+    "id": "vp_003",
+    "mode": "catalog",
+    "question_type": "scan_table",
+    "expected_path": "vision",
+    "actual_path": "text",
+    "route_match": false,
+    "expected_pages": [
+      19
+    ],
+    "selected_pages": [
+      16,
+      13,
+      5
+    ],
+    "top1_page_hit": false,
+    "any_page_hit": false,
+    "selected_documents": [
+      "WEISS-DS-001-현황분석서-v0.91.pdf",
+      "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf"
+    ],
+    "route_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)"
+  },
+  {
+    "id": "vp_003",
+    "mode": "no_catalog",
+    "question_type": "scan_table",
+    "expected_path": "vision",
+    "actual_path": "vision",
+    "route_match": true,
+    "expected_pages": [
+      19
+    ],
+    "selected_pages": [
+      39,
+      54,
+      34
+    ],
+    "top1_page_hit": false,
+    "any_page_hit": false,
+    "selected_documents": [
+      "WEISS-DS-001-현황분석서-v0.91.pdf"
+    ],
+    "route_reason": "1순위 페이지가 스캔+표 -> 숫자 교차확인을 위해 비전 경로"
+  },
+  {
+    "id": "vp_004",
+    "mode": "catalog",
+    "question_type": "scan_table",
+    "expected_path": "vision",
+    "actual_path": "vision",
+    "route_match": true,
+    "expected_pages": [
+      20
+    ],
+    "selected_pages": [
+      6,
+      23,
+      5
+    ],
+    "top1_page_hit": false,
+    "any_page_hit": false,
+    "selected_documents": [
+      "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "통합관제 이용기관 전용 매뉴얼_20260702.pdf"
+    ],
+    "route_reason": "1순위 페이지가 그림 위주(figure_area_ratio=0.60)"
+  },
+  {
+    "id": "vp_004",
+    "mode": "no_catalog",
+    "question_type": "scan_table",
+    "expected_path": "vision",
+    "actual_path": "vision",
+    "route_match": true,
+    "expected_pages": [
+      20
+    ],
+    "selected_pages": [
+      55,
+      40,
+      30
+    ],
+    "top1_page_hit": false,
+    "any_page_hit": false,
+    "selected_documents": [
+      "WEISS-DS-001-현황분석서-v0.91.pdf"
+    ],
+    "route_reason": "1순위 페이지가 스캔+표 -> 숫자 교차확인을 위해 비전 경로"
+  },
+  {
+    "id": "vp_005",
+    "mode": "catalog",
+    "question_type": "scan_table",
+    "expected_path": "vision",
+    "actual_path": "none",
+    "route_match": false,
+    "expected_pages": [
+      75
+    ],
+    "selected_pages": [],
+    "top1_page_hit": false,
+    "any_page_hit": false,
+    "selected_documents": [],
+    "route_reason": "카탈로그에서 관련 문서를 찾지 못함"
+  },
+  {
+    "id": "vp_005",
+    "mode": "no_catalog",
+    "question_type": "scan_table",
+    "expected_path": "vision",
+    "actual_path": "vision",
+    "route_match": true,
+    "expected_pages": [
+      75
+    ],
+    "selected_pages": [
+      76,
+      63,
+      24
+    ],
+    "top1_page_hit": false,
+    "any_page_hit": false,
+    "selected_documents": [
+      "WEISS-DS-001-현황분석서-v0.91.pdf"
+    ],
+    "route_reason": "1순위 페이지가 스캔+표 -> 숫자 교차확인을 위해 비전 경로"
+  },
+  {
+    "id": "vp_006",
+    "mode": "catalog",
+    "question_type": "scan_table",
+    "expected_path": "vision",
+    "actual_path": "text",
+    "route_match": false,
+    "expected_pages": [
+      83
+    ],
+    "selected_pages": [
+      82,
+      83,
+      81
+    ],
+    "top1_page_hit": false,
+    "any_page_hit": true,
+    "selected_documents": [
+      "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf",
+      "이용관리_20260702.pdf"
+    ],
+    "route_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)"
+  },
+  {
+    "id": "vp_006",
+    "mode": "no_catalog",
+    "question_type": "scan_table",
+    "expected_path": "vision",
+    "actual_path": "vision",
+    "route_match": true,
+    "expected_pages": [
+      83
+    ],
+    "selected_pages": [
+      83,
+      82,
+      78
+    ],
+    "top1_page_hit": true,
+    "any_page_hit": true,
+    "selected_documents": [
+      "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf"
+    ],
+    "route_reason": "1순위 페이지가 스캔+표 -> 숫자 교차확인을 위해 비전 경로"
+  },
+  {
+    "id": "vp_007",
+    "mode": "catalog",
+    "question_type": "scan_table",
+    "expected_path": "vision",
+    "actual_path": "text",
+    "route_match": false,
+    "expected_pages": [
+      88
+    ],
+    "selected_pages": [
+      89,
+      2,
+      88
+    ],
+    "top1_page_hit": false,
+    "any_page_hit": true,
+    "selected_documents": [
+      "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf",
+      "8-1. 스쿨넷서비스 학내망 구축 및 운영관리 개선을 위한 가이드.pdf"
+    ],
+    "route_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)"
+  },
+  {
+    "id": "vp_007",
+    "mode": "no_catalog",
+    "question_type": "scan_table",
+    "expected_path": "vision",
+    "actual_path": "vision",
+    "route_match": true,
+    "expected_pages": [
+      88
+    ],
+    "selected_pages": [
+      88,
+      89,
+      84
+    ],
+    "top1_page_hit": true,
+    "any_page_hit": true,
+    "selected_documents": [
+      "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf"
+    ],
+    "route_reason": "1순위 페이지가 스캔+표 -> 숫자 교차확인을 위해 비전 경로"
+  },
+  {
+    "id": "vp_008",
+    "mode": "catalog",
+    "question_type": "scan_table",
+    "expected_path": "vision",
+    "actual_path": "text",
+    "route_match": false,
+    "expected_pages": [
+      79
+    ],
+    "selected_pages": [
+      29,
+      30,
+      15
+    ],
+    "top1_page_hit": false,
+    "any_page_hit": false,
+    "selected_documents": [
+      "이용관리_20260702.pdf",
+      "WEISS-DE-001-(컨설팅)완료보고서-4.이용관리시스템-v0.82.pdf"
+    ],
+    "route_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)"
+  },
+  {
+    "id": "vp_008",
+    "mode": "no_catalog",
+    "question_type": "scan_table",
+    "expected_path": "vision",
+    "actual_path": "text",
+    "route_match": false,
+    "expected_pages": [
+      79
+    ],
+    "selected_pages": [
+      21,
+      78,
+      47
+    ],
+    "top1_page_hit": false,
+    "any_page_hit": false,
+    "selected_documents": [
+      "이용관리_20260702.pdf"
+    ],
+    "route_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)"
+  },
+  {
+    "id": "vp_009",
+    "mode": "catalog",
+    "question_type": "figure",
+    "expected_path": "vision",
+    "actual_path": "vision",
+    "route_match": true,
+    "expected_pages": [
+      13
+    ],
+    "selected_pages": [
+      13,
+      12,
+      10
+    ],
+    "top1_page_hit": true,
+    "any_page_hit": true,
+    "selected_documents": [
+      "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "학교 무선인터넷 자가진단 체크리스트(안).pdf"
+    ],
+    "route_reason": "1순위 페이지가 그림 위주(figure_area_ratio=0.62)"
+  },
+  {
+    "id": "vp_009",
+    "mode": "no_catalog",
+    "question_type": "figure",
+    "expected_path": "vision",
+    "actual_path": "vision",
+    "route_match": true,
+    "expected_pages": [
+      13
+    ],
+    "selected_pages": [
+      13,
+      12,
+      11
+    ],
+    "top1_page_hit": true,
+    "any_page_hit": true,
+    "selected_documents": [
+      "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf"
+    ],
+    "route_reason": "1순위 페이지가 그림 위주(figure_area_ratio=0.62)"
+  },
+  {
+    "id": "vp_010",
+    "mode": "catalog",
+    "question_type": "figure",
+    "expected_path": "vision",
+    "actual_path": "text",
+    "route_match": false,
+    "expected_pages": [
+      11
+    ],
+    "selected_pages": [
+      2,
+      11,
+      13
+    ],
+    "top1_page_hit": false,
+    "any_page_hit": true,
+    "selected_documents": [
+      "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "학교 무선인터넷 자가진단 체크리스트(안).pdf"
+    ],
+    "route_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)"
+  },
+  {
+    "id": "vp_010",
+    "mode": "no_catalog",
+    "question_type": "figure",
+    "expected_path": "vision",
+    "actual_path": "vision",
+    "route_match": true,
+    "expected_pages": [
+      11
+    ],
+    "selected_pages": [
+      11,
+      2,
+      13
+    ],
+    "top1_page_hit": true,
+    "any_page_hit": true,
+    "selected_documents": [
+      "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "학교 무선인터넷 자가진단 체크리스트(안).pdf"
+    ],
+    "route_reason": "1순위 페이지가 그림 위주(figure_area_ratio=0.59)"
+  },
+  {
+    "id": "vp_011",
+    "mode": "catalog",
+    "question_type": "figure",
+    "expected_path": "vision",
+    "actual_path": "vision",
+    "route_match": true,
+    "expected_pages": [
+      22
+    ],
+    "selected_pages": [
+      22,
+      8,
+      36
+    ],
+    "top1_page_hit": true,
+    "any_page_hit": true,
+    "selected_documents": [
+      "★23년 학교 유무선 운영·관리 안내서_최종.pdf",
+      "이용관리_20260702.pdf"
+    ],
+    "route_reason": "1순위 페이지가 그림 위주(figure_area_ratio=0.64)"
+  },
+  {
+    "id": "vp_011",
+    "mode": "no_catalog",
+    "question_type": "figure",
+    "expected_path": "vision",
+    "actual_path": "text",
+    "route_match": false,
+    "expected_pages": [
+      22
+    ],
+    "selected_pages": [
+      8,
+      12,
+      24
+    ],
+    "top1_page_hit": false,
+    "any_page_hit": false,
+    "selected_documents": [
+      "이용관리_20260702.pdf",
+      "(첨부)_5단계_스쿨넷서비스_제공_가이드.pdf"
+    ],
+    "route_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)"
+  },
+  {
+    "id": "vp_012",
+    "mode": "catalog",
+    "question_type": "figure",
+    "expected_path": "vision",
+    "actual_path": "text",
+    "route_match": false,
+    "expected_pages": [
+      44
+    ],
+    "selected_pages": [
+      45,
+      44,
+      15
+    ],
+    "top1_page_hit": false,
+    "any_page_hit": true,
+    "selected_documents": [
+      "★23년 학교 유무선 운영·관리 안내서_최종.pdf",
+      "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf"
+    ],
+    "route_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)"
+  },
+  {
+    "id": "vp_012",
+    "mode": "no_catalog",
+    "question_type": "figure",
+    "expected_path": "vision",
+    "actual_path": "text",
+    "route_match": false,
+    "expected_pages": [
+      44
+    ],
+    "selected_pages": [
+      45,
+      44,
+      87
+    ],
+    "top1_page_hit": false,
+    "any_page_hit": true,
+    "selected_documents": [
+      "★23년 학교 유무선 운영·관리 안내서_최종.pdf"
+    ],
+    "route_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)"
+  },
+  {
+    "id": "vp_013",
+    "mode": "catalog",
+    "question_type": "figure",
+    "expected_path": "vision",
+    "actual_path": "text",
+    "route_match": false,
+    "expected_pages": [
+      8
+    ],
+    "selected_pages": [
+      22,
+      19,
+      18
+    ],
+    "top1_page_hit": false,
+    "any_page_hit": false,
+    "selected_documents": [
+      "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf",
+      "통합관제 이용기관 전용 매뉴얼_20260702.pdf"
+    ],
+    "route_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)"
+  },
+  {
+    "id": "vp_013",
+    "mode": "no_catalog",
+    "question_type": "figure",
+    "expected_path": "vision",
+    "actual_path": "text",
+    "route_match": false,
+    "expected_pages": [
+      8
+    ],
+    "selected_pages": [
+      22,
+      9,
+      7
+    ],
+    "top1_page_hit": false,
+    "any_page_hit": false,
+    "selected_documents": [
+      "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf"
+    ],
+    "route_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)"
+  },
+  {
+    "id": "vp_014",
+    "mode": "catalog",
+    "question_type": "figure",
+    "expected_path": "vision",
+    "actual_path": "text",
+    "route_match": false,
+    "expected_pages": [
+      71
+    ],
+    "selected_pages": [
+      45,
+      71,
+      4
+    ],
+    "top1_page_hit": false,
+    "any_page_hit": true,
+    "selected_documents": [
+      "WEISS-DE-001-(컨설팅)완료보고서-4.이용관리시스템-v0.82.pdf",
+      "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf"
+    ],
+    "route_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)"
+  },
+  {
+    "id": "vp_014",
+    "mode": "no_catalog",
+    "question_type": "figure",
+    "expected_path": "vision",
+    "actual_path": "vision",
+    "route_match": true,
+    "expected_pages": [
+      71
+    ],
+    "selected_pages": [
+      71,
+      29,
+      3
+    ],
+    "top1_page_hit": true,
+    "any_page_hit": true,
+    "selected_documents": [
+      "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf"
+    ],
+    "route_reason": "1순위 페이지가 그림 위주(figure_area_ratio=0.52)"
+  },
+  {
+    "id": "vp_015",
+    "mode": "catalog",
+    "question_type": "figure",
+    "expected_path": "vision",
+    "actual_path": "text",
+    "route_match": false,
+    "expected_pages": [
+      28
+    ],
+    "selected_pages": [
+      20,
+      76,
+      45
+    ],
+    "top1_page_hit": false,
+    "any_page_hit": false,
+    "selected_documents": [
+      "WEISS-DE-001-(컨설팅)완료보고서-4.이용관리시스템-v0.82.pdf",
+      "이용관리_20260702.pdf"
+    ],
+    "route_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)"
+  },
+  {
+    "id": "vp_015",
+    "mode": "no_catalog",
+    "question_type": "figure",
+    "expected_path": "vision",
+    "actual_path": "text",
+    "route_match": false,
+    "expected_pages": [
+      28
+    ],
+    "selected_pages": [
+      20,
+      78,
+      74
+    ],
+    "top1_page_hit": false,
+    "any_page_hit": false,
+    "selected_documents": [
+      "이용관리_20260702.pdf"
+    ],
+    "route_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)"
+  },
+  {
+    "id": "vt_001",
+    "mode": "catalog",
+    "question_type": "text",
+    "expected_path": "text",
+    "actual_path": "text",
+    "route_match": true,
+    "expected_pages": [
+      30
+    ],
+    "selected_pages": [
+      30,
+      37,
+      40
+    ],
+    "top1_page_hit": true,
+    "any_page_hit": true,
+    "selected_documents": [
+      "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+      "통합관제(사용자)_20260702.pdf"
+    ],
+    "route_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)"
+  },
+  {
+    "id": "vt_001",
+    "mode": "no_catalog",
+    "question_type": "text",
+    "expected_path": "text",
+    "actual_path": "text",
+    "route_match": true,
+    "expected_pages": [
+      30
+    ],
+    "selected_pages": [
+      30,
+      37,
+      29
+    ],
+    "top1_page_hit": true,
+    "any_page_hit": true,
+    "selected_documents": [
+      "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf"
+    ],
+    "route_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)"
+  },
+  {
+    "id": "vt_002",
+    "mode": "catalog",
+    "question_type": "text",
+    "expected_path": "text",
+    "actual_path": "text",
+    "route_match": true,
+    "expected_pages": [
+      50
+    ],
+    "selected_pages": [
+      8,
+      72,
+      6
+    ],
+    "top1_page_hit": false,
+    "any_page_hit": false,
+    "selected_documents": [
+      "이용관리_20260702.pdf",
+      "통합관제 이용기관 전용 매뉴얼_20260702.pdf"
+    ],
+    "route_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)"
+  },
+  {
+    "id": "vt_002",
+    "mode": "no_catalog",
+    "question_type": "text",
+    "expected_path": "text",
+    "actual_path": "text",
+    "route_match": true,
+    "expected_pages": [
+      50
+    ],
+    "selected_pages": [
+      50,
+      72,
+      12
+    ],
+    "top1_page_hit": true,
+    "any_page_hit": true,
+    "selected_documents": [
+      "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+      "이용관리_20260702.pdf"
+    ],
+    "route_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)"
+  },
+  {
+    "id": "vt_003",
+    "mode": "catalog",
+    "question_type": "text",
+    "expected_path": "text",
+    "actual_path": "text",
+    "route_match": true,
+    "expected_pages": [
+      40
+    ],
+    "selected_pages": [
+      74,
+      42,
+      40
+    ],
+    "top1_page_hit": false,
+    "any_page_hit": true,
+    "selected_documents": [
+      "WEISS-DE-001-(컨설팅)완료보고서-4.이용관리시스템-v0.82.pdf",
+      "이용관리_20260702.pdf"
+    ],
+    "route_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)"
+  },
+  {
+    "id": "vt_003",
+    "mode": "no_catalog",
+    "question_type": "text",
+    "expected_path": "text",
+    "actual_path": "text",
+    "route_match": true,
+    "expected_pages": [
+      40
+    ],
+    "selected_pages": [
+      42,
+      40,
+      5
+    ],
+    "top1_page_hit": false,
+    "any_page_hit": true,
+    "selected_documents": [
+      "WEISS-DE-001-(컨설팅)완료보고서-4.이용관리시스템-v0.82.pdf"
+    ],
+    "route_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)"
+  },
+  {
+    "id": "vi_001",
+    "mode": "catalog",
+    "question_type": "irrelevant",
+    "expected_path": "none",
+    "actual_path": "none",
+    "route_match": true,
+    "expected_pages": [],
+    "selected_pages": [],
+    "top1_page_hit": null,
+    "any_page_hit": null,
+    "selected_documents": [],
+    "route_reason": "카탈로그에서 관련 문서를 찾지 못함"
+  },
+  {
+    "id": "vi_001",
+    "mode": "no_catalog",
+    "question_type": "irrelevant",
+    "expected_path": "none",
+    "actual_path": "none",
+    "route_match": true,
+    "expected_pages": [],
+    "selected_pages": [],
+    "top1_page_hit": null,
+    "any_page_hit": null,
+    "selected_documents": [],
+    "route_reason": "전역 검색 결과의 관련성 부족(dense gate)"
+  },
+  {
+    "id": "vi_002",
+    "mode": "catalog",
+    "question_type": "irrelevant",
+    "expected_path": "none",
+    "actual_path": "none",
+    "route_match": true,
+    "expected_pages": [],
+    "selected_pages": [],
+    "top1_page_hit": null,
+    "any_page_hit": null,
+    "selected_documents": [],
+    "route_reason": "카탈로그에서 관련 문서를 찾지 못함"
+  },
+  {
+    "id": "vi_002",
+    "mode": "no_catalog",
+    "question_type": "irrelevant",
+    "expected_path": "none",
+    "actual_path": "none",
+    "route_match": true,
+    "expected_pages": [],
+    "selected_pages": [],
+    "top1_page_hit": null,
+    "any_page_hit": null,
+    "selected_documents": [],
+    "route_reason": "전역 검색 결과의 관련성 부족(dense gate)"
+  }
+]

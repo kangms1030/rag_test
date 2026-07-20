@@ -1,0 +1,45 @@
+{
+  "pipeline": "test2",
+  "mode": "catalog",
+  "qid": "vp_005",
+  "question": "현황분석서에서 루커스(Ruckus), Xirrus, Extreme, 쏘우웨이브, 시스코, iptime, Netgear 등 다양한 제조사별 AP 구축 현황을 정리한 전국 집계 표에서, 루커스(Ruckus) R710 모델과 가온 EAP2245 모델의 각 구축 수량은 얼마이며, 표 전체의 총 구축 수량은 얼마인가요?",
+  "error": null,
+  "final_answer": "선택된 문서에서 확인 불가",
+  "answer_path": "none",
+  "abstained": true,
+  "skip_reason": "카탈로그에서 관련 문서를 찾지 못함",
+  "selected_documents": [],
+  "selected_pages": [],
+  "doc_match": false,
+  "page_match": false,
+  "keyword_recall": 0.0,
+  "keywords_found": [],
+  "keywords_missing": [
+    "R710",
+    "4,395",
+    "EAP2245",
+    "6,620",
+    "23,948"
+  ],
+  "is_answer_supported": null,
+  "stage_timings_seconds": {
+    "retrieve": 1.671,
+    "answer": 0.0,
+    "total": 1.671
+  },
+  "model_calls": {
+    "embed_calls": 1,
+    "text_answer_calls": 0,
+    "vision_answer_calls": 0,
+    "llm_calls_total": 0,
+    "vlm_calls_total": 0,
+    "total_model_calls": 1
+  },
+  "evidence": [],
+  "process_wall_seconds": 2.766,
+  "subprocess_returncode": 0,
+  "expected_answer_path": "vision",
+  "route_match": false,
+  "question_type": "scan_table",
+  "category": "현황분석서_AP현황"
+}

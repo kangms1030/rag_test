@@ -1,0 +1,69 @@
+{
+  "pipeline": "test2",
+  "mode": "no_catalog",
+  "qid": "vt_001",
+  "question": "통합관제시스템 완료보고서의 주요 자원 구성 표에서 가상화서버(HCI)의 CPU 코어 수, RAM 용량, HDD 용량은 각각 얼마이며, 방화벽 장비의 총 수량은 몇 대인가요?",
+  "error": null,
+  "final_answer": "통합관제시스템 완료보고서의 주요 자원 구성 표에 따른 정보는 다음과 같습니다.\n\n*   **가상화서버(HCI)**\n    *   **CPU 코어 수:** 128Core\n    *   **RAM 용량:** 6,144GB\n    *   **HDD 용량:** 122.88TB(Physical)\n*   **방화벽 장비의 총 수량:** 11대",
+  "answer_path": "text",
+  "abstained": false,
+  "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+  "selected_documents": [
+    "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf"
+  ],
+  "selected_pages": [
+    30,
+    37,
+    29
+  ],
+  "doc_match": true,
+  "page_match": true,
+  "keyword_recall": 1.0,
+  "keywords_found": [
+    "128Core",
+    "6,144GB",
+    "122.88TB",
+    "11대"
+  ],
+  "keywords_missing": [],
+  "is_answer_supported": null,
+  "stage_timings_seconds": {
+    "retrieve": 5.547,
+    "answer": 40.5,
+    "total": 46.047
+  },
+  "model_calls": {
+    "embed_calls": 1,
+    "text_answer_calls": 1,
+    "vision_answer_calls": 0,
+    "llm_calls_total": 1,
+    "vlm_calls_total": 0,
+    "total_model_calls": 2
+  },
+  "evidence": [
+    {
+      "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+      "page_number": 30,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-3-v0-82-f69ab0fd\\pages\\p0030.png",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-3-v0-82-f69ab0fd\\mineru\\weiss-de-001-3-v0-82-f69ab0fd\\auto\\images\\fea38fe5496274b0e6bf6b17bdc1fe7884f7d00273eed2599d27c6b00af89ce2.jpg"
+    },
+    {
+      "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+      "page_number": 37,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-3-v0-82-f69ab0fd\\pages\\p0037.png",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-3-v0-82-f69ab0fd\\mineru\\weiss-de-001-3-v0-82-f69ab0fd\\auto\\images\\f147830ccf1752b43c532fed126e962679d55f5806f002fcf258236d587f5230.jpg"
+    },
+    {
+      "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+      "page_number": 29,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-3-v0-82-f69ab0fd\\pages\\p0029.png",
+      "table_crop_path": ""
+    }
+  ],
+  "process_wall_seconds": 47.235,
+  "subprocess_returncode": 0,
+  "expected_answer_path": "text",
+  "route_match": true,
+  "question_type": "text",
+  "category": "통합관제_자원구성"
+}

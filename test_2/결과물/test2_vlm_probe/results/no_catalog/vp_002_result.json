@@ -1,0 +1,72 @@
+{
+  "pipeline": "test2",
+  "mode": "no_catalog",
+  "qid": "vp_002",
+  "question": "현황분석서의 강원특별자치도교육청 스윔스(무선) 관제 장비 현황(원주교육지원청 등 18개 교육지원청 포함)에서, 다보링크(제조사) 3개 모델(DVW-4128, DVW-604i, DVW-624i)의 각 수량과 강원특별자치도교육청 AP 총 구축 수량은 얼마인가요?",
+  "error": null,
+  "final_answer": "제공된 이미지에는 '강원특별자치도교육청'에 관한 정보가 포함되어 있지 않습니다. 해당 표는 '제주특별자치도교육청' 관련 데이터만을 담고 있으며, 질문에서 언급한 다보링크의 세부 모델명(DVW-4128, DVW-604i, DVW-624i)에 대한 구분도 포함되어 있지 않습니다. 따라서 해당 질문에 대한 수치를 확인할 수 없습니다.",
+  "answer_path": "vision",
+  "abstained": false,
+  "skip_reason": "1순위 페이지가 스캔+표 -> 숫자 교차확인을 위해 비전 경로",
+  "selected_documents": [
+    "WEISS-DS-001-현황분석서-v0.91.pdf"
+  ],
+  "selected_pages": [
+    54,
+    44,
+    14
+  ],
+  "doc_match": true,
+  "page_match": true,
+  "keyword_recall": 0.5,
+  "keywords_found": [
+    "DVW-4128",
+    "DVW-604i",
+    "DVW-624i"
+  ],
+  "keywords_missing": [
+    "4,356",
+    "1,789",
+    "15,929"
+  ],
+  "is_answer_supported": null,
+  "stage_timings_seconds": {
+    "retrieve": 7.985,
+    "answer": 44.75,
+    "total": 52.735
+  },
+  "model_calls": {
+    "embed_calls": 1,
+    "text_answer_calls": 0,
+    "vision_answer_calls": 1,
+    "llm_calls_total": 0,
+    "vlm_calls_total": 1,
+    "total_model_calls": 2
+  },
+  "evidence": [
+    {
+      "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+      "page_number": 54,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0054.png",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\mineru\\weiss-ds-001-v0-91-aa83eb15\\auto\\images\\73612afa794740f04f5764b0b67fa81111555273187469fe030b90f66b5d28ab.jpg"
+    },
+    {
+      "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+      "page_number": 44,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0044.png",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\mineru\\weiss-ds-001-v0-91-aa83eb15\\auto\\images\\62105c8232194a833663c291800b9011079d79c7bf00e1e493ea1427acbc18d8.jpg"
+    },
+    {
+      "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+      "page_number": 14,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0014.png",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\mineru\\weiss-ds-001-v0-91-aa83eb15\\auto\\images\\5541ebd98792ea27b8bd7f16d27df326f16902d42fb9a684131890e0c21274d6.jpg"
+    }
+  ],
+  "process_wall_seconds": 54.14,
+  "subprocess_returncode": 0,
+  "expected_answer_path": "vision",
+  "route_match": true,
+  "question_type": "scan_table",
+  "category": "현황분석서_AP현황"
+}

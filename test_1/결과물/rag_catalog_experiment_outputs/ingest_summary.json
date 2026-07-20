@@ -1,0 +1,12 @@
+{
+  "mock": false,
+  "catalog_rows": 14,
+  "catalog_matched": 13,
+  "catalog_unmatched": 1,
+  "pdfs_unmatched": 0,
+  "documents_parsed": 13,
+  "total_pages": 969,
+  "scanned_documents": 2,
+  "vlm_summary_prewarmed": false,
+  "visual_chunking_prewarmed": false
+}

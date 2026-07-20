@@ -1,0 +1,313 @@
+{
+  "schema_version": 2,
+  "run_id": "20260710T042334Z_33aa35",
+  "run_status": "success",
+  "retrieval_mode": "catalog",
+  "timestamp": "2026-07-10T04:57:19.004947+00:00",
+  "config_snapshot": {
+    "top_docs": 2,
+    "top_pages": 5,
+    "top_chunks": 8,
+    "page_prefilter_topn": 12,
+    "min_dense_similarity": 0.35,
+    "min_doc_score": 0.35,
+    "doc_score_gap_ratio": 0.6,
+    "llm_model": "gemma4:12b",
+    "vlm_model": "gemma4:12b",
+    "embedding_model": "embeddinggemma"
+  },
+  "question": "전국 교육청의 무선망 현황 분석 결과를 알려줘",
+  "query_analysis": {
+    "intent": "전국 교육청의 무선망 구축 및 운영 현황에 대한 분석 결과 파악",
+    "keywords": [
+      "전국 교육청",
+      "무선망",
+      "현황 분석"
+    ],
+    "domain_terms": [
+      "무선 AP",
+      "스쿨넷",
+      "통합관제시스템",
+      "MDM",
+      "교육청 네트워크"
+    ],
+    "required_data_type": "table",
+    "retrieval_query": "전국 교육청 무선망 현황 분석 결과 및 구축 현황",
+    "reason": "사용자가 전국 단위의 교육청 무선망 상태를 묻고 있으며, 이는 학교 네트워크 관련 전문 용어(무선 AP, 스쿨넷 등)와 기관명이 포함된 문서에서 추출해야 하는 정보임."
+  },
+  "selected_documents": [
+    {
+      "rank": 1,
+      "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+      "file_path": "01.학교 유무선 컨설팅산출물\\01.현황분석서\\WEISS-DS-001-현황분석서-v0.91.pdf",
+      "catalog_row_id": "cat_0000",
+      "selection_score": 1.0,
+      "selection_reason": "카탈로그 하이브리드 검색 상위 1위 (dense_rank=0, bm25_rank=0)"
+    },
+    {
+      "rank": 2,
+      "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+      "file_path": "01.학교 유무선 컨설팅산출물\\02.(컨설팅)완료보고서\\WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+      "catalog_row_id": "cat_0001",
+      "selection_score": 0.953358,
+      "selection_reason": "카탈로그 하이브리드 검색 상위 2위 (dense_rank=4, bm25_rank=2)"
+    }
+  ],
+  "selected_pages": [
+    {
+      "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+      "page_number": 16,
+      "page_score": 0.976062,
+      "page_summary": "교육청별 장비 변동수량 비교표. 10개 교육청을 대상으로 2025년 4월과 7월 기준의 AP 및 POE 수량 변화를 정리한 표입니다.",
+      "image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_1차\\rag_catalog_experiment\\cache\\pages\\weiss-de-001-3-v0-82-f69ab0fd\\p0016.png"
+    },
+    {
+      "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+      "page_number": 4,
+      "page_score": 0.954057,
+      "page_summary": "교육청 통합관리시스템의 현황 분석 및 주요 사안 요약. 관련 학교 정보, 시스템 운영 현황, 네트워크 인프라 구축 범위 및 기술 지원 등 핵심 항목들을 정리한 내용임.",
+      "image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_1차\\rag_catalog_experiment\\cache\\pages\\weiss-de-001-3-v0-82-f69ab0fd\\p0004.png"
+    },
+    {
+      "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+      "page_number": 63,
+      "page_score": 0.945793,
+      "page_summary": "유무선 통합관제시스템 구축을 위한 개별 거점과 중앙 시스템 간의 네트워크 연결 구조(네트워크 구성도) 및 관련 기술 사양이 담겨 있습니다.",
+      "image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_1차\\rag_catalog_experiment\\cache\\pages\\weiss-de-001-3-v0-82-f69ab0fd\\p0063.png"
+    },
+    {
+      "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+      "page_number": 19,
+      "page_score": 0.945793,
+      "page_summary": "학교 유·무선망 통합관리제시스템 구축을 위해 실시한 시·도 교육청 대상 의견조사의 개요와 구체적인 조사 항목에 관한 내용을 담고 있습니다.",
+      "image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_1차\\rag_catalog_experiment\\cache\\pages\\weiss-de-001-3-v0-82-f69ab0fd\\p0019.png"
+    },
+    {
+      "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+      "page_number": 60,
+      "page_score": 0.942029,
+      "page_summary": "학교용 유무선 통합관리시스템(SWIMS 및 WERS)의 구축 목적과 주요 기능, 그리고 시스템 구성을 위한 상세 항목들을 정리한 내용입니다.",
+      "image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_1차\\rag_catalog_experiment\\cache\\pages\\weiss-de-001-3-v0-82-f69ab0fd\\p0060.png"
+    }
+  ],
+  "selected_visual_chunks": [
+    {
+      "chunk_id": "weiss-de-001-3-v0-82-f69ab0fd_p0004_c02",
+      "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+      "page_number": 4,
+      "chunk_type": "mixed",
+      "summary": "현황 분석과 관련된 구체적인 항목들(관계 학교 수, 관제센터 등)이 나열된 본문 내용입니다.",
+      "bbox": {
+        "x1": 0.11,
+        "y1": 0.17,
+        "x2": 0.86,
+        "y2": 0.83
+      },
+      "score": 0.984127,
+      "why_relevant": "검색 점수 0.9841 (dense_rank=2, bm25_rank=0), 매칭 키워드: 현황 분석"
+    },
+    {
+      "chunk_id": "weiss-ds-001-v0-91-aa83eb15_p0012_c00",
+      "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+      "page_number": 12,
+      "chunk_type": "title",
+      "summary": "문서의 상단에 위치한 제목 및 상태 정보 영역입니다.",
+      "bbox": {
+        "x1": 0.04,
+        "y1": 0.02,
+        "x2": 0.96,
+        "y2": 0.08
+      },
+      "score": 0.983871,
+      "why_relevant": "검색 점수 0.9839 (dense_rank=1, bm25_rank=1), 매칭 키워드: 무선망"
+    },
+    {
+      "chunk_id": "weiss-ds-001-v0-91-aa83eb15_p0007_c00",
+      "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+      "page_number": 7,
+      "chunk_type": "paragraph",
+      "summary": "학교 유·무선망 통합전송시스템 구축 및 현황분석결과를 나타내는 문서 상단 정보 영역입니다.",
+      "bbox": {
+        "x1": 0.0,
+        "y1": 0.0,
+        "x2": 1.0,
+        "y2": 0.06
+      },
+      "score": 0.969231,
+      "why_relevant": "검색 점수 0.9692 (dense_rank=4, bm25_rank=0), 매칭 키워드: 무선망"
+    },
+    {
+      "chunk_id": "weiss-ds-001-v0-91-aa83eb15_p0012_c01",
+      "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+      "page_number": 12,
+      "chunk_type": "mixed",
+      "summary": "유선 및 무선 관제의 상세 내용과 시스템 구성에 대한 설명이 포함된 텍스트 영역입니다.",
+      "bbox": {
+        "x1": 0.05,
+        "y1": 0.09,
+        "x2": 0.95,
+        "y2": 0.48
+      },
+      "score": 0.968254,
+      "why_relevant": "검색 점수 0.9683 (dense_rank=2, bm25_rank=2), 매칭 키워드: 무선망"
+    },
+    {
+      "chunk_id": "weiss-de-001-3-v0-82-f69ab0fd_p0004_c00",
+      "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+      "page_number": 4,
+      "chunk_type": "title",
+      "summary": "문서 상단에 위치한 프로젝트명 및 관련 시스템 정보입니다.",
+      "bbox": {
+        "x1": 0.05,
+        "y1": 0.03,
+        "x2": 0.95,
+        "y2": 0.08
+      },
+      "score": 0.953125,
+      "why_relevant": "검색 점수 0.9531 (dense_rank=3, bm25_rank=3), 매칭 키워드: 현황 분석"
+    },
+    {
+      "chunk_id": "weiss-ds-001-v0-91-aa83eb15_p0009_c03",
+      "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+      "page_number": 9,
+      "chunk_type": "paragraph",
+      "summary": "교육지원청별로 구축된 AP의 총 수량 및 분포 현황을 설명하는 문구입니다.",
+      "bbox": {
+        "x1": 0.14,
+        "y1": 0.41,
+        "x2": 0.86,
+        "y2": 0.51
+      },
+      "score": 0.948529,
+      "why_relevant": "검색 점수 0.9485 (dense_rank=0, bm25_rank=7)"
+    },
+    {
+      "chunk_id": "weiss-de-001-3-v0-82-f69ab0fd_p0019_c01",
+      "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+      "page_number": 19,
+      "chunk_type": "title",
+      "summary": "페이지의 주요 주제를 나타내는 대제목 영역입니다.",
+      "bbox": {
+        "x1": 0.0,
+        "y1": 0.1,
+        "x2": 1.0,
+        "y2": 0.16
+      },
+      "score": 0.940465,
+      "why_relevant": "검색 점수 0.9405 (dense_rank=1, bm25_rank=7), 매칭 키워드: 무선망"
+    },
+    {
+      "chunk_id": "weiss-de-001-3-v0-82-f69ab0fd_p0019_c00",
+      "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+      "page_number": 19,
+      "chunk_type": "title",
+      "summary": "문서의 상단에 위치한 제목과 부제목이 포함된 헤더 영역입니다.",
+      "bbox": {
+        "x1": 0.0,
+        "y1": 0.0,
+        "x2": 1.0,
+        "y2": 0.08
+      },
+      "score": 0.935714,
+      "why_relevant": "검색 점수 0.9357 (dense_rank=0, bm25_rank=9), 매칭 키워드: 무선망"
+    }
+  ],
+  "source_images": [
+    {
+      "image_index": 1,
+      "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+      "page_number": 16,
+      "image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_1차\\rag_catalog_experiment\\cache\\pages\\weiss-de-001-3-v0-82-f69ab0fd\\p0016.png"
+    },
+    {
+      "image_index": 2,
+      "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+      "page_number": 4,
+      "image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_1차\\rag_catalog_experiment\\cache\\pages\\weiss-de-001-3-v0-82-f69ab0fd\\p0004.png"
+    },
+    {
+      "image_index": 3,
+      "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+      "page_number": 63,
+      "image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_1차\\rag_catalog_experiment\\cache\\pages\\weiss-de-001-3-v0-82-f69ab0fd\\p0063.png"
+    }
+  ],
+  "page_evidence": [
+    {
+      "image_index": 1,
+      "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+      "page_number": 16,
+      "evidence_type": "mixed",
+      "evidence_text": "o (조사개요) SWIMS 연동 10개 교육청의 10G 인터넷 도입 및 노후화 장비 대·개체에 따른 관제 대상 장비의 수량 변화 조사 o (조사결과) 7월 기준 무선 AP는 약 257,777대로 전차 대비 23,153대",
+      "visual_description": "2차 추가조사 결과 섹션에서 AP와 POE 수량의 변화 및 향후 전망을 기술하고 있습니다.",
+      "bbox": {
+        "x1": 0.08,
+        "y1": 0.13,
+        "x2": 0.94,
+        "y2": 0.23
+      },
+      "crop_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_1차\\rag_catalog_experiment\\outputs\\evidence\\20260710T042334Z_33aa35\\weiss-de-001-3-v0-82-f69ab0fd_p0016_ev1_crop.jpg",
+      "highlighted_page_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_1차\\rag_catalog_experiment\\outputs\\evidence\\20260710T042334Z_33aa35\\weiss-de-001-3-v0-82-f69ab0fd_p0016_highlighted.jpg",
+      "why_relevant": "2차 추가조사 결과 섹션에서 AP와 POE 수량의 변화 및 향후 전망을 기술하고 있습니다.",
+      "confidence": 0.95
+    },
+    {
+      "image_index": 1,
+      "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+      "page_number": 16,
+      "evidence_type": "mixed",
+      "evidence_text": "맞춰 AP 및 PoE는 추가 증가 예상 교육청별 장비 변화수량 비교표 > AP 수량 POE 수량 비고 `25년 4월 ‘25년 7월 `25년 4월 증감 증감 기준 기준 기준 83,375 +6,502 12,984 10,723 +2,261 15,929 +2,379 2,907 2,798 +109 37,171 +3,583 7,412 6,831 +581 13,549 +1,496 2,546 2,220 +326",
+      "visual_description": "부록의 AP 및 POE 수량 비교표를 통해 각 지역별 상세 수치를 확인할 수 있습니다.",
+      "bbox": {
+        "x1": 0.35,
+        "y1": 0.26,
+        "x2": 0.94,
+        "y2": 0.58
+      },
+      "crop_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_1차\\rag_catalog_experiment\\outputs\\evidence\\20260710T042334Z_33aa35\\weiss-de-001-3-v0-82-f69ab0fd_p0016_ev2_crop.jpg",
+      "highlighted_page_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_1차\\rag_catalog_experiment\\outputs\\evidence\\20260710T042334Z_33aa35\\weiss-de-001-3-v0-82-f69ab0fd_p0016_highlighted.jpg",
+      "why_relevant": "부록의 AP 및 POE 수량 비교표를 통해 각 지역별 상세 수치를 확인할 수 있습니다.",
+      "confidence": 0.9
+    }
+  ],
+  "final_answer": "무선망 현황 분석 결과, AP 수량은 257,777개에서 234,624개로 23,153개가 줄어들었으며, POE는 41,112개에서 36,282개로 4,830개가 줄어든 것으로 나타났습니다. 다만 무선네트워크 확대에 맞춰 AP 및 POE의 추가 증차가 예상됩니다.",
+  "verification": {
+    "is_answer_supported": true,
+    "unsupported_claims": [],
+    "notes": "답변에 포함된 AP 및 POE 수량의 변화(감소 수치)와 향후 전망(추가 증차 예상)은 근거에서 언급한 '수량의 변화' 및 '향후 전망' 내용과 일치하며, 구체적인 수치는 해당 문서의 비교표를 통해 확인 가능하다고 명시되어 있어 모두 지원됩니다.",
+    "numeric_claims": [
+      "257,777",
+      "234,624",
+      "23,153",
+      "41,112",
+      "36,282",
+      "4,830"
+    ],
+    "numeric_verification_notes": ""
+  },
+  "metrics": {
+    "mode": "catalog",
+    "depth": "answer",
+    "is_ingest": false,
+    "summary_pages_required": 112,
+    "chunk_pages_required": 4,
+    "summary_calls": 100,
+    "chunk_calls": 4,
+    "answer_vlm_calls": 1,
+    "verify_llm_calls": 1,
+    "query_analyzer_calls": 1,
+    "embed_calls": 11,
+    "page_index_coverage": {
+      "total_pages": 24,
+      "summarized_pages": 24,
+      "pending_pages": 0
+    },
+    "elapsed_seconds_total": 2024.297,
+    "elapsed_seconds_retrieval": 1938.844,
+    "elapsed_seconds_answer": 85.453,
+    "selected_doc_count": 2,
+    "selected_page_count": 5,
+    "selected_chunk_count": 8,
+    "evidence_count": 2
+  }
+}

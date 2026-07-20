@@ -1,0 +1,30 @@
+{
+  "run_id": "20260716T155033Z_f174bc",
+  "question": "학생들의 스마트기기의 네트워크 연결이 잘 되지 않는다면 어느 망의 문제인거야?",
+  "files": [
+    {
+      "rank": 1,
+      "kind": "page",
+      "document_name": "★23년 학교 유무선 운영·관리 안내서_최종.pdf",
+      "page_number": 37,
+      "file": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_3\\rag3\\outputs\\evidence\\20260716T155033Z_f174bc\\ev1_p0037.png",
+      "source": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_3\\rag3\\cache\\parsed_v25\\23-b3bffb22\\pages\\p0037.png"
+    },
+    {
+      "rank": 2,
+      "kind": "page",
+      "document_name": "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf",
+      "page_number": 63,
+      "file": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_3\\rag3\\outputs\\evidence\\20260716T155033Z_f174bc\\ev2_p0063.png",
+      "source": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_3\\rag3\\cache\\parsed_v25\\mdm-argos-edu-v1-5-6061726f\\pages\\p0063.png"
+    },
+    {
+      "rank": 3,
+      "kind": "page",
+      "document_name": "★23년 학교 유무선 운영·관리 안내서_최종.pdf",
+      "page_number": 27,
+      "file": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_3\\rag3\\outputs\\evidence\\20260716T155033Z_f174bc\\ev3_p0027.png",
+      "source": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_3\\rag3\\cache\\parsed_v25\\23-b3bffb22\\pages\\p0027.png"
+    }
+  ]
+}

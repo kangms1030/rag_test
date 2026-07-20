@@ -1,0 +1,122 @@
+{
+  "steps": [
+    {
+      "label": "baseline(전부 언로드)",
+      "ps": []
+    },
+    {
+      "label": "embeddinggemma 상주",
+      "ps": [
+        {
+          "name": "embeddinggemma:latest",
+          "size": "681 MB",
+          "processor": "100% GPU",
+          "raw": "embeddinggemma:latest    85462619ee72    681 MB    100% GPU     2048       4 minutes from now"
+        }
+      ]
+    },
+    {
+      "label": "12b(16k) + embeddinggemma 동시",
+      "ps": [
+        {
+          "name": "gemma4:12b",
+          "size": "8.4 GB",
+          "processor": "100% GPU",
+          "raw": "gemma4:12b               4eb23ef187e2    8.4 GB    100% GPU     16384      9 minutes from now"
+        },
+        {
+          "name": "embeddinggemma:latest",
+          "size": "681 MB",
+          "processor": "100% GPU",
+          "raw": "embeddinggemma:latest    85462619ee72    681 MB    100% GPU     2048       4 minutes from now"
+        }
+      ]
+    },
+    {
+      "label": "e4b(2k) 로드 직후 - 12b 상주 여부 관찰",
+      "ps": [
+        {
+          "name": "gemma4:e4b",
+          "size": "3.3 GB",
+          "processor": "100% GPU",
+          "raw": "gemma4:e4b    c6eb396dbd59    3.3 GB    100% GPU     2048       9 minutes from now"
+        }
+      ]
+    },
+    {
+      "label": "12b 재호출 후",
+      "ps": [
+        {
+          "name": "gemma4:12b",
+          "size": "8.4 GB",
+          "processor": "100% GPU",
+          "raw": "gemma4:12b    4eb23ef187e2    8.4 GB    100% GPU     16384      9 minutes from now"
+        },
+        {
+          "name": "gemma4:e4b",
+          "size": "3.3 GB",
+          "processor": "100% GPU",
+          "raw": "gemma4:e4b    c6eb396dbd59    3.3 GB    100% GPU     2048       9 minutes from now"
+        }
+      ]
+    },
+    {
+      "label": "e4b 재호출 후",
+      "ps": [
+        {
+          "name": "gemma4:e4b",
+          "size": "3.3 GB",
+          "processor": "100% GPU",
+          "raw": "gemma4:e4b    c6eb396dbd59    3.3 GB    100% GPU     2048       9 minutes from now"
+        },
+        {
+          "name": "gemma4:12b",
+          "size": "8.4 GB",
+          "processor": "100% GPU",
+          "raw": "gemma4:12b    4eb23ef187e2    8.4 GB    100% GPU     16384      9 minutes from now"
+        }
+      ]
+    }
+  ],
+  "warm": {
+    "embed": "ok",
+    "12b_ctx16k": {
+      "model": "gemma4:12b",
+      "num_ctx": 16384,
+      "wall_s": 9.29,
+      "load_duration_s": 4.05,
+      "total_duration_s": 9.29,
+      "eval_count": 237
+    },
+    "e4b_ctx2k_first": {
+      "model": "gemma4:e4b",
+      "num_ctx": 2048,
+      "wall_s": 10.81,
+      "load_duration_s": 10.61,
+      "total_duration_s": 10.81,
+      "eval_count": 3
+    },
+    "12b_after_e4b": {
+      "model": "gemma4:12b",
+      "num_ctx": 16384,
+      "wall_s": 11.89,
+      "load_duration_s": 6.63,
+      "total_duration_s": 11.89,
+      "eval_count": 237
+    },
+    "e4b_after_12b": {
+      "model": "gemma4:e4b",
+      "num_ctx": 2048,
+      "wall_s": 0.66,
+      "load_duration_s": 0.59,
+      "total_duration_s": 0.66,
+      "eval_count": 3
+    }
+  },
+  "verdict": {
+    "co_resident_12b_e4b": false,
+    "swap_load_12b_s": 6.63,
+    "swap_load_e4b_s": 0.59,
+    "note": "load_duration_s가 크면(>3s) 재로드=스왑 발생. 0에 가까우면 상주 유지."
+  }
+}

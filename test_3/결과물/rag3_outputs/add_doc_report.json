@@ -1,0 +1,24 @@
+{
+  "command": "add",
+  "results": [
+    {
+      "document_name": "테스트문서_커피머신규정.pdf",
+      "doc_slug": "doc-d33cc6a3",
+      "mode": "replace",
+      "parsed_fresh": false,
+      "pages": 2,
+      "chunks_added": 2,
+      "chunks_removed_before": 2,
+      "chunk_types": {
+        "text": 2
+      },
+      "vlm_pages_merged": 0,
+      "note": "figure 페이지 없음(생략)",
+      "chroma": "ok",
+      "elapsed_seconds": 14.4
+    }
+  ],
+  "total_chunks": 2564,
+  "total_pages": 971,
+  "elapsed_seconds": 20.7
+}

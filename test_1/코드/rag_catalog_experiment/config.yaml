@@ -1,0 +1,69 @@
+# rag_catalog_experiment 설정 파일
+# 경로는 이 파일(rag_catalog_experiment/config.yaml) 기준 상대경로
+
+catalog_excel_path: "../데이터카탈로그_DCAT_선정파일_RAG최적화.xlsx"
+documents_dir: "../데이터 카탈로그 작업 파일"
+catalog_sheet: "선정파일_Distribution_파일목록"
+
+output_dir: "outputs"
+index_dir: "index"
+cache_dir: "cache"
+
+llm_provider: "ollama"
+llm_model: "gemma4:12b"
+vlm_model: "gemma4:12b"
+fallback_model: "gemma4:e4b"
+
+embedding_model: "embeddinggemma"
+# EmbeddingGemma는 task prefix에 민감함 (Ollama 문서 권장값)
+embed_doc_prefix: "title: none | text: "
+embed_query_prefix: "task: search result | query: "
+
+# catalog | no_catalog | filename_only
+retrieval_mode: "catalog"
+
+top_docs: 2
+top_pages: 5
+top_chunks: 8
+
+# lazy VLM 축소 파라미터
+page_prefilter_topn: 12      # 텍스트 있는 문서: BM25+dense 상위 N페이지만 VLM 요약
+chunk_pages_topk: 4          # visual chunking을 수행할 상위 페이지 수
+max_images_per_call: 3       # 답변 생성 시 VLM에 넣는 이미지 수 상한
+image_max_side: 1280         # VLM 입력 이미지 리사이즈 최대 변
+page_render_dpi: 150
+
+enable_ocr: false
+enable_visual_chunking: true
+
+# 답변 검증 강화: 숫자/수량이 포함된 답변은 crop 이미지를 다시 VLM에 보여주며 재검증한다
+# (visual_description 텍스트만 보면 VLM이 표 숫자를 잘못 읽은 걸 검증도 놓친다 — REPORT.md A1/A4).
+verify_with_crop_image: false
+verify_max_crop_images: 3
+
+# 한국어 토크나이저: char_bigram(기본, 형태소 분석기 불필요) | kiwi(kiwipiepy 필요, 미설치 시 자동 폴백)
+tokenizer: "char_bigram"
+
+# 문서 선정 컷오프
+min_doc_score: 0.35          # RRF 정규화 점수(0~1, 상대 순위 기반)가 이 미만이면 selected_documents = []
+doc_score_gap_ratio: 0.6     # 2등 점수가 1등의 이 비율 미만이면 1개만 선정
+# 절대 관련성 하한선: dense cosine 유사도 또는 BM25 원점수(키워드 겹침) 중 하나는 넘어야 함.
+# 카탈로그 문서 수가 적으면 RRF 순위 점수만으로는 완전히 무관한 질문도 "1등"이 나오므로 필요.
+min_dense_similarity: 0.35
+
+# retrieval_mode별 거절 게이트 — 서로 다른 텍스트 분포(카탈로그 설명문/파일명/페이지 요약) 위에
+# 있으므로 같은 값을 공유하지 않는다. experiments/thresholds.py로 분포를 실측해 조정할 것.
+min_filename_dense_similarity: 0.30   # filename_only 모드: filename_index 게이트
+min_page_dense_similarity: 0.35       # no_catalog 모드: 최상위 페이지 게이트
+# no_catalog: 전역 page_index에서 몇 페이지를 실제 VLM 요약으로 승격할지 (catalog의
+# top_docs×page_prefilter_topn 예산과 맞추기 위한 값 — 기본 2×12=24)
+no_catalog_page_prefilter_topn: 24
+
+# 스캔 문서(텍스트 레이어 거의 없음) 판정 임계값
+scanned_text_ratio_threshold: 0.2
+
+# retrieval 하이브리드 융합
+rrf_k: 60
+
+ollama_num_ctx: 8192
+ollama_keep_alive: "10m"

@@ -1,0 +1,547 @@
+{
+  "summary": {
+    "n_relevant": 31,
+    "n_irrelevant": 5,
+    "evidence_present": 24,
+    "answer_given_evidence_fail": 6,
+    "answer_given_evidence_fail_ids": [
+      "core_002",
+      "core_008",
+      "vp_006",
+      "vp_007",
+      "vp_012",
+      "vp_013"
+    ],
+    "answered_rate": 0.6129,
+    "avg_kw_hit": 0.4428,
+    "irrelevant_reject_rate": 1.0,
+    "avg_model_calls": 3.06,
+    "avg_elapsed_s": 51.2,
+    "max_elapsed_s": 109.7,
+    "improved": [
+      [
+        "vp_009",
+        0,
+        1.0
+      ],
+      [
+        "vp_010",
+        0,
+        1.0
+      ],
+      [
+        "vp_014",
+        0,
+        1.0
+      ]
+    ],
+    "regressed": [
+      [
+        "core_001",
+        1.0,
+        0.42857142857142855
+      ],
+      [
+        "core_007",
+        0.6666666666666666,
+        0
+      ]
+    ]
+  },
+  "results": [
+    {
+      "qid": "core_001",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "low",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 0.42857142857142855,
+      "model_calls": 2,
+      "rollback": [],
+      "elapsed_s": 82.8,
+      "final_answer_head": "스쿨넷 5단계 재해복구(DR)서비스에서 제주특별자치도교육청의 요금은 다음과 같습니다.\n\n*   **100M 월"
+    },
+    {
+      "qid": "core_002",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 0.0,
+      "model_calls": 5,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 106.1,
+      "final_answer_head": "선택된 문서에서 확인 불가"
+    },
+    {
+      "qid": "core_003",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": false,
+      "abstain": true,
+      "kw_hit": 0.0,
+      "model_calls": 5,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 105.7,
+      "final_answer_head": "제공된 근거에서 확인할 수 없습니다."
+    },
+    {
+      "qid": "core_004",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 0.6,
+      "model_calls": 3,
+      "rollback": [],
+      "elapsed_s": 56.6,
+      "final_answer_head": "관리자 승인까지 최대 48시간 소요될 수 있으며, @korea.kr 메일 사용 시 메일 수신이 정상적으로 이루어지지 않을 수 있어 다른 이메일 사용을 권장합니다."
+    },
+    {
+      "qid": "core_005",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": false,
+      "abstain": true,
+      "kw_hit": 0.0,
+      "model_calls": 4,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 72.4,
+      "final_answer_head": "제공된 근거에서 확인할 수 없습니다."
+    },
+    {
+      "qid": "core_006",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 0.6666666666666666,
+      "model_calls": 2,
+      "rollback": [],
+      "elapsed_s": 49.3,
+      "final_answer_head": "학교 내부에서 무선 와이파이 인터넷 접속이 안 되는 경우의 3가지 주요 원인 범주와 예시는 다음과 같습니다.\n\n1. **인터넷(회선) 연결 장애**: 시·도교육청(집선청)에서 인터"
+    },
+    {
+      "qid": "core_007",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 0.0,
+      "model_calls": 3,
+      "rollback": [],
+      "elapsed_s": 75.2,
+      "final_answer_head": "준비 조건은 측정용 무선단말을 최소 20대 준비하는 것이며,"
+    },
+    {
+      "qid": "core_008",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 0.0,
+      "model_calls": 5,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 103.5,
+      "final_answer_head": "선택된 문서에서 확인 불가"
+    },
+    {
+      "qid": "core_009",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 0.8,
+      "model_calls": 2,
+      "rollback": [],
+      "elapsed_s": 34.7,
+      "final_answer_head": "스쿨넷 이용관리시스템에 처음 접근하는 통신사업자가 로그인을 성공하기 위해 접속해야 할 포털 주소는 **학교 유무선 통합 로그인 센터(https://weiss.or.kr/)**이며,"
+    },
+    {
+      "qid": "core_010",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 0.16666666666666666,
+      "model_calls": 2,
+      "rollback": [],
+      "elapsed_s": 38.6,
+      "final_answer_head": "각 지표의 시간 기준과 계산 방식은 다음과 같습니다.\n\n**1. 단말접속현황**\n*   **현재:** 금일, 현재 시간부터 한시간 전까지의 접속 단말 합계입니다. (예: 4월 14"
+    },
+    {
+      "qid": "core_011",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 1.0,
+      "model_calls": 2,
+      "rollback": [],
+      "elapsed_s": 27.2,
+      "final_answer_head": "통합관제 사용자 화면의 실시간 이벤트현황 페이지로 이동하는 메뉴 경로는 **종합현황 > 이벤트현황 > 이벤트현황**이며, 새로고침 빈도 UI 옵션은 **5s, 10s, 30s, 정"
+    },
+    {
+      "qid": "core_012",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": false,
+      "abstain": true,
+      "kw_hit": 0.0,
+      "model_calls": 3,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 30.8,
+      "final_answer_head": "제공된 근거에서 확인할 수 없습니다."
+    },
+    {
+      "qid": "core_013",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 0.7142857142857143,
+      "model_calls": 4,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 87.2,
+      "final_answer_head": "다보링크 DVW-624i 무선 AP의 LED 색상별 판정 기준과 전원 불량 의심 시 첫 물리적 조치는 다음과 같습니다.\n\n*   **LED 색상별 판정 기준:**\n    *   *"
+    },
+    {
+      "qid": "irrelevant_001",
+      "irrelevant": true,
+      "answer_path": "none",
+      "confidence": "abstain",
+      "evidence_present": false,
+      "abstain": true,
+      "kw_hit": null,
+      "model_calls": 1,
+      "rollback": [],
+      "elapsed_s": 0.9,
+      "final_answer_head": "선택된 문서에서 확인 불가"
+    },
+    {
+      "qid": "irrelevant_002",
+      "irrelevant": true,
+      "answer_path": "none",
+      "confidence": "abstain",
+      "evidence_present": false,
+      "abstain": true,
+      "kw_hit": null,
+      "model_calls": 1,
+      "rollback": [],
+      "elapsed_s": 2.3,
+      "final_answer_head": "선택된 문서에서 확인 불가"
+    },
+    {
+      "qid": "irrelevant_003",
+      "irrelevant": true,
+      "answer_path": "none",
+      "confidence": "abstain",
+      "evidence_present": false,
+      "abstain": true,
+      "kw_hit": null,
+      "model_calls": 1,
+      "rollback": [],
+      "elapsed_s": 2.3,
+      "final_answer_head": "선택된 문서에서 확인 불가"
+    },
+    {
+      "qid": "vp_001",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 0.8,
+      "model_calls": 2,
+      "rollback": [],
+      "elapsed_s": 37.6,
+      "final_answer_head": "가온(제조사) AP 모델 EAP-224x(4,5,6,7,8,9)의 구축 수량은 27,054대이며, 서울특별시교육청 전체 AP 총 구축 수량은 83,375대입니다."
+    },
+    {
+      "qid": "vp_002",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 1.0,
+      "model_calls": 2,
+      "rollback": [],
+      "elapsed_s": 38.4,
+      "final_answer_head": "강원특별자치도교육청 스윔스(무선) 관제 장비 현황에 따른 다보링크(제조사) 3개 모델의 수량과 강원특별자치도교육청 AP 총 구축 수량은 다음과 같습니다.\n\n*   **다보링크(제조"
+    },
+    {
+      "qid": "vp_003",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 1.0,
+      "model_calls": 2,
+      "rollback": [],
+      "elapsed_s": 43.1,
+      "final_answer_head": "AP 구축 수량이 많은 순서(제조사 기준)는 가온 > 다보링크 > 엘텍 > 올레디오이며, 경상남도교육청 AP 총 구축 수량은 37,171대이고 학교당 평균 구축 대수는 37대입니다"
+    },
+    {
+      "qid": "vp_004",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "low",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 0.25,
+      "model_calls": 2,
+      "rollback": [],
+      "elapsed_s": 59.9,
+      "final_answer_head": "유비쿼스(제조사) 모델 중 구축 수량이 가장 많은 모델명은 **E40"
+    },
+    {
+      "qid": "vp_005",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": false,
+      "abstain": true,
+      "kw_hit": 0.0,
+      "model_calls": 5,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 109.7,
+      "final_answer_head": "선택된 문서에서 확인 불가"
+    },
+    {
+      "qid": "vp_006",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 0.0,
+      "model_calls": 5,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 108.9,
+      "final_answer_head": "선택된 문서에서 확인 불가"
+    },
+    {
+      "qid": "vp_007",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 0.0,
+      "model_calls": 5,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 101.5,
+      "final_answer_head": "선택된 문서에서 확인 불가"
+    },
+    {
+      "qid": "vp_008",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": false,
+      "abstain": true,
+      "kw_hit": 0.0,
+      "model_calls": 3,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 29.2,
+      "final_answer_head": "제공된 근거에서 확인할 수 없습니다."
+    },
+    {
+      "qid": "vp_009",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 1.0,
+      "model_calls": 2,
+      "rollback": [],
+      "elapsed_s": 25.6,
+      "final_answer_head": "무선 채널 및 신호 세기를 측정하는 무료 모바일 앱의 이름은 **WiFi 개요 360**이며, **갤럭시 앱 스토어**에서 다운로드할 수 있습니다."
+    },
+    {
+      "qid": "vp_010",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 1.0,
+      "model_calls": 2,
+      "rollback": [],
+      "elapsed_s": 35.4,
+      "final_answer_head": "방화벽부터 AP까지 순서대로 나열된 4개 장비는 **방화벽, 무선 집선 스위치, PoE 스위치, AP**이며, PingTools 예시에서 제시된 IP 주소는 정상 연결 상태가 **"
+    },
+    {
+      "qid": "vp_011",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": false,
+      "abstain": true,
+      "kw_hit": 0.0,
+      "model_calls": 3,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 33.0,
+      "final_answer_head": "제공된 근거에서 확인할 수 없습니다."
+    },
+    {
+      "qid": "vp_012",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 0.0,
+      "model_calls": 5,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 94.6,
+      "final_answer_head": "선택된 문서에서 확인 불가"
+    },
+    {
+      "qid": "vp_013",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 0.0,
+      "model_calls": 3,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 32.9,
+      "final_answer_head": "제공된 근거에서 확인할 수 없습니다."
+    },
+    {
+      "qid": "vp_014",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "low",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 1.0,
+      "model_calls": 3,
+      "rollback": [],
+      "elapsed_s": 69.2,
+      "final_answer_head": "'공동플랫폼' 영역의 4가지 구성요소는 수집/분석, 빅데이터, AI, 인증이며, '네트워크' 영역의 주요 과제 2가지는 노후 네트워크 장비 대개체, 망중계 장치 대개체입니다."
+    },
+    {
+      "qid": "vp_015",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": false,
+      "abstain": false,
+      "kw_hit": 0.8,
+      "model_calls": 2,
+      "rollback": [],
+      "elapsed_s": 31.0,
+      "final_answer_head": "⑤번 '서비스' 항목에서 선택 가능한 4가지 서비스 종류는 회선서비스, 인터넷서비스, IPSec VPN, 재해복구(DR)입니다."
+    },
+    {
+      "qid": "vt_001",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 1.0,
+      "model_calls": 3,
+      "rollback": [],
+      "elapsed_s": 62.7,
+      "final_answer_head": "가상화서버(HCI)의 CPU 코어 수는 128Core, RAM 용량은 6,144GB, HDD 용량은 122.88TB(Physical)이며, 방화벽 장비의 총 수량은 11대입니다."
+    },
+    {
+      "qid": "vt_002",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 1.0,
+      "model_calls": 2,
+      "rollback": [],
+      "elapsed_s": 23.1,
+      "final_answer_head": "이용관리 로그인 화면 설명에서 비밀번호 입력 규칙은 8~12자이며, 영문자, 숫자, 특수문자를 포함해야 합니다."
+    },
+    {
+      "qid": "vt_003",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 0.5,
+      "model_calls": 2,
+      "rollback": [],
+      "elapsed_s": 29.2,
+      "final_answer_head": "현재까지 등록된 전체 게시글은 1건이며, 2014년에 작성되었습니다."
+    },
+    {
+      "qid": "vi_001",
+      "irrelevant": true,
+      "answer_path": "none",
+      "confidence": "abstain",
+      "evidence_present": false,
+      "abstain": true,
+      "kw_hit": null,
+      "model_calls": 1,
+      "rollback": [],
+      "elapsed_s": 0.9,
+      "final_answer_head": "선택된 문서에서 확인 불가"
+    },
+    {
+      "qid": "vi_002",
+      "irrelevant": true,
+      "answer_path": "none",
+      "confidence": "abstain",
+      "evidence_present": false,
+      "abstain": true,
+      "kw_hit": null,
+      "model_calls": 1,
+      "rollback": [],
+      "elapsed_s": 1.1,
+      "final_answer_head": "선택된 문서에서 확인 불가"
+    }
+  ]
+}

@@ -1,0 +1,1782 @@
+{
+  "reranker": "BAAI/bge-reranker-v2-m3",
+  "topk": 20,
+  "n": 36,
+  "page_index_count": 969,
+  "rerank_latency_s": {
+    "mean": 2.547,
+    "max": 3.612
+  },
+  "summary": {
+    "baseline": {
+      "page_hit@1": 0.3611,
+      "page_hit@3": 0.5556,
+      "doc_hit@1": 0.6944,
+      "doc_hit@3": 0.7778,
+      "page_mrr": 0.4721
+    },
+    "reranked": {
+      "page_hit@1": 0.4167,
+      "page_hit@3": 0.6389,
+      "doc_hit@1": 0.6667,
+      "doc_hit@3": 0.7778,
+      "page_mrr": 0.5398
+    }
+  },
+  "per_question": [
+    {
+      "qid": "core_001",
+      "type": "table",
+      "exp_pages": [
+        11
+      ],
+      "baseline": {
+        "page_hit@1": true,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 1.0
+      },
+      "reranked": {
+        "page_hit@1": true,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 1.0
+      },
+      "base_top3": [
+        [
+          "(첨부)_5단계_스쿨넷서비스_제공_가",
+          11
+        ],
+        [
+          "(첨부)_5단계_스쿨넷서비스_제공_가",
+          6
+        ],
+        [
+          "(첨부)_5단계_스쿨넷서비스_제공_가",
+          2
+        ]
+      ],
+      "rr_top3": [
+        [
+          "(첨부)_5단계_스쿨넷서비스_제공_가",
+          11
+        ],
+        [
+          "(첨부)_5단계_스쿨넷서비스_제공_가",
+          6
+        ],
+        [
+          "(첨부)_5단계_스쿨넷서비스_제공_가",
+          13
+        ]
+      ]
+    },
+    {
+      "qid": "core_002",
+      "type": "table",
+      "exp_pages": [
+        8
+      ],
+      "baseline": {
+        "page_hit@1": false,
+        "page_hit@3": false,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 0.1
+      },
+      "reranked": {
+        "page_hit@1": true,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 1.0
+      },
+      "base_top3": [
+        [
+          "WEISS-DS-001-현황분석서-v",
+          23
+        ],
+        [
+          "WEISS-DS-001-현황분석서-v",
+          38
+        ],
+        [
+          "WEISS-DS-001-현황분석서-v",
+          53
+        ]
+      ],
+      "rr_top3": [
+        [
+          "WEISS-DS-001-현황분석서-v",
+          8
+        ],
+        [
+          "WEISS-DS-001-현황분석서-v",
+          48
+        ],
+        [
+          "WEISS-DS-001-현황분석서-v",
+          18
+        ]
+      ]
+    },
+    {
+      "qid": "core_003",
+      "type": "fact",
+      "exp_pages": [
+        20
+      ],
+      "baseline": {
+        "page_hit@1": true,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 1.0
+      },
+      "reranked": {
+        "page_hit@1": true,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 1.0
+      },
+      "base_top3": [
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          20
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          5
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          22
+        ]
+      ],
+      "rr_top3": [
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          20
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          3
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          22
+        ]
+      ]
+    },
+    {
+      "qid": "core_004",
+      "type": "procedure",
+      "exp_pages": [
+        16
+      ],
+      "baseline": {
+        "page_hit@1": true,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 1.0
+      },
+      "reranked": {
+        "page_hit@1": true,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 1.0
+      },
+      "base_top3": [
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          16
+        ],
+        [
+          "이용관리_20260702.pdf",
+          77
+        ],
+        [
+          "이용관리_20260702.pdf",
+          7
+        ]
+      ],
+      "rr_top3": [
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          16
+        ],
+        [
+          "이용관리_20260702.pdf",
+          7
+        ],
+        [
+          "(첨부)_5단계_스쿨넷서비스_제공_가",
+          15
+        ]
+      ]
+    },
+    {
+      "qid": "core_005",
+      "type": "procedure",
+      "exp_pages": [
+        8
+      ],
+      "baseline": {
+        "page_hit@1": false,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 0.3333
+      },
+      "reranked": {
+        "page_hit@1": false,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 0.5
+      },
+      "base_top3": [
+        [
+          "8-1. 스쿨넷서비스 학내망 구축 및",
+          3
+        ],
+        [
+          "8-1. 스쿨넷서비스 학내망 구축 및",
+          2
+        ],
+        [
+          "8-1. 스쿨넷서비스 학내망 구축 및",
+          8
+        ]
+      ],
+      "rr_top3": [
+        [
+          "8-1. 스쿨넷서비스 학내망 구축 및",
+          2
+        ],
+        [
+          "8-1. 스쿨넷서비스 학내망 구축 및",
+          8
+        ],
+        [
+          "8-1. 스쿨넷서비스 학내망 구축 및",
+          3
+        ]
+      ]
+    },
+    {
+      "qid": "core_006",
+      "type": "troubleshooting",
+      "exp_pages": [
+        9
+      ],
+      "baseline": {
+        "page_hit@1": true,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 1.0
+      },
+      "reranked": {
+        "page_hit@1": true,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 1.0
+      },
+      "base_top3": [
+        [
+          "★. 무선랜 구축운영 가이드라인_0.",
+          9
+        ],
+        [
+          "★23년 학교 유무선 운영·관리 안내",
+          72
+        ],
+        [
+          "★. 무선랜 구축운영 가이드라인_0.",
+          8
+        ]
+      ],
+      "rr_top3": [
+        [
+          "★. 무선랜 구축운영 가이드라인_0.",
+          9
+        ],
+        [
+          "★23년 학교 유무선 운영·관리 안내",
+          72
+        ],
+        [
+          "★23년 학교 유무선 운영·관리 안내",
+          100
+        ]
+      ]
+    },
+    {
+      "qid": "core_007",
+      "type": "procedure",
+      "exp_pages": [
+        78
+      ],
+      "baseline": {
+        "page_hit@1": false,
+        "page_hit@3": false,
+        "doc_hit@1": false,
+        "doc_hit@3": false,
+        "page_mrr": 0.0
+      },
+      "reranked": {
+        "page_hit@1": false,
+        "page_hit@3": false,
+        "doc_hit@1": false,
+        "doc_hit@3": false,
+        "page_mrr": 0.0
+      },
+      "base_top3": [
+        [
+          "학교 무선인터넷 자가진단 체크리스트(",
+          9
+        ],
+        [
+          "학교 무선인터넷 자가진단 체크리스트(",
+          2
+        ],
+        [
+          "학교 무선인터넷 자가진단 체크리스트(",
+          10
+        ]
+      ],
+      "rr_top3": [
+        [
+          "학교 무선인터넷 자가진단 체크리스트(",
+          9
+        ],
+        [
+          "학교 무선인터넷 자가진단 체크리스트(",
+          2
+        ],
+        [
+          "학교 무선인터넷 자가진단 체크리스트(",
+          10
+        ]
+      ]
+    },
+    {
+      "qid": "core_008",
+      "type": "table",
+      "exp_pages": [
+        90
+      ],
+      "baseline": {
+        "page_hit@1": true,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 1.0
+      },
+      "reranked": {
+        "page_hit@1": true,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 1.0
+      },
+      "base_top3": [
+        [
+          "스마트 단말 관리 시스템[MDM]_교",
+          90
+        ],
+        [
+          "스마트 단말 관리 시스템[MDM]_교",
+          91
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          25
+        ]
+      ],
+      "rr_top3": [
+        [
+          "스마트 단말 관리 시스템[MDM]_교",
+          90
+        ],
+        [
+          "스마트 단말 관리 시스템[MDM]_교",
+          91
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          25
+        ]
+      ]
+    },
+    {
+      "qid": "core_009",
+      "type": "procedure",
+      "exp_pages": [
+        36
+      ],
+      "baseline": {
+        "page_hit@1": false,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 0.5
+      },
+      "reranked": {
+        "page_hit@1": false,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 0.5
+      },
+      "base_top3": [
+        [
+          "이용관리_20260702.pdf",
+          8
+        ],
+        [
+          "이용관리_20260702.pdf",
+          36
+        ],
+        [
+          "이용관리_20260702.pdf",
+          35
+        ]
+      ],
+      "rr_top3": [
+        [
+          "이용관리_20260702.pdf",
+          8
+        ],
+        [
+          "이용관리_20260702.pdf",
+          36
+        ],
+        [
+          "(첨부)_5단계_스쿨넷서비스_제공_가",
+          33
+        ]
+      ]
+    },
+    {
+      "qid": "core_010",
+      "type": "fact",
+      "exp_pages": [
+        23
+      ],
+      "baseline": {
+        "page_hit@1": false,
+        "page_hit@3": true,
+        "doc_hit@1": false,
+        "doc_hit@3": true,
+        "page_mrr": 0.5
+      },
+      "reranked": {
+        "page_hit@1": false,
+        "page_hit@3": true,
+        "doc_hit@1": false,
+        "doc_hit@3": true,
+        "page_mrr": 0.5
+      },
+      "base_top3": [
+        [
+          "통합관제(사용자)_20260702.p",
+          27
+        ],
+        [
+          "통합관제 이용기관 전용 매뉴얼_202",
+          23
+        ],
+        [
+          "통합관제(사용자)_20260702.p",
+          72
+        ]
+      ],
+      "rr_top3": [
+        [
+          "통합관제(사용자)_20260702.p",
+          26
+        ],
+        [
+          "통합관제 이용기관 전용 매뉴얼_202",
+          23
+        ],
+        [
+          "통합관제(사용자)_20260702.p",
+          27
+        ]
+      ]
+    },
+    {
+      "qid": "core_011",
+      "type": "fact",
+      "exp_pages": [
+        29
+      ],
+      "baseline": {
+        "page_hit@1": false,
+        "page_hit@3": true,
+        "doc_hit@1": false,
+        "doc_hit@3": true,
+        "page_mrr": 0.3333
+      },
+      "reranked": {
+        "page_hit@1": false,
+        "page_hit@3": true,
+        "doc_hit@1": false,
+        "doc_hit@3": true,
+        "page_mrr": 0.5
+      },
+      "base_top3": [
+        [
+          "통합관제(최고관리자)_20260702",
+          28
+        ],
+        [
+          "통합관제(최고관리자)_20260702",
+          42
+        ],
+        [
+          "통합관제(사용자)_20260702.p",
+          29
+        ]
+      ],
+      "rr_top3": [
+        [
+          "통합관제(최고관리자)_20260702",
+          27
+        ],
+        [
+          "통합관제(사용자)_20260702.p",
+          29
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          53
+        ]
+      ]
+    },
+    {
+      "qid": "core_012",
+      "type": "fact",
+      "exp_pages": [
+        44
+      ],
+      "baseline": {
+        "page_hit@1": false,
+        "page_hit@3": false,
+        "doc_hit@1": false,
+        "doc_hit@3": true,
+        "page_mrr": 0.0667
+      },
+      "reranked": {
+        "page_hit@1": false,
+        "page_hit@3": false,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 0.0526
+      },
+      "base_top3": [
+        [
+          "통합관제(사용자)_20260702.p",
+          27
+        ],
+        [
+          "통합관제(최고관리자)_20260702",
+          42
+        ],
+        [
+          "통합관제(최고관리자)_20260702",
+          27
+        ]
+      ],
+      "rr_top3": [
+        [
+          "통합관제(최고관리자)_20260702",
+          42
+        ],
+        [
+          "WEISS-DS-001-현황분석서-v",
+          91
+        ],
+        [
+          "통합관제(사용자)_20260702.p",
+          25
+        ]
+      ]
+    },
+    {
+      "qid": "core_013",
+      "type": "troubleshooting",
+      "exp_pages": [
+        11
+      ],
+      "baseline": {
+        "page_hit@1": true,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 1.0
+      },
+      "reranked": {
+        "page_hit@1": false,
+        "page_hit@3": true,
+        "doc_hit@1": false,
+        "doc_hit@3": true,
+        "page_mrr": 0.5
+      },
+      "base_top3": [
+        [
+          "학교 무선인터넷 자가진단 체크리스트(",
+          11
+        ],
+        [
+          "★23년 학교 유무선 운영·관리 안내",
+          80
+        ],
+        [
+          "★23년 학교 유무선 운영·관리 안내",
+          38
+        ]
+      ],
+      "rr_top3": [
+        [
+          "★23년 학교 유무선 운영·관리 안내",
+          80
+        ],
+        [
+          "학교 무선인터넷 자가진단 체크리스트(",
+          11
+        ],
+        [
+          "통합관제(사용자)_20260702.p",
+          59
+        ]
+      ]
+    },
+    {
+      "qid": "irrelevant_001",
+      "type": "irrelevant",
+      "exp_pages": [],
+      "baseline": {
+        "page_hit@1": false,
+        "page_hit@3": false,
+        "doc_hit@1": false,
+        "doc_hit@3": false,
+        "page_mrr": 0.0
+      },
+      "reranked": {
+        "page_hit@1": false,
+        "page_hit@3": false,
+        "doc_hit@1": false,
+        "doc_hit@3": false,
+        "page_mrr": 0.0
+      },
+      "base_top3": [
+        [
+          "스마트 단말 관리 시스템[MDM]_교",
+          36
+        ],
+        [
+          "이용관리_20260702.pdf",
+          38
+        ],
+        [
+          "★23년 학교 유무선 운영·관리 안내",
+          21
+        ]
+      ],
+      "rr_top3": [
+        [
+          "8-1. 스쿨넷서비스 학내망 구축 및",
+          17
+        ],
+        [
+          "8-1. 스쿨넷서비스 학내망 구축 및",
+          25
+        ],
+        [
+          "8-1. 스쿨넷서비스 학내망 구축 및",
+          16
+        ]
+      ]
+    },
+    {
+      "qid": "irrelevant_002",
+      "type": "irrelevant",
+      "exp_pages": [],
+      "baseline": {
+        "page_hit@1": false,
+        "page_hit@3": false,
+        "doc_hit@1": false,
+        "doc_hit@3": false,
+        "page_mrr": 0.0
+      },
+      "reranked": {
+        "page_hit@1": false,
+        "page_hit@3": false,
+        "doc_hit@1": false,
+        "doc_hit@3": false,
+        "page_mrr": 0.0
+      },
+      "base_top3": [
+        [
+          "통합관제(사용자)_20260702.p",
+          18
+        ],
+        [
+          "통합관제(최고관리자)_20260702",
+          20
+        ],
+        [
+          "이용관리_20260702.pdf",
+          47
+        ]
+      ],
+      "rr_top3": [
+        [
+          "(첨부)_5단계_스쿨넷서비스_제공_가",
+          5
+        ],
+        [
+          "통합관제(최고관리자)_20260702",
+          79
+        ],
+        [
+          "이용관리_20260702.pdf",
+          119
+        ]
+      ]
+    },
+    {
+      "qid": "irrelevant_003",
+      "type": "irrelevant",
+      "exp_pages": [],
+      "baseline": {
+        "page_hit@1": false,
+        "page_hit@3": false,
+        "doc_hit@1": false,
+        "doc_hit@3": false,
+        "page_mrr": 0.0
+      },
+      "reranked": {
+        "page_hit@1": false,
+        "page_hit@3": false,
+        "doc_hit@1": false,
+        "doc_hit@3": false,
+        "page_mrr": 0.0
+      },
+      "base_top3": [
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          73
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          7
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          74
+        ]
+      ],
+      "rr_top3": [
+        [
+          "WEISS-DS-001-현황분석서-v",
+          76
+        ],
+        [
+          "통합관제(사용자)_20260702.p",
+          26
+        ],
+        [
+          "WEISS-DS-001-현황분석서-v",
+          75
+        ]
+      ]
+    },
+    {
+      "qid": "vp_001",
+      "type": "scan_table",
+      "exp_pages": [
+        9
+      ],
+      "baseline": {
+        "page_hit@1": false,
+        "page_hit@3": false,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 0.25
+      },
+      "reranked": {
+        "page_hit@1": true,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 1.0
+      },
+      "base_top3": [
+        [
+          "WEISS-DS-001-현황분석서-v",
+          24
+        ],
+        [
+          "WEISS-DS-001-현황분석서-v",
+          34
+        ],
+        [
+          "WEISS-DS-001-현황분석서-v",
+          59
+        ]
+      ],
+      "rr_top3": [
+        [
+          "WEISS-DS-001-현황분석서-v",
+          9
+        ],
+        [
+          "WEISS-DS-001-현황분석서-v",
+          24
+        ],
+        [
+          "WEISS-DS-001-현황분석서-v",
+          44
+        ]
+      ]
+    },
+    {
+      "qid": "vp_002",
+      "type": "scan_table",
+      "exp_pages": [
+        14
+      ],
+      "baseline": {
+        "page_hit@1": false,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 0.3333
+      },
+      "reranked": {
+        "page_hit@1": true,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 1.0
+      },
+      "base_top3": [
+        [
+          "WEISS-DS-001-현황분석서-v",
+          54
+        ],
+        [
+          "WEISS-DS-001-현황분석서-v",
+          44
+        ],
+        [
+          "WEISS-DS-001-현황분석서-v",
+          14
+        ]
+      ],
+      "rr_top3": [
+        [
+          "WEISS-DS-001-현황분석서-v",
+          14
+        ],
+        [
+          "WEISS-DS-001-현황분석서-v",
+          11
+        ],
+        [
+          "WEISS-DS-001-현황분석서-v",
+          49
+        ]
+      ]
+    },
+    {
+      "qid": "vp_003",
+      "type": "scan_table",
+      "exp_pages": [
+        19
+      ],
+      "baseline": {
+        "page_hit@1": false,
+        "page_hit@3": false,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 0.1111
+      },
+      "reranked": {
+        "page_hit@1": true,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 1.0
+      },
+      "base_top3": [
+        [
+          "WEISS-DS-001-현황분석서-v",
+          39
+        ],
+        [
+          "WEISS-DS-001-현황분석서-v",
+          54
+        ],
+        [
+          "WEISS-DS-001-현황분석서-v",
+          34
+        ]
+      ],
+      "rr_top3": [
+        [
+          "WEISS-DS-001-현황분석서-v",
+          19
+        ],
+        [
+          "WEISS-DS-001-현황분석서-v",
+          83
+        ],
+        [
+          "WEISS-DS-001-현황분석서-v",
+          49
+        ]
+      ]
+    },
+    {
+      "qid": "vp_004",
+      "type": "scan_table",
+      "exp_pages": [
+        20
+      ],
+      "baseline": {
+        "page_hit@1": false,
+        "page_hit@3": false,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 0.0833
+      },
+      "reranked": {
+        "page_hit@1": false,
+        "page_hit@3": false,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 0.25
+      },
+      "base_top3": [
+        [
+          "WEISS-DS-001-현황분석서-v",
+          55
+        ],
+        [
+          "WEISS-DS-001-현황분석서-v",
+          40
+        ],
+        [
+          "WEISS-DS-001-현황분석서-v",
+          30
+        ]
+      ],
+      "rr_top3": [
+        [
+          "WEISS-DS-001-현황분석서-v",
+          40
+        ],
+        [
+          "WEISS-DS-001-현황분석서-v",
+          10
+        ],
+        [
+          "WEISS-DS-001-현황분석서-v",
+          35
+        ]
+      ]
+    },
+    {
+      "qid": "vp_005",
+      "type": "scan_table",
+      "exp_pages": [
+        75
+      ],
+      "baseline": {
+        "page_hit@1": false,
+        "page_hit@3": false,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 0.0769
+      },
+      "reranked": {
+        "page_hit@1": false,
+        "page_hit@3": false,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 0.0714
+      },
+      "base_top3": [
+        [
+          "WEISS-DS-001-현황분석서-v",
+          76
+        ],
+        [
+          "WEISS-DS-001-현황분석서-v",
+          63
+        ],
+        [
+          "WEISS-DS-001-현황분석서-v",
+          24
+        ]
+      ],
+      "rr_top3": [
+        [
+          "WEISS-DS-001-현황분석서-v",
+          71
+        ],
+        [
+          "WEISS-DS-001-현황분석서-v",
+          29
+        ],
+        [
+          "WEISS-DS-001-현황분석서-v",
+          63
+        ]
+      ]
+    },
+    {
+      "qid": "vp_006",
+      "type": "scan_table",
+      "exp_pages": [
+        83
+      ],
+      "baseline": {
+        "page_hit@1": true,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 1.0
+      },
+      "reranked": {
+        "page_hit@1": true,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 1.0
+      },
+      "base_top3": [
+        [
+          "스마트 단말 관리 시스템[MDM]_교",
+          83
+        ],
+        [
+          "스마트 단말 관리 시스템[MDM]_교",
+          82
+        ],
+        [
+          "스마트 단말 관리 시스템[MDM]_교",
+          78
+        ]
+      ],
+      "rr_top3": [
+        [
+          "스마트 단말 관리 시스템[MDM]_교",
+          83
+        ],
+        [
+          "스마트 단말 관리 시스템[MDM]_교",
+          80
+        ],
+        [
+          "스마트 단말 관리 시스템[MDM]_교",
+          82
+        ]
+      ]
+    },
+    {
+      "qid": "vp_007",
+      "type": "scan_table",
+      "exp_pages": [
+        88
+      ],
+      "baseline": {
+        "page_hit@1": true,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 1.0
+      },
+      "reranked": {
+        "page_hit@1": true,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 1.0
+      },
+      "base_top3": [
+        [
+          "스마트 단말 관리 시스템[MDM]_교",
+          88
+        ],
+        [
+          "스마트 단말 관리 시스템[MDM]_교",
+          89
+        ],
+        [
+          "스마트 단말 관리 시스템[MDM]_교",
+          84
+        ]
+      ],
+      "rr_top3": [
+        [
+          "스마트 단말 관리 시스템[MDM]_교",
+          88
+        ],
+        [
+          "스마트 단말 관리 시스템[MDM]_교",
+          83
+        ],
+        [
+          "스마트 단말 관리 시스템[MDM]_교",
+          84
+        ]
+      ]
+    },
+    {
+      "qid": "vp_008",
+      "type": "scan_table",
+      "exp_pages": [
+        79
+      ],
+      "baseline": {
+        "page_hit@1": false,
+        "page_hit@3": false,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 0.0
+      },
+      "reranked": {
+        "page_hit@1": false,
+        "page_hit@3": false,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 0.0
+      },
+      "base_top3": [
+        [
+          "이용관리_20260702.pdf",
+          21
+        ],
+        [
+          "이용관리_20260702.pdf",
+          78
+        ],
+        [
+          "이용관리_20260702.pdf",
+          47
+        ]
+      ],
+      "rr_top3": [
+        [
+          "이용관리_20260702.pdf",
+          21
+        ],
+        [
+          "이용관리_20260702.pdf",
+          47
+        ],
+        [
+          "이용관리_20260702.pdf",
+          26
+        ]
+      ]
+    },
+    {
+      "qid": "vp_009",
+      "type": "figure",
+      "exp_pages": [
+        13
+      ],
+      "baseline": {
+        "page_hit@1": true,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 1.0
+      },
+      "reranked": {
+        "page_hit@1": true,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 1.0
+      },
+      "base_top3": [
+        [
+          "★. 무선랜 구축운영 가이드라인_0.",
+          13
+        ],
+        [
+          "★. 무선랜 구축운영 가이드라인_0.",
+          12
+        ],
+        [
+          "★. 무선랜 구축운영 가이드라인_0.",
+          11
+        ]
+      ],
+      "rr_top3": [
+        [
+          "★. 무선랜 구축운영 가이드라인_0.",
+          13
+        ],
+        [
+          "★. 무선랜 구축운영 가이드라인_0.",
+          12
+        ],
+        [
+          "★. 무선랜 구축운영 가이드라인_0.",
+          16
+        ]
+      ]
+    },
+    {
+      "qid": "vp_010",
+      "type": "figure",
+      "exp_pages": [
+        11
+      ],
+      "baseline": {
+        "page_hit@1": true,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 1.0
+      },
+      "reranked": {
+        "page_hit@1": false,
+        "page_hit@3": false,
+        "doc_hit@1": false,
+        "doc_hit@3": false,
+        "page_mrr": 0.1
+      },
+      "base_top3": [
+        [
+          "★. 무선랜 구축운영 가이드라인_0.",
+          11
+        ],
+        [
+          "★. 무선랜 구축운영 가이드라인_0.",
+          2
+        ],
+        [
+          "학교 무선인터넷 자가진단 체크리스트(",
+          13
+        ]
+      ],
+      "rr_top3": [
+        [
+          "★23년 학교 유무선 운영·관리 안내",
+          48
+        ],
+        [
+          "학교 무선인터넷 자가진단 체크리스트(",
+          2
+        ],
+        [
+          "★23년 학교 유무선 운영·관리 안내",
+          96
+        ]
+      ]
+    },
+    {
+      "qid": "vp_011",
+      "type": "figure",
+      "exp_pages": [
+        22
+      ],
+      "baseline": {
+        "page_hit@1": false,
+        "page_hit@3": false,
+        "doc_hit@1": false,
+        "doc_hit@3": false,
+        "page_mrr": 0.0588
+      },
+      "reranked": {
+        "page_hit@1": false,
+        "page_hit@3": false,
+        "doc_hit@1": false,
+        "doc_hit@3": false,
+        "page_mrr": 0.125
+      },
+      "base_top3": [
+        [
+          "이용관리_20260702.pdf",
+          8
+        ],
+        [
+          "이용관리_20260702.pdf",
+          12
+        ],
+        [
+          "(첨부)_5단계_스쿨넷서비스_제공_가",
+          24
+        ]
+      ],
+      "rr_top3": [
+        [
+          "이용관리_20260702.pdf",
+          8
+        ],
+        [
+          "(첨부)_5단계_스쿨넷서비스_제공_가",
+          33
+        ],
+        [
+          "(첨부)_5단계_스쿨넷서비스_제공_가",
+          15
+        ]
+      ]
+    },
+    {
+      "qid": "vp_012",
+      "type": "figure",
+      "exp_pages": [
+        44
+      ],
+      "baseline": {
+        "page_hit@1": false,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 0.5
+      },
+      "reranked": {
+        "page_hit@1": false,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 0.5
+      },
+      "base_top3": [
+        [
+          "★23년 학교 유무선 운영·관리 안내",
+          45
+        ],
+        [
+          "★23년 학교 유무선 운영·관리 안내",
+          44
+        ],
+        [
+          "★23년 학교 유무선 운영·관리 안내",
+          87
+        ]
+      ],
+      "rr_top3": [
+        [
+          "★23년 학교 유무선 운영·관리 안내",
+          45
+        ],
+        [
+          "★23년 학교 유무선 운영·관리 안내",
+          44
+        ],
+        [
+          "★23년 학교 유무선 운영·관리 안내",
+          87
+        ]
+      ]
+    },
+    {
+      "qid": "vp_013",
+      "type": "figure",
+      "exp_pages": [
+        8
+      ],
+      "baseline": {
+        "page_hit@1": false,
+        "page_hit@3": false,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 0.25
+      },
+      "reranked": {
+        "page_hit@1": false,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 0.3333
+      },
+      "base_top3": [
+        [
+          "스마트 단말 관리 시스템[MDM]_교",
+          22
+        ],
+        [
+          "스마트 단말 관리 시스템[MDM]_교",
+          9
+        ],
+        [
+          "스마트 단말 관리 시스템[MDM]_교",
+          7
+        ]
+      ],
+      "rr_top3": [
+        [
+          "스마트 단말 관리 시스템[MDM]_교",
+          22
+        ],
+        [
+          "스마트 단말 관리 시스템[MDM]_교",
+          9
+        ],
+        [
+          "스마트 단말 관리 시스템[MDM]_교",
+          8
+        ]
+      ]
+    },
+    {
+      "qid": "vp_014",
+      "type": "figure",
+      "exp_pages": [
+        71
+      ],
+      "baseline": {
+        "page_hit@1": true,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 1.0
+      },
+      "reranked": {
+        "page_hit@1": true,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 1.0
+      },
+      "base_top3": [
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          71
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          29
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          3
+        ]
+      ],
+      "rr_top3": [
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          71
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          3
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          27
+        ]
+      ]
+    },
+    {
+      "qid": "vp_015",
+      "type": "figure",
+      "exp_pages": [
+        28
+      ],
+      "baseline": {
+        "page_hit@1": false,
+        "page_hit@3": false,
+        "doc_hit@1": false,
+        "doc_hit@3": false,
+        "page_mrr": 0.0
+      },
+      "reranked": {
+        "page_hit@1": false,
+        "page_hit@3": false,
+        "doc_hit@1": false,
+        "doc_hit@3": true,
+        "page_mrr": 0.0
+      },
+      "base_top3": [
+        [
+          "이용관리_20260702.pdf",
+          20
+        ],
+        [
+          "이용관리_20260702.pdf",
+          78
+        ],
+        [
+          "이용관리_20260702.pdf",
+          74
+        ]
+      ],
+      "rr_top3": [
+        [
+          "이용관리_20260702.pdf",
+          21
+        ],
+        [
+          "이용관리_20260702.pdf",
+          76
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          30
+        ]
+      ]
+    },
+    {
+      "qid": "vt_001",
+      "type": "text",
+      "exp_pages": [
+        30
+      ],
+      "baseline": {
+        "page_hit@1": true,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 1.0
+      },
+      "reranked": {
+        "page_hit@1": true,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 1.0
+      },
+      "base_top3": [
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          30
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          37
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          29
+        ]
+      ],
+      "rr_top3": [
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          30
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          27
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          37
+        ]
+      ]
+    },
+    {
+      "qid": "vt_002",
+      "type": "text",
+      "exp_pages": [
+        50
+      ],
+      "baseline": {
+        "page_hit@1": true,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 1.0
+      },
+      "reranked": {
+        "page_hit@1": true,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 1.0
+      },
+      "base_top3": [
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          50
+        ],
+        [
+          "이용관리_20260702.pdf",
+          72
+        ],
+        [
+          "이용관리_20260702.pdf",
+          12
+        ]
+      ],
+      "rr_top3": [
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          50
+        ],
+        [
+          "이용관리_20260702.pdf",
+          39
+        ],
+        [
+          "이용관리_20260702.pdf",
+          68
+        ]
+      ]
+    },
+    {
+      "qid": "vt_003",
+      "type": "text",
+      "exp_pages": [
+        40
+      ],
+      "baseline": {
+        "page_hit@1": false,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 0.5
+      },
+      "reranked": {
+        "page_hit@1": false,
+        "page_hit@3": true,
+        "doc_hit@1": true,
+        "doc_hit@3": true,
+        "page_mrr": 0.5
+      },
+      "base_top3": [
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          42
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          40
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          5
+        ]
+      ],
+      "rr_top3": [
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          45
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          40
+        ],
+        [
+          "이용관리_20260702.pdf",
+          27
+        ]
+      ]
+    },
+    {
+      "qid": "vi_001",
+      "type": "irrelevant",
+      "exp_pages": [],
+      "baseline": {
+        "page_hit@1": false,
+        "page_hit@3": false,
+        "doc_hit@1": false,
+        "doc_hit@3": false,
+        "page_mrr": 0.0
+      },
+      "reranked": {
+        "page_hit@1": false,
+        "page_hit@3": false,
+        "doc_hit@1": false,
+        "doc_hit@3": false,
+        "page_mrr": 0.0
+      },
+      "base_top3": [
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          73
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          74
+        ],
+        [
+          "통합관제(최고관리자)_20260702",
+          116
+        ]
+      ],
+      "rr_top3": [
+        [
+          "WEISS-DE-001-(컨설팅)완료",
+          74
+        ],
+        [
+          "통합관제(최고관리자)_20260702",
+          117
+        ],
+        [
+          "통합관제(사용자)_20260702.p",
+          88
+        ]
+      ]
+    },
+    {
+      "qid": "vi_002",
+      "type": "irrelevant",
+      "exp_pages": [],
+      "baseline": {
+        "page_hit@1": false,
+        "page_hit@3": false,
+        "doc_hit@1": false,
+        "doc_hit@3": false,
+        "page_mrr": 0.0
+      },
+      "reranked": {
+        "page_hit@1": false,
+        "page_hit@3": false,
+        "doc_hit@1": false,
+        "doc_hit@3": false,
+        "page_mrr": 0.0
+      },
+      "base_top3": [
+        [
+          "스마트 단말 관리 시스템[MDM]_교",
+          5
+        ],
+        [
+          "학교 무선인터넷 자가진단 체크리스트(",
+          2
+        ],
+        [
+          "통합관제 이용기관 전용 매뉴얼_202",
+          20
+        ]
+      ],
+      "rr_top3": [
+        [
+          "(첨부)_5단계_스쿨넷서비스_제공_가",
+          20
+        ],
+        [
+          "학교 무선인터넷 자가진단 체크리스트(",
+          2
+        ],
+        [
+          "스마트 단말 관리 시스템[MDM]_교",
+          5
+        ]
+      ]
+    }
+  ]
+}

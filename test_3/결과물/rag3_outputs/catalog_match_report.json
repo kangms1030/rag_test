@@ -1,0 +1,114 @@
+{
+  "matched": [
+    {
+      "row_id": "cat_0000",
+      "title": "WEISS-DS-001-현황분석서-v0.91.pdf",
+      "file_path": "01.학교 유무선 컨설팅산출물\\01.현황분석서\\WEISS-DS-001-현황분석서-v0.91.pdf",
+      "method": "exact",
+      "score": 100.0
+    },
+    {
+      "row_id": "cat_0001",
+      "title": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+      "file_path": "01.학교 유무선 컨설팅산출물\\02.(컨설팅)완료보고서\\WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+      "method": "exact",
+      "score": 100.0
+    },
+    {
+      "row_id": "cat_0002",
+      "title": "WEISS-DE-001-(컨설팅)완료보고서-4.이용관리시스템-v0.82.pdf",
+      "file_path": "01.학교 유무선 컨설팅산출물\\02.(컨설팅)완료보고서\\WEISS-DE-001-(컨설팅)완료보고서-4.이용관리시스템-v0.82.pdf",
+      "method": "exact",
+      "score": 100.0
+    },
+    {
+      "row_id": "cat_0003",
+      "title": "(첨부)_5단계_스쿨넷서비스_제공_가이드.pdf",
+      "file_path": "(첨부)_5단계_스쿨넷서비스_제공_가이드.pdf",
+      "method": "exact",
+      "score": 100.0
+    },
+    {
+      "row_id": "cat_0004",
+      "title": "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf",
+      "file_path": "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf",
+      "method": "exact",
+      "score": 100.0
+    },
+    {
+      "row_id": "cat_0006",
+      "title": "8-1. 스쿨넷서비스 학내망 구축 및 운영관리 개선을 위한 가이드.pdf",
+      "file_path": "8-1. 스쿨넷서비스 학내망 구축 및 운영관리 개선을 위한 가이드.pdf",
+      "method": "exact",
+      "score": 100.0
+    },
+    {
+      "row_id": "cat_0007",
+      "title": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "file_path": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "method": "exact",
+      "score": 100.0
+    },
+    {
+      "row_id": "cat_0008",
+      "title": "학교 무선인터넷 자가진단 체크리스트(안).pdf",
+      "file_path": "학교 무선인터넷 자가진단 체크리스트(안).pdf",
+      "method": "exact",
+      "score": 100.0
+    },
+    {
+      "row_id": "cat_0009",
+      "title": "★23년 학교 유무선 운영·관리 안내서_최종.pdf",
+      "file_path": "★23년 학교 유무선 운영·관리 안내서_최종.pdf",
+      "method": "exact",
+      "score": 100.0
+    },
+    {
+      "row_id": "cat_0010",
+      "title": "이용관리_20260702.pdf",
+      "file_path": "통합관제 매뉴얼\\이용관리_20260702.pdf",
+      "method": "exact",
+      "score": 100.0
+    },
+    {
+      "row_id": "cat_0011",
+      "title": "통합관제 이용기관 전용 매뉴얼_20260702.pdf",
+      "file_path": "통합관제 매뉴얼\\통합관제 이용기관 전용 매뉴얼_20260702.pdf",
+      "method": "exact",
+      "score": 100.0
+    },
+    {
+      "row_id": "cat_0012",
+      "title": "통합관제(사용자)_20260702.pdf",
+      "file_path": "통합관제 매뉴얼\\통합관제(사용자)_20260702.pdf",
+      "method": "exact",
+      "score": 100.0
+    },
+    {
+      "row_id": "cat_0013",
+      "title": "통합관제(최고관리자)_20260702.pdf",
+      "file_path": "통합관제 매뉴얼\\통합관제(최고관리자)_20260702.pdf",
+      "method": "exact",
+      "score": 100.0
+    },
+    {
+      "row_id": "cat_0014",
+      "title": "테스트문서_커피머신규정.pdf",
+      "file_path": "테스트문서_커피머신규정.pdf",
+      "method": "exact",
+      "score": 100.0
+    }
+  ],
+  "unmatched_catalog_rows": [
+    {
+      "row_id": "cat_0005",
+      "title": "AP, SWIMS 장애 관련 조치 가이드_220609.xlsx"
+    }
+  ],
+  "unmatched_pdfs": [],
+  "summary": {
+    "matched_count": 14,
+    "unmatched_catalog_rows_count": 1,
+    "unmatched_pdfs_count": 0
+  }
+}

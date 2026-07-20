@@ -1,0 +1,15 @@
+numpy
+pandas
+pymupdf
+pdfplumber
+pillow
+chromadb
+ollama
+rank-bm25
+rapidfuzz
+pyyaml
+openpyxl
+
+# optional (없으면 자동 폴백/경고, check-env가 상태를 보고)
+kiwipiepy
+pytesseract

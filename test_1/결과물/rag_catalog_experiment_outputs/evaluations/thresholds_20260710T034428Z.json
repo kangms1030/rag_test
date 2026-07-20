@@ -1,0 +1,524 @@
+{
+  "gate_attr": {
+    "catalog": "min_dense_similarity",
+    "filename_only": "min_filename_dense_similarity",
+    "no_catalog": "min_page_dense_similarity"
+  },
+  "rows": [
+    {
+      "id": "human_001",
+      "mode": "catalog",
+      "dense_similarity": 0.5277391076087952,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_001",
+      "mode": "no_catalog",
+      "dense_similarity": 0.5790224075317383,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_001",
+      "mode": "filename_only",
+      "dense_similarity": null,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_002",
+      "mode": "catalog",
+      "dense_similarity": 0.5944417119026184,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_002",
+      "mode": "no_catalog",
+      "dense_similarity": 0.7215207815170288,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_002",
+      "mode": "filename_only",
+      "dense_similarity": null,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_003",
+      "mode": "catalog",
+      "dense_similarity": 0.6584449410438538,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_003",
+      "mode": "no_catalog",
+      "dense_similarity": 0.6566678881645203,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_003",
+      "mode": "filename_only",
+      "dense_similarity": null,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_004",
+      "mode": "catalog",
+      "dense_similarity": 0.36838382482528687,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_004",
+      "mode": "no_catalog",
+      "dense_similarity": 0.40962523221969604,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_004",
+      "mode": "filename_only",
+      "dense_similarity": null,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_005",
+      "mode": "catalog",
+      "dense_similarity": 0.5671001672744751,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_005",
+      "mode": "no_catalog",
+      "dense_similarity": 0.6480863690376282,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_005",
+      "mode": "filename_only",
+      "dense_similarity": null,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_006",
+      "mode": "catalog",
+      "dense_similarity": 0.5180428624153137,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_006",
+      "mode": "no_catalog",
+      "dense_similarity": 0.6184403896331787,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_006",
+      "mode": "filename_only",
+      "dense_similarity": null,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_007",
+      "mode": "catalog",
+      "dense_similarity": 0.6712303161621094,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_007",
+      "mode": "no_catalog",
+      "dense_similarity": 0.6425607204437256,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_007",
+      "mode": "filename_only",
+      "dense_similarity": null,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_008",
+      "mode": "catalog",
+      "dense_similarity": 0.6158614158630371,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_008",
+      "mode": "no_catalog",
+      "dense_similarity": 0.4561910629272461,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_008",
+      "mode": "filename_only",
+      "dense_similarity": null,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_009",
+      "mode": "catalog",
+      "dense_similarity": 0.5675671696662903,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_009",
+      "mode": "no_catalog",
+      "dense_similarity": 0.6459687948226929,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_009",
+      "mode": "filename_only",
+      "dense_similarity": null,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_010",
+      "mode": "catalog",
+      "dense_similarity": 0.6531362533569336,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_010",
+      "mode": "no_catalog",
+      "dense_similarity": 0.6335444450378418,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_010",
+      "mode": "filename_only",
+      "dense_similarity": null,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_011",
+      "mode": "catalog",
+      "dense_similarity": 0.6748002171516418,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_011",
+      "mode": "no_catalog",
+      "dense_similarity": 0.6633697748184204,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_011",
+      "mode": "filename_only",
+      "dense_similarity": null,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_012",
+      "mode": "catalog",
+      "dense_similarity": 0.5780538320541382,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_012",
+      "mode": "no_catalog",
+      "dense_similarity": 0.6345206499099731,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_012",
+      "mode": "filename_only",
+      "dense_similarity": null,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_013",
+      "mode": "catalog",
+      "dense_similarity": 0.6704337000846863,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_013",
+      "mode": "no_catalog",
+      "dense_similarity": 0.6651371717453003,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_013",
+      "mode": "filename_only",
+      "dense_similarity": null,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_014",
+      "mode": "catalog",
+      "dense_similarity": 0.5739105343818665,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_014",
+      "mode": "no_catalog",
+      "dense_similarity": 0.5677908658981323,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_014",
+      "mode": "filename_only",
+      "dense_similarity": null,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_015",
+      "mode": "catalog",
+      "dense_similarity": 0.3965182304382324,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_015",
+      "mode": "no_catalog",
+      "dense_similarity": 0.48874032497406006,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_015",
+      "mode": "filename_only",
+      "dense_similarity": null,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_016",
+      "mode": "catalog",
+      "dense_similarity": 0.4148576259613037,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_016",
+      "mode": "no_catalog",
+      "dense_similarity": 0.49954766035079956,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_016",
+      "mode": "filename_only",
+      "dense_similarity": null,
+      "is_irrelevant": false,
+      "has_expected_doc": true,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_irr_001",
+      "mode": "catalog",
+      "dense_similarity": 0.043115854263305664,
+      "is_irrelevant": true,
+      "has_expected_doc": false,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_irr_001",
+      "mode": "no_catalog",
+      "dense_similarity": 0.12623238563537598,
+      "is_irrelevant": true,
+      "has_expected_doc": false,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_irr_001",
+      "mode": "filename_only",
+      "dense_similarity": null,
+      "is_irrelevant": true,
+      "has_expected_doc": false,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_irr_002",
+      "mode": "catalog",
+      "dense_similarity": 0.05808424949645996,
+      "is_irrelevant": true,
+      "has_expected_doc": false,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_irr_002",
+      "mode": "no_catalog",
+      "dense_similarity": 0.2041197419166565,
+      "is_irrelevant": true,
+      "has_expected_doc": false,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_irr_002",
+      "mode": "filename_only",
+      "dense_similarity": null,
+      "is_irrelevant": true,
+      "has_expected_doc": false,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_irr_003",
+      "mode": "catalog",
+      "dense_similarity": 0.12912142276763916,
+      "is_irrelevant": true,
+      "has_expected_doc": false,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_irr_003",
+      "mode": "no_catalog",
+      "dense_similarity": 0.13546717166900635,
+      "is_irrelevant": true,
+      "has_expected_doc": false,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_irr_003",
+      "mode": "filename_only",
+      "dense_similarity": null,
+      "is_irrelevant": true,
+      "has_expected_doc": false,
+      "current_gate": 0.3
+    },
+    {
+      "id": "human_irr_004",
+      "mode": "catalog",
+      "dense_similarity": 0.11471688747406006,
+      "is_irrelevant": true,
+      "has_expected_doc": false,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_irr_004",
+      "mode": "no_catalog",
+      "dense_similarity": 0.17721211910247803,
+      "is_irrelevant": true,
+      "has_expected_doc": false,
+      "current_gate": 0.35
+    },
+    {
+      "id": "human_irr_004",
+      "mode": "filename_only",
+      "dense_similarity": null,
+      "is_irrelevant": true,
+      "has_expected_doc": false,
+      "current_gate": 0.3
+    }
+  ],
+  "by_mode": {
+    "catalog": {
+      "current_gate": 0.35,
+      "n_relevant": 16,
+      "n_irrelevant": 4,
+      "relevant_min": 0.36838382482528687,
+      "relevant_max": 0.6748002171516418,
+      "irrelevant_min": 0.043115854263305664,
+      "irrelevant_max": 0.12912142276763916,
+      "threshold_at_95pct_relevant_retention": 0.36838382482528687,
+      "irrelevant_rejection_rate_at_that_threshold": 1.0
+    },
+    "no_catalog": {
+      "current_gate": 0.35,
+      "n_relevant": 16,
+      "n_irrelevant": 4,
+      "relevant_min": 0.40962523221969604,
+      "relevant_max": 0.7215207815170288,
+      "irrelevant_min": 0.12623238563537598,
+      "irrelevant_max": 0.2041197419166565,
+      "threshold_at_95pct_relevant_retention": 0.40962523221969604,
+      "irrelevant_rejection_rate_at_that_threshold": 1.0
+    },
+    "filename_only": {
+      "current_gate": 0.3,
+      "n_relevant": 0,
+      "n_irrelevant": 0,
+      "relevant_min": null,
+      "relevant_max": null,
+      "irrelevant_min": null,
+      "irrelevant_max": null,
+      "threshold_at_95pct_relevant_retention": null,
+      "irrelevant_rejection_rate_at_that_threshold": null
+    }
+  }
+}

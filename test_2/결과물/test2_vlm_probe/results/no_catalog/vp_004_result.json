@@ -1,0 +1,70 @@
+{
+  "pipeline": "test2",
+  "mode": "no_catalog",
+  "qid": "vp_004",
+  "question": "현황분석서의 경상남도교육청 POE(PoE) 장비 현황(창원교육지원청 등 17개 교육지원청 포함) 표에서, 유비쿼스(제조사) 모델 중 구축 수량이 가장 많은 모델명과 그 수량은 무엇이며, 경상남도교육청 POE 총 구축 수량은 얼마인가요?",
+  "error": null,
+  "final_answer": "제공된 이미지에는 '경상남도교육청'에 관한 정보가 포함되어 있지 않습니다. 해당 표는 '제주특별자치도교육청' 관련 데이터(제주특별자치도교육청, 서귀포시교육지원청, 제주시교육지원청)를 담고 있으므로, 질문하신 경상남도교육청의 유비쿼스 모델 구축 수량 및 총 구축 수량을 확인할 수 없습니다.",
+  "answer_path": "vision",
+  "abstained": false,
+  "skip_reason": "1순위 페이지가 스캔+표 -> 숫자 교차확인을 위해 비전 경로",
+  "selected_documents": [
+    "WEISS-DS-001-현황분석서-v0.91.pdf"
+  ],
+  "selected_pages": [
+    55,
+    40,
+    30
+  ],
+  "doc_match": true,
+  "page_match": false,
+  "keyword_recall": 0.25,
+  "keywords_found": [
+    "유비쿼스"
+  ],
+  "keywords_missing": [
+    "E4020-24PS",
+    "4,727",
+    "6,831"
+  ],
+  "is_answer_supported": null,
+  "stage_timings_seconds": {
+    "retrieve": 8.062,
+    "answer": 125.0,
+    "total": 133.062
+  },
+  "model_calls": {
+    "embed_calls": 1,
+    "text_answer_calls": 0,
+    "vision_answer_calls": 1,
+    "llm_calls_total": 0,
+    "vlm_calls_total": 1,
+    "total_model_calls": 2
+  },
+  "evidence": [
+    {
+      "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+      "page_number": 55,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0055.png",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\mineru\\weiss-ds-001-v0-91-aa83eb15\\auto\\images\\fb07d76f102cdbe1987c5957dda0a29edd0d54e1395cb13bb01efc0ce8854c55.jpg"
+    },
+    {
+      "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+      "page_number": 40,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0040.png",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\mineru\\weiss-ds-001-v0-91-aa83eb15\\auto\\images\\9756a612c3e3fe2063a4db67cad3cd236e24afd4b4b788d3563f9fb544c9fcdb.jpg"
+    },
+    {
+      "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+      "page_number": 30,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0030.png",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\mineru\\weiss-ds-001-v0-91-aa83eb15\\auto\\images\\e3a3465154a4ec08de51cb67323df9ce499880e169f278dade2f35ebff2ceab4.jpg"
+    }
+  ],
+  "process_wall_seconds": 134.469,
+  "subprocess_returncode": 0,
+  "expected_answer_path": "vision",
+  "route_match": true,
+  "question_type": "scan_table",
+  "category": "현황분석서_POE현황"
+}

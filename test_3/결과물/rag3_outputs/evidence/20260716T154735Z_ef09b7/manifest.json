@@ -1,0 +1,38 @@
+{
+  "run_id": "20260716T154735Z_ef09b7",
+  "question": "swims 와 mdm의 차이를 알려줘",
+  "files": [
+    {
+      "rank": 1,
+      "kind": "page",
+      "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+      "page_number": 96,
+      "file": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_3\\rag3\\outputs\\evidence\\20260716T154735Z_ef09b7\\ev1_p0096.png",
+      "source": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_3\\rag3\\cache\\parsed_v25\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0096.png"
+    },
+    {
+      "rank": 1,
+      "kind": "table_crop",
+      "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+      "page_number": 96,
+      "file": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_3\\rag3\\outputs\\evidence\\20260716T154735Z_ef09b7\\ev1_p0096_table.jpg",
+      "source": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_3\\rag3\\cache\\parsed_v25\\weiss-ds-001-v0-91-aa83eb15\\mineru\\weiss-ds-001-v0-91-aa83eb15\\auto\\images\\186c0d4170323ef784e9eab8cfc5d00cc5beebea43eda71879a0f4b56cf3ed14.jpg"
+    },
+    {
+      "rank": 2,
+      "kind": "page",
+      "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+      "page_number": 95,
+      "file": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_3\\rag3\\outputs\\evidence\\20260716T154735Z_ef09b7\\ev2_p0095.png",
+      "source": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_3\\rag3\\cache\\parsed_v25\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0095.png"
+    },
+    {
+      "rank": 3,
+      "kind": "page",
+      "document_name": "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf",
+      "page_number": 61,
+      "file": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_3\\rag3\\outputs\\evidence\\20260716T154735Z_ef09b7\\ev3_p0061.png",
+      "source": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_3\\rag3\\cache\\parsed_v25\\mdm-argos-edu-v1-5-6061726f\\pages\\p0061.png"
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+[
+  {
+    "id": "q001",
+    "question": "학교 유무선 통합 관제 플랫폼이 추진된 기초 배경은 무엇인가요?",
+    "expected_answer": "",
+    "expected_documents": [
+      "WEISS-DS-001-현황분석서-v0.91.pdf"
+    ],
+    "expected_pages": [],
+    "source": "human"
+  },
+  {
+    "id": "q002",
+    "question": "학교 유무선 통합관제시스템(WEISS)의 서버 아키텍처 구성도는?",
+    "expected_answer": "",
+    "expected_documents": [
+      "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf"
+    ],
+    "expected_pages": [],
+    "source": "human"
+  },
+  {
+    "id": "q003",
+    "question": "이용관리시스템을 통합관제시스템에 웹 통합하는 설계 방향은?",
+    "expected_answer": "",
+    "expected_documents": [
+      "WEISS-DE-001-(컨설팅)완료보고서-4.이용관리시스템-v0.82.pdf"
+    ],
+    "expected_pages": [],
+    "source": "human"
+  },
+  {
+    "id": "q004",
+    "question": "5단계 스쿨넷 전용회선의 요금 체계는 어떻게 되나요?",
+    "expected_answer": "",
+    "expected_documents": [
+      "(첨부)_5단계_스쿨넷서비스_제공_가이드.pdf"
+    ],
+    "expected_pages": [],
+    "source": "human"
+  },
+  {
+    "id": "q005",
+    "question": "학생 태블릿의 비밀번호(패턴)를 분실했을 때 강제 해제 방법은?",
+    "expected_answer": "",
+    "expected_documents": [
+      "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf"
+    ],
+    "expected_pages": [],
+    "source": "human"
+  },
+  {
+    "id": "q006",
+    "question": "학교 학내망 구축 시 교사망과 학생망을 분리하는 방법은?",
+    "expected_answer": "",
+    "expected_documents": [
+      "8-1. 스쿨넷서비스 학내망 구축 및 운영관리 개선을 위한 가이드.pdf"
+    ],
+    "expected_pages": [],
+    "source": "human"
+  },
+  {
+    "id": "q007",
+    "question": "학교 무선랜은 어떤 형태로 구성되어 있나요?",
+    "expected_answer": "",
+    "expected_documents": [
+      "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf"
+    ],
+    "expected_pages": [],
+    "source": "human"
+  },
+  {
+    "id": "q008",
+    "question": "와이파이가 너무 느린데 혼자서 자가진단해 볼 수 있나요?",
+    "expected_answer": "",
+    "expected_documents": [
+      "학교 무선인터넷 자가진단 체크리스트(안).pdf"
+    ],
+    "expected_pages": [],
+    "source": "human"
+  },
+  {
+    "id": "q009",
+    "question": "학교 정보통신실(서버실)에 들어가야 하는 기본 네트워크 장비는?",
+    "expected_answer": "",
+    "expected_documents": [
+      "★23년 학교 유무선 운영·관리 안내서_최종.pdf"
+    ],
+    "expected_pages": [],
+    "source": "human"
+  },
+  {
+    "id": "q010",
+    "question": "스쿨넷 이용관리시스템에 학교 등록을 신청하는 방법은?",
+    "expected_answer": "",
+    "expected_documents": [
+      "이용관리_20260702.pdf"
+    ],
+    "expected_pages": [],
+    "source": "human"
+  },
+  {
+    "id": "q011",
+    "question": "학교 교사가 통합관제 웹사이트 계정을 새로 신청하려면?",
+    "expected_answer": "",
+    "expected_documents": [
+      "통합관제 이용기관 전용 매뉴얼_20260702.pdf"
+    ],
+    "expected_pages": [],
+    "source": "human"
+  },
+  {
+    "id": "q012",
+    "question": "관제 토폴로지 화면에서 스위치 장비의 IP와 연결 상태를 조회하는 법은?",
+    "expected_answer": "",
+    "expected_documents": [
+      "통합관제(사용자)_20260702.pdf"
+    ],
+    "expected_pages": [],
+    "source": "human"
+  },
+  {
+    "id": "q013",
+    "question": "최고관리자가 신규 사용자의 계정 등록 신청을 승인하는 방법은?",
+    "expected_answer": "",
+    "expected_documents": [
+      "통합관제(최고관리자)_20260702.pdf"
+    ],
+    "expected_pages": [],
+    "source": "human"
+  }
+]

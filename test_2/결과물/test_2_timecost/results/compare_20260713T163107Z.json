@@ -1,0 +1,770 @@
+{
+  "modes": [
+    "catalog",
+    "no_catalog"
+  ],
+  "eval_item_count": 16,
+  "generated_at": "2026-07-13T16:31:07.460215+00:00",
+  "per_mode": {
+    "catalog": {
+      "items": [
+        {
+          "id": "core_001",
+          "category": "스쿨넷",
+          "question_type": "table",
+          "answer_path": "text",
+          "elapsed_seconds": 40.484,
+          "model_calls": 2,
+          "selected_documents": [
+            "(첨부)_5단계_스쿨넷서비스_제공_가이드.pdf",
+            "★23년 학교 유무선 운영·관리 안내서_최종.pdf"
+          ],
+          "selected_pages": [
+            58,
+            11,
+            59
+          ],
+          "final_answer": "제주특별자치도교육청의 스쿨넷 5단계 재해복구(DR)서비스 요금은 다음과 같습니다.\n\n*   **100M:** 월 2,907,000원 (부가세 별도)\n*   **500M:** 월 4,121,000원 (부가세 별도)\n\n해당 요금이 책정된 배경은 제주특별자치도교육청의 경우 해저케이블 등 특수성에 따라 4단계의 '300Km초과' 거리체계의 요금을 동결하여 5단계에 적용했기 때문입니다.",
+          "doc_match": true,
+          "page_match": true,
+          "keyword_hit_rate": 1.0,
+          "missing_keywords": []
+        },
+        {
+          "id": "core_002",
+          "category": "유무선 통합 관리 시스템",
+          "question_type": "table",
+          "answer_path": "none",
+          "elapsed_seconds": 0.25,
+          "model_calls": 1,
+          "selected_documents": [],
+          "selected_pages": [],
+          "final_answer": "선택된 문서에서 확인 불가",
+          "doc_match": false,
+          "page_match": false,
+          "keyword_hit_rate": 0.0,
+          "missing_keywords": [
+            "UTM",
+            "SECUI",
+            "안랩",
+            "교육지원청",
+            "구축 비율",
+            "관제 현황"
+          ]
+        },
+        {
+          "id": "core_003",
+          "category": "유무선 통합 관리 시스템",
+          "question_type": "fact",
+          "answer_path": "text",
+          "elapsed_seconds": 140.063,
+          "model_calls": 2,
+          "selected_documents": [
+            "WEISS-DS-001-현황분석서-v0.91.pdf",
+            "통합관제 이용기관 전용 매뉴얼_20260702.pdf"
+          ],
+          "selected_pages": [
+            22,
+            3,
+            91
+          ],
+          "final_answer": "선택된 문서에서 확인 불가",
+          "doc_match": false,
+          "page_match": false,
+          "keyword_hit_rate": 0.0,
+          "missing_keywords": [
+            "대쉬보드",
+            "보고서",
+            "운영관리",
+            "품질",
+            "기타",
+            "요구사항"
+          ]
+        },
+        {
+          "id": "core_004",
+          "category": "유무선 통합 관리 시스템",
+          "question_type": "procedure",
+          "answer_path": "text",
+          "elapsed_seconds": 24.469,
+          "model_calls": 2,
+          "selected_documents": [
+            "이용관리_20260702.pdf",
+            "WEISS-DE-001-(컨설팅)완료보고서-4.이용관리시스템-v0.82.pdf"
+          ],
+          "selected_pages": [
+            16,
+            7,
+            52
+          ],
+          "final_answer": "관리자 승인 소요 시간과 이메일 등록 시 주의사항은 다음과 같습니다.\n\n*   **관리자 승인 소요 시간:** 관리자 승인까지 최대 48시간 소요될 수 있습니다.\n*   **이메일 등록 시 주의사항:**\n    *   @korea.kr 메일을 사용할 경우 메일 수신이 정상적으로 이루어지지 않을 수 있어 다른 이메일 사용이 권장됩니다.\n    *   담당자 이메일은 이메일 형식으로 입력해야 합니다.\n    *   인증번호는 4자리의 임의의 숫자로 발송되며, 메일 발송에 최대 5분 가량 소요될 수 있으므로 메일이 오지 않을 경우 스팸메일함을 확인해야 합니다.",
+          "doc_match": true,
+          "page_match": true,
+          "keyword_hit_rate": 0.6,
+          "missing_keywords": [
+            "승인 알림",
+            "개통 절차"
+          ]
+        },
+        {
+          "id": "core_005",
+          "category": "학내망",
+          "question_type": "procedure",
+          "answer_path": "text",
+          "elapsed_seconds": 51.437,
+          "model_calls": 2,
+          "selected_documents": [
+            "8-1. 스쿨넷서비스 학내망 구축 및 운영관리 개선을 위한 가이드.pdf",
+            "★23년 학교 유무선 운영·관리 안내서_최종.pdf"
+          ],
+          "selected_pages": [
+            3,
+            9,
+            2
+          ],
+          "final_answer": "학내망 구축 및 운영관리 가이드에서 권장하는 네트워크 개선 모델의 주요 분리 기준과 장비 구성 기준은 다음과 같습니다.\n\n*   **망분리 기준:** L3백본스위치, L2집선스위치를 통한 논리적/물리적 망분리 (인터넷 전화의 경우 학내망과 물리적 또는 논리적 망분리)\n*   **장비 구성 기준:** 백본(집선)스위치를 설치하여 계위조정, Giga지원 장비로 교체 및 장비성능에 따른 재배치",
+          "doc_match": true,
+          "page_match": false,
+          "keyword_hit_rate": 0.167,
+          "missing_keywords": [
+            "L3 스위치",
+            "3계위",
+            "1Gbps",
+            "광케이블",
+            "Cat.6"
+          ]
+        },
+        {
+          "id": "core_006",
+          "category": "무선망",
+          "question_type": "troubleshooting",
+          "answer_path": "text",
+          "elapsed_seconds": 29.859,
+          "model_calls": 2,
+          "selected_documents": [
+            "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+            "학교 무선인터넷 자가진단 체크리스트(안).pdf"
+          ],
+          "selected_pages": [
+            9,
+            13,
+            8
+          ],
+          "final_answer": "인터넷 접속이 안되는 경우의 3가지 주요 원인 범주와 예시는 다음과 같습니다.\n\n1. **인터넷(회선) 연결 장애**: 시·도교육청(집선청)에서 인터넷 회선 구간에 연결 장애 발생, 학교와 시·도교육청(집선청)을 연결하는 스쿨넷 전용회선에 장애 발생\n2. **유·무선인프라 H/W 결함**: 학교에 구축되어 있는 H/W 장비의 전원이나 결함으로 인터넷 접속이 안되는 경우\n3. **무선 단말설정 오류**: IP 주소 충돌, DNS 설정 오류, 보안 설정 오류 등 다양한 원인에 따라 발생",
+          "doc_match": true,
+          "page_match": true,
+          "keyword_hit_rate": 0.667,
+          "missing_keywords": [
+            "PoE 스위치",
+            "AP"
+          ]
+        },
+        {
+          "id": "core_007",
+          "category": "공통_기타",
+          "question_type": "procedure",
+          "answer_path": "text",
+          "elapsed_seconds": 26.704,
+          "model_calls": 2,
+          "selected_documents": [
+            "학교 무선인터넷 자가진단 체크리스트(안).pdf",
+            "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf"
+          ],
+          "selected_pages": [
+            9,
+            12,
+            11
+          ],
+          "final_answer": "무선망 동시 접속 점검 방안의 준비 조건과 테스트 절차는 다음과 같습니다.\n\n**준비 조건**\n*   **장소:** 무선망 사용교실\n*   **측정도구:** 교실에 설치된 무선AP, 무선용 단말(최소 20대)\n\n**테스트 절차**\n1. 준비된 무선용 단말들을 동시에 Youtube 스트리밍 실행\n2. 화질을 720p 또는 1080p로 설정\n3. 테스트 간 버퍼링이 걸리는 단말 수량 및 기타 증상 기록",
+          "doc_match": false,
+          "page_match": false,
+          "keyword_hit_rate": 0.333,
+          "missing_keywords": [
+            "동시접속",
+            "20~30대",
+            "YouTube",
+            "대역폭"
+          ]
+        },
+        {
+          "id": "core_008",
+          "category": "무선망",
+          "question_type": "table",
+          "answer_path": "text",
+          "elapsed_seconds": 46.125,
+          "model_calls": 2,
+          "selected_documents": [
+            "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf",
+            "통합관제(최고관리자)_20260702.pdf"
+          ],
+          "selected_pages": [
+            90,
+            89,
+            2
+          ],
+          "final_answer": "Lenovo P11과 imuz M101 단말은 제조사 OS 제약으로 인한 미 제공 기능에서 다음과 같은 차이가 있습니다.\n\n*   **Lenovo P11**: '멀티유저 차단 시 기존 유저 자동 삭제'가 미제공 기능으로 명시되어 있습니다.\n*   **imuz M101**: '멀티 유저 (제조사 기능 없음)' 및 '비밀번호,패턴으로 비밀번호 설정 된 경우 만 비밀번호 초기화 기능 제공 가능(Pin번호 해제 안됨)'이 미제공 기능으로 명시되어 있습니다.",
+          "doc_match": true,
+          "page_match": true,
+          "keyword_hit_rate": 0.5,
+          "missing_keywords": [
+            "보안 폴더",
+            "유해사이트 차단",
+            "PIN 번호"
+          ]
+        },
+        {
+          "id": "core_009",
+          "category": "유무선 통합 관리 시스템",
+          "question_type": "procedure",
+          "answer_path": "text",
+          "elapsed_seconds": 121.234,
+          "model_calls": 2,
+          "selected_documents": [
+            "이용관리_20260702.pdf",
+            "(첨부)_5단계_스쿨넷서비스_제공_가이드.pdf"
+          ],
+          "selected_pages": [
+            15,
+            8,
+            20
+          ],
+          "final_answer": "선택된 문서에서 확인 불가",
+          "doc_match": true,
+          "page_match": false,
+          "keyword_hit_rate": 0.0,
+          "missing_keywords": [
+            "weiss.or.kr",
+            "이용관리시스템",
+            "통신사업자 등록",
+            "로그인 센터",
+            "승인"
+          ]
+        },
+        {
+          "id": "core_010",
+          "category": "유무선 통합 관리 시스템",
+          "question_type": "fact",
+          "answer_path": "text",
+          "elapsed_seconds": 36.031,
+          "model_calls": 2,
+          "selected_documents": [
+            "통합관제 이용기관 전용 매뉴얼_20260702.pdf",
+            "통합관제(사용자)_20260702.pdf"
+          ],
+          "selected_pages": [
+            23,
+            27,
+            26
+          ],
+          "final_answer": "질문하신 각 항목의 시간 기준과 계산 방식은 다음과 같습니다.\n\n**1. 단말접속현황**\n*   **현재:** 금일, 현재 시간부터 한시간 전까지의 접속 단말 합 (예: 4월 14일 17:00인 경우, 4월 14일 16:00 ~ 17:00까지)\n*   **어제:** 금일 기준 하루 전의 현재 시간부터 한시간 전까지의 접속 단말 합 (예: 4월 14일 17:00인 경우, 4월 13일 16:00 ~ 17:00까지)\n\n**2. 트래픽 가동률 현황**\n*   **현재:** 금일, 현재 시간부터 한시간 전까지의 트래픽(IN BPS) 합계 (예: 4월 14일 17:00인 경우, 4월 14일 16:00 ~ 17:00까지)\n*   **어제:** 금일 기준 하루 전의 현재 시간부터 한시간 전까지의 트래픽(IN BPS) 합계 (예: 4월 14일 17:00인 경우, 4월 13일 16:00 ~ 17:00까지)\n\n**3. AP가동률**\n*   성능수집상태가 ‘수집’인 AP 수량 / 전체 AP 수량",
+          "doc_match": true,
+          "page_match": true,
+          "keyword_hit_rate": 0.667,
+          "missing_keywords": [
+            "1시간",
+            "수집 상태"
+          ]
+        },
+        {
+          "id": "core_011",
+          "category": "유무선 통합 관리 시스템",
+          "question_type": "fact",
+          "answer_path": "text",
+          "elapsed_seconds": 15.344,
+          "model_calls": 2,
+          "selected_documents": [
+            "통합관제(사용자)_20260702.pdf",
+            "통합관제 이용기관 전용 매뉴얼_20260702.pdf"
+          ],
+          "selected_pages": [
+            29,
+            13,
+            30
+          ],
+          "final_answer": "메뉴 경로는 종합현황 > 이벤트현황 > 이벤트현황이며, 새로고침 빈도 UI 옵션은 5s, 10s, 30s, 정지입니다.",
+          "doc_match": true,
+          "page_match": true,
+          "keyword_hit_rate": 1.0,
+          "missing_keywords": []
+        },
+        {
+          "id": "core_012",
+          "category": "유무선 통합 관리 시스템",
+          "question_type": "fact",
+          "answer_path": "none",
+          "elapsed_seconds": 0.203,
+          "model_calls": 1,
+          "selected_documents": [],
+          "selected_pages": [],
+          "final_answer": "선택된 문서에서 확인 불가",
+          "doc_match": false,
+          "page_match": false,
+          "keyword_hit_rate": 0.0,
+          "missing_keywords": [
+            "Traffic TopN",
+            "IN BPS",
+            "OUT BPS",
+            "Total",
+            "랭킹 그래프",
+            "상세정보"
+          ]
+        },
+        {
+          "id": "core_013",
+          "category": "무선망",
+          "question_type": "troubleshooting",
+          "answer_path": "text",
+          "elapsed_seconds": 32.516,
+          "model_calls": 2,
+          "selected_documents": [
+            "학교 무선인터넷 자가진단 체크리스트(안).pdf",
+            "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf"
+          ],
+          "selected_pages": [
+            11,
+            22,
+            2
+          ],
+          "final_answer": "다보링크 DVW-624i 무선 AP의 LED 색상별 판정 기준과 전원 불량 의심 시 첫 물리적 조치는 다음과 같습니다.\n\n**1. LED 색상별 정상·비정상 판정 기준**\n*   **Power:** Blue(정상동작), Red(부팅, 장애알람)\n*   **WAN1:** Blue(2.5or 5Gbps연결), Orange(1Gbps연결)\n*   **WAN2:** Orange(연결)\n*   **LAN:** Orange(연결)\n*   **2.4G/5G:** Blue(무선ON)\n\n**2. 전원 불량 의심 시 첫 물리적 조치**\n*   UTP케이블과 AP의 연결부분 확인",
+          "doc_match": true,
+          "page_match": true,
+          "keyword_hit_rate": 0.571,
+          "missing_keywords": [
+            "Power LED",
+            "UTP 케이블",
+            "재결합"
+          ]
+        },
+        {
+          "id": "irrelevant_001",
+          "category": "무관",
+          "question_type": "irrelevant",
+          "answer_path": "none",
+          "elapsed_seconds": 0.234,
+          "model_calls": 1,
+          "selected_documents": [],
+          "selected_pages": [],
+          "final_answer": "선택된 문서에서 확인 불가",
+          "correctly_rejected": true
+        },
+        {
+          "id": "irrelevant_002",
+          "category": "무관",
+          "question_type": "irrelevant",
+          "answer_path": "none",
+          "elapsed_seconds": 0.25,
+          "model_calls": 1,
+          "selected_documents": [],
+          "selected_pages": [],
+          "final_answer": "선택된 문서에서 확인 불가",
+          "correctly_rejected": true
+        },
+        {
+          "id": "irrelevant_003",
+          "category": "무관",
+          "question_type": "irrelevant",
+          "answer_path": "none",
+          "elapsed_seconds": 0.219,
+          "model_calls": 1,
+          "selected_documents": [],
+          "selected_pages": [],
+          "final_answer": "선택된 문서에서 확인 불가",
+          "correctly_rejected": true
+        }
+      ],
+      "aggregate": {
+        "total_items": 16,
+        "error_items": 0,
+        "relevant_items": 13,
+        "irrelevant_items": 3,
+        "doc_hit_rate": 0.692,
+        "page_hit_rate": 0.538,
+        "avg_keyword_hit_rate": 0.423,
+        "irrelevant_correctly_rejected_rate": 1.0,
+        "answer_path_counts": {
+          "text": 11,
+          "vision": 0,
+          "none": 5
+        },
+        "avg_elapsed_seconds": 35.339,
+        "total_elapsed_seconds": 565.42,
+        "avg_model_calls": 1.688,
+        "avg_selected_doc_count": 1.375,
+        "avg_selected_page_count": 2.062
+      }
+    },
+    "no_catalog": {
+      "items": [
+        {
+          "id": "core_001",
+          "category": "스쿨넷",
+          "question_type": "table",
+          "answer_path": "text",
+          "elapsed_seconds": 29.281,
+          "model_calls": 2,
+          "selected_documents": [
+            "(첨부)_5단계_스쿨넷서비스_제공_가이드.pdf"
+          ],
+          "selected_pages": [
+            11,
+            6,
+            2
+          ],
+          "final_answer": "스쿨넷 5단계 재해복구(DR)서비스 요금체계에서 제주특별자치도교육청의 월 요금은 다음과 같습니다.\n\n*   **100M:** 2,907,000원 (부가세 별도)\n*   **500M:** 4,121,000원 (부가세 별도)\n\n해당 요금이 책정된 배경은 제주특별자치도교육청의 경우 해저케이블 등 특수성에 따라 4단계의 '300Km초과' 거리체계의 요금을 동결하여 5단계에 적용했기 때문입니다.",
+          "doc_match": true,
+          "page_match": true,
+          "keyword_hit_rate": 1.0,
+          "missing_keywords": []
+        },
+        {
+          "id": "core_002",
+          "category": "유무선 통합 관리 시스템",
+          "question_type": "table",
+          "answer_path": "vision",
+          "elapsed_seconds": 28.797,
+          "model_calls": 2,
+          "selected_documents": [
+            "WEISS-DS-001-현황분석서-v0.91.pdf"
+          ],
+          "selected_pages": [
+            23,
+            38,
+            53
+          ],
+          "final_answer": "제공된 표에는 UTM 장비의 주요 제조사에 대한 정보나 교육지원청별 관제 비중을 비교하는 방식에 대한 내용이 포함되어 있지 않습니다. 해당 표는 교육지원청별 '관제 학교수'와 'SECUI' 구축 수량만을 수치로 나타내고 있습니다.",
+          "doc_match": true,
+          "page_match": false,
+          "keyword_hit_rate": 0.5,
+          "missing_keywords": [
+            "안랩",
+            "구축 비율",
+            "관제 현황"
+          ]
+        },
+        {
+          "id": "core_003",
+          "category": "유무선 통합 관리 시스템",
+          "question_type": "fact",
+          "answer_path": "text",
+          "elapsed_seconds": 18.234,
+          "model_calls": 2,
+          "selected_documents": [
+            "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+            "WEISS-DE-001-(컨설팅)완료보고서-4.이용관리시스템-v0.82.pdf"
+          ],
+          "selected_pages": [
+            20,
+            5,
+            22
+          ],
+          "final_answer": "학교 유무선망 통합관제시스템 개선안에서 사용자 요구사항은 다음 5가지 핵심 항목으로 분류되며, 각 항목의 의미는 다음과 같습니다.\n\n1. **대쉬보드**: 통합대쉬보드에서 표출할 수 있는 기능 및 시각화에 대한 요구 내용\n2. **보고서**: 교육청별 현황, 통계, 사용량 등을 출력할 수 있는 보고서 기능에 대한 요구 내용\n3. **운영관리**: 장비등록, 정보제공, 자산관리, 이용량 관리 등에 필요한 요구 내용\n4. **품질**: 트래픽, 회선상태, 품질측정 등에 대한 요구내용\n5. **기타**: 단말관리, 성능 등에 대한 요구내용",
+          "doc_match": true,
+          "page_match": true,
+          "keyword_hit_rate": 1.0,
+          "missing_keywords": []
+        },
+        {
+          "id": "core_004",
+          "category": "유무선 통합 관리 시스템",
+          "question_type": "procedure",
+          "answer_path": "text",
+          "elapsed_seconds": 48.688,
+          "model_calls": 2,
+          "selected_documents": [
+            "WEISS-DE-001-(컨설팅)완료보고서-4.이용관리시스템-v0.82.pdf",
+            "이용관리_20260702.pdf"
+          ],
+          "selected_pages": [
+            16,
+            77,
+            7
+          ],
+          "final_answer": "이용관리시스템의 회선 이용신청 및 개통 절차에서 관리자 승인 소요 시간과 이메일 등록 시 주의사항은 다음과 같습니다.\n\n*   **관리자 승인 소요 시간**: 최대 48시간 소요될 수 있습니다.\n*   **이메일 등록 시 주의사항**:\n    *   @korea.kr 메일을 사용할 경우 메일 수신이 정상적으로 이루어지지 않을 수 있어 다른 이메일 사용이 권장됩니다.\n    *   담당자 이메일은 이메일 형식으로 입력해야 합니다.\n    *   인증번호가 오지 않은 경우 스팸메일함을 확인해야 합니다.",
+          "doc_match": true,
+          "page_match": true,
+          "keyword_hit_rate": 0.8,
+          "missing_keywords": [
+            "승인 알림"
+          ]
+        },
+        {
+          "id": "core_005",
+          "category": "학내망",
+          "question_type": "procedure",
+          "answer_path": "text",
+          "elapsed_seconds": 50.515,
+          "model_calls": 2,
+          "selected_documents": [
+            "8-1. 스쿨넷서비스 학내망 구축 및 운영관리 개선을 위한 가이드.pdf"
+          ],
+          "selected_pages": [
+            3,
+            2,
+            8
+          ],
+          "final_answer": "학내망 구축 및 운영관리 가이드에서 권장하는 네트워크 개선 모델의 주요 분리 기준과 장비 구성 기준은 다음과 같습니다.\n\n**1. 망 분리 기준**\n*   **물리적/논리적 분리:** L3백본스위치 또는 L2집선스위치를 설치하여 논리적/물리적으로 망을 분리하며, 학내망과 인터넷 전화의 물리적 또는 논리적 망분리를 수행합니다.\n*   **세부 분리 방법:**\n    *   **L2스위치에 의한 분리:** 학교 방화벽에서 논리적으로 망(교사망·학생망·무선망·기타망 등)을 분리한 후, 각 망별로 집선스위치(L2스위치)를 설치합니다.\n    *   **L3스위치에 의한 분리:** 학교 방화벽에 L3스위치를 설치하고 Vlan 설정을 통해 논리적으로 분리한 경우, 각각의 Vlan Port에 망별 스위치를 연결합니다.\n*   **망 구성 목표:** 방화벽 또는 L3 스위치를 통해 교사망/학생망/기타망이 물리적으로 분리되도록 구축합니다.\n\n**2. 장비 구성 기준**\n*   **계위 조정 및 구조:** 백본(집선) 스위치를 설치하여 계위를 조정하며, 교사망/학생망이 하위 L2 스위치로 직접 연결되도록 구성하여 최대 3계위를 넘지 않도록 설치합니다.\n*   **장비 성능 및 사양:** 신형 네트워크 장비(1Gbps 지원 장비)를 설치하고, 장비 성능에 따라 재배치하며 케이블 종류를 정비합니다.\n*   **케이블 구성:** 건물 사이(동간 연결)는 광 케이블을 설치하고, 장비 간 연결 및 단말과 연결된 통신 케이블은 Cat.6 케이블로 설치합니다.",
+          "doc_match": true,
+          "page_match": true,
+          "keyword_hit_rate": 0.833,
+          "missing_keywords": [
+            "광케이블"
+          ]
+        },
+        {
+          "id": "core_006",
+          "category": "무선망",
+          "question_type": "troubleshooting",
+          "answer_path": "text",
+          "elapsed_seconds": 31.313,
+          "model_calls": 2,
+          "selected_documents": [
+            "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+            "★23년 학교 유무선 운영·관리 안내서_최종.pdf"
+          ],
+          "selected_pages": [
+            9,
+            72,
+            8
+          ],
+          "final_answer": "학교 내부에서 무선 와이파이 인터넷 접속이 안 되는 경우의 3가지 주요 원인 범주와 예시는 다음과 같습니다.\n\n1. **인터넷(회선) 연결 장애**: 시·도교육청(집선청)에서 인터넷 회선 구간에 연결 장애 발생, 학교와 시·도교육청(집선청)을 연결하는 스쿨넷 전용 회선에 장애 발생\n2. **유·무선인프라H/W 결함** (또는 유·무선 인프라 방화벽, 무선 집선 스위치, PoE 스위치, 무선 AP 결함): 학교에 구축되어 있는 H/W 장비(방화벽, 무선 집선 스위치, PoE 스위치, 무선 AP)의 전원이나 결함으로 인터넷 접속이 안 되는 경우\n3. **무선 단말설정 오류**: IP 주소 충돌, DNS 설정 오류, 보안 설정 오류 등 다양한 원인에 따라 발생",
+          "doc_match": true,
+          "page_match": true,
+          "keyword_hit_rate": 1.0,
+          "missing_keywords": []
+        },
+        {
+          "id": "core_007",
+          "category": "공통_기타",
+          "question_type": "procedure",
+          "answer_path": "text",
+          "elapsed_seconds": 25.937,
+          "model_calls": 2,
+          "selected_documents": [
+            "학교 무선인터넷 자가진단 체크리스트(안).pdf"
+          ],
+          "selected_pages": [
+            9,
+            2,
+            10
+          ],
+          "final_answer": "무선망 동시접속 점검방안의 준비 조건과 테스트 절차는 다음과 같습니다.\n\n**1. 준비 조건**\n*   **장소:** 무선망 사용교실\n*   **측정도구:** 교실에 설치된 무선AP, 무선통신용 단말(최소 20대)\n\n**2. 테스트 절차**\n*   준비된 무선용 단말들을 동시에 Youtube 스트리밍 실행\n*   화질을 720p 또는 1080p로 설정\n*   테스트 간 버퍼링이 걸리는 단말 수량 및 기타 증상 기록 (또는 통신장애가 발생하는 단말수 체크 및 기타 증상 기록)",
+          "doc_match": false,
+          "page_match": false,
+          "keyword_hit_rate": 0.5,
+          "missing_keywords": [
+            "20~30대",
+            "YouTube",
+            "대역폭"
+          ]
+        },
+        {
+          "id": "core_008",
+          "category": "무선망",
+          "question_type": "table",
+          "answer_path": "text",
+          "elapsed_seconds": 69.094,
+          "model_calls": 2,
+          "selected_documents": [
+            "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf",
+            "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf"
+          ],
+          "selected_pages": [
+            90,
+            91,
+            25
+          ],
+          "final_answer": "Lenovo P11과 imuz M101 단말은 제조사 OS 제약으로 인해 다음과 같은 MDM 제어 기능에서 차이가 있습니다.\n\n*   **실시간 DB 연동 유해 사이트 차단**: Lenovo P11은 **X**(제공 안 함)이나, imuz M101은 **U**(추후 단말 제조사 OS 업그레이드 시 동작 예정)로 표시되어 있습니다.\n*   **사이트 차단**: Lenovo P11은 **X**이나, imuz M101은 **O**입니다.\n*   **비밀번호 초기화**: Lenovo P11은 **O**이나, imuz M101은 **P**(Pin번호 해제 안됨, 비밀번호/패턴으로 설정된 경우만 가능)로 표시됩니다.",
+          "doc_match": true,
+          "page_match": true,
+          "keyword_hit_rate": 0.5,
+          "missing_keywords": [
+            "보안 폴더",
+            "유해사이트 차단",
+            "PIN 번호"
+          ]
+        },
+        {
+          "id": "core_009",
+          "category": "유무선 통합 관리 시스템",
+          "question_type": "procedure",
+          "answer_path": "text",
+          "elapsed_seconds": 22.766,
+          "model_calls": 2,
+          "selected_documents": [
+            "이용관리_20260702.pdf"
+          ],
+          "selected_pages": [
+            8,
+            36,
+            35
+          ],
+          "final_answer": "통신사업자가 스쿨넷 이용관리시스템에 로그인을 성공하기 위해 접속해야 할 포털 주소는 **학교 유무선 통합 로그인 센터(https://weiss.or.kr/)**이며, 사전 등록 요건은 **'통신사업자 등록'**입니다.",
+          "doc_match": true,
+          "page_match": true,
+          "keyword_hit_rate": 0.8,
+          "missing_keywords": [
+            "승인"
+          ]
+        },
+        {
+          "id": "core_010",
+          "category": "유무선 통합 관리 시스템",
+          "question_type": "fact",
+          "answer_path": "text",
+          "elapsed_seconds": 33.156,
+          "model_calls": 2,
+          "selected_documents": [
+            "통합관제(사용자)_20260702.pdf",
+            "통합관제 이용기관 전용 매뉴얼_20260702.pdf"
+          ],
+          "selected_pages": [
+            27,
+            23,
+            72
+          ],
+          "final_answer": "질문하신 각 항목의 시간 기준과 계산 방식은 다음과 같습니다.\n\n**1. 단말접속현황**\n*   **현재:** 금일, 현재 시간부터 한시간 전까지의 접속 단말 합 (예: 4월 14일 17:00인 경우, 4월 14일 16:00 ~ 17:00까지)\n*   **어제:** 금일 기준 하루 전의 현재 시간부터 한시간 전까지의 접속 단말 합 (예: 4월 14일 17:00인 경우, 4월 13일 16:00 ~ 17:00까지)\n\n**2. 트래픽 가동률 현황**\n*   **현재:** 금일, 현재 시간부터 한시간 전까지의 트래픽(IN BPS) 합계 (예: 4월 14일 17:00인 경우, 4월 14일 16:00 ~ 17:00까지)\n*   **어제:** 금일 기준 하루 전의 현재 시간부터 한시간 전까지의 트래픽(IN BPS) 합계 (예: 4월 14일 17:00인 경우, 4월 13일 16:00 ~ 17:00까지)\n\n**3. AP가동률**\n*   **계산 방식:** 성능수집상태가 ‘수집’인 AP 수량 / 전체 AP 수량",
+          "doc_match": true,
+          "page_match": true,
+          "keyword_hit_rate": 0.667,
+          "missing_keywords": [
+            "1시간",
+            "수집 상태"
+          ]
+        },
+        {
+          "id": "core_011",
+          "category": "유무선 통합 관리 시스템",
+          "question_type": "fact",
+          "answer_path": "text",
+          "elapsed_seconds": 20.266,
+          "model_calls": 2,
+          "selected_documents": [
+            "통합관제(최고관리자)_20260702.pdf",
+            "통합관제(사용자)_20260702.pdf"
+          ],
+          "selected_pages": [
+            28,
+            42,
+            29
+          ],
+          "final_answer": "실시간 이벤트현황 페이지로 이동하는 메뉴 경로는 **종합현황 > 이벤트현황 > 이벤트현황**이며, 새로고침 빈도 UI 옵션은 **5s, 10s, 30s, 정지**입니다.",
+          "doc_match": true,
+          "page_match": true,
+          "keyword_hit_rate": 1.0,
+          "missing_keywords": []
+        },
+        {
+          "id": "core_012",
+          "category": "유무선 통합 관리 시스템",
+          "question_type": "fact",
+          "answer_path": "text",
+          "elapsed_seconds": 53.406,
+          "model_calls": 2,
+          "selected_documents": [
+            "통합관제(사용자)_20260702.pdf",
+            "통합관제(최고관리자)_20260702.pdf"
+          ],
+          "selected_pages": [
+            27,
+            42,
+            27
+          ],
+          "final_answer": "제공된 근거에서 확인할 수 없습니다.",
+          "doc_match": true,
+          "page_match": false,
+          "keyword_hit_rate": 0.0,
+          "missing_keywords": [
+            "Traffic TopN",
+            "IN BPS",
+            "OUT BPS",
+            "Total",
+            "랭킹 그래프",
+            "상세정보"
+          ]
+        },
+        {
+          "id": "core_013",
+          "category": "무선망",
+          "question_type": "troubleshooting",
+          "answer_path": "text",
+          "elapsed_seconds": 46.422,
+          "model_calls": 2,
+          "selected_documents": [
+            "학교 무선인터넷 자가진단 체크리스트(안).pdf",
+            "★23년 학교 유무선 운영·관리 안내서_최종.pdf"
+          ],
+          "selected_pages": [
+            11,
+            80,
+            38
+          ],
+          "final_answer": "다보링크 DVW-624i 무선 AP의 LED 색상별 상태 및 전원 불량 시 조치 사항은 다음과 같습니다.\n\n**1. LED 색상별 상태 (정상·비정상 판정 기준)**\n*   **Power:** Blue/Red (정상동작/부팅, 장애알람)\n*   **WAN1:** Blue (2.5 또는 5Gbps 연결), Orange (1Gbps 연결)\n*   **WAN2:** Orange (연결)\n*   **LAN:** Orange (연결)\n*   **2.4G/5G:** Blue (무선 ON)\n\n**2. 전원 불량 의심 시 첫 물리적 조치**\n*   UTP케이블과 AP의 연결부분 확인",
+          "doc_match": true,
+          "page_match": true,
+          "keyword_hit_rate": 0.571,
+          "missing_keywords": [
+            "Power LED",
+            "UTP 케이블",
+            "재결합"
+          ]
+        },
+        {
+          "id": "irrelevant_001",
+          "category": "무관",
+          "question_type": "irrelevant",
+          "answer_path": "none",
+          "elapsed_seconds": 3.328,
+          "model_calls": 1,
+          "selected_documents": [],
+          "selected_pages": [],
+          "final_answer": "선택된 문서에서 확인 불가",
+          "correctly_rejected": true
+        },
+        {
+          "id": "irrelevant_002",
+          "category": "무관",
+          "question_type": "irrelevant",
+          "answer_path": "none",
+          "elapsed_seconds": 3.297,
+          "model_calls": 1,
+          "selected_documents": [],
+          "selected_pages": [],
+          "final_answer": "선택된 문서에서 확인 불가",
+          "correctly_rejected": true
+        },
+        {
+          "id": "irrelevant_003",
+          "category": "무관",
+          "question_type": "irrelevant",
+          "answer_path": "none",
+          "elapsed_seconds": 3.359,
+          "model_calls": 1,
+          "selected_documents": [],
+          "selected_pages": [],
+          "final_answer": "선택된 문서에서 확인 불가",
+          "correctly_rejected": true
+        }
+      ],
+      "aggregate": {
+        "total_items": 16,
+        "error_items": 0,
+        "relevant_items": 13,
+        "irrelevant_items": 3,
+        "doc_hit_rate": 0.923,
+        "page_hit_rate": 0.769,
+        "avg_keyword_hit_rate": 0.705,
+        "irrelevant_correctly_rejected_rate": 1.0,
+        "answer_path_counts": {
+          "text": 12,
+          "vision": 1,
+          "none": 3
+        },
+        "avg_elapsed_seconds": 30.491,
+        "total_elapsed_seconds": 487.86,
+        "avg_model_calls": 1.812,
+        "avg_selected_doc_count": 1.312,
+        "avg_selected_page_count": 2.438
+      }
+    }
+  }
+}

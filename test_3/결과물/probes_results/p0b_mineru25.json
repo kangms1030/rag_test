@@ -1,0 +1,236 @@
+{
+  "summary": {
+    "total_pages": 6,
+    "total_gold_tokens": 16,
+    "by_source": {
+      "pipeline": {
+        "pages_correct": 1,
+        "gold_tokens": 5
+      },
+      "vlm": {
+        "pages_correct": 3,
+        "gold_tokens": 8
+      },
+      "hybrid": {
+        "pages_correct": 1,
+        "gold_tokens": 7
+      }
+    }
+  },
+  "page_type_note": "raster-UI-*: 소프트웨어 화면 캡처가 이미지로 삽입된 페이지. vector-figure: 도표/구성도/다이어그램.",
+  "rows": [
+    {
+      "qid": "vp_006",
+      "type": "raster-UI-table",
+      "page": 83,
+      "gold": [
+        "R54KB00TXWF",
+        "jhkim2761",
+        "2022-11-15",
+        "37"
+      ],
+      "pipeline": {
+        "gold_found": [
+          "R54KB00TXWF",
+          "jhkim2761",
+          "2022-11-15",
+          "37"
+        ],
+        "gold_total": 4,
+        "bad_found": [],
+        "correct": true,
+        "len": 6595
+      },
+      "vlm": {
+        "gold_found": [],
+        "gold_total": 4,
+        "bad_found": [],
+        "correct": false,
+        "len": 876
+      },
+      "hybrid": {
+        "gold_found": [
+          "R54KB00TXWF",
+          "jhkim2761",
+          "2022-11-15"
+        ],
+        "gold_total": 4,
+        "bad_found": [],
+        "correct": false,
+        "len": 2363
+      }
+    },
+    {
+      "qid": "vp_007",
+      "type": "raster-UI-table",
+      "page": 88,
+      "gold": [
+        "1030011002",
+        "135"
+      ],
+      "pipeline": {
+        "gold_found": [
+          "1030011002"
+        ],
+        "gold_total": 2,
+        "bad_found": [],
+        "correct": false,
+        "len": 4697
+      },
+      "vlm": {
+        "gold_found": [],
+        "gold_total": 2,
+        "bad_found": [],
+        "correct": false,
+        "len": 751
+      },
+      "hybrid": {
+        "gold_found": [
+          "1030011002"
+        ],
+        "gold_total": 2,
+        "bad_found": [],
+        "correct": false,
+        "len": 2400
+      }
+    },
+    {
+      "qid": "vp_013",
+      "type": "raster-UI-card",
+      "page": 8,
+      "gold": [
+        "DMPZN8Q7MF3R",
+        "10:8e:e0:77:16:84"
+      ],
+      "pipeline": {
+        "gold_found": [],
+        "gold_total": 2,
+        "bad_found": [],
+        "correct": false,
+        "len": 152
+      },
+      "vlm": {
+        "gold_found": [],
+        "gold_total": 2,
+        "bad_found": [],
+        "correct": false,
+        "len": 584
+      },
+      "hybrid": {
+        "gold_found": [],
+        "gold_total": 2,
+        "bad_found": [],
+        "correct": false,
+        "len": 281
+      }
+    },
+    {
+      "qid": "vp_009",
+      "type": "vector-figure",
+      "page": 13,
+      "gold": [
+        "개요",
+        "갤럭시"
+      ],
+      "pipeline": {
+        "gold_found": [],
+        "gold_total": 2,
+        "bad_found": [],
+        "correct": false,
+        "len": 181
+      },
+      "vlm": {
+        "gold_found": [
+          "개요",
+          "갤럭시"
+        ],
+        "gold_total": 2,
+        "bad_found": [],
+        "correct": true,
+        "len": 2156
+      },
+      "hybrid": {
+        "gold_found": [
+          "개요",
+          "갤럭시"
+        ],
+        "gold_total": 2,
+        "bad_found": [],
+        "correct": true,
+        "len": 350
+      }
+    },
+    {
+      "qid": "vp_010",
+      "type": "vector-figure",
+      "page": 11,
+      "gold": [
+        "집선",
+        "192.168.0.1",
+        "192.168.0.10"
+      ],
+      "pipeline": {
+        "gold_found": [],
+        "gold_total": 3,
+        "bad_found": [],
+        "correct": false,
+        "len": 163
+      },
+      "vlm": {
+        "gold_found": [
+          "집선",
+          "192.168.0.1",
+          "192.168.0.10"
+        ],
+        "gold_total": 3,
+        "bad_found": [],
+        "correct": true,
+        "len": 2717
+      },
+      "hybrid": {
+        "gold_found": [],
+        "gold_total": 3,
+        "bad_found": [],
+        "correct": false,
+        "len": 321
+      }
+    },
+    {
+      "qid": "vp_014",
+      "type": "vector-figure",
+      "page": 71,
+      "gold": [
+        "인증",
+        "빅데이터",
+        "망중계"
+      ],
+      "pipeline": {
+        "gold_found": [],
+        "gold_total": 3,
+        "bad_found": [],
+        "correct": false,
+        "len": 92
+      },
+      "vlm": {
+        "gold_found": [
+          "인증",
+          "빅데이터",
+          "망중계"
+        ],
+        "gold_total": 3,
+        "bad_found": [],
+        "correct": true,
+        "len": 1127
+      },
+      "hybrid": {
+        "gold_found": [
+          "망중계"
+        ],
+        "gold_total": 3,
+        "bad_found": [],
+        "correct": false,
+        "len": 378
+      }
+    }
+  ]
+}

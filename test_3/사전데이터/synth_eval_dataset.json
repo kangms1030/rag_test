@@ -1,0 +1,86 @@
+[
+  {
+    "id": "syn_01",
+    "question": "5단계 스쿨넷서비스는 어떤 서비스들로 구성되며, 각 서비스에 거리체계가 적용되나요?",
+    "expected_documents": ["(첨부)_5단계_스쿨넷서비스_제공_가이드.pdf"],
+    "expected_pages": [6, 7, 8, 9],
+    "expected_answer_keywords": ["전용회선", "인터넷서비스", "10Giga", "재해복구", "IPsec VPN", "거리체계", "2단계"]
+  },
+  {
+    "id": "syn_02",
+    "question": "5단계 스쿨넷서비스의 기준 할인율 3종과 각 할인율, 그리고 중복 적용이 가능한 조합과 불가능한 조합은?",
+    "expected_documents": ["(첨부)_5단계_스쿨넷서비스_제공_가이드.pdf"],
+    "expected_pages": [12],
+    "expected_answer_keywords": ["장기계약", "25%", "이용선납", "자동이체", "1%", "중복", "불가"]
+  },
+  {
+    "id": "syn_03",
+    "question": "재해복구(DR)서비스 100M 속도의 월 이용요금을 거리체계별(100km 이내/200km 이내)과 제주특별자치도교육청으로 나누어 비교하면?",
+    "expected_documents": ["(첨부)_5단계_스쿨넷서비스_제공_가이드.pdf"],
+    "expected_pages": [11],
+    "expected_answer_keywords": ["1,818,000", "2,181,000", "2,907,000", "제주", "100M"]
+  },
+  {
+    "id": "syn_04",
+    "question": "전용회선서비스, 인터넷서비스, 재해복구(DR)서비스의 중도 해지 위약금은 어떤 산정식으로 계산되나요?",
+    "expected_documents": ["(첨부)_5단계_스쿨넷서비스_제공_가이드.pdf"],
+    "expected_pages": [13],
+    "expected_answer_keywords": ["월 이용요금", "장기계약할인율", "잔여개월"]
+  },
+  {
+    "id": "syn_05",
+    "question": "5단계에서 인터넷서비스와 전용회선서비스의 속도체계 통합 방식은 어떻게 다른가요?",
+    "expected_documents": ["(첨부)_5단계_스쿨넷서비스_제공_가이드.pdf"],
+    "expected_pages": [7, 9],
+    "expected_answer_keywords": ["인터넷", "15개", "20G", "30G", "40G", "전용회선", "5개", "500M", "1G"]
+  },
+  {
+    "id": "syn_06",
+    "question": "5단계 스쿨넷서비스 제공사업자 선정에서 기술평가 통과 기준 점수와 최종 선정되는 사업자 수는?",
+    "expected_documents": ["(첨부)_5단계_스쿨넷서비스_제공_가이드.pdf"],
+    "expected_pages": [2, 28],
+    "expected_answer_keywords": ["기술평가", "80점", "3개", "이내"]
+  },
+  {
+    "id": "syn_07",
+    "question": "SLA상 '서비스 개통'의 품질기준 기간과, 5단계 개시를 위한 일괄청약 시의 개통 기한은?",
+    "expected_documents": ["(첨부)_5단계_스쿨넷서비스_제공_가이드.pdf"],
+    "expected_pages": [15, 16, 17],
+    "expected_answer_keywords": ["30일", "일괄청약", "3개월"]
+  },
+  {
+    "id": "syn_08",
+    "question": "학교 무선인터넷 속도가 느릴 때 자가진단에 사용하는 무료 모바일 앱들과 각 앱으로 점검하는 항목을 종합하면?",
+    "expected_documents": ["학교 무선인터넷 자가진단 체크리스트(안).pdf", "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf"],
+    "expected_pages": [4, 5, 6, 7, 8, 11, 12, 13],
+    "expected_answer_keywords": ["속도측정", "WiFi 개요 360", "PingTools", "채널", "신호", "지연"]
+  },
+  {
+    "id": "syn_09",
+    "question": "WiFi 개요 360 앱의 WLAN 정보에서 WiFi 신호강도가 '매우양호'와 '불량'으로 판정되는 기준(dbm)은?",
+    "expected_documents": ["학교 무선인터넷 자가진단 체크리스트(안).pdf"],
+    "expected_pages": [7],
+    "expected_answer_keywords": ["-72", "매우양호", "-90", "불량"]
+  },
+  {
+    "id": "syn_10",
+    "question": "무선 인터넷이 '접속 자체가 안 되는 경우'와 '속도가 느린 경우'의 자가진단 점검 순서를 비교하면?",
+    "expected_documents": ["학교 무선인터넷 자가진단 체크리스트(안).pdf"],
+    "expected_pages": [3, 6, 10, 11, 12, 13],
+    "expected_answer_keywords": ["AP", "집선망", "품질측정", "환경점검", "동시접속", "대역폭"]
+  },
+  {
+    "id": "syn_11",
+    "question": "무선망 동시접속 성능을 자가진단할 때 권장하는 테스트 구성(단말 수, 콘텐츠)은?",
+    "expected_documents": ["학교 무선인터넷 자가진단 체크리스트(안).pdf"],
+    "expected_pages": [9],
+    "expected_answer_keywords": ["20", "30", "동시접속", "YouTube", "720p"]
+  },
+  {
+    "id": "syn_12",
+    "question": "무선 인터넷 속도 저하가 학교 자체 조치로 해결되지 않을 때 최종적으로 문의·점검하는 대상은 무엇이며, 그것은 어느 서비스 영역과 연결되나요?",
+    "expected_documents": ["학교 무선인터넷 자가진단 체크리스트(안).pdf", "(첨부)_5단계_스쿨넷서비스_제공_가이드.pdf"],
+    "expected_pages": [10, 6, 7],
+    "expected_answer_keywords": ["스쿨넷 사업자", "대역폭", "증설", "회선"]
+  }
+]

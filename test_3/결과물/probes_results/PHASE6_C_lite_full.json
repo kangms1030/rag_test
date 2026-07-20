@@ -1,0 +1,998 @@
+{
+  "tag": "C_lite_full",
+  "x_overrides": {
+    "x_backend": "gemini"
+  },
+  "summary": {
+    "n": 36,
+    "n_relevant": 31,
+    "n_irrelevant": 5,
+    "evidence_present": 24,
+    "answered_rate": 0.2581,
+    "avg_kw_hit": 0.7187,
+    "irrelevant_reject_rate": 1.0,
+    "hallucination_suspects": [],
+    "avg_model_calls": 2.81,
+    "avg_elapsed_s": 6.2,
+    "max_elapsed_s": 13.0,
+    "avg_gemini_api_s": 2.14,
+    "avg_gemini_calls": 2.06,
+    "total_cost": 0.014318,
+    "kw_improved_vs_base": [
+      [
+        "core_002",
+        0,
+        0.6666666666666666
+      ],
+      [
+        "core_003",
+        0,
+        0.6666666666666666
+      ],
+      [
+        "core_005",
+        0,
+        0.16666666666666666
+      ],
+      [
+        "core_007",
+        0.3333333333333333,
+        0.6666666666666666
+      ],
+      [
+        "core_008",
+        0,
+        1.0
+      ],
+      [
+        "core_010",
+        0.16666666666666666,
+        0.8333333333333334
+      ],
+      [
+        "vp_005",
+        0,
+        0.4
+      ],
+      [
+        "vp_006",
+        0,
+        0.75
+      ],
+      [
+        "vp_007",
+        0,
+        0.6
+      ],
+      [
+        "vp_011",
+        0,
+        0.4
+      ],
+      [
+        "vt_003",
+        0.5,
+        0.75
+      ]
+    ],
+    "kw_regressed_vs_base": [],
+    "faster_vs_base": [
+      [
+        "core_001",
+        90.9,
+        6.9
+      ],
+      [
+        "core_002",
+        146.8,
+        6.3
+      ],
+      [
+        "core_003",
+        132.7,
+        6.8
+      ],
+      [
+        "core_004",
+        67.7,
+        9.2
+      ],
+      [
+        "core_005",
+        81.9,
+        6.2
+      ],
+      [
+        "core_006",
+        58.6,
+        9.8
+      ],
+      [
+        "core_007",
+        110.4,
+        6.9
+      ],
+      [
+        "core_008",
+        143.6,
+        6.4
+      ],
+      [
+        "core_009",
+        32.1,
+        6.2
+      ],
+      [
+        "core_010",
+        59.7,
+        6.3
+      ],
+      [
+        "core_011",
+        25.3,
+        6.4
+      ],
+      [
+        "core_012",
+        28.8,
+        6.5
+      ],
+      [
+        "core_013",
+        127.2,
+        6.8
+      ],
+      [
+        "irrelevant_002",
+        3.1,
+        2.3
+      ],
+      [
+        "irrelevant_003",
+        3.0,
+        2.2
+      ],
+      [
+        "vp_001",
+        35.9,
+        5.8
+      ],
+      [
+        "vp_002",
+        36.4,
+        6.4
+      ],
+      [
+        "vp_003",
+        42.3,
+        6.7
+      ],
+      [
+        "vp_004",
+        99.5,
+        6.3
+      ],
+      [
+        "vp_005",
+        146.2,
+        6.7
+      ],
+      [
+        "vp_006",
+        147.2,
+        6.4
+      ],
+      [
+        "vp_007",
+        148.6,
+        6.7
+      ],
+      [
+        "vp_008",
+        27.3,
+        6.7
+      ],
+      [
+        "vp_009",
+        25.4,
+        6.7
+      ],
+      [
+        "vp_010",
+        35.0,
+        9.6
+      ],
+      [
+        "vp_011",
+        65.1,
+        6.1
+      ],
+      [
+        "vp_012",
+        54.3,
+        6.4
+      ],
+      [
+        "vp_013",
+        36.3,
+        6.6
+      ],
+      [
+        "vp_014",
+        110.0,
+        6.6
+      ],
+      [
+        "vp_015",
+        30.9,
+        6.1
+      ],
+      [
+        "vt_001",
+        68.4,
+        6.6
+      ],
+      [
+        "vt_002",
+        23.3,
+        6.3
+      ],
+      [
+        "vt_003",
+        34.5,
+        13.0
+      ],
+      [
+        "vi_001",
+        1.3,
+        1.1
+      ],
+      [
+        "vi_002",
+        1.3,
+        1.1
+      ]
+    ]
+  },
+  "results": [
+    {
+      "qid": "core_001",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 1.0,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 6.9,
+      "final_answer_head": "제공된 근거에 따른 제주특별자치도교육청의 5단계 재해복구(DR)서비스 월 요금은 다음과 같습니다.\n\n*   **100M:** 2,907,000원\n*   **500M:** 4,121",
+      "cost": 0.000768,
+      "gemini_api_s": 2.66,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "core_002",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 0.6666666666666666,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 6.3,
+      "final_answer_head": "제공된 근거에 따르면, 현황분석서에서 UTM 장비의 주요 제조사와 교육지원청별 관제 비중은 다음과 같은 방식으로 비교됩니다.\n\n1. **주요 제조사 비교**: 각 교육청별로 스쿨넷",
+      "cost": 0.000693,
+      "gemini_api_s": 2.57,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "core_003",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": false,
+      "abstain": true,
+      "kw_hit": 0.6666666666666666,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 6.8,
+      "final_answer_head": "제공된 근거 문서에서는 학교 유무선망 통합관제시스템 개선안과 관련하여 사용자 요구사항을 5가지 핵심 항목으로 분류하고 있지 않습니다.\n\n제공된 문서의 '운영관리 요구내용' 및 '품",
+      "cost": 0.000638,
+      "gemini_api_s": 2.44,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "core_004",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 0.6,
+      "unsupported_claims": [],
+      "groundedness": "supported",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 9.2,
+      "final_answer_head": "관리자 승인 소요 시간은 최대 48시간이며, 이메일 등록 시 주의사항은 @korea.kr 메일을 사용할 경우 메일 수신이 정상적으로 이루어지지 않을 수 있으므로 다른 이메일을 사용",
+      "cost": 0.000214,
+      "gemini_api_s": 2.52,
+      "gemini_calls": 3
+    },
+    {
+      "qid": "core_005",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": false,
+      "abstain": true,
+      "kw_hit": 0.16666666666666666,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 6.2,
+      "final_answer_head": "제공된 근거에 따르면, 학내망 구축 및 운영관리 가이드에서 권장하는 네트워크 개선 모델의 주요 기준은 다음과 같습니다.\n\n**1. 네트워크 개선 모델의 주요 분리 기준 (인터넷 전",
+      "cost": 0.000472,
+      "gemini_api_s": 2.44,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "core_006",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 0.6666666666666666,
+      "unsupported_claims": [],
+      "groundedness": "supported",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 9.8,
+      "final_answer_head": "학교 내부에서 무선 와이파이 인터넷 접속이 불가능할 때 고려해야 할 3가지 주요 원인 범주와 예시는 다음과 같습니다.\n\n1. **인터넷(회선) 연결 장애**\n   - 시·도교육청(",
+      "cost": 0.000365,
+      "gemini_api_s": 3.06,
+      "gemini_calls": 3
+    },
+    {
+      "qid": "core_007",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 0.6666666666666666,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 6.9,
+      "final_answer_head": "제공된 근거에 따른 무선망 동시접속 점검방안의 준비 조건과 테스트 절차는 다음과 같습니다.\n\n**1. 준비 조건**\n*   **장소:** 무선망 사용이 가능한 교실\n*   **장비",
+      "cost": 0.000458,
+      "gemini_api_s": 2.67,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "core_008",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 1.0,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 6.4,
+      "final_answer_head": "제공된 근거에 따르면, Lenovo P11과 imuz M101 단말의 MDM 제어 기능 차이는 다음과 같습니다.\n\n**1. 미 제공 기능의 차이**\n*   **Lenovo P11:",
+      "cost": 0.000586,
+      "gemini_api_s": 2.68,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "core_009",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 0.8,
+      "unsupported_claims": [],
+      "groundedness": "supported",
+      "model_calls": 2,
+      "length_retry": 0,
+      "rollback": [],
+      "elapsed_s": 6.2,
+      "final_answer_head": "스쿨넷 이용관리시스템에 처음 접근하는 통신사업자가 로그인을 성공하기 위해 필요한 정보는 다음과 같습니다.\n\n*   **접속해야 할 포털 주소:** 학교 유무선 통합 로그인 센터(h",
+      "cost": 0.000237,
+      "gemini_api_s": 1.75,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "core_010",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 0.8333333333333334,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 6.3,
+      "final_answer_head": "제공된 근거에 따른 각 지표의 시간 기준과 계산 방식은 다음과 같습니다.\n\n**1. 단말접속현황**\n*   **시간 기준:**\n    *   현재: 금일 현재 시간부터 한 시간 전",
+      "cost": 0.000363,
+      "gemini_api_s": 2.25,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "core_011",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 1.0,
+      "unsupported_claims": [],
+      "groundedness": "supported",
+      "model_calls": 2,
+      "length_retry": 0,
+      "rollback": [],
+      "elapsed_s": 6.4,
+      "final_answer_head": "통합관제 사용자 화면의 실시간 이벤트현황 페이지로 이동하는 메뉴 경로는 **종합현황 > 이벤트현황 > 이벤트현황**이며, 새로고침 빈도 UI 옵션은 **5s, 10s, 30s, 정",
+      "cost": 0.000204,
+      "gemini_api_s": 1.46,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "core_012",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": false,
+      "abstain": true,
+      "kw_hit": 0.0,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 6.5,
+      "final_answer_head": "제공된 근거에서 확인할 수 없습니다.",
+      "cost": 0.000174,
+      "gemini_api_s": 1.45,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "core_013",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 0.7142857142857143,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 6.8,
+      "final_answer_head": "제공된 근거에 따른 답변입니다.\n\n**1. 다보링크 DVW-624i 무선 AP의 LED 색상별 정상·비정상 판정 기준**\n*   **Power:** Blue(정상 동작), Red(",
+      "cost": 0.000368,
+      "gemini_api_s": 2.18,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "irrelevant_001",
+      "irrelevant": true,
+      "answer_path": "none",
+      "confidence": "abstain",
+      "evidence_present": false,
+      "abstain": true,
+      "kw_hit": null,
+      "unsupported_claims": [],
+      "groundedness": null,
+      "model_calls": 1,
+      "length_retry": 0,
+      "rollback": [],
+      "elapsed_s": 1.0,
+      "final_answer_head": "선택된 문서에서 확인 불가",
+      "cost": null,
+      "gemini_api_s": null,
+      "gemini_calls": null
+    },
+    {
+      "qid": "irrelevant_002",
+      "irrelevant": true,
+      "answer_path": "none",
+      "confidence": "abstain",
+      "evidence_present": false,
+      "abstain": true,
+      "kw_hit": null,
+      "unsupported_claims": [],
+      "groundedness": null,
+      "model_calls": 1,
+      "length_retry": 0,
+      "rollback": [],
+      "elapsed_s": 2.3,
+      "final_answer_head": "선택된 문서에서 확인 불가",
+      "cost": null,
+      "gemini_api_s": null,
+      "gemini_calls": null
+    },
+    {
+      "qid": "irrelevant_003",
+      "irrelevant": true,
+      "answer_path": "none",
+      "confidence": "abstain",
+      "evidence_present": false,
+      "abstain": true,
+      "kw_hit": null,
+      "unsupported_claims": [],
+      "groundedness": null,
+      "model_calls": 1,
+      "length_retry": 0,
+      "rollback": [],
+      "elapsed_s": 2.2,
+      "final_answer_head": "선택된 문서에서 확인 불가",
+      "cost": null,
+      "gemini_api_s": null,
+      "gemini_calls": null
+    },
+    {
+      "qid": "vp_001",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 0.8,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 5.8,
+      "final_answer_head": "제공된 근거에 따르면, 서울특별시교육청의 가온 AP 모델 EAP-224x(4,5,6,7,8,9) 구축 수량은 27,054대이며, 서울특별시교육청 전체 AP 총 구축 수량은 83,3",
+      "cost": 0.00073,
+      "gemini_api_s": 2.12,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "vp_002",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 1.0,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 6.4,
+      "final_answer_head": "제공된 근거에 따른 강원특별자치도교육청의 다보링크 제조사 모델별 수량과 총 구축 수량은 다음과 같습니다.\n\n**1. 다보링크 제조사 3개 모델별 수량**\n*   **DVW-4128",
+      "cost": 0.000827,
+      "gemini_api_s": 2.17,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "vp_003",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 1.0,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 6.7,
+      "final_answer_head": "제공된 근거에 따른 답변은 다음과 같습니다.\n\n*   **제조사별 AP 구축 수량 순서(많은 순):** 가온(14,759대) > 다보링크(11,689대) > 엘텍(5,456대) >",
+      "cost": 0.000802,
+      "gemini_api_s": 2.42,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "vp_004",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 1.0,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 6.3,
+      "final_answer_head": "제공된 근거(WEISS-DS-001-현황분석서-v0.91.pdf p20)에 따르면, 경상남도교육청 POE 장비 현황에서 유비쿼스 제조사 모델 중 구축 수량이 가장 많은 모델명과 수",
+      "cost": 0.000759,
+      "gemini_api_s": 2.17,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "vp_005",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": false,
+      "abstain": true,
+      "kw_hit": 0.4,
+      "unsupported_claims": [
+        "2245",
+        "710",
+        "R710",
+        "EAP2245"
+      ],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 6.7,
+      "final_answer_head": "제공된 근거에서 확인할 수 없습니다.\n\n제공된 문서에는 세종특별시교육청과 경기도교육청의 개별 현황만 포함되어 있으며, 질문하신 '전국 집계 표'는 존재하지 않습니다. 또한, 루커스",
+      "cost": 0.000511,
+      "gemini_api_s": 2.25,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "vp_006",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 0.75,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 6.4,
+      "final_answer_head": "제공된 근거에 따르면, 대여 이력 관리 화면에서 처리자 'jhkim2761'이 대여 처리한 단말의 정보는 다음과 같습니다.\n\n*   **시리얼번호:** R54KB00TXWF\n*  ",
+      "cost": 0.00068,
+      "gemini_api_s": 2.06,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "vp_007",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 0.6,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 6.7,
+      "final_answer_head": "제공된 근거에 따르면 질문에 대한 답변은 다음과 같습니다.\n\n* **'2번 학생'의 정보**: MDM 매뉴얼의 대여자 CSV 업로드 샘플 표(p88)에서 '2번 학생'의 연락처는 ",
+      "cost": 0.000751,
+      "gemini_api_s": 2.55,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "vp_008",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": false,
+      "abstain": true,
+      "kw_hit": 0.0,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 6.7,
+      "final_answer_head": "제공된 근거에서 확인할 수 없습니다.",
+      "cost": 0.0002,
+      "gemini_api_s": 1.56,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "vp_009",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 1.0,
+      "unsupported_claims": [],
+      "groundedness": "supported",
+      "model_calls": 2,
+      "length_retry": 0,
+      "rollback": [],
+      "elapsed_s": 6.7,
+      "final_answer_head": "무선랜 구축운영 가이드라인에서 소개하는 학교 무선 채널 및 신호 세기 측정용 무료 모바일 앱의 이름은 'WiFi 개요 360'이며, 갤럭시 앱 스토어에서 다운로드할 수 있습니다.",
+      "cost": 0.000428,
+      "gemini_api_s": 1.94,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "vp_010",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 1.0,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 9.6,
+      "final_answer_head": "제공된 근거에 따른 답변입니다.\n\n*   **방화벽부터 AP까지 순서대로 나열된 4개 장비:** 방화벽, 무선 집선 스위치, PoE 스위치, AP\n*   **PingTools 예시",
+      "cost": 0.000419,
+      "gemini_api_s": 2.33,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "vp_011",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": false,
+      "abstain": true,
+      "kw_hit": 0.4,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 6.1,
+      "final_answer_head": "제공된 근거에 따른 답변은 다음과 같습니다.\n\n*   **접속 사이트 주소:** https://weiss.or.kr/\n*   **등록 절차 3단계:**\n    1. 학교 유무선 통",
+      "cost": 0.000199,
+      "gemini_api_s": 1.79,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "vp_012",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 1.0,
+      "unsupported_claims": [],
+      "groundedness": "supported",
+      "model_calls": 2,
+      "length_retry": 0,
+      "rollback": [],
+      "elapsed_s": 6.4,
+      "final_answer_head": "23년 학교 유무선 운영·관리 안내서의 'PC의 IP 주소 및 DNS 주소 변경 방법'에 따른 4단계 절차는 다음과 같습니다.\n\n① 키보드의 윈도우(📄)키를 눌러 ‘네트워크 연결’",
+      "cost": 0.000266,
+      "gemini_api_s": 1.67,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "vp_013",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 0.0,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 6.6,
+      "final_answer_head": "제공된 근거에서 확인할 수 없습니다.\n\n제공된 문서에는 '5.2. 화면 표시 설정'과 관련된 설명 및 설정 항목은 명시되어 있으나, 질문에서 언급하신 'iPad_시험단말 카드'의 ",
+      "cost": 0.000214,
+      "gemini_api_s": 1.88,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "vp_014",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 1.0,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 6.6,
+      "final_answer_head": "제공된 근거(p71)에 따르면, '4.1 영역별 주요 과제'의 내용은 다음과 같습니다.\n\n* **'공동플랫폼' 영역의 4가지 구성요소:** 수집/분석, 빅데이터, AI, 인증\n* ",
+      "cost": 0.000359,
+      "gemini_api_s": 2.07,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "vp_015",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": false,
+      "abstain": true,
+      "kw_hit": 0.8,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 6.1,
+      "final_answer_head": "제공된 근거에 따르면, '이용신청서 작성(신규신청)' 챕터의 ⑤번 '서비스 선택' 항목에서 선택 가능한 4가지 서비스 종류는 다음과 같습니다.\n\n* 회선서비스\n* 인터넷서비스\n* ",
+      "cost": 0.000342,
+      "gemini_api_s": 1.74,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "vt_001",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 1.0,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 6.6,
+      "final_answer_head": "제공된 근거 문서에 따른 가상화서버(HCI)의 사양과 방화벽 장비의 수량은 다음과 같습니다.\n\n*   **가상화서버(HCI) 사양:**\n    *   **CPU 코어 수:** 12",
+      "cost": 0.000731,
+      "gemini_api_s": 1.91,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "vt_002",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 1.0,
+      "unsupported_claims": [],
+      "groundedness": "supported",
+      "model_calls": 2,
+      "length_retry": 0,
+      "rollback": [],
+      "elapsed_s": 6.3,
+      "final_answer_head": "비밀번호 입력 규칙은 8~12자이며, 영문자, 숫자, 특수문자를 포함해야 합니다.",
+      "cost": 0.000199,
+      "gemini_api_s": 1.49,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "vt_003",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 0.75,
+      "unsupported_claims": [],
+      "groundedness": "supported",
+      "model_calls": 2,
+      "length_retry": 0,
+      "rollback": [],
+      "elapsed_s": 13.0,
+      "final_answer_head": "이용관리시스템의 '부가서비스' 게시판 관리 기능 설명에 따르면, 현재까지 등록된 전체 게시글은 1건이며 2014년에 작성되었습니다.",
+      "cost": 0.000361,
+      "gemini_api_s": 2.05,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "vi_001",
+      "irrelevant": true,
+      "answer_path": "none",
+      "confidence": "abstain",
+      "evidence_present": false,
+      "abstain": true,
+      "kw_hit": null,
+      "unsupported_claims": [],
+      "groundedness": null,
+      "model_calls": 1,
+      "length_retry": 0,
+      "rollback": [],
+      "elapsed_s": 1.1,
+      "final_answer_head": "선택된 문서에서 확인 불가",
+      "cost": null,
+      "gemini_api_s": null,
+      "gemini_calls": null
+    },
+    {
+      "qid": "vi_002",
+      "irrelevant": true,
+      "answer_path": "none",
+      "confidence": "abstain",
+      "evidence_present": false,
+      "abstain": true,
+      "kw_hit": null,
+      "unsupported_claims": [],
+      "groundedness": null,
+      "model_calls": 1,
+      "length_retry": 0,
+      "rollback": [],
+      "elapsed_s": 1.1,
+      "final_answer_head": "선택된 문서에서 확인 불가",
+      "cost": null,
+      "gemini_api_s": null,
+      "gemini_calls": null
+    }
+  ]
+}

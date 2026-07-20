@@ -1,0 +1,71 @@
+{
+  "pipeline": "test2",
+  "mode": "catalog",
+  "qid": "vt_002",
+  "question": "통합관제시스템 완료보고서에 나오는 이용관리 로그인 화면 설명에서, 비밀번호 입력 규칙(글자수 및 포함 문자)은 무엇인가요?",
+  "error": null,
+  "final_answer": "비밀번호는 10자 이상의 영문 대소문자와 숫자가 반드시 포함되어야 하며, 사용 가능한 특수문자는 ! @ # $ % ^ & * ( ) _ + = | / ~ ` 입니다.",
+  "answer_path": "text",
+  "abstained": false,
+  "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+  "selected_documents": [
+    "이용관리_20260702.pdf",
+    "통합관제 이용기관 전용 매뉴얼_20260702.pdf"
+  ],
+  "selected_pages": [
+    8,
+    72,
+    6
+  ],
+  "doc_match": false,
+  "page_match": false,
+  "keyword_recall": 0.5,
+  "keywords_found": [
+    "숫자",
+    "특수문자"
+  ],
+  "keywords_missing": [
+    "8~12자",
+    "영문자"
+  ],
+  "is_answer_supported": null,
+  "stage_timings_seconds": {
+    "retrieve": 3.578,
+    "answer": 16.078,
+    "total": 19.656
+  },
+  "model_calls": {
+    "embed_calls": 1,
+    "text_answer_calls": 1,
+    "vision_answer_calls": 0,
+    "llm_calls_total": 1,
+    "vlm_calls_total": 0,
+    "total_model_calls": 2
+  },
+  "evidence": [
+    {
+      "document_name": "통합관제 이용기관 전용 매뉴얼_20260702.pdf",
+      "page_number": 8,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-62c3c925\\pages\\p0008.png",
+      "table_crop_path": ""
+    },
+    {
+      "document_name": "이용관리_20260702.pdf",
+      "page_number": 72,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\pages\\p0072.png",
+      "table_crop_path": ""
+    },
+    {
+      "document_name": "통합관제 이용기관 전용 매뉴얼_20260702.pdf",
+      "page_number": 6,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-62c3c925\\pages\\p0006.png",
+      "table_crop_path": ""
+    }
+  ],
+  "process_wall_seconds": 21.109,
+  "subprocess_returncode": 0,
+  "expected_answer_path": "text",
+  "route_match": true,
+  "question_type": "text",
+  "category": "통합관제_로그인"
+}

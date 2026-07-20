@@ -1,0 +1,15 @@
+{
+  "catalog_rows": 14,
+  "catalog_matched": 13,
+  "catalog_unmatched": 1,
+  "pdfs_unmatched": 0,
+  "documents_parsed": 13,
+  "total_pages": 969,
+  "scanned_documents": 9,
+  "table_pages": 326,
+  "figure_pages": 77,
+  "parser_used_counts": {
+    "mineru": 13
+  },
+  "elapsed_seconds": 200.64
+}

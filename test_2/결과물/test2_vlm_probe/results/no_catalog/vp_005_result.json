@@ -1,0 +1,71 @@
+{
+  "pipeline": "test2",
+  "mode": "no_catalog",
+  "qid": "vp_005",
+  "question": "현황분석서에서 루커스(Ruckus), Xirrus, Extreme, 쏘우웨이브, 시스코, iptime, Netgear 등 다양한 제조사별 AP 구축 현황을 정리한 전국 집계 표에서, 루커스(Ruckus) R710 모델과 가온 EAP2245 모델의 각 구축 수량은 얼마이며, 표 전체의 총 구축 수량은 얼마인가요?",
+  "error": null,
+  "final_answer": "제공된 표에는 '루커스(Ruckus) R710' 모델과 '가온 EAP2245' 모델이 포함되어 있지 않습니다. 따라서 해당 모델들의 구축 수량은 알 수 없으며, 표 전체의 총 구축 수량은 159입니다.",
+  "answer_path": "vision",
+  "abstained": false,
+  "skip_reason": "1순위 페이지가 스캔+표 -> 숫자 교차확인을 위해 비전 경로",
+  "selected_documents": [
+    "WEISS-DS-001-현황분석서-v0.91.pdf"
+  ],
+  "selected_pages": [
+    76,
+    63,
+    24
+  ],
+  "doc_match": true,
+  "page_match": false,
+  "keyword_recall": 0.4,
+  "keywords_found": [
+    "R710",
+    "EAP2245"
+  ],
+  "keywords_missing": [
+    "4,395",
+    "6,620",
+    "23,948"
+  ],
+  "is_answer_supported": null,
+  "stage_timings_seconds": {
+    "retrieve": 8.031,
+    "answer": 123.235,
+    "total": 131.266
+  },
+  "model_calls": {
+    "embed_calls": 1,
+    "text_answer_calls": 0,
+    "vision_answer_calls": 1,
+    "llm_calls_total": 0,
+    "vlm_calls_total": 1,
+    "total_model_calls": 2
+  },
+  "evidence": [
+    {
+      "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+      "page_number": 76,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0076.png",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\mineru\\weiss-ds-001-v0-91-aa83eb15\\auto\\images\\51e1e632a8e7f2b7d894b84a15cd685198cef5bff8e24645f13f256e21ab2d90.jpg"
+    },
+    {
+      "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+      "page_number": 63,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0063.png",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\mineru\\weiss-ds-001-v0-91-aa83eb15\\auto\\images\\91f630847966450b11ab95b48d2889e82d6a77af652f335e4ccdec9ce8e35925.jpg"
+    },
+    {
+      "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+      "page_number": 24,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0024.png",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\mineru\\weiss-ds-001-v0-91-aa83eb15\\auto\\images\\1733ed9941d5008bfe35208584d1c47446596659b151a2d1133c5fab4ed5e12a.jpg"
+    }
+  ],
+  "process_wall_seconds": 132.703,
+  "subprocess_returncode": 0,
+  "expected_answer_path": "vision",
+  "route_match": true,
+  "question_type": "scan_table",
+  "category": "현황분석서_AP현황"
+}

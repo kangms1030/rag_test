@@ -1,0 +1,14 @@
+/.claude
+/.gemini
+/CLAUDE.md
+/tmp
+/데이터 카탈로그 작업 파일
+/데이터카탈로그_DCAT_선정파일_최종_최종.xlsx
+/최정현연구원_코드1차
+/QA_샘플파일_100개.xlsx
+
+__pycache__/
+rag_catalog_experiment/cache/
+rag_catalog_experiment/outputs/
+rag_catalog_experiment/index/
+~$*

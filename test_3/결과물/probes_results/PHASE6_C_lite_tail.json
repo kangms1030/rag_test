@@ -1,0 +1,255 @@
+{
+  "tag": "C_lite_tail",
+  "x_overrides": {
+    "x_backend": "gemini"
+  },
+  "summary": {
+    "n": 8,
+    "n_relevant": 8,
+    "n_irrelevant": 0,
+    "evidence_present": 8,
+    "answered_rate": 0.25,
+    "avg_kw_hit": 0.7021,
+    "irrelevant_reject_rate": null,
+    "hallucination_suspects": [],
+    "avg_model_calls": 2.88,
+    "avg_elapsed_s": 9.2,
+    "max_elapsed_s": 25.7,
+    "avg_gemini_api_s": 2.42,
+    "avg_gemini_calls": 2.12,
+    "total_cost": 0.004334,
+    "kw_improved_vs_base": [
+      [
+        "core_002",
+        0,
+        0.6666666666666666
+      ],
+      [
+        "core_008",
+        0,
+        1.0
+      ],
+      [
+        "vp_006",
+        0,
+        0.75
+      ],
+      [
+        "vp_007",
+        0,
+        0.6
+      ]
+    ],
+    "kw_regressed_vs_base": [],
+    "faster_vs_base": [
+      [
+        "core_001",
+        90.9,
+        6.7
+      ],
+      [
+        "core_004",
+        67.7,
+        9.2
+      ],
+      [
+        "vp_009",
+        25.4,
+        6.4
+      ],
+      [
+        "core_002",
+        146.8,
+        6.7
+      ],
+      [
+        "core_008",
+        143.6,
+        6.5
+      ],
+      [
+        "vp_006",
+        147.2,
+        6.5
+      ],
+      [
+        "vp_007",
+        148.6,
+        25.7
+      ],
+      [
+        "vp_013",
+        36.3,
+        6.0
+      ]
+    ]
+  },
+  "results": [
+    {
+      "qid": "core_001",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 1.0,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 6.7,
+      "final_answer_head": "제공된 근거에 따른 제주특별자치도교육청의 5단계 재해복구(DR)서비스 월 요금은 다음과 같습니다.\n\n*   **100M:** 2,907,000원\n*   **500M:** 4,121",
+      "cost": 0.000768,
+      "gemini_api_s": 2.47,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "core_004",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 0.6,
+      "unsupported_claims": [],
+      "groundedness": "supported",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 9.2,
+      "final_answer_head": "관리자 승인 소요 시간은 최대 48시간이며, 이메일 등록 시 주의사항은 @korea.kr 메일을 사용할 경우 메일 수신이 정상적으로 이루어지지 않을 수 있으므로 다른 이메일을 사용",
+      "cost": 0.000214,
+      "gemini_api_s": 2.42,
+      "gemini_calls": 3
+    },
+    {
+      "qid": "vp_009",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 1.0,
+      "unsupported_claims": [],
+      "groundedness": "supported",
+      "model_calls": 2,
+      "length_retry": 0,
+      "rollback": [],
+      "elapsed_s": 6.4,
+      "final_answer_head": "무선랜 구축운영 가이드라인에서 소개하는 학교 무선 채널 및 신호 세기 측정용 무료 모바일 앱의 이름은 'WiFi 개요 360'이며, 갤럭시 앱 스토어에서 다운로드할 수 있습니다.",
+      "cost": 0.000428,
+      "gemini_api_s": 1.65,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "core_002",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 0.6666666666666666,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 6.7,
+      "final_answer_head": "제공된 근거에 따르면, 현황분석서에서 UTM 장비의 주요 제조사와 교육지원청별 관제 비중은 다음과 같은 방식으로 비교됩니다.\n\n1. **주요 제조사 비교**: 각 교육청별로 스쿨넷",
+      "cost": 0.000693,
+      "gemini_api_s": 2.56,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "core_008",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 1.0,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 6.5,
+      "final_answer_head": "제공된 근거에 따르면, Lenovo P11과 imuz M101 단말의 MDM 제어 기능 차이는 다음과 같습니다.\n\n**1. 미 제공 기능의 차이**\n*   **Lenovo P11:",
+      "cost": 0.000586,
+      "gemini_api_s": 2.63,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "vp_006",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 0.75,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 6.5,
+      "final_answer_head": "제공된 근거에 따르면, 대여 이력 관리 화면에서 처리자 'jhkim2761'이 대여 처리한 단말의 정보는 다음과 같습니다.\n\n*   **시리얼번호:** R54KB00TXWF\n*  ",
+      "cost": 0.00068,
+      "gemini_api_s": 2.17,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "vp_007",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 0.6,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 25.7,
+      "final_answer_head": "제공된 근거에 따르면 질문에 대한 답변은 다음과 같습니다.\n\n* **'2번 학생'의 정보**: MDM 매뉴얼의 대여자 CSV 업로드 샘플 표(p88)에서 '2번 학생'의 연락처는 ",
+      "cost": 0.000751,
+      "gemini_api_s": 3.48,
+      "gemini_calls": 2
+    },
+    {
+      "qid": "vp_013",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 0.0,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 6.0,
+      "final_answer_head": "제공된 근거에서 확인할 수 없습니다.\n\n제공된 문서에는 '5.2. 화면 표시 설정'과 관련된 설명 및 설정 항목은 명시되어 있으나, 질문에서 언급하신 'iPad_시험단말 카드'의 ",
+      "cost": 0.000214,
+      "gemini_api_s": 1.96,
+      "gemini_calls": 2
+    }
+  ]
+}

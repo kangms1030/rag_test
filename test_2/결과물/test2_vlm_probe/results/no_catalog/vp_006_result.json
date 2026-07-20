@@ -1,0 +1,70 @@
+{
+  "pipeline": "test2",
+  "mode": "no_catalog",
+  "qid": "vp_006",
+  "question": "MDM 매뉴얼의 대여 이력 관리 화면에서 처리자 'jhkim2761'이 대여 처리한 단말의 시리얼번호와 반납예정일은 무엇이며, 화면에 표시된 전체 이력 건수는 몇 건인가요?",
+  "error": null,
+  "final_answer": "처리자 'jhkim2761'이 대여 처리한 단말의 시리얼번호는 R54K000TWW이며, 반납예정일은 2022-11-15입니다. 화면에 표시된 전체 이력 건수는 10건입니다.",
+  "answer_path": "vision",
+  "abstained": false,
+  "skip_reason": "1순위 페이지가 스캔+표 -> 숫자 교차확인을 위해 비전 경로",
+  "selected_documents": [
+    "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf"
+  ],
+  "selected_pages": [
+    83,
+    82,
+    78
+  ],
+  "doc_match": true,
+  "page_match": true,
+  "keyword_recall": 0.5,
+  "keywords_found": [
+    "jhkim2761",
+    "2022-11-15"
+  ],
+  "keywords_missing": [
+    "R54KB00TXWF",
+    "37건"
+  ],
+  "is_answer_supported": null,
+  "stage_timings_seconds": {
+    "retrieve": 8.047,
+    "answer": 60.282,
+    "total": 68.329
+  },
+  "model_calls": {
+    "embed_calls": 1,
+    "text_answer_calls": 0,
+    "vision_answer_calls": 1,
+    "llm_calls_total": 0,
+    "vlm_calls_total": 1,
+    "total_model_calls": 2
+  },
+  "evidence": [
+    {
+      "document_name": "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf",
+      "page_number": 83,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\mdm-argos-edu-v1-5-6061726f\\pages\\p0083.png",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\mdm-argos-edu-v1-5-6061726f\\mineru\\mdm-argos-edu-v1-5-6061726f\\auto\\images\\10413d92f56df1a4ded28e0d64ec1b5318afb99840a41ce2002dde01380f3f28.jpg"
+    },
+    {
+      "document_name": "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf",
+      "page_number": 82,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\mdm-argos-edu-v1-5-6061726f\\pages\\p0082.png",
+      "table_crop_path": ""
+    },
+    {
+      "document_name": "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf",
+      "page_number": 78,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\mdm-argos-edu-v1-5-6061726f\\pages\\p0078.png",
+      "table_crop_path": ""
+    }
+  ],
+  "process_wall_seconds": 69.703,
+  "subprocess_returncode": 0,
+  "expected_answer_path": "vision",
+  "route_match": true,
+  "question_type": "scan_table",
+  "category": "MDM_대여관리"
+}

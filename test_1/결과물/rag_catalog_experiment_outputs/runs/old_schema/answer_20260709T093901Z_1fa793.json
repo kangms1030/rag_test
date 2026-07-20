@@ -1,0 +1,30 @@
+{
+  "question": " 무선 AP 장애 발생 시 조치 절차를 알려줘",
+  "query_analysis": {
+    "intent": "무선 AP 장애 발생 시의 단계별 조치 절차 및 대응 매뉴얼 확인",
+    "keywords": [
+      "무선 AP",
+      "장애",
+      "조치 절차"
+    ],
+    "domain_terms": [
+      "무선 AP",
+      "스쿨넷",
+      "통합관제시스템",
+      "네트워크"
+    ],
+    "required_data_type": "procedure",
+    "retrieval_query": "무선 AP 장애 조치 절차 및 대응 매뉴얼",
+    "reason": "사용자가 무선 AP의 장애 상황에 대한 구체적인 조치 단계를 요구하고 있으며, 이는 네트워크 운영 지침이나 기술 지원 문서에서 제공하는 절차형 정보임."
+  },
+  "selected_documents": [],
+  "selected_pages": [],
+  "selected_visual_chunks": [],
+  "page_evidence": [],
+  "final_answer": "선택된 문서에서 확인 불가",
+  "verification": {
+    "is_answer_supported": false,
+    "unsupported_claims": [],
+    "notes": "관련 문서/페이지를 찾지 못함"
+  }
+}

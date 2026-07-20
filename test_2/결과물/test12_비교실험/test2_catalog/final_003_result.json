@@ -1,0 +1,72 @@
+{
+  "pipeline": "test2",
+  "mode": "catalog",
+  "qid": "final_003",
+  "question": "무선랜 구축운영 가이드라인에서 설명하는 802.11ac와 802.11ax 무선랜 표준의 주파수 대역·속도 특성은 각각 무엇이며, 802.11ax를 160MHz 대역폭으로 사용할 때 제공 가능한 최대 속도는 얼마인가요?",
+  "error": null,
+  "final_answer": "무선랜 구축운영 가이드라인에 따르면, 802.11ac와 802.11ax 무선랜 표준의 주파수 대역 및 속도 특성은 다음과 같습니다.\n\n*   **802.11ac(WiFi5):** 5GHz 대역에서 6Gbps 속도 목표 (일명 '기가급 와이파이')\n*   **802.11ax(Wifi6):** 2.4GHz/5GHz대역에서, 대규모 혼잡환경에서도 높은 수율 달성\n\n또한, **802.11ax를 160MHz 대역폭으로 사용할 때 제공 가능한 최대 속도는 9.6Gbps**입니다.",
+  "answer_path": "text",
+  "abstained": false,
+  "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+  "selected_documents": [
+    "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+    "학교 무선인터넷 자가진단 체크리스트(안).pdf"
+  ],
+  "selected_pages": [
+    5,
+    7,
+    2
+  ],
+  "doc_match": true,
+  "page_match": true,
+  "keyword_recall": 0.778,
+  "keywords_found": [
+    "802.11ac",
+    "5GHz",
+    "6Gbps",
+    "802.11ax",
+    "2.4GHz",
+    "160MHz",
+    "9.6Gbps"
+  ],
+  "keywords_missing": [
+    "WiFi 5",
+    "WiFi 6"
+  ],
+  "is_answer_supported": null,
+  "stage_timings_seconds": {
+    "retrieve": 0.625,
+    "answer": 24.875,
+    "total": 25.5
+  },
+  "model_calls": {
+    "embed_calls": 1,
+    "text_answer_calls": 1,
+    "vision_answer_calls": 0,
+    "llm_calls_total": 1,
+    "vlm_calls_total": 0,
+    "total_model_calls": 2
+  },
+  "evidence": [
+    {
+      "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "page_number": 5,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\pages\\p0005.png",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\mineru\\0-1v-20p-2023-a874b961\\auto\\images\\dc3c72f02ff289320d7fc17eafbab527948fd2319b58958cf94207be80b27906.jpg"
+    },
+    {
+      "document_name": "학교 무선인터넷 자가진단 체크리스트(안).pdf",
+      "page_number": 7,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\doc-8bc422d9\\pages\\p0007.png",
+      "table_crop_path": ""
+    },
+    {
+      "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "page_number": 2,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\pages\\p0002.png",
+      "table_crop_path": ""
+    }
+  ],
+  "process_wall_seconds": 26.391,
+  "subprocess_returncode": 0
+}

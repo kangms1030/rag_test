@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "run_id": "20260716T115310Z_bb7d0b",
+  "run_status": "success",
+  "timestamp": "2026-07-16T11:53:50.349845+00:00",
+  "config_snapshot": {
+    "top_docs": 2,
+    "top_pages": 3,
+    "min_dense_similarity": 0.35,
+    "min_doc_score": 0.35,
+    "doc_score_gap_ratio": 0.6,
+    "parser": "mineru",
+    "text_answer_model": "gemma4:12b",
+    "vision_answer_model": "gemma4:12b",
+    "embedding_model": "embeddinggemma"
+  },
+  "question": "스쿨넷 5단계 재해복구(DR)서비스 요금체계에서 제주특별자치도교육청의 100M와 500M 월 요금은 각각 얼마이며, 해당 요금이 책정된 배경은 무엇인가요?",
+  "selected_documents": [
+    {
+      "rank": 1,
+      "document_name": "(첨부)_5단계_스쿨넷서비스_제공_가이드.pdf",
+      "selection_score": 0.9973
+    }
+  ],
+  "selected_pages": [
+    {
+      "document_name": "(첨부)_5단계_스쿨넷서비스_제공_가이드.pdf",
+      "page_number": 11,
+      "page_score": 0.9973,
+      "page_type": "table",
+      "is_scanned": false,
+      "has_table": true,
+      "figure_area_ratio": 0.0,
+      "table_markdown": "<table><tr><td rowspan=2 colspan=1>속도체계</td><td rowspan=1 colspan=3>거리체계 및 이용요금</td></tr><tr><td rowspan=1 colspan=1>100Km이내</td><td rowspan=1 colspan=1>200Km이내</td><td rowspan=1 colspan=1>제주특별자치도 교육청</td></tr><tr><td rowspan=1 colspan=1>100M</td><td rowspan=1 colspan=1>1,818,000</td><td rowspan=1 colspan=1>2,181,000</td><td rowspan=1 colspan=1>2,907,000</td></tr><tr><td rowspan=1 colspan=1>150M</td><td rowspan=1 colspan=1>2,138,000</td><td rowspan=1 colspan=1>2,551,000</td><td rowspan=1 colspan=1>3,405,000</td></tr><tr><td rowspan=1 colspan=1>200M</td><td rowspan=1 colspan=1>2,321,000</td><td rowspan=1 colspan=1>2,788,000</td><td rowspan=1 colspan=1>3,716,000</td></tr><tr><td rowspan=1 colspan=1>250M</td><td rowspan=1 colspan=1>2,386,000</td><td rowspan=1 colspan=1>2,864,000</td><td rowspan=1 colspan=1>3,818,000</td></tr><tr><td rowspan=1 colspan=1>300M</td><td rowspan=1 colspan=1>2,451,000</td><td rowspan=1 colspan=1>2,940,000</td><td rowspan=1 colspan=1>3,921,000</td></tr><tr><td rowspan=1 colspan=1>400M</td><td rowspan=1 colspan=1>2,511,000</td><td rowspan=1 colspan=1>3,015,000</td><td rowspan=1 colspan=1>4,020,000</td></tr><tr><td rowspan=1 colspan=1>500M</td><td rowspan=1 colspan=1>2,576,000</td><td rowspan=1 colspan=1>3,090,000</td><td rowspan=1 colspan=1>4,121,000</td></tr><tr><td rowspan=1 colspan=1>600M</td><td rowspan=1 colspan=1>2,823,000</td><td rowspan=1 colspan=1>3,392,000</td><td rowspan=1 colspan=1>4,518,000</td></tr><tr><td rowspan=1 colspan=1>700M</td><td rowspan=1 colspan=1>3,095,000</td><td rowspan=1 colspan=1>3,719,000</td><td rowspan=1 colspan=1>4,952,000</td></tr><tr><td rowspan=1 colspan=1>800M</td><td rowspan=1 colspan=1>3,395,000</td><td rowspan=1 colspan=1>4,073,000</td><td rowspan=1 colspan=1>5,434,000</td></tr><tr><td rowspan=1 colspan=1>900M</td><td rowspan=1 colspan=1>3,818,000</td><td rowspan=1 colspan=1>4,937,000</td><td rowspan=1 colspan=1>5,711,000</td></tr><tr><td rowspan=1 colspan=1>1G</td><td rowspan=1 colspan=1>4,295,000</td><td rowspan=1 colspan=1>5,747,000</td><td rowspan=1 colspan=1>6,071,000</td></tr><tr><td rowspan=1 colspan=1>1.5G</td><td rowspan=1 colspan=1>4,906,000</td><td rowspan=1 colspan=1>6,022,000</td><td rowspan=1 colspan=1>7,232,000</td></tr><tr><td rowspan=1 colspan=1>2G</td><td rowspan=1 colspan=1>6,953,000</td><td rowspan=1 colspan=1>8,419,000</td><td rowspan=1 colspan=1>10,199,000</td></tr><tr><td rowspan=1 colspan=1>2.5G</td><td rowspan=1 colspan=1>9,368,000</td><td rowspan=1 colspan=1>11,473,000</td><td rowspan=1 colspan=1>14,820,000</td></tr><tr><td rowspan=1 colspan=1>3G</td><td rowspan=1 colspan=1>11,774,000</td><td rowspan=1 colspan=1>14,585,000</td><td rowspan=1 colspan=1>20,088,000</td></tr></table>",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\5-c9ff266c\\mineru\\5-c9ff266c\\auto\\images\\a5ceb013ad09d1e3b236be4422094cec57fc11d6e7d16556a8d6b77419e2b4ec.jpg",
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\5-c9ff266c\\pages\\p0011.png",
+      "matched_chunks": [
+        "5-c9ff266c_p0011_c001",
+        "5-c9ff266c_p0011_c002",
+        "5-c9ff266c_p0011_c007"
+      ]
+    },
+    {
+      "document_name": "(첨부)_5단계_스쿨넷서비스_제공_가이드.pdf",
+      "page_number": 5,
+      "page_score": 0.9614,
+      "page_type": "table",
+      "is_scanned": false,
+      "has_table": true,
+      "figure_area_ratio": 0.0,
+      "table_markdown": "<table><tr><td rowspan=1 colspan=1>시도</td><td rowspan=1 colspan=1>1G이하</td><td rowspan=1 colspan=1>1.5G</td><td rowspan=1 colspan=1>2G</td><td rowspan=1 colspan=1>2.5G</td><td rowspan=1 colspan=1>3G</td><td rowspan=1 colspan=1>4G</td><td rowspan=1 colspan=1>5G</td><td rowspan=1 colspan=1>6G</td><td rowspan=1 colspan=1>7G</td><td rowspan=1 colspan=1>8G</td><td rowspan=1 colspan=1>9G</td><td rowspan=1 colspan=1>10G</td><td rowspan=1 colspan=1>합계</td></tr><tr><td rowspan=1 colspan=1>서울</td><td rowspan=1 colspan=1>2</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>1</td><td rowspan=1 colspan=1>12</td><td rowspan=1 colspan=1>2</td><td rowspan=1 colspan=1>16</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>16</td><td rowspan=1 colspan=1>49</td></tr><tr><td rowspan=1 colspan=1>부산</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>12</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>12</td></tr><tr><td rowspan=1 colspan=1>대구</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>11</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>11</td></tr><tr><td rowspan=1 colspan=1>인천</td><td rowspan=1 colspan=1>2</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>10</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>12</td></tr><tr><td rowspan=1 colspan=1>광주</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>2</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>2</td><td rowspan=1 colspan=1>2</td><td rowspan=1 colspan=1>6</td></tr><tr><td rowspan=1 colspan=1>대전</td><td rowspan=1 colspan=1>3</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>4</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>7</td></tr><tr><td rowspan=1 colspan=1>울산</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>2</td><td rowspan=1 colspan=1>2</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>4</td></tr><tr><td rowspan=1 colspan=1>세종</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>2</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>2</td></tr><tr><td rowspan=1 colspan=1>경기</td><td rowspan=1 colspan=1>16</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>2</td><td rowspan=1 colspan=1>10</td><td rowspan=1 colspan=1>32</td><td rowspan=1 colspan=1>7</td><td rowspan=1 colspan=1>5</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>72</td></tr><tr><td rowspan=1 colspan=1>강원</td><td rowspan=1 colspan=1>1</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>1</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>2</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>4</td></tr><tr><td rowspan=1 colspan=1>충북</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>3</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>3</td></tr><tr><td rowspan=1 colspan=1>충남</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>2</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>2</td><td rowspan=1 colspan=1>4</td></tr><tr><td rowspan=1 colspan=1>전북</td><td rowspan=1 colspan=1>4</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>6</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>10</td></tr><tr><td rowspan=1 colspan=1>전남</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>6</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>6</td></tr><tr><td rowspan=1 colspan=1>경북</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>5</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>5</td></tr><tr><td rowspan=1 colspan=1>경남</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>2</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>15</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>17</td></tr><tr><td rowspan=1 colspan=1>제주</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>2</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>2</td></tr><tr><td rowspan=1 colspan=1>합계</td><td rowspan=1 colspan=1>27</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>3</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>2</td><td rowspan=1 colspan=1>2</td><td rowspan=1 colspan=1>15</td><td rowspan=1 colspan=1>44</td><td rowspan=1 colspan=1>28</td><td rowspan=1 colspan=1>40</td><td rowspan=1 colspan=1>44</td><td rowspan=1 colspan=1>20</td><td rowspan=1 colspan=1>226</td></tr><tr><td rowspan=1 colspan=1>비율(%)</td><td rowspan=1 colspan=1>12.39</td><td rowspan=1 colspan=1>-</td><td rowspan=1 colspan=1>1.33</td><td rowspan=1 colspan=1>-</td><td rowspan=1 colspan=1>0.88</td><td rowspan=1 colspan=1>0.88</td><td rowspan=1 colspan=1>6.64</td><td rowspan=1 colspan=1>19.47</td><td rowspan=1 colspan=1>12.39</td><td rowspan=1 colspan=1>17.7</td><td rowspan=1 colspan=1>19.47</td><td rowspan=1 colspan=1>8.85</td><td rowspan=1 colspan=1></td></tr></table>",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\5-c9ff266c\\mineru\\5-c9ff266c\\auto\\images\\25839281013c312f23f80687826935ac8732775f7d2c312f15a5ea7566c8e183.jpg",
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\5-c9ff266c\\pages\\p0005.png",
+      "matched_chunks": [
+        "5-c9ff266c_p0005_c015",
+        "5-c9ff266c_p0005_c014",
+        "5-c9ff266c_p0005_c016"
+      ]
+    },
+    {
+      "document_name": "(첨부)_5단계_스쿨넷서비스_제공_가이드.pdf",
+      "page_number": 14,
+      "page_score": 0.9472,
+      "page_type": "table",
+      "is_scanned": false,
+      "has_table": true,
+      "figure_area_ratio": 0.0,
+      "table_markdown": "<table><tr><td rowspan=1 colspan=7>[10Giga급 인터넷 단순 변심에 따른 10개교 해지(5G)] + 부가서비스 미해지+IPsecVPN 폐원에 따른 10개원 해지(500M)↓매출총액 변동 미적용 사례가 포함되었으나 위약금 발생</td></tr><tr><td rowspan=1 colspan=7>매출총액 변동에 미적용하는 사항(폐원에 따른 Ipsec VPN 서비스 해지)이 포함되어 있으나,변심에 따른 10Giga급 인터넷 서비스 해지로 인한 매출총액 감소가 더 많으므로 위약금이 발생하며,이후 3번째 변경이 있을 경우 기준 매출총액은 &lt;2-2&gt;의 매출총액에서 변심에 따른매출감소액(400,000원*10개기관*42개월=168,000,000원)만을 반영한 5,877,014,400원임</td></tr><tr><td rowspan=1 colspan=7></td></tr><tr><td rowspan=1 colspan=1>구분</td><td rowspan=1 colspan=1>속도</td><td rowspan=1 colspan=1>기준요금(원)</td><td rowspan=1 colspan=1>이용기관수(개)</td><td rowspan=1 colspan=1>개월수(개월)</td><td rowspan=1 colspan=1>서비스별매출액(원)</td><td rowspan=1 colspan=1>비고</td></tr><tr><td rowspan=4 colspan=1>전용회선</td><td rowspan=1 colspan=1>1G</td><td rowspan=1 colspan=1>478,000</td><td rowspan=1 colspan=1>40</td><td rowspan=1 colspan=1>48</td><td rowspan=1 colspan=1>917,760,000</td><td rowspan=1 colspan=1></td></tr><tr><td rowspan=1 colspan=1>1G</td><td rowspan=1 colspan=1>478,000</td><td rowspan=1 colspan=1>50</td><td rowspan=1 colspan=1>60</td><td rowspan=1 colspan=1>1,434,000,000</td><td rowspan=1 colspan=1></td></tr><tr><td rowspan=1 colspan=1>2G</td><td rowspan=1 colspan=1>878,000</td><td rowspan=1 colspan=1>10</td><td rowspan=1 colspan=1>60</td><td rowspan=1 colspan=1>526,800,000</td><td rowspan=1 colspan=1></td></tr><tr><td rowspan=1 colspan=1>2G</td><td rowspan=1 colspan=1>878,000</td><td rowspan=1 colspan=1>40</td><td rowspan=1 colspan=1>12</td><td rowspan=1 colspan=1>421,440,000</td><td rowspan=1 colspan=1></td></tr><tr><td rowspan=2 colspan=1>인터넷</td><td rowspan=1 colspan=1>10G</td><td rowspan=1 colspan=1>12,967,000</td><td rowspan=1 colspan=1>1</td><td rowspan=1 colspan=1>12</td><td rowspan=1 colspan=1>155,604,000</td><td rowspan=1 colspan=1></td></tr><tr><td rowspan=1 colspan=1>20G</td><td rowspan=1 colspan=1>24,964,800</td><td rowspan=1 colspan=1>1</td><td rowspan=1 colspan=1>48</td><td rowspan=1 colspan=1>1,198,310,400</td><td rowspan=1 colspan=1></td></tr><tr><td rowspan=3 colspan=1>10Giga급</td><td rowspan=1 colspan=1>2.5G</td><td rowspan=1 colspan=1>300,000</td><td rowspan=1 colspan=1>10</td><td rowspan=1 colspan=1>60</td><td rowspan=1 colspan=1>180,000,000</td><td rowspan=1 colspan=1></td></tr><tr><td rowspan=1 colspan=1>5G</td><td rowspan=1 colspan=1>400,000</td><td rowspan=1 colspan=1>10</td><td rowspan=1 colspan=1>6</td><td rowspan=1 colspan=1>24,000,000</td><td rowspan=1 colspan=1>변심에 따른 해지</td></tr><tr><td rowspan=1 colspan=1>5G</td><td rowspan=1 colspan=1>400,000</td><td rowspan=1 colspan=1>30</td><td rowspan=1 colspan=1>48</td><td rowspan=1 colspan=1>576,000,000</td><td rowspan=1 colspan=1>해지로 인한 변동사항</td></tr><tr><td rowspan=1 colspan=1>10Giga급부가서비스</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>20,000</td><td rowspan=1 colspan=1>50</td><td rowspan=1 colspan=1>60</td><td rowspan=1 colspan=1>60,000,000</td><td rowspan=1 colspan=1></td></tr><tr><td rowspan=1 colspan=1>재해복구(DR)</td><td rowspan=1 colspan=1>1G</td><td rowspan=1 colspan=1>5,747,000</td><td rowspan=1 colspan=1>1</td><td rowspan=1 colspan=1>60</td><td rowspan=1 colspan=1>344,820,000</td><td rowspan=1 colspan=1></td></tr><tr><td rowspan=2 colspan=1>IPsec VPN</td><td rowspan=1 colspan=1>500M</td><td rowspan=1 colspan=1>31,900</td><td rowspan=1 colspan=1>10</td><td rowspan=1 colspan=1>60</td><td rowspan=1 colspan=1>19,140,000</td><td rowspan=1 colspan=1>해지에 따른 변동사항</td></tr><tr><td rowspan=1 colspan=1>500M</td><td rowspan=1 colspan=1>31,900</td><td rowspan=1 colspan=1>10</td><td rowspan=1 colspan=1>18</td><td rowspan=1 colspan=1>5,742,000</td><td rowspan=1 colspan=1>폐원에 따른해지</td></tr><tr><td rowspan=1 colspan=5>매출총액 합계</td><td rowspan=1 colspan=1>5,863,616,400</td><td rowspan=1 colspan=1></td></tr></table>",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\5-c9ff266c\\mineru\\5-c9ff266c\\auto\\images\\d7a274cac8d28b3cea00aeeb7a66adffef1a4f64710231ecf2c6475404d2e125.jpg",
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\5-c9ff266c\\pages\\p0014.png",
+      "matched_chunks": [
+        "5-c9ff266c_p0014_c001"
+      ]
+    }
+  ],
+  "answer_path": "text",
+  "final_answer": "제공해주신 자료는 **'스쿨넷 서비스 제공 가이드'**의 일부로, 학교 인터넷 서비스(2.5G, 5G, 10G 등)의 변경 시나리오에 따른 **위약금 발생 여부 및 매출총액 산정 방식**을 설명하고 있습니다.\n\n주요 내용을 요약하면 다음과 같습니다.\n\n### 1. 핵심 원칙: 위약금 발생 기준\n*   **위약금 발생:** 서비스 변경(감속, 해지 등) 후의 **매출총액이 직전 매출총액보다 적을 경우**에 발생합니다.\n*   **위약금 미발생:** 서비스 증속이나 신규 청약 등으로 인해 **매출총액이 증가하거나 유지될 경우**, 또는 **변동에 미적용되는 사항(폐교, 폐원 등)**으로 인해 감소한 경우에는 위약금이 발생하지 않습니다.\n\n### 2. 시나리오별 분석\n\n**① [2-1] 사례: 감속 및 신규청약 혼재 (위약금 발생)**\n*   **상황:** 전용회선 감속(2G→500M)과 10Giga급 신규청약이 동시에 발생.\n*   **결과:** 신규청약이 있음에도 불구하고, 전체 매출총액이 직전 대비 감소하여 **위약금이 발생**하는 사례입니다.\n\n**② [2-2] 사례: 증속 및 신규청약 (위약금 미발생)**\n*   **상황:** 전용회선 감속(2G→1G)과 인터넷 서비스 증속(10G→20G), 10Giga급 신규청약이 발생.\n*   **결과:** 증속 및 신규청약으로 인해 매출총액이 직전보다 증가했으므로 **위약금이 미발생**합니다.\n\n**③ [3-1] 사례: 폐교/폐원에 따른 변동 (위약금 미발생)**\n*   **상황:** 폐교에 따른 해지 및 무상감속이 포함됨.\n*   **결과:** 매출총액은 감소했으나, 이는 '변동 미적용 사항'에 해당하므로 **위약금이 발생하지 않습니다.** (단, 다음 변경 시 기준점은 이전의 정상 수치를 따름)\n\n**④ [3-2] 사례: 변심에 따른 해지 포함 (위약금 발생)**\n*   **상황:** 폐원에 따른 해지(미적용)와 **변심에 따른 10Giga급 서비스 해지**가 혼재.\n*   **결과:** 미적용 사항이 포함되어 있음에도 불구하고, '변심'으로 인한 매출 감소분이 더 크기 때문에 **위약금이 발생**합니다.\n\n### 3. 요약 표 (데이터 분석)\n상단에 제시된 표는 지역별(권역별) 학교의 인터넷 서비스 현황을 보여줍니다.\n*   **전체 규모:** 총 4,069개의 학교가 서비스를 이용 중입니다.\n*   **지역 분포:** 경기도(33.5%)가 가장 높은 비중을 차지하며, 서울(19.6%), 충남(4.8%) 등이 뒤를 잇습니다.\n*   **서비스 구성:** 대부분의 학교가 **2.5G** 서비스를 이용 중이며, **5G 및 10G** 서비스는 특정 지역이나 조건에 따라 제한적으로 분포되어 있습니다.\n\n**결론적으로 이 문서는 \"단순한 수치 감소가 아니라, 그 감소의 원인이 '변심'인지 '폐교/폐원' 같은 불가항력적 사유인지를 구분하여 위약금 발생 여부를 판단한다\"는 가이드를 제시하고 있습니다.**",
+  "evidence": [
+    {
+      "document_name": "(첨부)_5단계_스쿨넷서비스_제공_가이드.pdf",
+      "page_number": 11,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\5-c9ff266c\\pages\\p0011.png",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\5-c9ff266c\\mineru\\5-c9ff266c\\auto\\images\\a5ceb013ad09d1e3b236be4422094cec57fc11d6e7d16556a8d6b77419e2b4ec.jpg"
+    },
+    {
+      "document_name": "(첨부)_5단계_스쿨넷서비스_제공_가이드.pdf",
+      "page_number": 5,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\5-c9ff266c\\pages\\p0005.png",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\5-c9ff266c\\mineru\\5-c9ff266c\\auto\\images\\25839281013c312f23f80687826935ac8732775f7d2c312f15a5ea7566c8e183.jpg"
+    },
+    {
+      "document_name": "(첨부)_5단계_스쿨넷서비스_제공_가이드.pdf",
+      "page_number": 14,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\5-c9ff266c\\pages\\p0014.png",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\5-c9ff266c\\mineru\\5-c9ff266c\\auto\\images\\d7a274cac8d28b3cea00aeeb7a66adffef1a4f64710231ecf2c6475404d2e125.jpg"
+    }
+  ],
+  "metrics": {
+    "embed_calls": 1,
+    "text_answer_calls": 1,
+    "vision_answer_calls": 0,
+    "rerank_calls": 1,
+    "judge_calls": 0,
+    "verify_calls": 0,
+    "rollback_count": 0,
+    "length_retry_count": 0,
+    "total_model_calls": 2,
+    "timings_seconds": {
+      "retrieve": 20.172,
+      "answer": 20.094,
+      "total": 40.266
+    }
+  }
+}

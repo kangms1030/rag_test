@@ -1,0 +1,24 @@
+{
+  "catalog_rows": 14,
+  "catalog_matched": 13,
+  "documents_parsed": 13,
+  "reparsed_with_mineru": 0,
+  "total_pages": 969,
+  "total_chunks": 2562,
+  "chunk_type_counts": {
+    "table": 767,
+    "text": 1795
+  },
+  "avg_chunks_per_page": 2.64,
+  "scanned_documents": 9,
+  "table_pages": 326,
+  "figure_pages": 10,
+  "page_index_count": 969,
+  "chunk_index_count": 2562,
+  "elapsed_seconds": 775.08,
+  "last_incremental_update": {
+    "at": "2026-07-16T10:58:09+00:00",
+    "command": "remove",
+    "doc_slug": "doc-d33cc6a3"
+  }
+}

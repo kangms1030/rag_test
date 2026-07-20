@@ -1,0 +1,38 @@
+[
+  {
+    "id": "final_001",
+    "question": "학내망 구축 및 운영관리 개선을 위한 가이드에서 제시하는 UTP 케이블 규격(Cat.5, Cat.5e, Cat.6)별 최대 전송거리와 통신속도(Data Performance / Max Speed Data)는 각각 어떻게 다른가요?",
+    "expected_answer": "UTP 케이블 규격별 통신 속도 표에 따르면 세 규격 모두 최대 전송거리는 100M로 동일합니다. Cat.5는 Data Performance 10Mbps, Max Speed Data 100Mbps이고, Cat.5e는 Data Performance 100Mbps, Max Speed Data 1Gbps이며, Cat.6은 Data Performance 1Gbps, Max Speed Data 10Gbps입니다.",
+    "expected_documents": ["8-1. 스쿨넷서비스 학내망 구축 및 운영관리 개선을 위한 가이드.pdf"],
+    "expected_pages": [12],
+    "expected_answer_keywords": ["Cat.5", "Cat.5e", "Cat.6", "100M", "10Mbps", "100Mbps", "1Gbps", "10Gbps"],
+    "question_type": "table",
+    "category": "학내망",
+    "source": "human",
+    "verification_note": "pdfplumber 텍스트 직접 추출로 확인(PDF 12페이지, 인쇄쪽수 23). '통신 속도 / 케이블 규격 최대 전송거리 / Data Performance Max Speed Data / Cat.5 100M 10Mbps 100Mbps / Cat.5e 100M 100Mbps 1Gbps / Cat.6 100M 1Gbps 10Gbps' 원문 표를 그대로 사용. 기존 human_20.json/rag_eval_dataset.json은 이 문서의 8페이지(망분리 기준)만 사용했으므로 페이지 중복 없음."
+  },
+  {
+    "id": "final_002",
+    "question": "스쿨넷 이용관리시스템에서 이용기관 비밀번호를 초기화하는 절차는 무엇이며, 담당자 이메일을 모를 경우 문의할 고객센터 연락처와 초기화 완료 안내 메일 발송에 소요되는 시간은 얼마인가요?",
+    "expected_answer": "이용관리시스템 로그인 화면에서 초기화할 기관명을 선택하고 이용기관등록신청 버튼 하단의 비밀번호초기화를 선택합니다. 비밀번호초기화 팝업이 나타나면 이용기관등록신청 시 입력한 담당자 이메일 주소를 입력해야 하며(필수 입력, 등록 시와 동일한 주소여야 진행됨), 담당자 이메일을 알 수 없는 경우 이용관리시스템 고객센터(1899-0979)로 문의해야 합니다. 처리가 완료되면 school_report@nia.or.kr 주소로 비밀번호 재설정 안내 메일을 발송하며, 메일 발송에는 최대 5분가량 소요될 수 있습니다.",
+    "expected_documents": ["이용관리_20260702.pdf"],
+    "expected_pages": [11, 12],
+    "expected_answer_keywords": ["로그인 화면", "기관명", "비밀번호초기화", "담당자 이메일", "1899-0979", "school_report@nia.or.kr", "5분"],
+    "question_type": "procedure",
+    "category": "유무선 통합 관리 시스템",
+    "source": "human",
+    "verification_note": "pdfplumber 텍스트 직접 추출로 확인(PDF 11-12페이지). 기존 human_013(이용관리시스템 학교 등록 신청)·core_009(통신사업자 로그인, 36페이지)는 다른 절차/페이지를 다뤄 겹치지 않음."
+  },
+  {
+    "id": "final_003",
+    "question": "무선랜 구축운영 가이드라인에서 설명하는 802.11ac와 802.11ax 무선랜 표준의 주파수 대역·속도 특성은 각각 무엇이며, 802.11ax를 160MHz 대역폭으로 사용할 때 제공 가능한 최대 속도는 얼마인가요?",
+    "expected_answer": "802.11ac(WiFi 5)는 5GHz 대역에서 6Gbps 속도를 목표로 하며 '기가급 와이파이'로 불립니다. 802.11ax(WiFi 6)는 2.4GHz/5GHz 대역에서 대규모 혼잡 환경에서도 높은 수율을 달성하는 특성이 있습니다. 802.11ax를 160MHz 대역폭으로 사용하면 최대 9.6Gbps 속도를 제공하는 제품이 출시되고 있습니다.",
+    "expected_documents": ["★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf"],
+    "expected_pages": [5],
+    "expected_answer_keywords": ["802.11ac", "WiFi 5", "5GHz", "6Gbps", "802.11ax", "WiFi 6", "2.4GHz", "160MHz", "9.6Gbps"],
+    "question_type": "fact",
+    "category": "무선망",
+    "source": "human",
+    "verification_note": "pdfplumber 텍스트 직접 추출로 확인(PDF 5페이지). 기존 human_010(무선랜 구성형태)·core_006(장애원인 3범주, 9페이지)과 다른 페이지·내용."
+  }
+]

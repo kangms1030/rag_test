@@ -1,0 +1,307 @@
+{
+  "schema_version": 2,
+  "run_id": "20260710T042026Z_a7d473",
+  "run_status": "success",
+  "retrieval_mode": "catalog",
+  "timestamp": "2026-07-10T04:23:23.959842+00:00",
+  "config_snapshot": {
+    "top_docs": 2,
+    "top_pages": 5,
+    "top_chunks": 8,
+    "page_prefilter_topn": 12,
+    "min_dense_similarity": 0.35,
+    "min_doc_score": 0.35,
+    "doc_score_gap_ratio": 0.6,
+    "llm_model": "gemma4:12b",
+    "vlm_model": "gemma4:12b",
+    "embedding_model": "embeddinggemma"
+  },
+  "question": "무선 AP 장애 발생 시 조치 절차를 알려줘",
+  "query_analysis": {
+    "intent": "무선 AP 장애 발생 시의 단계별 조치 절차 및 대응 매뉴얼 확인",
+    "keywords": [
+      "무선 AP",
+      "장애 조치",
+      "네트워크 장애"
+    ],
+    "domain_terms": [
+      "AP",
+      "스쿨넷",
+      "통합관제시스템",
+      "무선 네트워크"
+    ],
+    "required_data_type": "procedure",
+    "retrieval_query": "무선 AP 장애 발생 시 조치 절차 및 대응 매뉴얼",
+    "reason": "사용자가 무선 AP의 장애 상황에 대한 구체적인 단계별 조치 방법을 요구하고 있으며, 이는 네트워크 관리 지침이나 운영 매뉴얼 내의 절차 정보가 필요함을 의미함."
+  },
+  "selected_documents": [
+    {
+      "rank": 1,
+      "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "file_path": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "catalog_row_id": "cat_0007",
+      "selection_score": 0.991935,
+      "selection_reason": "카탈로그 하이브리드 검색 상위 1위 (dense_rank=1, bm25_rank=0)"
+    },
+    {
+      "rank": 2,
+      "document_name": "학교 무선인터넷 자가진단 체크리스트(안).pdf",
+      "file_path": "학교 무선인터넷 자가진단 체크리스트(안).pdf",
+      "catalog_row_id": "cat_0008",
+      "selection_score": 0.991935,
+      "selection_reason": "카탈로그 하이브리드 검색 상위 2위 (dense_rank=0, bm25_rank=1)"
+    }
+  ],
+  "selected_pages": [
+    {
+      "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "page_number": 22,
+      "page_score": 1.0,
+      "page_summary": "AP 및 SWIMS 관련 장애 발생 시의 조치 가이드. 장애 유형과 세부 내역에 따른 구체적인 대응 방안을 표 형식으로 안내함.",
+      "image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_1차\\rag_catalog_experiment\\cache\\pages\\0-1v-20p-2023-a874b961\\p0022.png"
+    },
+    {
+      "document_name": "학교 무선인터넷 자가진단 체크리스트(안).pdf",
+      "page_number": 11,
+      "page_score": 1.0,
+      "page_summary": "무선 인터넷 연결 장애 시 대응을 위한 '무선 AP 상태점검 방안' 안내문. 무선 AP 및 네트워크 장비의 상태 확인과 문제 해결을 위한 단계별 진단 절차와 예시를 포함함.",
+      "image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_1차\\rag_catalog_experiment\\cache\\pages\\doc-8bc422d9\\p0011.png"
+    },
+    {
+      "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "page_number": 12,
+      "page_score": 0.961166,
+      "page_summary": "학교 내 무선망 장애 진단 및 해결방안 안내. NIA 및 벤치비(Bench.fi) 모바일 앱을 활용한 인터넷 속도 측정 방법과 측정 결과에 따른 후속 조치 절차를 포함하고 있습니다.",
+      "image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_1차\\rag_catalog_experiment\\cache\\pages\\0-1v-20p-2023-a874b961\\p0012.png"
+    },
+    {
+      "document_name": "학교 무선인터넷 자가진단 체크리스트(안).pdf",
+      "page_number": 13,
+      "page_score": 0.946248,
+      "page_summary": "무선 인터넷 연결 장애 시의 스쿨넷 접선망 점검 방안을 다루고 있으며, 문제 상황에 따른 단계별 진단 흐름도와 실제 네트워크 연결 상태를 확인하기 위한 ping 테스트 방법 및 사례가 담겨 있습니다.",
+      "image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_1차\\rag_catalog_experiment\\cache\\pages\\doc-8bc422d9\\p0013.png"
+    },
+    {
+      "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "page_number": 13,
+      "page_score": 0.945793,
+      "page_summary": "학교 내 무선망 장애 진단 및 해결방안. 모바일 앱(WiFi Analyzer)을 활용하여 학교 내 무선 신호 세기 측정 및 채널 중첩 상태를 분석하는 과정을 보여줌.",
+      "image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_1차\\rag_catalog_experiment\\cache\\pages\\0-1v-20p-2023-a874b961\\p0013.png"
+    }
+  ],
+  "selected_visual_chunks": [
+    {
+      "chunk_id": "0-1v-20p-2023-a874b961_p0022_c00",
+      "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "page_number": 22,
+      "chunk_type": "title",
+      "summary": "AP 및 SWIMS 시스템의 장애 대응을 위한 가이드 문서의 제목입니다.",
+      "bbox": {
+        "x1": 0.04,
+        "y1": 0.02,
+        "x2": 0.96,
+        "y2": 0.08
+      },
+      "score": 1.0,
+      "why_relevant": "검색 점수 1.0000 (dense_rank=0, bm25_rank=0), 매칭 키워드: 장애 조치, AP"
+    },
+    {
+      "chunk_id": "doc-8bc422d9_p0011_c00",
+      "document_name": "학교 무선인터넷 자가진단 체크리스트(안).pdf",
+      "page_number": 11,
+      "chunk_type": "title",
+      "summary": "무선 AP의 상태를 점검하는 방법에 대한 주요 제목입니다.",
+      "bbox": {
+        "x1": 0.0,
+        "y1": 0.0,
+        "x2": 1.0,
+        "y2": 0.13
+      },
+      "score": 0.984127,
+      "why_relevant": "검색 점수 0.9841 (dense_rank=0, bm25_rank=2), 매칭 키워드: AP, 무선 AP"
+    },
+    {
+      "chunk_id": "doc-8bc422d9_p0011_c01",
+      "document_name": "학교 무선인터넷 자가진단 체크리스트(안).pdf",
+      "page_number": 11,
+      "chunk_type": "diagram",
+      "summary": "무선 인터넷 연결 문제 발생 시 점검해야 할 항목들을 흐름도로 나타낸 내용입니다.",
+      "bbox": {
+        "x1": 0.05,
+        "y1": 0.14,
+        "x2": 0.48,
+        "y2": 0.86
+      },
+      "score": 0.984127,
+      "why_relevant": "검색 점수 0.9841 (dense_rank=2, bm25_rank=0), 매칭 키워드: AP, 무선 AP, 무선 네트워크"
+    },
+    {
+      "chunk_id": "0-1v-20p-2023-a874b961_p0022_c01",
+      "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "page_number": 22,
+      "chunk_type": "table",
+      "summary": "상황별 장애 유형과 그에 따른 구체적인 조치 방안을 표로 정리한 내용입니다.",
+      "bbox": {
+        "x1": 0.04,
+        "y1": 0.1,
+        "x2": 0.96,
+        "y2": 0.78
+      },
+      "score": 0.983871,
+      "why_relevant": "검색 점수 0.9839 (dense_rank=1, bm25_rank=1), 매칭 키워드: AP"
+    },
+    {
+      "chunk_id": "doc-8bc422d9_p0011_c02",
+      "document_name": "학교 무선인터넷 자가진단 체크리스트(안).pdf",
+      "page_number": 11,
+      "chunk_type": "procedure",
+      "summary": "무선 AP 및 케이블 상태를 점검하는 구체적인 방법과 예시 장비의 LED 상태 안내가 포함되어 있습니다.",
+      "bbox": {
+        "x1": 0.5,
+        "y1": 0.14,
+        "x2": 0.95,
+        "y2": 0.88
+      },
+      "score": 0.968498,
+      "why_relevant": "검색 점수 0.9685 (dense_rank=1, bm25_rank=3), 매칭 키워드: AP, 무선 AP"
+    },
+    {
+      "chunk_id": "doc-8bc422d9_p0013_c01",
+      "document_name": "학교 무선인터넷 자가진단 체크리스트(안).pdf",
+      "page_number": 13,
+      "chunk_type": "diagram",
+      "summary": "무선 인터넷 연결 문제 발생 시 단계별로 점검해야 할 항목을 도식화한 흐름도입니다.",
+      "bbox": {
+        "x1": 0.08,
+        "y1": 0.16,
+        "x2": 0.53,
+        "y2": 0.87
+      },
+      "score": 0.968498,
+      "why_relevant": "검색 점수 0.9685 (dense_rank=3, bm25_rank=1), 매칭 키워드: 스쿨넷"
+    },
+    {
+      "chunk_id": "doc-8bc422d9_p0006_c02",
+      "document_name": "학교 무선인터넷 자가진단 체크리스트(안).pdf",
+      "page_number": 6,
+      "chunk_type": "diagram",
+      "summary": "네트워크 속도가 저하될 때의 단계별 대응 절차를 시각화한 흐름도입니다.",
+      "bbox": {
+        "x1": 0.08,
+        "y1": 0.14,
+        "x2": 0.5,
+        "y2": 0.92
+      },
+      "score": 0.938462,
+      "why_relevant": "검색 점수 0.9385 (dense_rank=4, bm25_rank=4), 매칭 키워드: 무선 네트워크"
+    },
+    {
+      "chunk_id": "0-1v-20p-2023-a874b961_p0012_c01",
+      "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "page_number": 12,
+      "chunk_type": "procedure",
+      "summary": "NIA 또는 벤치비 앱을 활용한 무선 인터넷 속도 측정 방법과 속도가 느릴 경우의 조치 절차를 설명합니다.",
+      "bbox": {
+        "x1": 0.0,
+        "y1": 0.1,
+        "x2": 1.0,
+        "y2": 0.25
+      },
+      "score": 0.932656,
+      "why_relevant": "검색 점수 0.9327 (dense_rank=7, bm25_rank=2)"
+    }
+  ],
+  "source_images": [
+    {
+      "image_index": 1,
+      "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "page_number": 22,
+      "image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_1차\\rag_catalog_experiment\\cache\\pages\\0-1v-20p-2023-a874b961\\p0022.png"
+    },
+    {
+      "image_index": 2,
+      "document_name": "학교 무선인터넷 자가진단 체크리스트(안).pdf",
+      "page_number": 11,
+      "image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_1차\\rag_catalog_experiment\\cache\\pages\\doc-8bc422d9\\p0011.png"
+    },
+    {
+      "image_index": 3,
+      "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "page_number": 12,
+      "image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_1차\\rag_catalog_experiment\\cache\\pages\\0-1v-20p-2023-a874b961\\p0012.png"
+    }
+  ],
+  "page_evidence": [
+    {
+      "image_index": 1,
+      "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "page_number": 22,
+      "evidence_type": "mixed",
+      "evidence_text": "조치방안 SWIMS에서 AP제어체크 확인 (AP관리 > AP관리) AP OFF 일경우 AP WEB 접속하여 재부팅 후 재시도 AP WEB 접속하여 비밀번호 변경 SWIMS에서 AP제어체크 확인 (AP관리 > AP관리) AP OFF 일경우 AP WEB 접속하여 재부팅 후 재시도 해당AP 통신상태 확인 SWIMS 등록 정보와 AP Web 접속하여 MAC, IP 확인 AP OFF 일경우 AP WEB 접속하여 재부팅 후 재시도 AP에서 SWIMS로 정보를 전달하여 30분 단위로 SWIMS에서 정보 수집 실제접속한단말수와차이가있을수있음 AP WEB 접속하여 비밀번호 변경 AP 제조사에 문의하여 전달 학교 자체 설치하라고 함. 이후 문제 발생시에는 현장지원 요청함.",
+      "visual_description": "무선 AP의 상태(OFF, 재부팅 실패), 펌웨어 업데이트 미적용, 브라켓 탈거/분실 등 상황별 구체적인 조치방안이 기술되어 있습니다.",
+      "bbox": {
+        "x1": 0.42,
+        "y1": 0.03,
+        "x2": 0.86,
+        "y2": 0.74
+      },
+      "crop_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_1차\\rag_catalog_experiment\\outputs\\evidence\\20260710T042026Z_a7d473\\0-1v-20p-2023-a874b961_p0022_ev1_crop.jpg",
+      "highlighted_page_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_1차\\rag_catalog_experiment\\outputs\\evidence\\20260710T042026Z_a7d473\\0-1v-20p-2023-a874b961_p0022_highlighted.jpg",
+      "why_relevant": "무선 AP의 상태(OFF, 재부팅 실패), 펌웨어 업데이트 미적용, 브라켓 탈거/분실 등 상황별 구체적인 조치방안이 기술되어 있습니다.",
+      "confidence": 0.95
+    },
+    {
+      "image_index": 2,
+      "document_name": "학교 무선인터넷 자가진단 체크리스트(안).pdf",
+      "page_number": 11,
+      "evidence_type": "mixed",
+      "evidence_text": "- 각 교실에 설치되어 있는 무선 AP의 LED 상태를 확인하여 전원 상태 및 무선인터넷연결이 인터넷 연결 등을 점검 안될경우 - 정상  2번으로 / 비정상  1-1번으로 1-1 비정상 1-1 AP 전원 및 케이블 점검 및 조치 무선AP AP 전원및케이블연결 조치불가 1 상태점검 점검및조치(육안체크) - 무선AP의LED 상태를확인하여전원상태및인터넷연결등을점검 · 무선AP 전원확인: UTP케이블과AP의연결부분확인 정상 2-1 - 위 방안 조치 후 해결불가  3-1번으로 비정상 무선 무선프로파일정보점검 ※ 제조사별 AP의LED 상태는 상이할 수있음, 유지보수 업체를 통해 확인 필요 2 인터넷 (ID/PW, SSID 안뜸등) 접속점검 ex) 다보링크 : DVW-624i - 무선 AP의 LED 상태 확인 정상 - Power (Blue/Red : 정상동작/부팅,장애알람) 비정상 3-1 - WAN1 (Blue 2.5 or 5Gbps연결/Orange 스쿨넷 1Gbps연결) 3 집선망 스쿨넷사업자or 교육청문의 점검 - WAN2 (Orange : 연결) - LAN (Orange : 연결) - 2.4G/5G (Blue:무선ON)",
+      "visual_description": "무선 AP 상태 점검(LED), 전원 및 케이블 연결 점검, 무선 정보 확인 등 단계별 진단 절차가 도식화되어 있습니다.",
+      "bbox": {
+        "x1": 0.03,
+        "y1": 0.24,
+        "x2": 0.97,
+        "y2": 0.86
+      },
+      "crop_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_1차\\rag_catalog_experiment\\outputs\\evidence\\20260710T042026Z_a7d473\\doc-8bc422d9_p0011_ev1_crop.jpg",
+      "highlighted_page_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_1차\\rag_catalog_experiment\\outputs\\evidence\\20260710T042026Z_a7d473\\doc-8bc422d9_p0011_highlighted.jpg",
+      "why_relevant": "무선 AP 상태 점검(LED), 전원 및 케이블 연결 점검, 무선 정보 확인 등 단계별 진단 절차가 도식화되어 있습니다.",
+      "confidence": 0.95
+    }
+  ],
+  "final_answer": "무선 AP 장애 발생 시 조치 절차는 다음과 같습니다.\n\n1. **진단 및 점검(이미지 2)**: 무선 AP의 LED 상태를 확인하고, 비정상일 경우 전원 및 케이블 연결을 점검합니다. 이후에도 문제가 해결되지 않으면 무선 정보(IP/DW, SSID 등)를 확인하며, 최종적으로 스쿨넷 사업자나 교무팀에 문의하여 조치합니다.\n\n2. **상황별 대응(이미지 1)**: \n   - AP 상태가 OFF이거나 재부팅 실패 시, SWIMS에서 상태를 확인한 후 비정상일 경우 AP WEB에 접속하여 재시도하거나 비밀번호를 변경합니다.\n   - AP 펌웨어 업데이트 미적용 시, SWIMS에서 확인 후 AP Web을 통해 업데이트를 진행합니다.\n   - 브라켓 탈거 등 기타 상황이나 분실 시에는 각각 AP WEB에서 비밀번호를 변경하거나 제조사에 문의하여 처리합니다.",
+  "verification": {
+    "is_answer_supported": false,
+    "unsupported_claims": [
+      "스쿨넷 사업자나 교무팀에 문의"
+    ],
+    "notes": "근거 자료에서 단계별 진단 절차와 상황별 조치방안이 포함되어 있다는 점은 확인되나, '스쿨렛'이나 '교무팀'과 같은 구체적인 연락처 및 담당 부서명은 근거 요약 내용에 명시되어 있지 않습니다.",
+    "numeric_claims": [],
+    "numeric_verification_notes": ""
+  },
+  "metrics": {
+    "mode": "catalog",
+    "depth": "answer",
+    "is_ingest": false,
+    "summary_pages_required": 24,
+    "chunk_pages_required": 4,
+    "summary_calls": 0,
+    "chunk_calls": 0,
+    "answer_vlm_calls": 1,
+    "verify_llm_calls": 1,
+    "query_analyzer_calls": 1,
+    "embed_calls": 11,
+    "page_index_coverage": {
+      "total_pages": 0,
+      "summarized_pages": 0,
+      "pending_pages": 0
+    },
+    "elapsed_seconds_total": 177.187,
+    "elapsed_seconds_retrieval": 33.281,
+    "elapsed_seconds_answer": 143.906,
+    "selected_doc_count": 2,
+    "selected_page_count": 5,
+    "selected_chunk_count": 8,
+    "evidence_count": 2
+  }
+}

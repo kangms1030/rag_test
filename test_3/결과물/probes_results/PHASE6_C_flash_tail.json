@@ -1,0 +1,65 @@
+{
+  "partial": true,
+  "x_overrides": {
+    "x_backend": "gemini"
+  },
+  "results": [
+    {
+      "qid": "core_001",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 1.0,
+      "unsupported_claims": [],
+      "groundedness": "supported",
+      "model_calls": 2,
+      "length_retry": 0,
+      "rollback": [],
+      "elapsed_s": 125.0,
+      "final_answer_head": "제주특별자치도교육청의 스쿨넷 5단계 재해복구(DR)서비스 요금은 다음과 같습니다.\n\n*   **100M:** 2,907,000원 (부가세 별도)\n*   **500M:** 4,121",
+      "cost": 0.0,
+      "gemini_api_s": 2.91,
+      "gemini_calls": 0
+    },
+    {
+      "qid": "core_004",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 0.6,
+      "unsupported_claims": [],
+      "groundedness": "supported",
+      "model_calls": 2,
+      "length_retry": 0,
+      "rollback": [],
+      "elapsed_s": 113.6,
+      "final_answer_head": "관리자 승인 소요 시간은 최대 48시간이며, 이메일 등록 시 주의사항은 @korea.kr 메일을 사용할 경우 메일 수신이 정상적으로 이루어지지 않을 수 있어 다른 이메일 사용을 권",
+      "cost": 0.0,
+      "gemini_api_s": 2.72,
+      "gemini_calls": 0
+    },
+    {
+      "qid": "vp_009",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 1.0,
+      "unsupported_claims": [],
+      "groundedness": "supported",
+      "model_calls": 2,
+      "length_retry": 0,
+      "rollback": [],
+      "elapsed_s": 97.6,
+      "final_answer_head": "무선 채널 및 신호 세기를 측정하는 무료 모바일 앱의 이름은 **WiFi 개요 360**이며, **갤럭시 앱 스토어**에서 다운로드할 수 있습니다.",
+      "cost": 0.0,
+      "gemini_api_s": 2.52,
+      "gemini_calls": 0
+    }
+  ]
+}

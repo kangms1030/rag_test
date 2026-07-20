@@ -1,0 +1,99 @@
+{
+  "pipeline": "test1",
+  "mode": "no_catalog",
+  "qid": "final_001",
+  "question": "학내망 구축 및 운영관리 개선을 위한 가이드에서 제시하는 UTP 케이블 규격(Cat.5, Cat.5e, Cat.6)별 최대 전송거리와 통신속도(Data Performance / Max Speed Data)는 각각 어떻게 다른가요?",
+  "run_id": "20260714T032217Z_98f913",
+  "error": null,
+  "final_answer": "UTP 케이블 규격별 최대 전송거리와 통신속도(Data Performance, Max Speed Data)는 다음과 같습니다.\n- Cat.5: 100M / 100Mbps / 100Mbps\n- Cat.5e: 100M / 100Mbps / 100Mbps\n- Cat.6: 100M / 1Gbps / 10Gbps",
+  "abstained": false,
+  "skip_reason": null,
+  "selected_documents": [
+    "8-1. 스쿨넷서비스 학내망 구축 및 운영관리 개선을 위한 가이드.pdf",
+    "★23년 학교 유무선 운영·관리 안내서_최종.pdf"
+  ],
+  "selected_pages": [
+    12,
+    5,
+    84,
+    14,
+    2
+  ],
+  "doc_match": true,
+  "page_match": true,
+  "keyword_recall": 0.875,
+  "keywords_found": [
+    "Cat.5",
+    "Cat.5e",
+    "Cat.6",
+    "100M",
+    "100Mbps",
+    "1Gbps",
+    "10Gbps"
+  ],
+  "keywords_missing": [
+    "10Mbps"
+  ],
+  "is_answer_supported": true,
+  "unsupported_claims": [],
+  "stage_timings_seconds": {
+    "query_analyzer": 22.641,
+    "page_summary": 362.219,
+    "visual_chunk": 439.593,
+    "retrieval_search": 1.266,
+    "retrieval_total": 825.719,
+    "answer": 46.203,
+    "evidence": 0.391,
+    "verify": 17.844,
+    "total": 890.157
+  },
+  "model_calls": {
+    "query_analyzer_calls": 1,
+    "summary_calls": 24,
+    "chunk_calls": 4,
+    "answer_vlm_calls": 1,
+    "verify_llm_calls": 1,
+    "embed_calls": 32,
+    "llm_calls_total": 2,
+    "vlm_calls_total": 29
+  },
+  "vlm_pages_required_cache_independent": {
+    "summary_pages_required": 24,
+    "chunk_pages_required": 4
+  },
+  "evidence": [
+    {
+      "image_index": 1,
+      "document_name": "8-1. 스쿨넷서비스 학내망 구축 및 운영관리 개선을 위한 가이드.pdf",
+      "page_number": 12,
+      "confidence": 0.95,
+      "why_relevant": "통신케이블 규격에 따른 최대 전송 거리 및 통신 속도(Data Performance, Max Speed Data)를 나타내는 표가 포함되어 있습니다.",
+      "bbox": {
+        "x1": 0.04,
+        "y1": 0.13,
+        "x2": 0.48,
+        "y2": 0.26
+      },
+      "crop_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test12_total_test\\_work_test1\\output\\evidence\\20260714T032217Z_98f913\\8-1-33511a48_p0012_ev1_crop.jpg",
+      "highlighted_page_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test12_total_test\\_work_test1\\output\\evidence\\20260714T032217Z_98f913\\8-1-33511a48_p0012_highlighted.jpg"
+    },
+    {
+      "image_index": 2,
+      "document_name": "8-1. 스쿨넷서비스 학내망 구축 및 운영관리 개선을 위한 가이드.pdf",
+      "page_number": 5,
+      "confidence": 0.95,
+      "why_relevant": "마. 통신케이블 섹션에서 케이블 규격별 성능을 비교하는 표가 포함되어 있습니다.",
+      "bbox": {
+        "x1": 0.54,
+        "y1": 0.17,
+        "x2": 0.96,
+        "y2": 0.32
+      },
+      "crop_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test12_total_test\\_work_test1\\output\\evidence\\20260714T032217Z_98f913\\8-1-33511a48_p0005_ev1_crop.jpg",
+      "highlighted_page_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test12_total_test\\_work_test1\\output\\evidence\\20260714T032217Z_98f913\\8-1-33511a48_p0005_highlighted.jpg"
+    }
+  ],
+  "process_wall_seconds": 891.265,
+  "subprocess_returncode": 0,
+  "evidence_dir": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test12_total_test\\test1_no_catalog\\final_001_evidence"
+}

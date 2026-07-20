@@ -1,0 +1,24 @@
+{
+  "question": " 무선 AP 장애 조치 절차를 알려줘",
+  "query_analysis": {
+    "intent": "mock_intent",
+    "keywords": [
+      "mock"
+    ],
+    "domain_terms": [],
+    "required_data_type": "unknown",
+    "retrieval_query": "다음 사용자 질문을 분석해줘.\n\n질문:  무선 AP 장애 조치 절차를 알려줘\n\n반드시 아래 JSON 형식으로만 답해줘. 다른 텍스트는 쓰지 마.\n{\n  \"intent\": \"질문의 ",
+    "reason": "mock query analyzer"
+  },
+  "selected_documents": [],
+  "selected_pages": [],
+  "selected_visual_chunks": [],
+  "page_evidence": [],
+  "final_answer": "선택된 문서에서 확인 불가",
+  "verification": {
+    "is_answer_supported": false,
+    "unsupported_claims": [],
+    "notes": "관련 문서/페이지를 찾지 못함"
+  },
+  "mock": true
+}

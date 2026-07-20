@@ -1,0 +1,887 @@
+{
+  "config": {
+    "use_catalog_gate": false,
+    "rerank_floor": 0.1,
+    "candidates": 40,
+    "final_pages": 3
+  },
+  "summary": {
+    "page_hit@1": 0.5161,
+    "page_hit@3": 0.6129,
+    "doc_hit@1": 0.9355,
+    "doc_hit@3": 0.9677,
+    "irrelevant_reject_rate": 1.0,
+    "n_relevant": 31,
+    "n_irrelevant": 5,
+    "rerank_score_dist": {
+      "relevant_min": 0.729,
+      "relevant_p10": 0.812,
+      "irrelevant_max": 0.013,
+      "irrelevant_scores": [
+        0.0,
+        0.004,
+        0.013,
+        0.001,
+        0.001
+      ]
+    }
+  },
+  "per_question": [
+    {
+      "qid": "core_001",
+      "answer_path": "text",
+      "rerank_top": 0.9973,
+      "n_pages": 3,
+      "elapsed_s": 24.51,
+      "top3": [
+        [
+          "(첨부)_5단계_스쿨넷서비스_제공",
+          11,
+          0.9973
+        ],
+        [
+          "(첨부)_5단계_스쿨넷서비스_제공",
+          5,
+          0.9614
+        ],
+        [
+          "(첨부)_5단계_스쿨넷서비스_제공",
+          14,
+          0.9472
+        ]
+      ],
+      "page_hit@1": true,
+      "page_hit@3": true
+    },
+    {
+      "qid": "core_002",
+      "answer_path": "text",
+      "rerank_top": 0.9926,
+      "n_pages": 3,
+      "elapsed_s": 3.61,
+      "top3": [
+        [
+          "WEISS-DS-001-현황분석서",
+          13,
+          0.9926
+        ],
+        [
+          "WEISS-DS-001-현황분석서",
+          18,
+          0.9881
+        ],
+        [
+          "WEISS-DS-001-현황분석서",
+          48,
+          0.9848
+        ]
+      ],
+      "page_hit@1": false,
+      "page_hit@3": false
+    },
+    {
+      "qid": "core_003",
+      "answer_path": "text",
+      "rerank_top": 0.8637,
+      "n_pages": 3,
+      "elapsed_s": 3.99,
+      "top3": [
+        [
+          "WEISS-DE-001-(컨설팅)",
+          22,
+          0.8637
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)",
+          20,
+          0.8584
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)",
+          21,
+          0.8572
+        ]
+      ],
+      "page_hit@1": false,
+      "page_hit@3": true
+    },
+    {
+      "qid": "core_004",
+      "answer_path": "text",
+      "rerank_top": 0.9972,
+      "n_pages": 3,
+      "elapsed_s": 1.31,
+      "top3": [
+        [
+          "WEISS-DE-001-(컨설팅)",
+          16,
+          0.9972
+        ],
+        [
+          "이용관리_20260702.pdf",
+          7,
+          0.975
+        ],
+        [
+          "이용관리_20260702.pdf",
+          8,
+          0.952
+        ]
+      ],
+      "page_hit@1": true,
+      "page_hit@3": true
+    },
+    {
+      "qid": "core_005",
+      "answer_path": "text",
+      "rerank_top": 0.9872,
+      "n_pages": 3,
+      "elapsed_s": 1.77,
+      "top3": [
+        [
+          "8-1. 스쿨넷서비스 학내망 구축",
+          2,
+          0.9872
+        ],
+        [
+          "8-1. 스쿨넷서비스 학내망 구축",
+          13,
+          0.9774
+        ],
+        [
+          "8-1. 스쿨넷서비스 학내망 구축",
+          9,
+          0.9765
+        ]
+      ],
+      "page_hit@1": false,
+      "page_hit@3": false
+    },
+    {
+      "qid": "core_006",
+      "answer_path": "text",
+      "rerank_top": 0.9654,
+      "n_pages": 3,
+      "elapsed_s": 2.99,
+      "top3": [
+        [
+          "★. 무선랜 구축운영 가이드라인_",
+          9,
+          0.9654
+        ],
+        [
+          "★23년 학교 유무선 운영·관리 ",
+          100,
+          0.8501
+        ],
+        [
+          "★. 무선랜 구축운영 가이드라인_",
+          21,
+          0.6445
+        ]
+      ],
+      "page_hit@1": true,
+      "page_hit@3": true
+    },
+    {
+      "qid": "core_007",
+      "answer_path": "text",
+      "rerank_top": 0.988,
+      "n_pages": 3,
+      "elapsed_s": 2.65,
+      "top3": [
+        [
+          "학교 무선인터넷 자가진단 체크리스",
+          2,
+          0.988
+        ],
+        [
+          "학교 무선인터넷 자가진단 체크리스",
+          9,
+          0.9388
+        ],
+        [
+          "★23년 학교 유무선 운영·관리 ",
+          100,
+          0.8431
+        ]
+      ],
+      "page_hit@1": false,
+      "page_hit@3": false
+    },
+    {
+      "qid": "core_008",
+      "answer_path": "text",
+      "rerank_top": 0.9822,
+      "n_pages": 3,
+      "elapsed_s": 3.41,
+      "top3": [
+        [
+          "스마트 단말 관리 시스템[MDM]",
+          90,
+          0.9822
+        ],
+        [
+          "스마트 단말 관리 시스템[MDM]",
+          91,
+          0.9814
+        ],
+        [
+          "스마트 단말 관리 시스템[MDM]",
+          5,
+          0.4068
+        ]
+      ],
+      "page_hit@1": true,
+      "page_hit@3": true
+    },
+    {
+      "qid": "core_009",
+      "answer_path": "text",
+      "rerank_top": 0.9676,
+      "n_pages": 3,
+      "elapsed_s": 1.52,
+      "top3": [
+        [
+          "이용관리_20260702.pdf",
+          8,
+          0.9676
+        ],
+        [
+          "이용관리_20260702.pdf",
+          36,
+          0.8928
+        ],
+        [
+          "이용관리_20260702.pdf",
+          39,
+          0.7793
+        ]
+      ],
+      "page_hit@1": false,
+      "page_hit@3": true
+    },
+    {
+      "qid": "core_010",
+      "answer_path": "text",
+      "rerank_top": 0.897,
+      "n_pages": 3,
+      "elapsed_s": 2.52,
+      "top3": [
+        [
+          "통합관제 이용기관 전용 매뉴얼_2",
+          19,
+          0.897
+        ],
+        [
+          "통합관제(사용자)_20260702",
+          27,
+          0.8943
+        ],
+        [
+          "통합관제 이용기관 전용 매뉴얼_2",
+          22,
+          0.8639
+        ]
+      ],
+      "page_hit@1": false,
+      "page_hit@3": false
+    },
+    {
+      "qid": "core_011",
+      "answer_path": "text",
+      "rerank_top": 0.9879,
+      "n_pages": 3,
+      "elapsed_s": 1.33,
+      "top3": [
+        [
+          "통합관제(사용자)_20260702",
+          29,
+          0.9879
+        ],
+        [
+          "통합관제(사용자)_20260702",
+          30,
+          0.8076
+        ],
+        [
+          "통합관제(최고관리자)_202607",
+          28,
+          0.7772
+        ]
+      ],
+      "page_hit@1": true,
+      "page_hit@3": true
+    },
+    {
+      "qid": "core_012",
+      "answer_path": "text",
+      "rerank_top": 0.838,
+      "n_pages": 3,
+      "elapsed_s": 1.89,
+      "top3": [
+        [
+          "통합관제(최고관리자)_202607",
+          27,
+          0.838
+        ],
+        [
+          "통합관제(최고관리자)_202607",
+          42,
+          0.8213
+        ],
+        [
+          "통합관제(사용자)_20260702",
+          25,
+          0.6567
+        ]
+      ],
+      "page_hit@1": false,
+      "page_hit@3": false
+    },
+    {
+      "qid": "core_013",
+      "answer_path": "text",
+      "rerank_top": 0.9122,
+      "n_pages": 3,
+      "elapsed_s": 4.64,
+      "top3": [
+        [
+          "학교 무선인터넷 자가진단 체크리스",
+          11,
+          0.9122
+        ],
+        [
+          "통합관제(최고관리자)_202607",
+          86,
+          0.7334
+        ],
+        [
+          "★. 무선랜 구축운영 가이드라인_",
+          16,
+          0.7109
+        ]
+      ],
+      "page_hit@1": true,
+      "page_hit@3": true
+    },
+    {
+      "qid": "irrelevant_001",
+      "answer_path": "none",
+      "rerank_top": 0.0003,
+      "n_pages": 0,
+      "elapsed_s": 1.43,
+      "top3": [],
+      "irrelevant": true,
+      "rejected": true
+    },
+    {
+      "qid": "irrelevant_002",
+      "answer_path": "none",
+      "rerank_top": 0.0038,
+      "n_pages": 0,
+      "elapsed_s": 3.81,
+      "top3": [],
+      "irrelevant": true,
+      "rejected": true
+    },
+    {
+      "qid": "irrelevant_003",
+      "answer_path": "none",
+      "rerank_top": 0.0135,
+      "n_pages": 0,
+      "elapsed_s": 3.69,
+      "top3": [],
+      "irrelevant": true,
+      "rejected": true
+    },
+    {
+      "qid": "vp_001",
+      "answer_path": "text",
+      "rerank_top": 0.9995,
+      "n_pages": 3,
+      "elapsed_s": 5.17,
+      "top3": [
+        [
+          "WEISS-DS-001-현황분석서",
+          9,
+          0.9995
+        ],
+        [
+          "WEISS-DS-001-현황분석서",
+          14,
+          0.9973
+        ],
+        [
+          "WEISS-DS-001-현황분석서",
+          59,
+          0.9958
+        ]
+      ],
+      "page_hit@1": true,
+      "page_hit@3": true
+    },
+    {
+      "qid": "vp_002",
+      "answer_path": "text",
+      "rerank_top": 0.9996,
+      "n_pages": 3,
+      "elapsed_s": 5.25,
+      "top3": [
+        [
+          "WEISS-DS-001-현황분석서",
+          14,
+          0.9996
+        ],
+        [
+          "WEISS-DS-001-현황분석서",
+          59,
+          0.9963
+        ],
+        [
+          "WEISS-DS-001-현황분석서",
+          19,
+          0.9962
+        ]
+      ],
+      "page_hit@1": true,
+      "page_hit@3": true
+    },
+    {
+      "qid": "vp_003",
+      "answer_path": "text",
+      "rerank_top": 0.9996,
+      "n_pages": 3,
+      "elapsed_s": 3.84,
+      "top3": [
+        [
+          "WEISS-DS-001-현황분석서",
+          19,
+          0.9996
+        ],
+        [
+          "WEISS-DS-001-현황분석서",
+          83,
+          0.9979
+        ],
+        [
+          "WEISS-DS-001-현황분석서",
+          18,
+          0.9965
+        ]
+      ],
+      "page_hit@1": true,
+      "page_hit@3": true
+    },
+    {
+      "qid": "vp_004",
+      "answer_path": "text",
+      "rerank_top": 0.9973,
+      "n_pages": 3,
+      "elapsed_s": 3.58,
+      "top3": [
+        [
+          "WEISS-DS-001-현황분석서",
+          20,
+          0.9973
+        ],
+        [
+          "WEISS-DS-001-현황분석서",
+          59,
+          0.9929
+        ],
+        [
+          "WEISS-DS-001-현황분석서",
+          35,
+          0.989
+        ]
+      ],
+      "page_hit@1": true,
+      "page_hit@3": true
+    },
+    {
+      "qid": "vp_005",
+      "answer_path": "text",
+      "rerank_top": 0.9811,
+      "n_pages": 3,
+      "elapsed_s": 3.89,
+      "top3": [
+        [
+          "WEISS-DS-001-현황분석서",
+          62,
+          0.9811
+        ],
+        [
+          "WEISS-DS-001-현황분석서",
+          59,
+          0.9735
+        ],
+        [
+          "WEISS-DS-001-현황분석서",
+          39,
+          0.9671
+        ]
+      ],
+      "page_hit@1": false,
+      "page_hit@3": false
+    },
+    {
+      "qid": "vp_006",
+      "answer_path": "text",
+      "rerank_top": 0.991,
+      "n_pages": 3,
+      "elapsed_s": 3.44,
+      "top3": [
+        [
+          "스마트 단말 관리 시스템[MDM]",
+          83,
+          0.991
+        ],
+        [
+          "스마트 단말 관리 시스템[MDM]",
+          80,
+          0.8753
+        ],
+        [
+          "스마트 단말 관리 시스템[MDM]",
+          82,
+          0.5161
+        ]
+      ],
+      "page_hit@1": true,
+      "page_hit@3": true
+    },
+    {
+      "qid": "vp_007",
+      "answer_path": "text",
+      "rerank_top": 0.979,
+      "n_pages": 3,
+      "elapsed_s": 3.65,
+      "top3": [
+        [
+          "스마트 단말 관리 시스템[MDM]",
+          88,
+          0.979
+        ],
+        [
+          "스마트 단말 관리 시스템[MDM]",
+          83,
+          0.9107
+        ],
+        [
+          "스마트 단말 관리 시스템[MDM]",
+          84,
+          0.8041
+        ]
+      ],
+      "page_hit@1": true,
+      "page_hit@3": true
+    },
+    {
+      "qid": "vp_008",
+      "answer_path": "text",
+      "rerank_top": 0.9967,
+      "n_pages": 3,
+      "elapsed_s": 4.09,
+      "top3": [
+        [
+          "이용관리_20260702.pdf",
+          26,
+          0.9967
+        ],
+        [
+          "이용관리_20260702.pdf",
+          87,
+          0.9951
+        ],
+        [
+          "이용관리_20260702.pdf",
+          45,
+          0.9943
+        ]
+      ],
+      "page_hit@1": false,
+      "page_hit@3": false
+    },
+    {
+      "qid": "vp_009",
+      "answer_path": "vision",
+      "rerank_top": 0.9895,
+      "n_pages": 3,
+      "elapsed_s": 2.19,
+      "top3": [
+        [
+          "★. 무선랜 구축운영 가이드라인_",
+          13,
+          0.9895
+        ],
+        [
+          "★. 무선랜 구축운영 가이드라인_",
+          12,
+          0.9731
+        ],
+        [
+          "★. 무선랜 구축운영 가이드라인_",
+          16,
+          0.9316
+        ]
+      ],
+      "page_hit@1": true,
+      "page_hit@3": true
+    },
+    {
+      "qid": "vp_010",
+      "answer_path": "text",
+      "rerank_top": 0.8122,
+      "n_pages": 3,
+      "elapsed_s": 3.12,
+      "top3": [
+        [
+          "★. 무선랜 구축운영 가이드라인_",
+          21,
+          0.8122
+        ],
+        [
+          "★. 무선랜 구축운영 가이드라인_",
+          22,
+          0.7136
+        ],
+        [
+          "★. 무선랜 구축운영 가이드라인_",
+          16,
+          0.6925
+        ]
+      ],
+      "page_hit@1": false,
+      "page_hit@3": false
+    },
+    {
+      "qid": "vp_011",
+      "answer_path": "text",
+      "rerank_top": 0.8292,
+      "n_pages": 3,
+      "elapsed_s": 1.28,
+      "top3": [
+        [
+          "이용관리_20260702.pdf",
+          7,
+          0.8292
+        ],
+        [
+          "이용관리_20260702.pdf",
+          98,
+          0.8078
+        ],
+        [
+          "이용관리_20260702.pdf",
+          8,
+          0.7591
+        ]
+      ],
+      "page_hit@1": false,
+      "page_hit@3": false
+    },
+    {
+      "qid": "vp_012",
+      "answer_path": "text",
+      "rerank_top": 0.8949,
+      "n_pages": 3,
+      "elapsed_s": 2.33,
+      "top3": [
+        [
+          "★23년 학교 유무선 운영·관리 ",
+          42,
+          0.8949
+        ],
+        [
+          "★23년 학교 유무선 운영·관리 ",
+          87,
+          0.8814
+        ],
+        [
+          "★23년 학교 유무선 운영·관리 ",
+          43,
+          0.8696
+        ]
+      ],
+      "page_hit@1": false,
+      "page_hit@3": false
+    },
+    {
+      "qid": "vp_013",
+      "answer_path": "text",
+      "rerank_top": 0.7377,
+      "n_pages": 3,
+      "elapsed_s": 1.84,
+      "top3": [
+        [
+          "스마트 단말 관리 시스템[MDM]",
+          9,
+          0.7377
+        ],
+        [
+          "스마트 단말 관리 시스템[MDM]",
+          22,
+          0.733
+        ],
+        [
+          "스마트 단말 관리 시스템[MDM]",
+          8,
+          0.6201
+        ]
+      ],
+      "page_hit@1": false,
+      "page_hit@3": true
+    },
+    {
+      "qid": "vp_014",
+      "answer_path": "text",
+      "rerank_top": 0.7954,
+      "n_pages": 3,
+      "elapsed_s": 4.08,
+      "top3": [
+        [
+          "WEISS-DE-001-(컨설팅)",
+          36,
+          0.7954
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)",
+          27,
+          0.7303
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)",
+          22,
+          0.6922
+        ]
+      ],
+      "page_hit@1": false,
+      "page_hit@3": false
+    },
+    {
+      "qid": "vp_015",
+      "answer_path": "text",
+      "rerank_top": 0.7287,
+      "n_pages": 3,
+      "elapsed_s": 4.15,
+      "top3": [
+        [
+          "WEISS-DE-001-(컨설팅)",
+          51,
+          0.7287
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)",
+          29,
+          0.6884
+        ],
+        [
+          "이용관리_20260702.pdf",
+          42,
+          0.6097
+        ]
+      ],
+      "page_hit@1": false,
+      "page_hit@3": false
+    },
+    {
+      "qid": "vt_001",
+      "answer_path": "text",
+      "rerank_top": 0.997,
+      "n_pages": 3,
+      "elapsed_s": 4.07,
+      "top3": [
+        [
+          "WEISS-DE-001-(컨설팅)",
+          30,
+          0.997
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)",
+          38,
+          0.9831
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)",
+          37,
+          0.9821
+        ]
+      ],
+      "page_hit@1": true,
+      "page_hit@3": true
+    },
+    {
+      "qid": "vt_002",
+      "answer_path": "text",
+      "rerank_top": 0.8868,
+      "n_pages": 3,
+      "elapsed_s": 1.14,
+      "top3": [
+        [
+          "WEISS-DE-001-(컨설팅)",
+          50,
+          0.8868
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)",
+          20,
+          0.4981
+        ],
+        [
+          "이용관리_20260702.pdf",
+          39,
+          0.3843
+        ]
+      ],
+      "page_hit@1": true,
+      "page_hit@3": true
+    },
+    {
+      "qid": "vt_003",
+      "answer_path": "text",
+      "rerank_top": 0.9634,
+      "n_pages": 3,
+      "elapsed_s": 3.87,
+      "top3": [
+        [
+          "WEISS-DE-001-(컨설팅)",
+          40,
+          0.9634
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)",
+          45,
+          0.8948
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)",
+          24,
+          0.7429
+        ]
+      ],
+      "page_hit@1": true,
+      "page_hit@3": true
+    },
+    {
+      "qid": "vi_001",
+      "answer_path": "none",
+      "rerank_top": 0.0014,
+      "n_pages": 0,
+      "elapsed_s": 1.75,
+      "top3": [],
+      "irrelevant": true,
+      "rejected": true
+    },
+    {
+      "qid": "vi_002",
+      "answer_path": "none",
+      "rerank_top": 0.0005,
+      "n_pages": 0,
+      "elapsed_s": 1.74,
+      "top3": [],
+      "irrelevant": true,
+      "rejected": true
+    }
+  ]
+}

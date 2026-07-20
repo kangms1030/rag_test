@@ -1,0 +1,70 @@
+{
+  "pipeline": "test2",
+  "mode": "catalog",
+  "qid": "final_001",
+  "question": "학내망 구축 및 운영관리 개선을 위한 가이드에서 제시하는 UTP 케이블 규격(Cat.5, Cat.5e, Cat.6)별 최대 전송거리와 통신속도(Data Performance / Max Speed Data)는 각각 어떻게 다른가요?",
+  "error": null,
+  "final_answer": "학내망 구축 및 운영관리 개선을 위한 가이드에서 제시하는 UTP 케이블 규격별 최대 전송거리와 통신 속도는 다음과 같습니다.\n\n*   **Cat.5**: 최대 전송거리 100M, Data Performance 10Mbps, Max Speed Data 100Mbps\n*   **Cat.5e**: 최대 전송거리 100M, Data Performance 100Mbps, Max Speed Data 1Gbps\n*   **Cat.6**: 최대 전송거리 100M, Data Performance 1Gbps, Max Speed Data 10Gbps",
+  "answer_path": "text",
+  "abstained": false,
+  "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+  "selected_documents": [
+    "8-1. 스쿨넷서비스 학내망 구축 및 운영관리 개선을 위한 가이드.pdf",
+    "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf"
+  ],
+  "selected_pages": [
+    12,
+    6,
+    7
+  ],
+  "doc_match": true,
+  "page_match": true,
+  "keyword_recall": 1.0,
+  "keywords_found": [
+    "Cat.5",
+    "Cat.5e",
+    "Cat.6",
+    "100M",
+    "10Mbps",
+    "100Mbps",
+    "1Gbps",
+    "10Gbps"
+  ],
+  "keywords_missing": [],
+  "is_answer_supported": null,
+  "stage_timings_seconds": {
+    "retrieve": 0.703,
+    "answer": 18.359,
+    "total": 19.062
+  },
+  "model_calls": {
+    "embed_calls": 1,
+    "text_answer_calls": 1,
+    "vision_answer_calls": 0,
+    "llm_calls_total": 1,
+    "vlm_calls_total": 0,
+    "total_model_calls": 2
+  },
+  "evidence": [
+    {
+      "document_name": "8-1. 스쿨넷서비스 학내망 구축 및 운영관리 개선을 위한 가이드.pdf",
+      "page_number": 12,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\8-1-33511a48\\pages\\p0012.png",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\8-1-33511a48\\mineru\\8-1-33511a48\\auto\\images\\805fd062d8cfe491ad8b2e142e8ddfcfb7bd3ee10f2c140e83734693293955dd.jpg"
+    },
+    {
+      "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "page_number": 6,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\pages\\p0006.png",
+      "table_crop_path": ""
+    },
+    {
+      "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "page_number": 7,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\pages\\p0007.png",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\mineru\\0-1v-20p-2023-a874b961\\auto\\images\\0eaa08acda9734cf2c125c92eb25bc7f39df00a21ec0dd23c8630f3863b276d9.jpg"
+    }
+  ],
+  "process_wall_seconds": 19.985,
+  "subprocess_returncode": 0
+}

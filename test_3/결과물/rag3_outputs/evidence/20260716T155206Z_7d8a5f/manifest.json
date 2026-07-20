@@ -1,0 +1,46 @@
+{
+  "run_id": "20260716T155206Z_7d8a5f",
+  "question": "학교와 교육청을 연결하는 네트워크와 무슨 망이야?",
+  "files": [
+    {
+      "rank": 1,
+      "kind": "page",
+      "document_name": "★23년 학교 유무선 운영·관리 안내서_최종.pdf",
+      "page_number": 72,
+      "file": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_3\\rag3\\outputs\\evidence\\20260716T155206Z_7d8a5f\\ev1_p0072.png",
+      "source": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_3\\rag3\\cache\\parsed_v25\\23-b3bffb22\\pages\\p0072.png"
+    },
+    {
+      "rank": 2,
+      "kind": "page",
+      "document_name": "★23년 학교 유무선 운영·관리 안내서_최종.pdf",
+      "page_number": 60,
+      "file": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_3\\rag3\\outputs\\evidence\\20260716T155206Z_7d8a5f\\ev2_p0060.png",
+      "source": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_3\\rag3\\cache\\parsed_v25\\23-b3bffb22\\pages\\p0060.png"
+    },
+    {
+      "rank": 2,
+      "kind": "table_crop",
+      "document_name": "★23년 학교 유무선 운영·관리 안내서_최종.pdf",
+      "page_number": 60,
+      "file": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_3\\rag3\\outputs\\evidence\\20260716T155206Z_7d8a5f\\ev2_p0060_table.jpg",
+      "source": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_3\\rag3\\cache\\parsed_v25\\23-b3bffb22\\mineru\\23-b3bffb22\\auto\\images\\ea88646458ec46ea8c6a4e5533ae8060bdc947d027cb7be04f2a97ff3be7f93a.jpg"
+    },
+    {
+      "rank": 3,
+      "kind": "page",
+      "document_name": "★23년 학교 유무선 운영·관리 안내서_최종.pdf",
+      "page_number": 59,
+      "file": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_3\\rag3\\outputs\\evidence\\20260716T155206Z_7d8a5f\\ev3_p0059.png",
+      "source": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_3\\rag3\\cache\\parsed_v25\\23-b3bffb22\\pages\\p0059.png"
+    },
+    {
+      "rank": 3,
+      "kind": "table_crop",
+      "document_name": "★23년 학교 유무선 운영·관리 안내서_최종.pdf",
+      "page_number": 59,
+      "file": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_3\\rag3\\outputs\\evidence\\20260716T155206Z_7d8a5f\\ev3_p0059_table.jpg",
+      "source": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_3\\rag3\\cache\\parsed_v25\\23-b3bffb22\\mineru\\23-b3bffb22\\auto\\images\\d04437cf90f3b1514e2e7c1bc1dbad350243e913d73ac290578a942fbb899fef.jpg"
+    }
+  ]
+}

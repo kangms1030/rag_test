@@ -1,0 +1,69 @@
+{
+  "pipeline": "test2",
+  "mode": "no_catalog",
+  "qid": "final_002",
+  "question": "스쿨넷 이용관리시스템에서 이용기관 비밀번호를 초기화하는 절차는 무엇이며, 담당자 이메일을 모를 경우 문의할 고객센터 연락처와 초기화 완료 안내 메일 발송에 소요되는 시간은 얼마인가요?",
+  "error": null,
+  "final_answer": "비밀번호 초기화 절차는 비밀번호 초기화 팝업이 나타나면 이용기관 등록신청 시 입력한 담당자 이메일 주소를 입력하는 것입니다. 담당자 이메일을 알 수 없는 경우 문의할 고객센터 연락처는 1899-0979이며, 초기화 완료 안내 메일 발송에는 최대 5분 가량 소요될 수 있습니다.",
+  "answer_path": "text",
+  "abstained": false,
+  "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+  "selected_documents": [
+    "이용관리_20260702.pdf"
+  ],
+  "selected_pages": [
+    12,
+    40,
+    30
+  ],
+  "doc_match": true,
+  "page_match": true,
+  "keyword_recall": 0.429,
+  "keywords_found": [
+    "담당자 이메일",
+    "1899-0979",
+    "5분"
+  ],
+  "keywords_missing": [
+    "로그인 화면",
+    "기관명",
+    "비밀번호초기화",
+    "school_report@nia.or.kr"
+  ],
+  "is_answer_supported": null,
+  "stage_timings_seconds": {
+    "retrieve": 1.094,
+    "answer": 22.61,
+    "total": 23.704
+  },
+  "model_calls": {
+    "embed_calls": 1,
+    "text_answer_calls": 1,
+    "vision_answer_calls": 0,
+    "llm_calls_total": 1,
+    "vlm_calls_total": 0,
+    "total_model_calls": 2
+  },
+  "evidence": [
+    {
+      "document_name": "이용관리_20260702.pdf",
+      "page_number": 12,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\pages\\p0012.png",
+      "table_crop_path": ""
+    },
+    {
+      "document_name": "이용관리_20260702.pdf",
+      "page_number": 40,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\pages\\p0040.png",
+      "table_crop_path": ""
+    },
+    {
+      "document_name": "이용관리_20260702.pdf",
+      "page_number": 30,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\pages\\p0030.png",
+      "table_crop_path": ""
+    }
+  ],
+  "process_wall_seconds": 24.656,
+  "subprocess_returncode": 0
+}

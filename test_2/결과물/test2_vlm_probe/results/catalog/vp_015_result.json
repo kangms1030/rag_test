@@ -1,0 +1,72 @@
+{
+  "pipeline": "test2",
+  "mode": "catalog",
+  "qid": "vp_015",
+  "question": "이용관리시스템 완료보고서의 '이용신청서 작성(신규신청)' 챕터에 나오는 <회선 서비스 신규 신청> 화면 예시에서, ⑤번 '서비스' 항목에서 선택 가능한 4가지 서비스 종류는 무엇인가요?",
+  "error": null,
+  "final_answer": "<회선 서비스 신규 신청> 화면 예시의 '서비스' 항목에서 선택 가능한 4가지 서비스 종류는 **회선서비스, 인터넷서비스, IPSec VPN, 재해복구(DR)**입니다.",
+  "answer_path": "text",
+  "abstained": false,
+  "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+  "selected_documents": [
+    "WEISS-DE-001-(컨설팅)완료보고서-4.이용관리시스템-v0.82.pdf",
+    "이용관리_20260702.pdf"
+  ],
+  "selected_pages": [
+    20,
+    76,
+    45
+  ],
+  "doc_match": true,
+  "page_match": false,
+  "keyword_recall": 0.8,
+  "keywords_found": [
+    "회선",
+    "인터넷",
+    "재해복구",
+    "DR"
+  ],
+  "keywords_missing": [
+    "IPsec-VPN"
+  ],
+  "is_answer_supported": null,
+  "stage_timings_seconds": {
+    "retrieve": 3.078,
+    "answer": 81.469,
+    "total": 84.547
+  },
+  "model_calls": {
+    "embed_calls": 1,
+    "text_answer_calls": 1,
+    "vision_answer_calls": 0,
+    "llm_calls_total": 1,
+    "vlm_calls_total": 0,
+    "total_model_calls": 2
+  },
+  "evidence": [
+    {
+      "document_name": "이용관리_20260702.pdf",
+      "page_number": 20,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\pages\\p0020.png",
+      "table_crop_path": ""
+    },
+    {
+      "document_name": "이용관리_20260702.pdf",
+      "page_number": 76,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\pages\\p0076.png",
+      "table_crop_path": ""
+    },
+    {
+      "document_name": "WEISS-DE-001-(컨설팅)완료보고서-4.이용관리시스템-v0.82.pdf",
+      "page_number": 45,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-4-v0-82-b9c3bac8\\pages\\p0045.png",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-4-v0-82-b9c3bac8\\mineru\\weiss-de-001-4-v0-82-b9c3bac8\\auto\\images\\0e39b9ddc3241caeb9014d3629657cdc9263c4b01ac67e9ab97acc1972d99360.jpg"
+    }
+  ],
+  "process_wall_seconds": 85.844,
+  "subprocess_returncode": 0,
+  "expected_answer_path": "vision",
+  "route_match": false,
+  "question_type": "figure",
+  "category": "이용관리_신청화면"
+}

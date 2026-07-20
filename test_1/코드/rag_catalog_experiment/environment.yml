@@ -1,0 +1,30 @@
+name: intern_chatbot
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - numpy
+      - pandas
+      - pymupdf
+      - pdfplumber
+      - pillow
+      - chromadb
+      - ollama
+      - rank-bm25
+      - rapidfuzz
+      - pyyaml
+      - openpyxl
+      # optional (없으면 자동 폴백/경고, check-env가 상태를 보고):
+      - kiwipiepy
+      - pytesseract
+
+# 사용법:
+#   conda env create -f environment.yml
+#   conda activate intern_chatbot
+#   python -m rag_catalog_experiment check-env
+#
+# Ollama 서버는 conda 환경 밖에서 별도 설치/구동해야 한다 (https://ollama.com).
+# 필요 모델: gemma4:12b (llm/vlm), gemma4:e4b (fallback), embeddinggemma (embedding).
+#   ollama pull gemma4:12b && ollama pull gemma4:e4b && ollama pull embeddinggemma

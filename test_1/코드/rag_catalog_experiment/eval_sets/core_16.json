@@ -1,0 +1,178 @@
+[
+  {
+    "id": "core_001",
+    "question": "스쿨넷 5단계 재해복구(DR)서비스 요금체계에서 제주특별자치도교육청의 100M와 500M 월 요금은 각각 얼마이며, 해당 요금이 책정된 배경은 무엇인가요?",
+    "expected_answer": "스쿨넷 5단계 재해복구(DR)서비스 요금체계안에 따르면 제주특별자치도교육청의 100M 속도 이용요금은 월 2,907,000원(부가세 별도), 500M 속도 이용요금은 월 4,121,000원(부가세 별도)입니다. 이 요금은 제주특별자치도교육청이 해저케이블을 거쳐 연결되는 물리적 특수성을 감안하여 기존 4단계의 '300Km 초과' 거리체계 요금을 동결해 5단계에 적용한 결과입니다.",
+    "expected_documents": ["(첨부)_5단계_스쿨넷서비스_제공_가이드.pdf"],
+    "expected_pages": [11],
+    "expected_answer_keywords": ["제주특별자치도", "100M", "500M", "2,907,000원", "4,121,000원", "해저케이블", "DR"],
+    "question_type": "table",
+    "category": "스쿨넷",
+    "source": "human"
+  },
+  {
+    "id": "core_002",
+    "question": "현황분석서에서 UTM 장비의 주요 제조사와 교육지원청별 관제 비중은 어떤 방식으로 비교되나요?",
+    "expected_answer": "현황분석서에 따르면 관제용 UTM 장비는 SECUI와 안랩(AhnLab) 장비를 중심으로 도입되어 운영됩니다. 교육지원청별 관제 비중은 관할 전체 학교 수 대비 실제 UTM 장비가 구축된 학교 또는 장비 수량을 비교해 백분율로 산정하며, 이를 통해 교육지원청별 UTM 장비 관제 현황과 지역별 불균형을 확인합니다.",
+    "expected_documents": ["WEISS-DS-001-현황분석서-v0.91.pdf"],
+    "expected_pages": [8],
+    "expected_answer_keywords": ["UTM", "SECUI", "안랩", "교육지원청", "구축 비율", "관제 현황"],
+    "question_type": "table",
+    "category": "유무선 통합 관리 시스템",
+    "source": "human"
+  },
+  {
+    "id": "core_003",
+    "question": "학교 유무선망 통합관제시스템 개선안에서 사용자 요구사항은 어떤 5가지 핵심 항목으로 분류되며, 각 항목은 무엇을 의미하나요?",
+    "expected_answer": "사용자 요구사항은 대쉬보드, 보고서, 운영관리, 품질, 기타의 5가지 항목으로 분류됩니다. 대쉬보드는 통합대쉬보드 화면과 실시간 데이터 시각화 요구, 보고서는 교육청별 유무선 네트워크 현황과 통계 및 트래픽 사용량 출력 요구, 운영관리는 장비 등록과 자산 관리 및 이용량 모니터링 요구, 품질은 회선 품질 측정과 실시간 트래픽 및 연결 상태 진단 요구, 기타는 MDM 연계와 시스템 성능 향상 관련 요구를 의미합니다.",
+    "expected_documents": ["WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf"],
+    "expected_pages": [20],
+    "expected_answer_keywords": ["대쉬보드", "보고서", "운영관리", "품질", "기타", "요구사항"],
+    "question_type": "fact",
+    "category": "유무선 통합 관리 시스템",
+    "source": "human"
+  },
+  {
+    "id": "core_004",
+    "question": "이용관리시스템의 회선 이용신청 및 개통 절차에서 관리자 승인 소요 시간과 이메일 등록 시 주의사항은 무엇인가요?",
+    "expected_answer": "회선 이용신청 및 개통 절차에서는 등록 완료 후 관리자의 최종 승인이 완료되기까지 최대 48시간이 소요될 수 있으며, 승인 결과는 등록된 이메일로 발송됩니다. 다만 공직자 통합메일인 '@korea.kr' 계정을 사용할 경우 메일 서버 필터링 또는 연동 제한으로 승인 알림 메일 수신 오류가 발생할 수 있으므로, 원활한 처리를 위해 다른 포털 이메일 계정을 사용하는 것이 권장됩니다.",
+    "expected_documents": ["WEISS-DE-001-(컨설팅)완료보고서-4.이용관리시스템-v0.82.pdf"],
+    "expected_pages": [16],
+    "expected_answer_keywords": ["48시간", "이메일", "korea.kr", "승인 알림", "개통 절차"],
+    "question_type": "procedure",
+    "category": "유무선 통합 관리 시스템",
+    "source": "human"
+  },
+  {
+    "id": "core_005",
+    "question": "학내망 구축 및 운영관리 가이드에서 권장하는 네트워크 개선 모델의 주요 분리 기준과 장비 구성 기준은 무엇인가요?",
+    "expected_answer": "학내망 개선 모델은 방화벽 또는 L3 스위치를 통해 교사망, 학생망, 기타망을 논리적 또는 물리적으로 분리하고, 백본 스위치를 도입해 교사망과 학생망 트래픽이 하위 L2 스위치로 직접 인입되도록 구성합니다. 전체 네트워크 계위는 최대 3계위를 넘지 않도록 하고, 1Gbps 대역폭을 지원하는 신형 장비를 구축하며, 동간 통신에는 광케이블을 적용하고 실내 장비와 단말 연결에는 Cat.6 등급 이상의 케이블을 사용합니다.",
+    "expected_documents": ["8-1. 스쿨넷서비스 학내망 구축 및 운영관리 개선을 위한 가이드.pdf"],
+    "expected_pages": [8],
+    "expected_answer_keywords": ["망분리", "L3 스위치", "3계위", "1Gbps", "광케이블", "Cat.6"],
+    "question_type": "procedure",
+    "category": "학내망",
+    "source": "human"
+  },
+  {
+    "id": "core_006",
+    "question": "학교 내부에서 무선 와이파이 인터넷 접속이 갑자기 불가능해질 때 고려해야 할 3가지 주요 원인 범주와 예시는 무엇인가요?",
+    "expected_answer": "무선랜 구축운영 가이드라인은 장애 원인을 크게 인터넷 회선 연결 장애, 유무선 인프라 하드웨어 결함, 무선 단말 설정 오류로 나눕니다. 인터넷 회선 연결 장애에는 교육청 집선청 내부 연계 구간의 회선 단절이나 스쿨넷 전용회선 장비 전송 장애가 포함됩니다. 하드웨어 결함에는 무선집선 스위치, 방화벽, PoE 스위치, 교실 AP 장비의 전원 차단이나 고장이 포함됩니다. 단말 설정 오류에는 IP 주소 충돌, DNS 서버 주소 오설정, 무선 보안 인증 프로파일 오류 등이 포함됩니다.",
+    "expected_documents": ["★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf"],
+    "expected_pages": [9],
+    "expected_answer_keywords": ["인터넷 회선", "H/W 결함", "설정 오류", "집선청", "PoE 스위치", "AP"],
+    "question_type": "troubleshooting",
+    "category": "무선망",
+    "source": "human"
+  },
+  {
+    "id": "core_007",
+    "question": "교실에서 다수 학생 단말을 사용할 때 속도 지연을 진단하는 무선망 동시접속 점검방안의 준비 조건과 테스트 절차는 무엇인가요?",
+    "expected_answer": "무선망 동시접속 점검은 실제 교실 환경에서 수행하며, 해당 교실을 커버하는 무선 AP와 최소 20~30대의 학생 단말을 준비합니다. 모든 단말에서 동시에 YouTube 등 동영상 스트리밍을 실행하고, 각 단말의 화질을 1080p로 동일하게 설정한 뒤, 스트리밍 중 버퍼링이나 끊김이 발생하는 단말 수와 불량 현상을 점검표에 기록합니다. 결과가 비정상일 경우 스쿨넷 회선 업체에 대역폭 확인을 요청하거나 무선망 유지보수 협력사를 통해 AP 교체 등 물리적 조치를 수행합니다.",
+    "expected_documents": ["★23년 학교 유무선 운영·관리 안내서_최종.pdf"],
+    "expected_pages": [78],
+    "expected_answer_keywords": ["동시접속", "20~30대", "YouTube", "1080p", "버퍼링", "대역폭"],
+    "question_type": "procedure",
+    "category": "공통_기타",
+    "source": "human"
+  },
+  {
+    "id": "core_008",
+    "question": "MDM 매뉴얼에서 Lenovo P11과 imuz M101 단말은 제조사 OS 제약 때문에 어떤 MDM 제어 기능에 차이가 있나요?",
+    "expected_answer": "Lenovo P11은 제조사 기능 부재로 보안 폴더 설정, 멀티유저 차단 시 기존 유저 자동 삭제, 실시간 DB 연동 기반 유해사이트 차단, 특정 웹사이트 허용 및 차단 제어가 불가능합니다. imuz M101은 보안 폴더 기능 제한에 더해 멀티유저 기능 자체가 하드웨어 또는 OS적으로 동작하지 않으며, 비밀번호 해제 기능도 패턴이나 일반 비밀번호 입력으로 잠긴 상태의 해제만 지원되고 PIN 번호 강제 초기화는 시스템 레벨에서 불가능합니다.",
+    "expected_documents": ["스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf"],
+    "expected_pages": [90],
+    "expected_answer_keywords": ["Lenovo P11", "imuz M101", "보안 폴더", "유해사이트 차단", "PIN 번호", "비밀번호 초기화"],
+    "question_type": "table",
+    "category": "무선망",
+    "source": "human"
+  },
+  {
+    "id": "core_009",
+    "question": "스쿨넷 이용관리시스템에 처음 접근하는 통신사업자가 로그인을 성공하기 위해 접속해야 할 포털 주소와 사전 등록 요건은 무엇인가요?",
+    "expected_answer": "통신사업자는 학교 유무선 통합 로그인 센터 포털인 https://weiss.or.kr/ 에 접속한 후 '스쿨넷 이용관리시스템 로그인' 메뉴로 진입해야 합니다. 시스템에 정보가 등록되지 않은 사업자 담당자는 로그인 전에 '통신사업자 등록' 페이지에서 회사 기본 정보, 담당자 연락처, 승인 코드 등을 입력하고 승인 심사를 완료해야 하며, 등록이 완료된 계정으로 로그인해야 정상 접속할 수 있습니다.",
+    "expected_documents": ["이용관리_20260702.pdf"],
+    "expected_pages": [36],
+    "expected_answer_keywords": ["weiss.or.kr", "이용관리시스템", "통신사업자 등록", "로그인 센터", "승인"],
+    "question_type": "procedure",
+    "category": "유무선 통합 관리 시스템",
+    "source": "human"
+  },
+  {
+    "id": "core_010",
+    "question": "통합 플랫폼 이용기관 화면의 단말접속현황, 트래픽 가동률 현황, AP가동률 지표는 각각 어떤 시간 기준과 계산 방식으로 정의되나요?",
+    "expected_answer": "단말접속현황은 현재 시각 기준 1시간 전까지의 접속 기록을 합산한 단말 대수입니다. 트래픽 가동률 현황은 현재 시간 기준 최근 1시간 동안 발생한 IN BPS 트래픽 값의 합산 데이터입니다. AP가동률은 학교에 등록된 전체 무선 AP 수량을 분모로 하고, 그중 성능 수집 상태가 정상적으로 '수집' 중인 AP 수량을 분자로 하여 백분율로 산정한 값입니다.",
+    "expected_documents": ["통합관제 이용기관 전용 매뉴얼_20260702.pdf"],
+    "expected_pages": [23],
+    "expected_answer_keywords": ["단말접속현황", "1시간", "트래픽 가동률", "IN BPS", "AP가동률", "수집 상태"],
+    "question_type": "fact",
+    "category": "유무선 통합 관리 시스템",
+    "source": "human"
+  },
+  {
+    "id": "core_011",
+    "question": "통합관제 사용자 화면의 실시간 이벤트현황 페이지로 이동하는 메뉴 경로와 새로고침 빈도 UI 옵션은 무엇인가요?",
+    "expected_answer": "실시간 이벤트현황 페이지의 메뉴 경로는 '종합현황 > 이벤트현황 > 이벤트현황'입니다. 화면의 이벤트 정보는 새로고침 타이머 옵션으로 주기 갱신을 제어할 수 있으며, 제공되는 선택 값은 5s, 10s, 30s와 타이머를 중단하는 정지 버튼입니다.",
+    "expected_documents": ["통합관제(사용자)_20260702.pdf"],
+    "expected_pages": [29],
+    "expected_answer_keywords": ["종합현황", "이벤트현황", "새로고침", "5s", "10s", "30s", "정지"],
+    "question_type": "fact",
+    "category": "유무선 통합 관리 시스템",
+    "source": "human"
+  },
+  {
+    "id": "core_012",
+    "question": "통합관제 최고관리자 대시보드의 Traffic TopN 영역에서 제공하는 트래픽 항목과 그래프 클릭 시 화면 전환 방식은 무엇인가요?",
+    "expected_answer": "최고관리자 대시보드의 Traffic TopN 영역은 각 그룹별 네트워크 트래픽 사용량을 높은 순서로 랭킹 그래프로 표시합니다. 트래픽 항목은 IN BPS, OUT BPS, 그리고 두 값을 합산한 Total입니다. 관리자가 특정 그룹의 랭킹 그래프를 클릭하면 해당 그룹의 장비 상세 구성과 품질 이력을 확인할 수 있는 상세 정보 화면으로 전환됩니다.",
+    "expected_documents": ["통합관제(최고관리자)_20260702.pdf"],
+    "expected_pages": [44],
+    "expected_answer_keywords": ["Traffic TopN", "IN BPS", "OUT BPS", "Total", "랭킹 그래프", "상세정보"],
+    "question_type": "fact",
+    "category": "유무선 통합 관리 시스템",
+    "source": "human"
+  },
+  {
+    "id": "core_013",
+    "question": "다보링크 DVW-624i 무선 AP의 LED 색상별 정상·비정상 판정 기준과 전원 불량 의심 시 첫 물리적 조치는 무엇인가요?",
+    "expected_answer": "다보링크 DVW-624i 무선 AP에서 Power LED가 Blue로 점등되면 정상 동작 상태이고, Red로 켜지거나 부팅이 반복되면 장애 알람 또는 부팅 불량 상태로 판단합니다. WAN1 LED의 Blue는 2.5Gbps 또는 5Gbps 연결, Orange는 1Gbps 연결을 의미하며, 2.4G/5G LED가 Blue이면 무선 신호가 정상 방출 중임을 뜻합니다. LED가 완전히 꺼져 전원 불량이 의심될 때는 AP 뒷면의 UTP 랜 케이블 결합 상태를 확인하고, 케이블과 AP 포트를 분리한 뒤 '딸깍' 소리가 나도록 다시 단단히 결합해 전력 공급 상태를 점검해야 합니다.",
+    "expected_documents": ["학교 무선인터넷 자가진단 체크리스트(안).pdf"],
+    "expected_pages": [11],
+    "expected_answer_keywords": ["다보링크", "DVW-624i", "Power LED", "Blue", "Red", "UTP 케이블", "재결합"],
+    "question_type": "troubleshooting",
+    "category": "무선망",
+    "source": "human"
+  },
+  {
+    "id": "irrelevant_001",
+    "question": "김치찌개를 맛있게 끓이는 방법을 알려주세요.",
+    "expected_answer": "",
+    "expected_documents": [],
+    "expected_pages": [],
+    "expected_answer_keywords": [],
+    "question_type": "irrelevant",
+    "category": "무관",
+    "source": "human"
+  },
+  {
+    "id": "irrelevant_002",
+    "question": "오늘 서울 날씨와 주말 나들이 추천 장소를 알려주세요.",
+    "expected_answer": "",
+    "expected_documents": [],
+    "expected_pages": [],
+    "expected_answer_keywords": [],
+    "question_type": "irrelevant",
+    "category": "무관",
+    "source": "human"
+  },
+  {
+    "id": "irrelevant_003",
+    "question": "삼성전자 주가 전망과 지금 매수해도 되는지 알려주세요.",
+    "expected_answer": "",
+    "expected_documents": [],
+    "expected_pages": [],
+    "expected_answer_keywords": [],
+    "question_type": "irrelevant",
+    "category": "무관",
+    "source": "human"
+  }
+]

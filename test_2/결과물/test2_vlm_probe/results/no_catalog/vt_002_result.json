@@ -1,0 +1,70 @@
+{
+  "pipeline": "test2",
+  "mode": "no_catalog",
+  "qid": "vt_002",
+  "question": "통합관제시스템 완료보고서에 나오는 이용관리 로그인 화면 설명에서, 비밀번호 입력 규칙(글자수 및 포함 문자)은 무엇인가요?",
+  "error": null,
+  "final_answer": "통합관제시스템 완료보고서의 이용관리 로그인 화면 설명에 따른 비밀번호 입력 규칙은 **8~12자의 비밀번호를 입력하며, 영문자, 숫자, 특수문자가 포함**되어야 합니다.",
+  "answer_path": "text",
+  "abstained": false,
+  "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+  "selected_documents": [
+    "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+    "이용관리_20260702.pdf"
+  ],
+  "selected_pages": [
+    50,
+    72,
+    12
+  ],
+  "doc_match": true,
+  "page_match": true,
+  "keyword_recall": 1.0,
+  "keywords_found": [
+    "8~12자",
+    "영문자",
+    "숫자",
+    "특수문자"
+  ],
+  "keywords_missing": [],
+  "is_answer_supported": null,
+  "stage_timings_seconds": {
+    "retrieve": 5.594,
+    "answer": 17.921,
+    "total": 23.515
+  },
+  "model_calls": {
+    "embed_calls": 1,
+    "text_answer_calls": 1,
+    "vision_answer_calls": 0,
+    "llm_calls_total": 1,
+    "vlm_calls_total": 0,
+    "total_model_calls": 2
+  },
+  "evidence": [
+    {
+      "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+      "page_number": 50,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-3-v0-82-f69ab0fd\\pages\\p0050.png",
+      "table_crop_path": ""
+    },
+    {
+      "document_name": "이용관리_20260702.pdf",
+      "page_number": 72,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\pages\\p0072.png",
+      "table_crop_path": ""
+    },
+    {
+      "document_name": "이용관리_20260702.pdf",
+      "page_number": 12,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\pages\\p0012.png",
+      "table_crop_path": ""
+    }
+  ],
+  "process_wall_seconds": 24.734,
+  "subprocess_returncode": 0,
+  "expected_answer_path": "text",
+  "route_match": true,
+  "question_type": "text",
+  "category": "통합관제_로그인"
+}

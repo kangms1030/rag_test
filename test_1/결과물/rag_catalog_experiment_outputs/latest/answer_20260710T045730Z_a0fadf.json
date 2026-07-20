@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "run_id": "20260710T045730Z_a0fadf",
+  "run_status": "no_answer",
+  "retrieval_mode": "catalog",
+  "timestamp": "2026-07-10T04:57:47.216865+00:00",
+  "config_snapshot": {
+    "top_docs": 2,
+    "top_pages": 5,
+    "top_chunks": 8,
+    "page_prefilter_topn": 12,
+    "min_dense_similarity": 0.35,
+    "min_doc_score": 0.35,
+    "doc_score_gap_ratio": 0.6,
+    "llm_model": "gemma4:12b",
+    "vlm_model": "gemma4:12b",
+    "embedding_model": "embeddinggemma"
+  },
+  "question": "김치찌개 맛있게 끓이는 방법 알려줘",
+  "query_analysis": {
+    "intent": "김치찌개 조리법에 대한 정보 요청",
+    "keywords": [
+      "김치찌개"
+    ],
+    "domain_terms": [],
+    "required_data_type": "procedure",
+    "retrieval_query": "김치찌개 맛있게 끓이는 방법",
+    "reason": "사용자의 질문이 학교 유무선 네트워크 시스템과 무관한 요리법에 관한 내용임."
+  },
+  "selected_documents": [],
+  "selected_pages": [],
+  "selected_visual_chunks": [],
+  "source_images": [],
+  "page_evidence": [],
+  "final_answer": "선택된 문서에서 확인 불가",
+  "verification": {
+    "is_answer_supported": false,
+    "unsupported_claims": [],
+    "numeric_claims": [],
+    "numeric_verification_notes": "",
+    "notes": "관련 문서/페이지를 찾지 못함"
+  },
+  "metrics": {
+    "mode": "catalog",
+    "depth": "answer",
+    "is_ingest": false,
+    "summary_pages_required": 0,
+    "chunk_pages_required": 0,
+    "summary_calls": 0,
+    "chunk_calls": 0,
+    "answer_vlm_calls": 0,
+    "verify_llm_calls": 0,
+    "query_analyzer_calls": 1,
+    "embed_calls": 1,
+    "page_index_coverage": {
+      "total_pages": 136,
+      "summarized_pages": 136,
+      "pending_pages": 0
+    },
+    "elapsed_seconds_total": 16.344,
+    "elapsed_seconds_retrieval": 16.344,
+    "elapsed_seconds_answer": 0.0,
+    "selected_doc_count": 0,
+    "selected_page_count": 0,
+    "selected_chunk_count": 0,
+    "evidence_count": 0
+  }
+}

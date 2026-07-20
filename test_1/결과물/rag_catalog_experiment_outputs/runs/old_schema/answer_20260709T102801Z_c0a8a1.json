@@ -1,0 +1,24 @@
+{
+  "question": " 김치찌개 맛있게 끓이는 방법 알려줘",
+  "query_analysis": {
+    "intent": "김치찌개 조리법 및 레시피 정보 요청",
+    "keywords": [
+      "김치찌개",
+      "조리법"
+    ],
+    "domain_terms": [],
+    "required_data_type": "procedure",
+    "retrieval_query": "김치찌개 맛있게 끓이는 방법",
+    "reason": "사용자의 질문은 요리 레시피에 관한 내용으로, 학교 유무선 네트워크나 관련 장비와 관련된 키워드가 전혀 포함되어 있지 않음."
+  },
+  "selected_documents": [],
+  "selected_pages": [],
+  "selected_visual_chunks": [],
+  "page_evidence": [],
+  "final_answer": "선택된 문서에서 확인 불가",
+  "verification": {
+    "is_answer_supported": false,
+    "unsupported_claims": [],
+    "notes": "관련 문서/페이지를 찾지 못함"
+  }
+}

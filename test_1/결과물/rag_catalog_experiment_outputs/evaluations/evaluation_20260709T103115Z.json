@@ -1,0 +1,48 @@
+{
+  "per_item": [
+    {
+      "id": "q001",
+      "question": "학교 유무선 통합 관제 플랫폼이 추진된 기초 배경은 무엇인가요?",
+      "source": "human",
+      "doc_recall_hit": false,
+      "doc_mrr": 0.0,
+      "page_recall_hit": null,
+      "answer_token_f1": NaN,
+      "selected_documents": [],
+      "final_answer": "선택된 문서에서 확인 불가",
+      "is_answer_supported": false
+    },
+    {
+      "id": "q002",
+      "question": "학교 유무선 통합관제시스템(WEISS)의 서버 아키텍처 구성도는?",
+      "source": "human",
+      "doc_recall_hit": false,
+      "doc_mrr": 0.0,
+      "page_recall_hit": null,
+      "answer_token_f1": NaN,
+      "selected_documents": [],
+      "final_answer": "선택된 문서에서 확인 불가",
+      "is_answer_supported": false
+    }
+  ],
+  "aggregate": {
+    "human": {
+      "count": 2,
+      "doc_recall_at_k": 0.0,
+      "doc_mrr": 0.0,
+      "page_recall_at_k": null,
+      "answer_token_f1_avg": null
+    },
+    "synthetic": {
+      "count": 0
+    },
+    "all": {
+      "count": 2,
+      "doc_recall_at_k": 0.0,
+      "doc_mrr": 0.0,
+      "page_recall_at_k": null,
+      "answer_token_f1_avg": null
+    }
+  },
+  "errors": []
+}

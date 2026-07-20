@@ -1,0 +1,72 @@
+{
+  "pipeline": "test2",
+  "mode": "catalog",
+  "qid": "vp_012",
+  "question": "23년 학교 유무선 운영·관리 안내서의 'PC의 IP 주소 및 DNS 주소 변경 방법'(윈도우 11 기준) 안내에서, IP/DNS 주소를 변경하기 위한 4단계 절차는 무엇인가요?",
+  "error": null,
+  "final_answer": "'PC의 IP 주소 및 DNS 주소 변경 방법'(윈도우 11 기준) 안내에서 제시하는 4단계 절차는 다음과 같습니다.\n\n①‘네트워크연결’ 입력후엔터\n②‘이더넷’ 마우스 오른쪽 버튼\n③속성\n④‘인터넷 프로토콜 버전 4(TCP/IPv4)’ 더블클릭",
+  "answer_path": "text",
+  "abstained": false,
+  "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+  "selected_documents": [
+    "★23년 학교 유무선 운영·관리 안내서_최종.pdf",
+    "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf"
+  ],
+  "selected_pages": [
+    45,
+    44,
+    15
+  ],
+  "doc_match": true,
+  "page_match": true,
+  "keyword_recall": 0.8,
+  "keywords_found": [
+    "이더넷",
+    "속성",
+    "인터넷 프로토콜 버전 4",
+    "TCP/IPv4"
+  ],
+  "keywords_missing": [
+    "네트워크 연결"
+  ],
+  "is_answer_supported": null,
+  "stage_timings_seconds": {
+    "retrieve": 2.469,
+    "answer": 22.469,
+    "total": 24.938
+  },
+  "model_calls": {
+    "embed_calls": 1,
+    "text_answer_calls": 1,
+    "vision_answer_calls": 0,
+    "llm_calls_total": 1,
+    "vlm_calls_total": 0,
+    "total_model_calls": 2
+  },
+  "evidence": [
+    {
+      "document_name": "★23년 학교 유무선 운영·관리 안내서_최종.pdf",
+      "page_number": 45,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\23-b3bffb22\\pages\\p0045.png",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\23-b3bffb22\\mineru\\23-b3bffb22\\auto\\images\\a91679717cbb61423e0d090b14748ec8c09700c891b9a9eac5a54af7b35d2919.jpg"
+    },
+    {
+      "document_name": "★23년 학교 유무선 운영·관리 안내서_최종.pdf",
+      "page_number": 44,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\23-b3bffb22\\pages\\p0044.png",
+      "table_crop_path": ""
+    },
+    {
+      "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "page_number": 15,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\pages\\p0015.png",
+      "table_crop_path": ""
+    }
+  ],
+  "process_wall_seconds": 26.218,
+  "subprocess_returncode": 0,
+  "expected_answer_path": "vision",
+  "route_match": false,
+  "question_type": "figure",
+  "category": "23년안내서_IP설정"
+}

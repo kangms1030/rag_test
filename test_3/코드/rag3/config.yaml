@@ -1,0 +1,110 @@
+# rag3 설정 파일 (test_3 — 청크 색인 + 리랭커 + 검증/롤백 RAG)
+# 경로는 이 파일(rag3/config.yaml) 기준 상대경로.
+# Phase 0 실측 근거는 ../probes/results/PHASE0_REPORT.md 참조.
+# ingest/검색 소스는 기본적으로 test_2의 기존 캐시/파싱을 재사용(source_cache_dir).
+
+catalog_excel_path: "../../rag_test/test_2/데이터카탈로그_DCAT_선정파일_RAG최적화.xlsx"
+documents_dir: "../../rag_test/test_2/데이터 카탈로그 작업 파일"
+catalog_sheet: "선정파일_Distribution_파일목록"
+
+# test_2가 이미 파싱해 둔 캐시(manifest + mineru content_list)를 청크화 소스로 재사용.
+# 비우면 cache_dir/parsed 를 그대로 사용.
+source_parsed_dir: "cache/parsed_v25"
+
+output_dir: "outputs"
+index_dir: "index"
+cache_dir: "cache"
+
+# PDF 파서: mineru(기본) | pdfplumber (폴백)
+parser: "mineru"
+mineru_device: "cuda"   # 실패 시 코드가 자동으로 cpu 폴백
+# pipeline: 레이아웃+표+OCR 전용 모델(LLM 아님, 결정론적, 가볍고 빠름) -> 이 설계와 정합
+# (hybrid-engine/vlm-engine은 MinerU 자체 VLM을 씀 — "MinerU 파서만 차용" 결정과 배치되고 무거움)
+mineru_backend: "pipeline"
+mineru_lang: "korean"
+
+llm_provider: "ollama"
+text_answer_model: "gemma4:12b"
+vision_answer_model: "gemma4:12b"
+fallback_model: "gemma4:e4b"
+
+embedding_model: "embeddinggemma"
+# EmbeddingGemma는 task prefix에 민감함 (Ollama 문서 권장값)
+embed_doc_prefix: "title: none | text: "
+embed_query_prefix: "task: search result | query: "
+
+top_docs: 2
+top_pages: 3
+
+# === Phase 1 신규: 청크 색인 + 리랭커 ===
+# 카탈로그 게이트 사용 여부. Phase 0 실측상 13문서 소규모에선 게이트가 손해(doc_hit 0.692 vs 0.923).
+# false면 문서 선정/게이트를 건너뛰고 청크를 전역 검색 -> 리랭크. 249문서 확장 시 true로 재활성화.
+use_catalog_gate: false
+
+# 청크화(chunking.py): MinerU content_list 블록 기반
+chunk_target_chars: 700      # 텍스트 청크 목표 길이(한국어 기준 ~250-450토큰)
+chunk_max_chars: 1200        # 이 길이를 넘기면 강제 분할
+chunk_table_split_chars: 2500  # 표 청크가 이 길이를 넘으면 헤더 반복 행 분할
+chunk_min_chars: 40          # 이 미만 텍스트 조각은 인접 청크에 병합(노이즈 제거)
+
+# 검색 후보 풀 + 리랭커
+retrieve_candidates: 20      # 청크 하이브리드 검색 top-K(리랭크 입력 풀). Phase 1 실측: 20이 40보다
+                             # page_hit@3 높음(0.645 vs 0.613) — 후보 확대는 리랭커에 방해후보만 늘림.
+rerank_model: "BAAI/bge-reranker-v2-m3"
+rerank_max_length: 2048      # 리랭커 입력 최대 토큰
+rerank_device: "cuda"
+# 무관질문 거절 τ_low. Phase 1 캘리브레이션: 관련 문항 리랭크 min=0.688 vs 무관 max=0.013 ->
+# 0.1이면 무관 5/5 거절하고 관련은 전부 통과.
+rerank_score_floor: 0.1
+final_pages: 3               # small-to-big로 승격할 최대 페이지 수
+
+# 문서 선정 컷오프 (use_catalog_gate=true일 때만 사용; Phase 1 기본 경로에선 무시)
+min_doc_score: 0.35          # RRF 정규화 점수(0~1)가 이 미만이면 selected_documents = []
+doc_score_gap_ratio: 0.6     # 2등 점수가 1등의 이 비율 미만이면 1개만 선정
+min_dense_similarity: 0.35   # 절대 관련성 하한선(dense cosine). 무관 질문 거절 게이트.
+
+# 한국어 토크나이저: kiwi(기본, kiwipiepy 형태소분석) | char_bigram(폴백)
+tokenizer: "kiwi"
+
+# 비전 경로 라우팅: figure 블록 면적 비율이 이 이상이면 그림 위주 페이지로 판정
+figure_area_ratio_threshold: 0.5
+# 스캔 문서 + 표가 있는 페이지는 숫자 교차확인을 위해 비전 경로로 라우팅
+scanned_table_verify: true
+
+# 비전 답변 이미지(표/도표 크롭) 해상도
+answer_image_dpi: 200
+answer_image_max_side: 2048
+
+rrf_k: 60
+
+# === Phase 2: 검증 + 롤백 루프 (controller.py) ===
+enable_verify: true          # S7 검증(숫자 대조 + groundedness)
+enable_rollback: true        # S8 결정론적 롤백(최대 1회)
+enable_crag: true            # 게이트 거절(none) 시 질의 재작성 후 1회 재검색
+context_max_chars: 10000     # 답변 컨텍스트 토큰 예산(페이지 텍스트 트림 상한)
+crag_retry_floor: 0.02       # 리랭크 top이 [이 값, rerank_score_floor) 사이면 재작성 재시도(경계 관련).
+                             # 무관(max 0.013)은 이 미만이라 재시도 안 함 -> 무관거절 유지.
+rollback_rerank_tau_high: 0.5  # 빈응답/확인불가 롤백은 리랭크 top이 이 이상(=검색 신뢰)일 때만.
+deadline_seconds: 180        # 문항 wall-clock 상한. 초과 시 best-effort 반환.
+verify_model: ""             # 비우면 text_answer_model(12b) 겸용(Phase 0-E: 스왑 0). e4b 쓰려면 "gemma4:e4b".
+
+# Phase 0-C 근거: num_ctx 8192는 큰 표HTML 컨텍스트에서 출력 토큰 굶김으로 빈 응답 유발.
+# 16384로 상향(무해, 일부 빈응답 해소). 12b 상주 8.4GB(16k KV 포함, Phase 0-E 실측).
+ollama_num_ctx: 16384
+ollama_keep_alive: "30m"
+# 출력 토큰 상한. 큰 표 컨텍스트에서 12b가 장문 생성으로 폭주(실측 280s)하는 것을 막는다.
+# 답변+전사에 충분하되 폭주는 차단(0이면 무제한).
+# 2026-07-16: 진짜로 긴 정당한 답변(긴 표 전사·다항목 목록)이 잘리지 않도록 1024->1536 상향.
+# (콜드 whitespace 런어웨이는 이 값이 아니라 retry_on_length로 방어. 상향 시 런어웨이 낭비 토큰은 소폭 증가)
+ollama_num_predict: 1536
+
+# 콜드스타트 whitespace 런어웨이 방어(별도 신뢰성 이슈, 2026-07-16 실측).
+# 특정 프롬프트를 서버가 처음 처리하면(콜드 KV) 답변 도중 공백/개행 토큰을 num_predict까지
+# 폭주 생성 -> done_reason=length로 답변이 잘림(예: core_001 "100M 월"에서 종료, kw 0.429).
+# 동일 프롬프트 재호출 시 서버 KV 웜 -> 정상 완성(done_reason=stop, kw 1.0) 실측.
+# true면 done_reason=length일 때 동일 호출을 1회 재발행하고 stop으로 끝나면 채택한다.
+ollama_retry_on_length: true
+# 문항당 재시도 예산. 병리적 표 문맥(재시도해도 계속 length)에서 여러 호출이 각각 재시도해
+# 지연이 폭발하는 것을 막는다(예: core_002 무예산 시 4회 198s로 deadline 초과). 정확도 손실 없음.
+ollama_max_length_retries: 2
+ollama_seed: 0

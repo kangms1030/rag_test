@@ -1,0 +1,198 @@
+{
+  "tag": "P1_tail",
+  "x_overrides": {
+    "x_fail_fast_on_length_budget": true,
+    "x_conditional_verify_skip": true,
+    "x_adaptive_trim": true
+  },
+  "summary": {
+    "n": 8,
+    "n_relevant": 8,
+    "n_irrelevant": 0,
+    "evidence_present": 8,
+    "answered_rate": 0.625,
+    "avg_kw_hit": 0.4917,
+    "irrelevant_reject_rate": null,
+    "hallucination_suspects": [],
+    "avg_model_calls": 2.75,
+    "avg_elapsed_s": 109.6,
+    "max_elapsed_s": 244.3,
+    "total_cost": null,
+    "kw_improved_vs_base": [
+      [
+        "core_002",
+        0,
+        0.6666666666666666
+      ],
+      [
+        "core_008",
+        0,
+        0.6666666666666666
+      ]
+    ],
+    "kw_regressed_vs_base": [],
+    "faster_vs_base": [
+      [
+        "core_001",
+        90.9,
+        52.8
+      ],
+      [
+        "vp_009",
+        25.4,
+        16.8
+      ],
+      [
+        "core_008",
+        143.6,
+        114.3
+      ]
+    ]
+  },
+  "results": [
+    {
+      "qid": "core_001",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 1.0,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 2,
+      "length_retry": 0,
+      "rollback": [],
+      "elapsed_s": 52.8,
+      "final_answer_head": "제주특별자치도교육청의 스쿨넷 5단계 재해복구(DR)서비스 요금은 다음과 같습니다.\n\n*   **100M:** 2,907,000원/월\n*   **500M:** 4,121,000원/월",
+      "cost": null
+    },
+    {
+      "qid": "core_004",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 0.6,
+      "unsupported_claims": [],
+      "groundedness": "supported",
+      "model_calls": 3,
+      "length_retry": 1,
+      "rollback": [],
+      "elapsed_s": 98.0,
+      "final_answer_head": "관리자 승인까지 최대 48시간 소요될 수 있으며, @korea.kr 메일 사용 시 메일 수신이 정상적으로 이루어지지 않을 수 있어 다른 이메일 사용을 권장합니다.",
+      "cost": null
+    },
+    {
+      "qid": "vp_009",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 1.0,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 2,
+      "length_retry": 0,
+      "rollback": [],
+      "elapsed_s": 16.8,
+      "final_answer_head": "무선 채널 및 신호 세기를 측정하는 무료 모바일 앱의 이름은 **WiFi 개요 360**이며, **갤럭시 앱 스토어**에서 다운로드할 수 있습니다.",
+      "cost": null
+    },
+    {
+      "qid": "core_002",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 0.6666666666666666,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 2,
+      "rollback": [
+        "fail_fast_length_budget"
+      ],
+      "elapsed_s": 151.1,
+      "final_answer_head": "'UTM장비관제 현황' 표에서 교육지원청별로 '관제학교수'와 제조사(안랩, 기타)에 따른 '구축수량'을 비교하여 나타냅니다.",
+      "cost": null
+    },
+    {
+      "qid": "core_008",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 0.6666666666666666,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 1,
+      "rollback": [],
+      "elapsed_s": 114.3,
+      "final_answer_head": "Lenovo P11은 '멀티유저 차단 시 기존 유저 자동 삭제'가 미제공이며, imuz M101은 '멀티 유저 (제조사 기능 없음)'와 '비밀번호,패턴으로 비밀번호 설정 된 경우 ",
+      "cost": null
+    },
+    {
+      "qid": "vp_006",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 0.0,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 2,
+      "rollback": [
+        "fail_fast_length_budget"
+      ],
+      "elapsed_s": 159.4,
+      "final_answer_head": "선택된 문서에서 확인 불가",
+      "cost": null
+    },
+    {
+      "qid": "vp_007",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 0.0,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 2,
+      "rollback": [
+        "fail_fast_length_budget"
+      ],
+      "elapsed_s": 244.3,
+      "final_answer_head": "선택된 문서에서 확인 불가",
+      "cost": null
+    },
+    {
+      "qid": "vp_013",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "abstain",
+      "evidence_present": true,
+      "abstain": true,
+      "kw_hit": 0.0,
+      "unsupported_claims": [],
+      "groundedness": "skipped",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 40.0,
+      "final_answer_head": "제공된 근거에서 확인할 수 없습니다.",
+      "cost": null
+    }
+  ]
+}

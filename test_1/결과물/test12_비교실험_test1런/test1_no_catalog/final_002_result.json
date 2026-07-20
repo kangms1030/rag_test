@@ -1,0 +1,82 @@
+{
+  "pipeline": "test1",
+  "mode": "no_catalog",
+  "qid": "final_002",
+  "question": "스쿨넷 이용관리시스템에서 이용기관 비밀번호를 초기화하는 절차는 무엇이며, 담당자 이메일을 모를 경우 문의할 고객센터 연락처와 초기화 완료 안내 메일 발송에 소요되는 시간은 얼마인가요?",
+  "run_id": "20260714T033710Z_f54ab9",
+  "error": null,
+  "final_answer": "비밀번호를 초기화하려면 '비밀번호 초기화' 버튼을 클릭하고 기관 고유 ID(예: school_name.kr.or.kr)를 입력한 후, 담당자 계정을 선택하여 '초기화' 버튼을 누르면 됩니다. 담당자 이메일을 모르는 경우 고객센터(1899-0970)로 문의할 수 있으며, 초기화 완료 안내 메일은 약 1분 내에 발송됩니다.",
+  "abstained": false,
+  "skip_reason": null,
+  "selected_documents": [
+    "이용관리_20260702.pdf"
+  ],
+  "selected_pages": [
+    12,
+    40,
+    11,
+    30,
+    8
+  ],
+  "doc_match": true,
+  "page_match": true,
+  "keyword_recall": 0.143,
+  "keywords_found": [
+    "담당자 이메일"
+  ],
+  "keywords_missing": [
+    "로그인 화면",
+    "기관명",
+    "비밀번호초기화",
+    "1899-0979",
+    "school_report@nia.or.kr",
+    "5분"
+  ],
+  "is_answer_supported": true,
+  "unsupported_claims": [],
+  "stage_timings_seconds": {
+    "query_analyzer": 24.219,
+    "page_summary": 339.234,
+    "visual_chunk": 385.828,
+    "retrieval_search": 1.203,
+    "retrieval_total": 750.484,
+    "answer": 51.016,
+    "evidence": 0.156,
+    "verify": 15.453,
+    "total": 817.109
+  },
+  "model_calls": {
+    "query_analyzer_calls": 1,
+    "summary_calls": 24,
+    "chunk_calls": 4,
+    "answer_vlm_calls": 1,
+    "verify_llm_calls": 1,
+    "embed_calls": 31,
+    "llm_calls_total": 2,
+    "vlm_calls_total": 29
+  },
+  "vlm_pages_required_cache_independent": {
+    "summary_pages_required": 24,
+    "chunk_pages_required": 4
+  },
+  "evidence": [
+    {
+      "image_index": 1,
+      "document_name": "이용관리_20260702.pdf",
+      "page_number": 12,
+      "confidence": 0.95,
+      "why_relevant": "비밀번호 초기화 절차, 고객센터 연락처, 그리고 메일 발송 소요 시간(약 1분 내)이 모두 포함된 '3. 비밀번호 초기화' 섹션입니다.",
+      "bbox": {
+        "x1": 0.12,
+        "y1": 0.24,
+        "x2": 0.88,
+        "y2": 0.46
+      },
+      "crop_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test12_total_test\\_work_test1\\output\\evidence\\20260714T033710Z_f54ab9\\20260702-336b732d_p0012_ev1_crop.jpg",
+      "highlighted_page_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test12_total_test\\_work_test1\\output\\evidence\\20260714T033710Z_f54ab9\\20260702-336b732d_p0012_highlighted.jpg"
+    }
+  ],
+  "process_wall_seconds": 818.36,
+  "subprocess_returncode": 0,
+  "evidence_dir": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test12_total_test\\test1_no_catalog\\final_002_evidence"
+}

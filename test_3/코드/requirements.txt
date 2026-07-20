@@ -1,0 +1,28 @@
+# RAG3 의존성 (intern_chatbot conda 환경 실측 버전 고정, 2026-07-16)
+#
+# 주의:
+# - torch는 CUDA 빌드가 필요하므로 아래 pip 인덱스로 별도 설치:
+#     pip install torch==2.11.0 --index-url https://download.pytorch.org/whl/cu128
+# - mineru는 문서 ingest/add(파싱) 때만 필요. 질의(ask/모듈 API)만 쓰면 없어도 동작.
+# - LLM/임베딩은 로컬 Ollama 서버 사용: gemma4:12b, gemma4:e4b, embeddinggemma 모델 필요.
+#   (ollama pull gemma4:12b 등. API 키 불필요)
+
+numpy==2.4.4
+pandas==3.0.3
+openpyxl==3.1.5
+PyYAML==6.0.3
+rapidfuzz==3.14.5
+rank-bm25==0.2.2
+kiwipiepy==0.23.2
+chromadb==1.5.9
+sentence-transformers==5.6.0
+pymupdf==1.28.0
+pillow==12.2.0
+ollama==0.6.2
+
+# 파싱(ingest/add 전용)
+mineru==3.4.4
+
+# 데모 웹서버(webapp/ 전용)
+fastapi==0.139.0
+uvicorn==0.51.0

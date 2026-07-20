@@ -1,0 +1,50 @@
+{
+  "tag": "C_flash_probe",
+  "x_overrides": {
+    "x_backend": "gemini"
+  },
+  "summary": {
+    "n": 1,
+    "n_relevant": 1,
+    "n_irrelevant": 0,
+    "evidence_present": 1,
+    "answered_rate": 1.0,
+    "avg_kw_hit": 1.0,
+    "irrelevant_reject_rate": null,
+    "hallucination_suspects": [],
+    "avg_model_calls": 3.0,
+    "avg_elapsed_s": 43.6,
+    "max_elapsed_s": 43.6,
+    "total_cost": 0.003399,
+    "kw_improved_vs_base": [],
+    "kw_regressed_vs_base": [],
+    "faster_vs_base": [
+      [
+        "core_001",
+        90.9,
+        43.6
+      ]
+    ]
+  },
+  "results": [
+    {
+      "qid": "core_001",
+      "irrelevant": false,
+      "answer_path": "text",
+      "confidence": "high",
+      "evidence_present": true,
+      "abstain": false,
+      "kw_hit": 1.0,
+      "unsupported_claims": [],
+      "groundedness": "supported",
+      "model_calls": 3,
+      "length_retry": 0,
+      "rollback": [
+        "rollback_text_top1"
+      ],
+      "elapsed_s": 43.6,
+      "final_answer_head": "스쿨넷 5단계 재해복구(DR)서비스 요금체계에서 제주특별자치도교육청의 월 요금(부가세 별도)은 다음과 같습니다.\n\n* **100M 월 요금**: 2,907,000원\n* **500M",
+      "cost": 0.003399
+    }
+  ]
+}

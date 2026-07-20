@@ -1,0 +1,70 @@
+{
+  "pipeline": "test2",
+  "mode": "catalog",
+  "qid": "vt_001",
+  "question": "통합관제시스템 완료보고서의 주요 자원 구성 표에서 가상화서버(HCI)의 CPU 코어 수, RAM 용량, HDD 용량은 각각 얼마이며, 방화벽 장비의 총 수량은 몇 대인가요?",
+  "error": null,
+  "final_answer": "가상화서버(HCI)의 CPU 코어 수는 128Core, RAM 용량은 6,144GB, HDD 용량은 122.88TB(Physical)이며, 방화벽 장비의 총 수량은 11대입니다.",
+  "answer_path": "text",
+  "abstained": false,
+  "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+  "selected_documents": [
+    "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+    "통합관제(사용자)_20260702.pdf"
+  ],
+  "selected_pages": [
+    30,
+    37,
+    40
+  ],
+  "doc_match": true,
+  "page_match": true,
+  "keyword_recall": 1.0,
+  "keywords_found": [
+    "128Core",
+    "6,144GB",
+    "122.88TB",
+    "11대"
+  ],
+  "keywords_missing": [],
+  "is_answer_supported": null,
+  "stage_timings_seconds": {
+    "retrieve": 3.063,
+    "answer": 26.359,
+    "total": 29.422
+  },
+  "model_calls": {
+    "embed_calls": 1,
+    "text_answer_calls": 1,
+    "vision_answer_calls": 0,
+    "llm_calls_total": 1,
+    "vlm_calls_total": 0,
+    "total_model_calls": 2
+  },
+  "evidence": [
+    {
+      "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+      "page_number": 30,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-3-v0-82-f69ab0fd\\pages\\p0030.png",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-3-v0-82-f69ab0fd\\mineru\\weiss-de-001-3-v0-82-f69ab0fd\\auto\\images\\fea38fe5496274b0e6bf6b17bdc1fe7884f7d00273eed2599d27c6b00af89ce2.jpg"
+    },
+    {
+      "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+      "page_number": 37,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-3-v0-82-f69ab0fd\\pages\\p0037.png",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-3-v0-82-f69ab0fd\\mineru\\weiss-de-001-3-v0-82-f69ab0fd\\auto\\images\\f147830ccf1752b43c532fed126e962679d55f5806f002fcf258236d587f5230.jpg"
+    },
+    {
+      "document_name": "통합관제(사용자)_20260702.pdf",
+      "page_number": 40,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-80cc24f0\\pages\\p0040.png",
+      "table_crop_path": ""
+    }
+  ],
+  "process_wall_seconds": 30.844,
+  "subprocess_returncode": 0,
+  "expected_answer_path": "text",
+  "route_match": true,
+  "question_type": "text",
+  "category": "통합관제_자원구성"
+}

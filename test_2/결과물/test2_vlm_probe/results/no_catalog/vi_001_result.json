@@ -1,0 +1,39 @@
+{
+  "pipeline": "test2",
+  "mode": "no_catalog",
+  "qid": "vi_001",
+  "question": "인공지능으로 주식 자동매매 프로그램을 만드는 방법을 알려주세요.",
+  "error": null,
+  "final_answer": "선택된 문서에서 확인 불가",
+  "answer_path": "none",
+  "abstained": true,
+  "skip_reason": "전역 검색 결과의 관련성 부족(dense gate)",
+  "selected_documents": [],
+  "selected_pages": [],
+  "doc_match": null,
+  "page_match": null,
+  "keyword_recall": null,
+  "keywords_found": [],
+  "keywords_missing": [],
+  "is_answer_supported": null,
+  "stage_timings_seconds": {
+    "retrieve": 5.563,
+    "answer": 0.0,
+    "total": 5.563
+  },
+  "model_calls": {
+    "embed_calls": 1,
+    "text_answer_calls": 0,
+    "vision_answer_calls": 0,
+    "llm_calls_total": 0,
+    "vlm_calls_total": 0,
+    "total_model_calls": 1
+  },
+  "evidence": [],
+  "process_wall_seconds": 6.75,
+  "subprocess_returncode": 0,
+  "expected_answer_path": "none",
+  "route_match": true,
+  "question_type": "irrelevant",
+  "category": "무관"
+}

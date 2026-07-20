@@ -1,0 +1,53 @@
+# rag2 설정 파일 (test_2 — MinerU 기반 하이브리드 텍스트 RAG)
+# 경로는 이 파일(rag2/config.yaml) 기준 상대경로. test_2 내부만 참조(test_1차 무의존).
+
+catalog_excel_path: "../데이터카탈로그_DCAT_선정파일_RAG최적화.xlsx"
+documents_dir: "../데이터 카탈로그 작업 파일"
+catalog_sheet: "선정파일_Distribution_파일목록"
+
+output_dir: "outputs"
+index_dir: "index"
+cache_dir: "cache"
+
+# PDF 파서: mineru(기본) | pdfplumber (폴백)
+parser: "mineru"
+mineru_device: "cuda"   # 실패 시 코드가 자동으로 cpu 폴백
+# pipeline: 레이아웃+표+OCR 전용 모델(LLM 아님, 결정론적, 가볍고 빠름) -> 이 설계와 정합
+# (hybrid-engine/vlm-engine은 MinerU 자체 VLM을 씀 — "MinerU 파서만 차용" 결정과 배치되고 무거움)
+mineru_backend: "pipeline"
+mineru_lang: "korean"
+
+llm_provider: "ollama"
+text_answer_model: "gemma4:12b"
+vision_answer_model: "gemma4:12b"
+fallback_model: "gemma4:e4b"
+
+embedding_model: "embeddinggemma"
+# EmbeddingGemma는 task prefix에 민감함 (Ollama 문서 권장값)
+embed_doc_prefix: "title: none | text: "
+embed_query_prefix: "task: search result | query: "
+
+top_docs: 2
+top_pages: 3
+
+# 문서 선정 컷오프 (catalog_index 게이트)
+min_doc_score: 0.35          # RRF 정규화 점수(0~1)가 이 미만이면 selected_documents = []
+doc_score_gap_ratio: 0.6     # 2등 점수가 1등의 이 비율 미만이면 1개만 선정
+min_dense_similarity: 0.35   # 절대 관련성 하한선(dense cosine). 무관 질문 거절 게이트.
+
+# 한국어 토크나이저: kiwi(기본, kiwipiepy 형태소분석) | char_bigram(폴백)
+tokenizer: "kiwi"
+
+# 비전 경로 라우팅: figure 블록 면적 비율이 이 이상이면 그림 위주 페이지로 판정
+figure_area_ratio_threshold: 0.5
+# 스캔 문서 + 표가 있는 페이지는 숫자 교차확인을 위해 비전 경로로 라우팅
+scanned_table_verify: true
+
+# 비전 답변 이미지(표/도표 크롭) 해상도
+answer_image_dpi: 200
+answer_image_max_side: 2048
+
+rrf_k: 60
+
+ollama_num_ctx: 8192
+ollama_keep_alive: "10m"

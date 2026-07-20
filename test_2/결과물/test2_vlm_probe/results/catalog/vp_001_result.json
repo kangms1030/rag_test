@@ -1,0 +1,71 @@
+{
+  "pipeline": "test2",
+  "mode": "catalog",
+  "qid": "vp_001",
+  "question": "현황분석서의 서울특별시교육청 스윔스(무선) 관제 장비 현황(강남서초교육지원청 등 13개 교육지원청 포함)에서, 가온(제조사) AP 모델 EAP-224x(4,5,6,7,8,9)의 구축 수량은 몇 대이며, 서울특별시교육청 전체 AP 총 구축 수량은 몇 대인가요?",
+  "error": null,
+  "final_answer": "제공된 근거에서 확인할 수 없습니다.",
+  "answer_path": "text",
+  "abstained": false,
+  "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+  "selected_documents": [
+    "WEISS-DS-001-현황분석서-v0.91.pdf",
+    "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf"
+  ],
+  "selected_pages": [
+    16,
+    5,
+    14
+  ],
+  "doc_match": true,
+  "page_match": false,
+  "keyword_recall": 0.0,
+  "keywords_found": [],
+  "keywords_missing": [
+    "27,054",
+    "83,375",
+    "가온",
+    "EAP-224x",
+    "61대"
+  ],
+  "is_answer_supported": null,
+  "stage_timings_seconds": {
+    "retrieve": 2.328,
+    "answer": 23.25,
+    "total": 25.578
+  },
+  "model_calls": {
+    "embed_calls": 1,
+    "text_answer_calls": 1,
+    "vision_answer_calls": 0,
+    "llm_calls_total": 1,
+    "vlm_calls_total": 0,
+    "total_model_calls": 2
+  },
+  "evidence": [
+    {
+      "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "page_number": 16,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\pages\\p0016.png",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\mineru\\0-1v-20p-2023-a874b961\\auto\\images\\5a83981993c011734cc187dfe7d86761a99b1b01565ec4eefc5eef629902e50f.jpg"
+    },
+    {
+      "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "page_number": 5,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\pages\\p0005.png",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\mineru\\0-1v-20p-2023-a874b961\\auto\\images\\dc3c72f02ff289320d7fc17eafbab527948fd2319b58958cf94207be80b27906.jpg"
+    },
+    {
+      "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "page_number": 14,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\pages\\p0014.png",
+      "table_crop_path": ""
+    }
+  ],
+  "process_wall_seconds": 26.703,
+  "subprocess_returncode": 0,
+  "expected_answer_path": "vision",
+  "route_match": false,
+  "question_type": "scan_table",
+  "category": "현황분석서_AP현황"
+}

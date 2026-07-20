@@ -1,0 +1,198 @@
+{
+  "question": " 김치찌개 맛있게 끓이는 방법 알려줘",
+  "query_analysis": {
+    "intent": "김치찌개 조리법 및 레시피 정보 요청",
+    "keywords": [
+      "김치찌개",
+      "조리법"
+    ],
+    "domain_terms": [],
+    "required_data_type": "procedure",
+    "retrieval_query": "김치찌개 맛있게 끓이는 방법",
+    "reason": "사용자의 질문은 요리 레시피에 관한 내용으로, 학교 유무선 네트워크나 관련 장비와 관련된 키워드가 전혀 포함되어 있지 않음."
+  },
+  "selected_documents": [
+    {
+      "rank": 1,
+      "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "file_path": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "catalog_row_id": "cat_0007",
+      "selection_score": 0.976563,
+      "selection_reason": "카탈로그 하이브리드 검색 상위 1위 (dense_rank=3, bm25_rank=0)"
+    },
+    {
+      "rank": 2,
+      "document_name": "학교 무선인터넷 자가진단 체크리스트(안).pdf",
+      "file_path": "학교 무선인터넷 자가진단 체크리스트(안).pdf",
+      "catalog_row_id": "cat_0008",
+      "selection_score": 0.962121,
+      "selection_reason": "카탈로그 하이브리드 검색 상위 2위 (dense_rank=0, bm25_rank=5)"
+    }
+  ],
+  "selected_pages": [
+    {
+      "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "page_number": 17,
+      "page_score": 1.0,
+      "page_summary": "안드로이드 스마트폰을 활용한 학교 와이파이(Wi-Fi) 접속 방법 안내문. 특정 SSID 선택 및 비밀번호 입력 절차를 이미지와 텍스트로 설명함.",
+      "image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_1차\\rag_catalog_experiment\\cache\\pages\\0-1v-20p-2023-a874b961\\p0017.png"
+    },
+    {
+      "document_name": "학교 무선인터넷 자가진단 체크리스트(안).pdf",
+      "page_number": 5,
+      "page_score": 0.991935,
+      "page_summary": "무선망 점검용 어플리케이션인 'PingTools'의 설치 및 사용 방법 안내.",
+      "image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_1차\\rag_catalog_experiment\\cache\\pages\\doc-8bc422d9\\p0005.png"
+    },
+    {
+      "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "page_number": 20,
+      "page_score": 0.983871,
+      "page_summary": "스마트폰을 이용한 학교 와이파이 접속 방법 안내문. Wi-Fi 아이콘 클릭부터 특정 SSID 선택 및 비밀번호 입력까지의 과정을 시각적 자료와 단계별 설명으로 제공함.",
+      "image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_1차\\rag_catalog_experiment\\cache\\pages\\0-1v-20p-2023-a874b961\\p0020.png"
+    },
+    {
+      "document_name": "학교 무선인터넷 자가진단 체크리스트(안).pdf",
+      "page_number": 13,
+      "page_score": 0.976563,
+      "page_summary": "무선 인터넷 연결 장애 시의 스쿨넷 접선망 점검 방안을 다루고 있으며, 문제 상황에 따른 단계별 진단 흐름도와 실제 네트워크 연결 상태를 확인하기 위한 ping 테스트 방법 및 사례가 담겨 있습니다.",
+      "image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_1차\\rag_catalog_experiment\\cache\\pages\\doc-8bc422d9\\p0013.png"
+    },
+    {
+      "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "page_number": 19,
+      "page_score": 0.960689,
+      "page_summary": "Windows 환경에서 학교 Wi-Fi(wi_ssn_class)에 연결하기 위한 단계별 절차와 화면 구성이 포함된 매뉴얼입니다.",
+      "image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_1차\\rag_catalog_experiment\\cache\\pages\\0-1v-20p-2023-a874b961\\p0019.png"
+    }
+  ],
+  "selected_visual_chunks": [
+    {
+      "chunk_id": "0-1v-20p-2023-a874b961_p0020_c02",
+      "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "page_number": 20,
+      "chunk_type": "title",
+      "summary": "크롬북 기기에서 Wi-Fi를 연결하는 방법 섹션의 제목입니다.",
+      "bbox": {
+        "x1": 0.4,
+        "y1": 0.13,
+        "x2": 0.93,
+        "y2": 0.17
+      },
+      "score": 0.976563,
+      "why_relevant": "검색 점수 0.9766 (dense_rank=3, bm25_rank=0)"
+    },
+    {
+      "chunk_id": "0-1v-20p-2023-a874b961_p0017_c03",
+      "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "page_number": 17,
+      "chunk_type": "procedure",
+      "summary": "사용자가 와이파이에 연결하기 위해 수행해야 하는 단계별 절차를 설명하는 번호 매기기 목록입니다.",
+      "bbox": {
+        "x1": 0.12,
+        "y1": 0.68,
+        "x2": 0.95,
+        "y2": 0.98
+      },
+      "score": 0.968498,
+      "why_relevant": "검색 점수 0.9685 (dense_rank=1, bm25_rank=3)"
+    },
+    {
+      "chunk_id": "0-1v-20p-2023-a874b961_p0020_c04",
+      "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "page_number": 20,
+      "chunk_type": "procedure",
+      "summary": "Wi-Fi 연결을 완료하기 위한 단계별 안내 절차를 설명합니다.",
+      "bbox": {
+        "x1": 0.12,
+        "y1": 0.63,
+        "x2": 0.94,
+        "y2": 0.95
+      },
+      "score": 0.968254,
+      "why_relevant": "검색 점수 0.9683 (dense_rank=2, bm25_rank=2)"
+    },
+    {
+      "chunk_id": "doc-8bc422d9_p0013_c01",
+      "document_name": "학교 무선인터넷 자가진단 체크리스트(안).pdf",
+      "page_number": 13,
+      "chunk_type": "diagram",
+      "summary": "무선 인터넷 연결 문제 발생 시 단계별로 점검해야 할 항목을 도식화한 흐름도입니다.",
+      "bbox": {
+        "x1": 0.08,
+        "y1": 0.16,
+        "x2": 0.53,
+        "y2": 0.87
+      },
+      "score": 0.962121,
+      "why_relevant": "검색 점수 0.9621 (dense_rank=0, bm25_rank=5)"
+    },
+    {
+      "chunk_id": "doc-8bc422d9_p0005_c00",
+      "document_name": "학교 무선인터넷 자가진단 체크리스트(안).pdf",
+      "page_number": 5,
+      "chunk_type": "mixed",
+      "summary": "무선망 점검용 어플리케이션인 'PingTools'의 설치 및 사용 방법 안내.",
+      "bbox": {
+        "x1": 0.0,
+        "y1": 0.0,
+        "x2": 1.0,
+        "y2": 1.0
+      },
+      "score": 0.955224,
+      "why_relevant": "검색 점수 0.9552 (dense_rank=6, bm25_rank=0)"
+    },
+    {
+      "chunk_id": "0-1v-20p-2023-a874b961_p0020_c01",
+      "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "page_number": 20,
+      "chunk_type": "paragraph",
+      "summary": "학교 Wi-Fi 보안 서비스를 이용하는 방법에 대한 안내 문구입니다.",
+      "bbox": {
+        "x1": 0.13,
+        "y1": 0.09,
+        "x2": 0.56,
+        "y2": 0.13
+      },
+      "score": 0.947159,
+      "why_relevant": "검색 점수 0.9472 (dense_rank=6, bm25_rank=1)"
+    },
+    {
+      "chunk_id": "doc-8bc422d9_p0013_c02",
+      "document_name": "학교 무선인터넷 자가진단 체크리스트(안).pdf",
+      "page_number": 13,
+      "chunk_type": "mixed",
+      "summary": "스쿨렛 접선망 점검에 대한 상세 설명과 실제 ping 테스트 결과 예시 이미지가 포함된 안내 영역입니다.",
+      "bbox": {
+        "x1": 0.55,
+        "y1": 0.16,
+        "x2": 0.97,
+        "y2": 0.87
+      },
+      "score": 0.947159,
+      "why_relevant": "검색 점수 0.9472 (dense_rank=1, bm25_rank=6)"
+    },
+    {
+      "chunk_id": "doc-8bc422d9_p0013_c00",
+      "document_name": "학교 무선인터넷 자가진단 체크리스트(안).pdf",
+      "page_number": 13,
+      "chunk_type": "title",
+      "summary": "페이지의 주요 제목과 부제목이 포함된 상단 헤더 영역입니다.",
+      "bbox": {
+        "x1": 0.05,
+        "y1": 0.02,
+        "x2": 0.95,
+        "y2": 0.14
+      },
+      "score": 0.945793,
+      "why_relevant": "검색 점수 0.9458 (dense_rank=3, bm25_rank=4)"
+    }
+  ],
+  "page_evidence": [],
+  "final_answer": "선택된 문서에서 확인할 수 없습니다.",
+  "verification": {
+    "is_answer_supported": false,
+    "unsupported_claims": [],
+    "notes": "근거(page_evidence)가 없어 검증을 건너뜀"
+  }
+}

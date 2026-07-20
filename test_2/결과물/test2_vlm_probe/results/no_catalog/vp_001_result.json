@@ -1,0 +1,71 @@
+{
+  "pipeline": "test2",
+  "mode": "no_catalog",
+  "qid": "vp_001",
+  "question": "현황분석서의 서울특별시교육청 스윔스(무선) 관제 장비 현황(강남서초교육지원청 등 13개 교육지원청 포함)에서, 가온(제조사) AP 모델 EAP-224x(4,5,6,7,8,9)의 구축 수량은 몇 대이며, 서울특별시교육청 전체 AP 총 구축 수량은 몇 대인가요?",
+  "error": null,
+  "final_answer": "가온 제조사의 AP 모델 EAP-224x(4,5,6,7,8,9)의 구축 수량은 5,972대이며, 서울특별시교육청 전체 AP 총 구축 수량은 13,549대입니다.",
+  "answer_path": "vision",
+  "abstained": false,
+  "skip_reason": "1순위 페이지가 스캔+표 -> 숫자 교차확인을 위해 비전 경로",
+  "selected_documents": [
+    "WEISS-DS-001-현황분석서-v0.91.pdf"
+  ],
+  "selected_pages": [
+    24,
+    34,
+    59
+  ],
+  "doc_match": true,
+  "page_match": false,
+  "keyword_recall": 0.4,
+  "keywords_found": [
+    "가온",
+    "EAP-224x"
+  ],
+  "keywords_missing": [
+    "27,054",
+    "83,375",
+    "61대"
+  ],
+  "is_answer_supported": null,
+  "stage_timings_seconds": {
+    "retrieve": 8.422,
+    "answer": 19.953,
+    "total": 28.375
+  },
+  "model_calls": {
+    "embed_calls": 1,
+    "text_answer_calls": 0,
+    "vision_answer_calls": 1,
+    "llm_calls_total": 0,
+    "vlm_calls_total": 1,
+    "total_model_calls": 2
+  },
+  "evidence": [
+    {
+      "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+      "page_number": 24,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0024.png",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\mineru\\weiss-ds-001-v0-91-aa83eb15\\auto\\images\\1733ed9941d5008bfe35208584d1c47446596659b151a2d1133c5fab4ed5e12a.jpg"
+    },
+    {
+      "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+      "page_number": 34,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0034.png",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\mineru\\weiss-ds-001-v0-91-aa83eb15\\auto\\images\\3e4bf771de38e50c91123e23177c95b720b46c3ef678dbe3936807667aa39df1.jpg"
+    },
+    {
+      "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+      "page_number": 59,
+      "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0059.png",
+      "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\mineru\\weiss-ds-001-v0-91-aa83eb15\\auto\\images\\6b4cfde54f845f30d30e47a5fc8a5c69f7c0d51c62de4717d8cf29acb5413b89.jpg"
+    }
+  ],
+  "process_wall_seconds": 29.734,
+  "subprocess_returncode": 0,
+  "expected_answer_path": "vision",
+  "route_match": true,
+  "question_type": "scan_table",
+  "category": "현황분석서_AP현황"
+}

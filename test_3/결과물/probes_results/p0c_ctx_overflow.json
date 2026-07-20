@@ -1,0 +1,277 @@
+{
+  "model": "gemma4:12b",
+  "cases": [
+    {
+      "qid": "vp_002",
+      "question": "현황분석서의 강원특별자치도교육청 스윔스(무선) 관제 장비 현황(원주교육지원청 등 18개 교육지원청 포함)에서, 다보링크(제조사) 3개 모델(DVW-4128, DVW-604i, DVW-624i)의 각 수량과 강원특별자치도교육청 AP 총 구축 수량은 얼마인가요?",
+      "orig_answer_path": "text",
+      "orig_final_answer": "선택된 문서에서 확인 불가",
+      "answer_page_expected": 14,
+      "pages_seen": [
+        [
+          "통합관제(사용자)_20260702.pdf",
+          58,
+          5520
+        ],
+        [
+          "WEISS-DS-001-현황분석서-v0.",
+          14,
+          7070
+        ],
+        [
+          "WEISS-DS-001-현황분석서-v0.",
+          54,
+          2647
+        ]
+      ],
+      "context_chars": 15358,
+      "prompt_chars": 15658,
+      "prompt_rough_tokens": 1813,
+      "A_ctx8192": {
+        "num_ctx": 8192,
+        "prompt_eval_count": 7791,
+        "eval_count": 401,
+        "answer_empty": true,
+        "answer_is_nodoc": false,
+        "answer_head": ""
+      },
+      "B_ctx16384": {
+        "num_ctx": 16384,
+        "prompt_eval_count": 7791,
+        "eval_count": 1686,
+        "answer_empty": false,
+        "answer_is_nodoc": false,
+        "answer_head": "강원특별자치도교육청 스윔스(무선) 관제 장비 현황에 따른 수량은 다음과 같습니다.\n\n*   **다보링크(제조사) 모델별 수량:**\n    *   DVW-4128: 4\n    *   DVW-604i: 4,356\n    *   DVW-624i: 1,789\n*   **강원특별자치도교육청 AP 총 구축 수량:** 15,929"
+      },
+      "C_reorder_ctx8192": {
+        "num_ctx": 8192,
+        "prompt_eval_count": 7791,
+        "eval_count": 401,
+        "answer_empty": true,
+        "answer_is_nodoc": false,
+        "answer_head": ""
+      }
+    },
+    {
+      "qid": "vp_006",
+      "question": "MDM 매뉴얼의 대여 이력 관리 화면에서 처리자 'jhkim2761'이 대여 처리한 단말의 시리얼번호와 반납예정일은 무엇이며, 화면에 표시된 전체 이력 건수는 몇 건인가요?",
+      "orig_answer_path": "text",
+      "orig_final_answer": "선택된 문서에서 확인 불가",
+      "answer_page_expected": 83,
+      "pages_seen": [
+        [
+          "스마트 단말 관리 시스템[MDM]_교육 ",
+          82,
+          246
+        ],
+        [
+          "스마트 단말 관리 시스템[MDM]_교육 ",
+          83,
+          6566
+        ],
+        [
+          "이용관리_20260702.pdf",
+          81,
+          720
+        ]
+      ],
+      "context_chars": 7680,
+      "prompt_chars": 7932,
+      "prompt_rough_tokens": 1308,
+      "A_ctx8192": {
+        "num_ctx": 8192,
+        "prompt_eval_count": 3685,
+        "eval_count": 4507,
+        "answer_empty": true,
+        "answer_is_nodoc": false,
+        "answer_head": ""
+      },
+      "B_ctx16384": {
+        "num_ctx": 16384,
+        "prompt_eval_count": 3685,
+        "eval_count": 12699,
+        "answer_empty": true,
+        "answer_is_nodoc": false,
+        "answer_head": ""
+      },
+      "C_reorder_ctx8192": {
+        "num_ctx": 8192,
+        "prompt_eval_count": 3685,
+        "eval_count": 4507,
+        "answer_empty": true,
+        "answer_is_nodoc": false,
+        "answer_head": ""
+      }
+    },
+    {
+      "qid": "vp_007",
+      "question": "MDM 매뉴얼의 대여자 CSV 업로드 샘플 표에서 '2번 학생'의 연락처와 학년/반/번호는 무엇이며, 대여자 관리 화면에 등록된 대여자는 총 몇 건인가요?",
+      "orig_answer_path": "text",
+      "orig_final_answer": "선택된 문서에서 확인 불가",
+      "answer_page_expected": 88,
+      "pages_seen": [
+        [
+          "스마트 단말 관리 시스템[MDM]_교육 ",
+          89,
+          336
+        ],
+        [
+          "8-1. 스쿨넷서비스 학내망 구축 및 운",
+          2,
+          1108
+        ],
+        [
+          "스마트 단말 관리 시스템[MDM]_교육 ",
+          88,
+          4669
+        ]
+      ],
+      "context_chars": 6283,
+      "prompt_chars": 6525,
+      "prompt_rough_tokens": 1401,
+      "A_ctx8192": {
+        "num_ctx": 8192,
+        "prompt_eval_count": 3102,
+        "eval_count": 5090,
+        "answer_empty": true,
+        "answer_is_nodoc": false,
+        "answer_head": ""
+      },
+      "B_ctx16384": {
+        "num_ctx": 16384,
+        "prompt_eval_count": 3102,
+        "eval_count": 12473,
+        "answer_empty": false,
+        "answer_is_nodoc": false,
+        "answer_head": "대여자 CSV 업로드 샘플 표에서 '2번 학생'(표 내 '2번학')의 연락처는 1030011002이며, 학년/반/번호는 각각 1, 2, 11 t입니다. 대여자 관리 화면에 등록된 대여자는 총 5건입니다."
+      },
+      "C_reorder_ctx8192": {
+        "num_ctx": 8192,
+        "prompt_eval_count": 3102,
+        "eval_count": 5090,
+        "answer_empty": true,
+        "answer_is_nodoc": false,
+        "answer_head": ""
+      }
+    },
+    {
+      "qid": "vp_010",
+      "question": "무선랜 구축운영 가이드라인의 '4. 학교내 무선망 장애 진단 및 해결방안(1/3)' 구성도에서 방화벽부터 AP까지 순서대로 나열된 4개 장비는 무엇이며, PingTools 예시에서 정상 연결과 연결 장애 상태로 각각 제시된 IP 주소는 무엇인가요?",
+      "orig_answer_path": "text",
+      "orig_final_answer": "제공된 근거에서 확인할 수 없습니다.",
+      "answer_page_expected": 11,
+      "pages_seen": [
+        [
+          "★. 무선랜 구축운영 가이드라인_0.1v",
+          2,
+          159
+        ],
+        [
+          "★. 무선랜 구축운영 가이드라인_0.1v",
+          11,
+          158
+        ],
+        [
+          "학교 무선인터넷 자가진단 체크리스트(안)",
+          13,
+          207
+        ]
+      ],
+      "context_chars": 668,
+      "prompt_chars": 962,
+      "prompt_rough_tokens": 497,
+      "A_ctx8192": {
+        "num_ctx": 8192,
+        "prompt_eval_count": 585,
+        "eval_count": 727,
+        "answer_empty": false,
+        "answer_is_nodoc": true,
+        "answer_head": "제공된 근거에서 확인할 수 없습니다."
+      },
+      "B_ctx16384": {
+        "num_ctx": 16384,
+        "prompt_eval_count": 585,
+        "eval_count": 727,
+        "answer_empty": false,
+        "answer_is_nodoc": true,
+        "answer_head": "제공된 근거에서 확인할 수 없습니다."
+      },
+      "C_reorder_ctx8192": {
+        "num_ctx": 8192,
+        "prompt_eval_count": 585,
+        "eval_count": 565,
+        "answer_empty": false,
+        "answer_is_nodoc": true,
+        "answer_head": "제공된 근거에서 확인할 수 없습니다."
+      }
+    },
+    {
+      "qid": "vp_014",
+      "question": "통합관제시스템 완료보고서의 '4. 개선과제 - 4.1 영역별 주요 과제' 구성도(과제 영역과 주요 과제를 정리한 표)에서, '공동플랫폼' 영역의 4가지 구성요소와 '네트워크' 영역의 주요 과제 2가지는 무엇인가요?",
+      "orig_answer_path": "text",
+      "orig_final_answer": "제공된 근거에서 확인할 수 없습니다.",
+      "answer_page_expected": 71,
+      "pages_seen": [
+        [
+          "WEISS-DE-001-(컨설팅)완료보고",
+          45,
+          3230
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)완료보고",
+          71,
+          19
+        ],
+        [
+          "WEISS-DE-001-(컨설팅)완료보고",
+          4,
+          957
+        ]
+      ],
+      "context_chars": 4377,
+      "prompt_chars": 4652,
+      "prompt_rough_tokens": 1714,
+      "A_ctx8192": {
+        "num_ctx": 8192,
+        "prompt_eval_count": 2312,
+        "eval_count": 757,
+        "answer_empty": false,
+        "answer_is_nodoc": true,
+        "answer_head": "제공된 근거에서 확인할 수 없습니다."
+      },
+      "B_ctx16384": {
+        "num_ctx": 16384,
+        "prompt_eval_count": 2312,
+        "eval_count": 757,
+        "answer_empty": false,
+        "answer_is_nodoc": true,
+        "answer_head": "제공된 근거에서 확인할 수 없습니다."
+      },
+      "C_reorder_ctx8192": {
+        "num_ctx": 8192,
+        "prompt_eval_count": 2312,
+        "eval_count": 830,
+        "answer_empty": false,
+        "answer_is_nodoc": true,
+        "answer_head": "제공된 근거에서 확인할 수 없습니다."
+      }
+    },
+    {
+      "qid": "vp_005",
+      "question": "현황분석서에서 루커스(Ruckus), Xirrus, Extreme, 쏘우웨이브, 시스코, iptime, Netgear 등 다양한 제조사별 AP 구축 현황을 정리한 전국 집계 표에서, 루커스(Ruckus) R710 모델과 가온 EAP2245 모델의 각 구축 수량은 얼마이며, 표 전체의 총 구축 수량은 얼마인가요?",
+      "orig_answer_path": "none",
+      "orig_final_answer": "선택된 문서에서 확인 불가",
+      "answer_page_expected": 75,
+      "pages_seen": [],
+      "note": "복원 페이지 없음(게이트 none일 가능성)"
+    }
+  ],
+  "verdict": {
+    "prompt_eval>=8000 (오버플로 근접)": [],
+    "16k로 살아난 케이스": [
+      "vp_002",
+      "vp_007"
+    ],
+    "정답페이지 우선재배열로 살아난 케이스": []
+  }
+}

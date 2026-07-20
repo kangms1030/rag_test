@@ -1,0 +1,2675 @@
+[
+  {
+    "pipeline": "test2",
+    "mode": "catalog",
+    "qid": "vp_001",
+    "question": "현황분석서의 서울특별시교육청 스윔스(무선) 관제 장비 현황(강남서초교육지원청 등 13개 교육지원청 포함)에서, 가온(제조사) AP 모델 EAP-224x(4,5,6,7,8,9)의 구축 수량은 몇 대이며, 서울특별시교육청 전체 AP 총 구축 수량은 몇 대인가요?",
+    "error": null,
+    "final_answer": "제공된 근거에서 확인할 수 없습니다.",
+    "answer_path": "text",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+    "selected_documents": [
+      "WEISS-DS-001-현황분석서-v0.91.pdf",
+      "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf"
+    ],
+    "selected_pages": [
+      16,
+      5,
+      14
+    ],
+    "doc_match": true,
+    "page_match": false,
+    "keyword_recall": 0.0,
+    "keywords_found": [],
+    "keywords_missing": [
+      "27,054",
+      "83,375",
+      "가온",
+      "EAP-224x",
+      "61대"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 2.328,
+      "answer": 23.25,
+      "total": 25.578
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 1,
+      "vision_answer_calls": 0,
+      "llm_calls_total": 1,
+      "vlm_calls_total": 0,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+        "page_number": 16,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\pages\\p0016.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\mineru\\0-1v-20p-2023-a874b961\\auto\\images\\5a83981993c011734cc187dfe7d86761a99b1b01565ec4eefc5eef629902e50f.jpg"
+      },
+      {
+        "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+        "page_number": 5,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\pages\\p0005.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\mineru\\0-1v-20p-2023-a874b961\\auto\\images\\dc3c72f02ff289320d7fc17eafbab527948fd2319b58958cf94207be80b27906.jpg"
+      },
+      {
+        "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+        "page_number": 14,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\pages\\p0014.png",
+        "table_crop_path": ""
+      }
+    ],
+    "process_wall_seconds": 26.703,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "vision",
+    "route_match": false,
+    "question_type": "scan_table",
+    "category": "현황분석서_AP현황"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "catalog",
+    "qid": "vp_002",
+    "question": "현황분석서의 강원특별자치도교육청 스윔스(무선) 관제 장비 현황(원주교육지원청 등 18개 교육지원청 포함)에서, 다보링크(제조사) 3개 모델(DVW-4128, DVW-604i, DVW-624i)의 각 수량과 강원특별자치도교육청 AP 총 구축 수량은 얼마인가요?",
+    "error": null,
+    "final_answer": "선택된 문서에서 확인 불가",
+    "answer_path": "text",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+    "selected_documents": [
+      "WEISS-DS-001-현황분석서-v0.91.pdf",
+      "통합관제(사용자)_20260702.pdf"
+    ],
+    "selected_pages": [
+      58,
+      14,
+      54
+    ],
+    "doc_match": true,
+    "page_match": true,
+    "keyword_recall": 0.0,
+    "keywords_found": [],
+    "keywords_missing": [
+      "DVW-4128",
+      "DVW-604i",
+      "DVW-624i",
+      "4,356",
+      "1,789",
+      "15,929"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 2.594,
+      "answer": 13.562,
+      "total": 16.156
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 1,
+      "vision_answer_calls": 0,
+      "llm_calls_total": 1,
+      "vlm_calls_total": 0,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "통합관제(사용자)_20260702.pdf",
+        "page_number": 58,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-80cc24f0\\pages\\p0058.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-80cc24f0\\mineru\\20260702-80cc24f0\\auto\\images\\6962a46eb93571a59eaa6965b5d0f055c35a76ea0744f961d34b75a03a0e832a.jpg"
+      },
+      {
+        "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+        "page_number": 14,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0014.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\mineru\\weiss-ds-001-v0-91-aa83eb15\\auto\\images\\5541ebd98792ea27b8bd7f16d27df326f16902d42fb9a684131890e0c21274d6.jpg"
+      },
+      {
+        "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+        "page_number": 54,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0054.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\mineru\\weiss-ds-001-v0-91-aa83eb15\\auto\\images\\73612afa794740f04f5764b0b67fa81111555273187469fe030b90f66b5d28ab.jpg"
+      }
+    ],
+    "process_wall_seconds": 17.266,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "vision",
+    "route_match": false,
+    "question_type": "scan_table",
+    "category": "현황분석서_AP현황"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "catalog",
+    "qid": "vp_003",
+    "question": "현황분석서의 경상남도교육청 스윔스(무선) 관제 장비 현황(창원교육지원청 등 17개 교육지원청 포함) AP 구축 표에서 AP 구축 수량이 많은 순서(제조사 기준)는 어떻게 되며, 경상남도교육청 AP 총 구축 수량과 학교당 평균 구축 대수는 얼마인가요?",
+    "error": null,
+    "final_answer": "선택된 문서에서 확인 불가",
+    "answer_path": "text",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+    "selected_documents": [
+      "WEISS-DS-001-현황분석서-v0.91.pdf",
+      "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf"
+    ],
+    "selected_pages": [
+      16,
+      13,
+      5
+    ],
+    "doc_match": true,
+    "page_match": false,
+    "keyword_recall": 0.0,
+    "keywords_found": [],
+    "keywords_missing": [
+      "가온",
+      "다보링크",
+      "엘텍",
+      "올레디오",
+      "37,171",
+      "37대"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 2.344,
+      "answer": 114.859,
+      "total": 117.203
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 1,
+      "vision_answer_calls": 0,
+      "llm_calls_total": 1,
+      "vlm_calls_total": 0,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+        "page_number": 16,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\pages\\p0016.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\mineru\\0-1v-20p-2023-a874b961\\auto\\images\\5a83981993c011734cc187dfe7d86761a99b1b01565ec4eefc5eef629902e50f.jpg"
+      },
+      {
+        "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+        "page_number": 13,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\pages\\p0013.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+        "page_number": 5,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\pages\\p0005.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\mineru\\0-1v-20p-2023-a874b961\\auto\\images\\dc3c72f02ff289320d7fc17eafbab527948fd2319b58958cf94207be80b27906.jpg"
+      }
+    ],
+    "process_wall_seconds": 118.313,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "vision",
+    "route_match": false,
+    "question_type": "scan_table",
+    "category": "현황분석서_AP현황"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "catalog",
+    "qid": "vp_004",
+    "question": "현황분석서의 경상남도교육청 POE(PoE) 장비 현황(창원교육지원청 등 17개 교육지원청 포함) 표에서, 유비쿼스(제조사) 모델 중 구축 수량이 가장 많은 모델명과 그 수량은 무엇이며, 경상남도교육청 POE 총 구축 수량은 얼마인가요?",
+    "error": null,
+    "final_answer": "제공된 이미지에는 '경상남도교육청 POE(PoE) 장비 현황' 표나 유비쿼스(Ubiquoss) 제조사 관련 정보, 또는 구체적인 구축 수량에 대한 데이터가 포함되어 있지 않습니다. 따라서 해당 질문에 대한 답변을 드릴 수 없습니다.",
+    "answer_path": "vision",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 그림 위주(figure_area_ratio=0.60)",
+    "selected_documents": [
+      "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "통합관제 이용기관 전용 매뉴얼_20260702.pdf"
+    ],
+    "selected_pages": [
+      6,
+      23,
+      5
+    ],
+    "doc_match": false,
+    "page_match": false,
+    "keyword_recall": 0.25,
+    "keywords_found": [
+      "유비쿼스"
+    ],
+    "keywords_missing": [
+      "E4020-24PS",
+      "4,727",
+      "6,831"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 2.172,
+      "answer": 49.109,
+      "total": 51.281
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 0,
+      "vision_answer_calls": 1,
+      "llm_calls_total": 0,
+      "vlm_calls_total": 1,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+        "page_number": 6,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\pages\\p0006.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "통합관제 이용기관 전용 매뉴얼_20260702.pdf",
+        "page_number": 23,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-62c3c925\\pages\\p0023.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-62c3c925\\mineru\\20260702-62c3c925\\auto\\images\\9e3fb774f234f6cbbd13a573782f1b9b90fccf91a061a56620c8cf929902e5d4.jpg"
+      },
+      {
+        "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+        "page_number": 5,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\pages\\p0005.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\mineru\\0-1v-20p-2023-a874b961\\auto\\images\\dc3c72f02ff289320d7fc17eafbab527948fd2319b58958cf94207be80b27906.jpg"
+      }
+    ],
+    "process_wall_seconds": 52.36,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "vision",
+    "route_match": true,
+    "question_type": "scan_table",
+    "category": "현황분석서_POE현황"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "catalog",
+    "qid": "vp_005",
+    "question": "현황분석서에서 루커스(Ruckus), Xirrus, Extreme, 쏘우웨이브, 시스코, iptime, Netgear 등 다양한 제조사별 AP 구축 현황을 정리한 전국 집계 표에서, 루커스(Ruckus) R710 모델과 가온 EAP2245 모델의 각 구축 수량은 얼마이며, 표 전체의 총 구축 수량은 얼마인가요?",
+    "error": null,
+    "final_answer": "선택된 문서에서 확인 불가",
+    "answer_path": "none",
+    "abstained": true,
+    "skip_reason": "카탈로그에서 관련 문서를 찾지 못함",
+    "selected_documents": [],
+    "selected_pages": [],
+    "doc_match": false,
+    "page_match": false,
+    "keyword_recall": 0.0,
+    "keywords_found": [],
+    "keywords_missing": [
+      "R710",
+      "4,395",
+      "EAP2245",
+      "6,620",
+      "23,948"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 1.671,
+      "answer": 0.0,
+      "total": 1.671
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 0,
+      "vision_answer_calls": 0,
+      "llm_calls_total": 0,
+      "vlm_calls_total": 0,
+      "total_model_calls": 1
+    },
+    "evidence": [],
+    "process_wall_seconds": 2.766,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "vision",
+    "route_match": false,
+    "question_type": "scan_table",
+    "category": "현황분석서_AP현황"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "catalog",
+    "qid": "vp_006",
+    "question": "MDM 매뉴얼의 대여 이력 관리 화면에서 처리자 'jhkim2761'이 대여 처리한 단말의 시리얼번호와 반납예정일은 무엇이며, 화면에 표시된 전체 이력 건수는 몇 건인가요?",
+    "error": null,
+    "final_answer": "선택된 문서에서 확인 불가",
+    "answer_path": "text",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+    "selected_documents": [
+      "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf",
+      "이용관리_20260702.pdf"
+    ],
+    "selected_pages": [
+      82,
+      83,
+      81
+    ],
+    "doc_match": true,
+    "page_match": true,
+    "keyword_recall": 0.0,
+    "keywords_found": [],
+    "keywords_missing": [
+      "jhkim2761",
+      "R54KB00TXWF",
+      "2022-11-15",
+      "37건"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 2.688,
+      "answer": 103.265,
+      "total": 105.953
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 1,
+      "vision_answer_calls": 0,
+      "llm_calls_total": 1,
+      "vlm_calls_total": 0,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf",
+        "page_number": 82,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\mdm-argos-edu-v1-5-6061726f\\pages\\p0082.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf",
+        "page_number": 83,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\mdm-argos-edu-v1-5-6061726f\\pages\\p0083.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\mdm-argos-edu-v1-5-6061726f\\mineru\\mdm-argos-edu-v1-5-6061726f\\auto\\images\\10413d92f56df1a4ded28e0d64ec1b5318afb99840a41ce2002dde01380f3f28.jpg"
+      },
+      {
+        "document_name": "이용관리_20260702.pdf",
+        "page_number": 81,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\pages\\p0081.png",
+        "table_crop_path": ""
+      }
+    ],
+    "process_wall_seconds": 107.047,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "vision",
+    "route_match": false,
+    "question_type": "scan_table",
+    "category": "MDM_대여관리"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "catalog",
+    "qid": "vp_007",
+    "question": "MDM 매뉴얼의 대여자 CSV 업로드 샘플 표에서 '2번 학생'의 연락처와 학년/반/번호는 무엇이며, 대여자 관리 화면에 등록된 대여자는 총 몇 건인가요?",
+    "error": null,
+    "final_answer": "선택된 문서에서 확인 불가",
+    "answer_path": "text",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+    "selected_documents": [
+      "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf",
+      "8-1. 스쿨넷서비스 학내망 구축 및 운영관리 개선을 위한 가이드.pdf"
+    ],
+    "selected_pages": [
+      89,
+      2,
+      88
+    ],
+    "doc_match": true,
+    "page_match": true,
+    "keyword_recall": 0.0,
+    "keywords_found": [],
+    "keywords_missing": [
+      "1030011002",
+      "1학년",
+      "2반",
+      "11번",
+      "135건"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 2.516,
+      "answer": 125.078,
+      "total": 127.594
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 1,
+      "vision_answer_calls": 0,
+      "llm_calls_total": 1,
+      "vlm_calls_total": 0,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf",
+        "page_number": 89,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\mdm-argos-edu-v1-5-6061726f\\pages\\p0089.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "8-1. 스쿨넷서비스 학내망 구축 및 운영관리 개선을 위한 가이드.pdf",
+        "page_number": 2,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\8-1-33511a48\\pages\\p0002.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf",
+        "page_number": 88,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\mdm-argos-edu-v1-5-6061726f\\pages\\p0088.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\mdm-argos-edu-v1-5-6061726f\\mineru\\mdm-argos-edu-v1-5-6061726f\\auto\\images\\ebc612a970392d410f447cf2dea765f06471dcd7a5371566df60a21fa443d9e7.jpg"
+      }
+    ],
+    "process_wall_seconds": 128.735,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "vision",
+    "route_match": false,
+    "question_type": "scan_table",
+    "category": "MDM_대여관리"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "catalog",
+    "qid": "vp_008",
+    "question": "이용관리 화면의 회선 서비스 신규 이용신청 상세(접수대기) 예시(신청기관: 테스트고등학교, 신청번호 2026010800002)에서 신청된 서비스 종류, 속도, 설치장소, 개통 희망일은 각각 무엇인가요?",
+    "error": null,
+    "final_answer": "제공된 근거에서 확인할 수 없습니다.",
+    "answer_path": "text",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+    "selected_documents": [
+      "이용관리_20260702.pdf",
+      "WEISS-DE-001-(컨설팅)완료보고서-4.이용관리시스템-v0.82.pdf"
+    ],
+    "selected_pages": [
+      29,
+      30,
+      15
+    ],
+    "doc_match": true,
+    "page_match": false,
+    "keyword_recall": 0.0,
+    "keywords_found": [],
+    "keywords_missing": [
+      "인터넷서비스",
+      "10G",
+      "대강당",
+      "2026-01-30"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 2.969,
+      "answer": 21.343,
+      "total": 24.312
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 1,
+      "vision_answer_calls": 0,
+      "llm_calls_total": 1,
+      "vlm_calls_total": 0,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "WEISS-DE-001-(컨설팅)완료보고서-4.이용관리시스템-v0.82.pdf",
+        "page_number": 29,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-4-v0-82-b9c3bac8\\pages\\p0029.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-4-v0-82-b9c3bac8\\mineru\\weiss-de-001-4-v0-82-b9c3bac8\\auto\\images\\61b4c424467966837f6f3b37061504174beba720883a6606b6c1f39c64b1c344.jpg"
+      },
+      {
+        "document_name": "WEISS-DE-001-(컨설팅)완료보고서-4.이용관리시스템-v0.82.pdf",
+        "page_number": 30,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-4-v0-82-b9c3bac8\\pages\\p0030.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-4-v0-82-b9c3bac8\\mineru\\weiss-de-001-4-v0-82-b9c3bac8\\auto\\images\\6e9271287c43277f3ad4749e19cb9a55cf986d2e1761764f341c045f92f36382.jpg"
+      },
+      {
+        "document_name": "WEISS-DE-001-(컨설팅)완료보고서-4.이용관리시스템-v0.82.pdf",
+        "page_number": 15,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-4-v0-82-b9c3bac8\\pages\\p0015.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-4-v0-82-b9c3bac8\\mineru\\weiss-de-001-4-v0-82-b9c3bac8\\auto\\images\\838cdccf027063c0712e715de7a23efe4f0223b6c392464e95004499489faa7c.jpg"
+      }
+    ],
+    "process_wall_seconds": 25.61,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "vision",
+    "route_match": false,
+    "question_type": "scan_table",
+    "category": "이용관리_신청현황"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "catalog",
+    "qid": "vp_009",
+    "question": "무선랜 구축운영 가이드라인에서 소개하는, 학교 무선 채널 및 신호 세기를 측정하는 무료 모바일 앱의 이름은 무엇이며 어디서 다운로드할 수 있나요?",
+    "error": null,
+    "final_answer": "무선 채널 및 신호 세기를 측정하는 무료 모바일 앱의 이름은 'WIFI 캐너 360'이며, 앱 스토어에서 다운로드할 수 있습니다.",
+    "answer_path": "vision",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 그림 위주(figure_area_ratio=0.62)",
+    "selected_documents": [
+      "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "학교 무선인터넷 자가진단 체크리스트(안).pdf"
+    ],
+    "selected_pages": [
+      13,
+      12,
+      10
+    ],
+    "doc_match": true,
+    "page_match": true,
+    "keyword_recall": 0.0,
+    "keywords_found": [],
+    "keywords_missing": [
+      "WiFi 개요 360",
+      "갤럭시 앱 스토어"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 2.266,
+      "answer": 12.109,
+      "total": 14.375
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 0,
+      "vision_answer_calls": 1,
+      "llm_calls_total": 0,
+      "vlm_calls_total": 1,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+        "page_number": 13,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\pages\\p0013.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+        "page_number": 12,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\pages\\p0012.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "학교 무선인터넷 자가진단 체크리스트(안).pdf",
+        "page_number": 10,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\doc-8bc422d9\\pages\\p0010.png",
+        "table_crop_path": ""
+      }
+    ],
+    "process_wall_seconds": 15.672,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "vision",
+    "route_match": true,
+    "question_type": "figure",
+    "category": "무선랜_장애진단"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "catalog",
+    "qid": "vp_010",
+    "question": "무선랜 구축운영 가이드라인의 '4. 학교내 무선망 장애 진단 및 해결방안(1/3)' 구성도에서 방화벽부터 AP까지 순서대로 나열된 4개 장비는 무엇이며, PingTools 예시에서 정상 연결과 연결 장애 상태로 각각 제시된 IP 주소는 무엇인가요?",
+    "error": null,
+    "final_answer": "제공된 근거에서 확인할 수 없습니다.",
+    "answer_path": "text",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+    "selected_documents": [
+      "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "학교 무선인터넷 자가진단 체크리스트(안).pdf"
+    ],
+    "selected_pages": [
+      2,
+      11,
+      13
+    ],
+    "doc_match": true,
+    "page_match": true,
+    "keyword_recall": 0.0,
+    "keywords_found": [],
+    "keywords_missing": [
+      "방화벽",
+      "무선 집선 스위치",
+      "PoE 스위치",
+      "192.168.0.1",
+      "192.168.0.10"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 2.265,
+      "answer": 18.516,
+      "total": 20.781
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 1,
+      "vision_answer_calls": 0,
+      "llm_calls_total": 1,
+      "vlm_calls_total": 0,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+        "page_number": 2,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\pages\\p0002.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+        "page_number": 11,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\pages\\p0011.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "학교 무선인터넷 자가진단 체크리스트(안).pdf",
+        "page_number": 13,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\doc-8bc422d9\\pages\\p0013.png",
+        "table_crop_path": ""
+      }
+    ],
+    "process_wall_seconds": 22.047,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "vision",
+    "route_match": false,
+    "question_type": "figure",
+    "category": "무선랜_장애진단"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "catalog",
+    "qid": "vp_011",
+    "question": "23년 학교 유무선 운영·관리 안내서의 스쿨넷 서비스 이용 관리 시스템 신규 기관 등록 방법에서, 접속 사이트 주소와 등록 절차 3단계는 각각 무엇인가요?",
+    "error": null,
+    "final_answer": "접속 사이트 주소는 www.school-net.or.kr이며, 등록 절차 3단계는 ① 이용기관 등록신청 Click!, ② 내용 입력 후 '신청' 버튼 누르기(참고. 내용이 틀릴 경우 재입력 가능), ③ 관리자 승인 후 등록 완료 이메일 수신입니다.",
+    "answer_path": "vision",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 그림 위주(figure_area_ratio=0.64)",
+    "selected_documents": [
+      "★23년 학교 유무선 운영·관리 안내서_최종.pdf",
+      "이용관리_20260702.pdf"
+    ],
+    "selected_pages": [
+      22,
+      8,
+      36
+    ],
+    "doc_match": true,
+    "page_match": true,
+    "keyword_recall": 1.0,
+    "keywords_found": [
+      "school-net.or.kr",
+      "이용기관 등록신청",
+      "신청",
+      "관리자 승인",
+      "이메일"
+    ],
+    "keywords_missing": [],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 2.953,
+      "answer": 62.625,
+      "total": 65.578
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 0,
+      "vision_answer_calls": 1,
+      "llm_calls_total": 0,
+      "vlm_calls_total": 1,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "★23년 학교 유무선 운영·관리 안내서_최종.pdf",
+        "page_number": 22,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\23-b3bffb22\\pages\\p0022.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "이용관리_20260702.pdf",
+        "page_number": 8,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\pages\\p0008.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "이용관리_20260702.pdf",
+        "page_number": 36,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\pages\\p0036.png",
+        "table_crop_path": ""
+      }
+    ],
+    "process_wall_seconds": 66.813,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "vision",
+    "route_match": true,
+    "question_type": "figure",
+    "category": "23년안내서_이용관리"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "catalog",
+    "qid": "vp_012",
+    "question": "23년 학교 유무선 운영·관리 안내서의 'PC의 IP 주소 및 DNS 주소 변경 방법'(윈도우 11 기준) 안내에서, IP/DNS 주소를 변경하기 위한 4단계 절차는 무엇인가요?",
+    "error": null,
+    "final_answer": "'PC의 IP 주소 및 DNS 주소 변경 방법'(윈도우 11 기준) 안내에서 제시하는 4단계 절차는 다음과 같습니다.\n\n①‘네트워크연결’ 입력후엔터\n②‘이더넷’ 마우스 오른쪽 버튼\n③속성\n④‘인터넷 프로토콜 버전 4(TCP/IPv4)’ 더블클릭",
+    "answer_path": "text",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+    "selected_documents": [
+      "★23년 학교 유무선 운영·관리 안내서_최종.pdf",
+      "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf"
+    ],
+    "selected_pages": [
+      45,
+      44,
+      15
+    ],
+    "doc_match": true,
+    "page_match": true,
+    "keyword_recall": 0.8,
+    "keywords_found": [
+      "이더넷",
+      "속성",
+      "인터넷 프로토콜 버전 4",
+      "TCP/IPv4"
+    ],
+    "keywords_missing": [
+      "네트워크 연결"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 2.469,
+      "answer": 22.469,
+      "total": 24.938
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 1,
+      "vision_answer_calls": 0,
+      "llm_calls_total": 1,
+      "vlm_calls_total": 0,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "★23년 학교 유무선 운영·관리 안내서_최종.pdf",
+        "page_number": 45,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\23-b3bffb22\\pages\\p0045.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\23-b3bffb22\\mineru\\23-b3bffb22\\auto\\images\\a91679717cbb61423e0d090b14748ec8c09700c891b9a9eac5a54af7b35d2919.jpg"
+      },
+      {
+        "document_name": "★23년 학교 유무선 운영·관리 안내서_최종.pdf",
+        "page_number": 44,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\23-b3bffb22\\pages\\p0044.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+        "page_number": 15,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\pages\\p0015.png",
+        "table_crop_path": ""
+      }
+    ],
+    "process_wall_seconds": 26.218,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "vision",
+    "route_match": false,
+    "question_type": "figure",
+    "category": "23년안내서_IP설정"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "catalog",
+    "qid": "vp_013",
+    "question": "MDM 매뉴얼의 '5.2. 화면 표시 설정' 단말현황 화면 예시(iPad_시험단말 카드 포함)에서, '단말 명/시리얼번호' 기준으로 표시된 카드의 시리얼번호와 용량은 무엇이며, '사용자 명/Wi-Fi Mac주소' 기준 카드의 MAC 주소와 용량은 무엇인가요?",
+    "error": null,
+    "final_answer": "제공된 근거에서 확인할 수 없습니다.",
+    "answer_path": "text",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+    "selected_documents": [
+      "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf",
+      "통합관제 이용기관 전용 매뉴얼_20260702.pdf"
+    ],
+    "selected_pages": [
+      22,
+      19,
+      18
+    ],
+    "doc_match": true,
+    "page_match": false,
+    "keyword_recall": 0.0,
+    "keywords_found": [],
+    "keywords_missing": [
+      "DMPZN8Q7MF3R",
+      "8%",
+      "10:8e:e0:77:16:84",
+      "39%"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 2.75,
+      "answer": 21.969,
+      "total": 24.719
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 1,
+      "vision_answer_calls": 0,
+      "llm_calls_total": 1,
+      "vlm_calls_total": 0,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf",
+        "page_number": 22,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\mdm-argos-edu-v1-5-6061726f\\pages\\p0022.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "통합관제 이용기관 전용 매뉴얼_20260702.pdf",
+        "page_number": 19,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-62c3c925\\pages\\p0019.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-62c3c925\\mineru\\20260702-62c3c925\\auto\\images\\ed840e628be9cdd9d5eb8872e20c209440dae317cb475c6a812eb61fa880546e.jpg"
+      },
+      {
+        "document_name": "통합관제 이용기관 전용 매뉴얼_20260702.pdf",
+        "page_number": 18,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-62c3c925\\pages\\p0018.png",
+        "table_crop_path": ""
+      }
+    ],
+    "process_wall_seconds": 26.0,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "vision",
+    "route_match": false,
+    "question_type": "figure",
+    "category": "MDM_단말현황"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "catalog",
+    "qid": "vp_014",
+    "question": "통합관제시스템 완료보고서의 '4. 개선과제 - 4.1 영역별 주요 과제' 구성도(과제 영역과 주요 과제를 정리한 표)에서, '공동플랫폼' 영역의 4가지 구성요소와 '네트워크' 영역의 주요 과제 2가지는 무엇인가요?",
+    "error": null,
+    "final_answer": "제공된 근거에서 확인할 수 없습니다.",
+    "answer_path": "text",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+    "selected_documents": [
+      "WEISS-DE-001-(컨설팅)완료보고서-4.이용관리시스템-v0.82.pdf",
+      "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf"
+    ],
+    "selected_pages": [
+      45,
+      71,
+      4
+    ],
+    "doc_match": true,
+    "page_match": true,
+    "keyword_recall": 0.0,
+    "keywords_found": [],
+    "keywords_missing": [
+      "수집/분석",
+      "빅데이터",
+      "AI",
+      "인증",
+      "노후 네트워크 장비",
+      "망중계"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 2.859,
+      "answer": 20.953,
+      "total": 23.812
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 1,
+      "vision_answer_calls": 0,
+      "llm_calls_total": 1,
+      "vlm_calls_total": 0,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "WEISS-DE-001-(컨설팅)완료보고서-4.이용관리시스템-v0.82.pdf",
+        "page_number": 45,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-4-v0-82-b9c3bac8\\pages\\p0045.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-4-v0-82-b9c3bac8\\mineru\\weiss-de-001-4-v0-82-b9c3bac8\\auto\\images\\0e39b9ddc3241caeb9014d3629657cdc9263c4b01ac67e9ab97acc1972d99360.jpg"
+      },
+      {
+        "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+        "page_number": 71,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-3-v0-82-f69ab0fd\\pages\\p0071.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "WEISS-DE-001-(컨설팅)완료보고서-4.이용관리시스템-v0.82.pdf",
+        "page_number": 4,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-4-v0-82-b9c3bac8\\pages\\p0004.png",
+        "table_crop_path": ""
+      }
+    ],
+    "process_wall_seconds": 25.11,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "vision",
+    "route_match": false,
+    "question_type": "figure",
+    "category": "통합관제_개선과제"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "catalog",
+    "qid": "vp_015",
+    "question": "이용관리시스템 완료보고서의 '이용신청서 작성(신규신청)' 챕터에 나오는 <회선 서비스 신규 신청> 화면 예시에서, ⑤번 '서비스' 항목에서 선택 가능한 4가지 서비스 종류는 무엇인가요?",
+    "error": null,
+    "final_answer": "<회선 서비스 신규 신청> 화면 예시의 '서비스' 항목에서 선택 가능한 4가지 서비스 종류는 **회선서비스, 인터넷서비스, IPSec VPN, 재해복구(DR)**입니다.",
+    "answer_path": "text",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+    "selected_documents": [
+      "WEISS-DE-001-(컨설팅)완료보고서-4.이용관리시스템-v0.82.pdf",
+      "이용관리_20260702.pdf"
+    ],
+    "selected_pages": [
+      20,
+      76,
+      45
+    ],
+    "doc_match": true,
+    "page_match": false,
+    "keyword_recall": 0.8,
+    "keywords_found": [
+      "회선",
+      "인터넷",
+      "재해복구",
+      "DR"
+    ],
+    "keywords_missing": [
+      "IPsec-VPN"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 3.078,
+      "answer": 81.469,
+      "total": 84.547
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 1,
+      "vision_answer_calls": 0,
+      "llm_calls_total": 1,
+      "vlm_calls_total": 0,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "이용관리_20260702.pdf",
+        "page_number": 20,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\pages\\p0020.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "이용관리_20260702.pdf",
+        "page_number": 76,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\pages\\p0076.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "WEISS-DE-001-(컨설팅)완료보고서-4.이용관리시스템-v0.82.pdf",
+        "page_number": 45,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-4-v0-82-b9c3bac8\\pages\\p0045.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-4-v0-82-b9c3bac8\\mineru\\weiss-de-001-4-v0-82-b9c3bac8\\auto\\images\\0e39b9ddc3241caeb9014d3629657cdc9263c4b01ac67e9ab97acc1972d99360.jpg"
+      }
+    ],
+    "process_wall_seconds": 85.844,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "vision",
+    "route_match": false,
+    "question_type": "figure",
+    "category": "이용관리_신청화면"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "catalog",
+    "qid": "vt_001",
+    "question": "통합관제시스템 완료보고서의 주요 자원 구성 표에서 가상화서버(HCI)의 CPU 코어 수, RAM 용량, HDD 용량은 각각 얼마이며, 방화벽 장비의 총 수량은 몇 대인가요?",
+    "error": null,
+    "final_answer": "가상화서버(HCI)의 CPU 코어 수는 128Core, RAM 용량은 6,144GB, HDD 용량은 122.88TB(Physical)이며, 방화벽 장비의 총 수량은 11대입니다.",
+    "answer_path": "text",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+    "selected_documents": [
+      "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+      "통합관제(사용자)_20260702.pdf"
+    ],
+    "selected_pages": [
+      30,
+      37,
+      40
+    ],
+    "doc_match": true,
+    "page_match": true,
+    "keyword_recall": 1.0,
+    "keywords_found": [
+      "128Core",
+      "6,144GB",
+      "122.88TB",
+      "11대"
+    ],
+    "keywords_missing": [],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 3.063,
+      "answer": 26.359,
+      "total": 29.422
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 1,
+      "vision_answer_calls": 0,
+      "llm_calls_total": 1,
+      "vlm_calls_total": 0,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+        "page_number": 30,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-3-v0-82-f69ab0fd\\pages\\p0030.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-3-v0-82-f69ab0fd\\mineru\\weiss-de-001-3-v0-82-f69ab0fd\\auto\\images\\fea38fe5496274b0e6bf6b17bdc1fe7884f7d00273eed2599d27c6b00af89ce2.jpg"
+      },
+      {
+        "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+        "page_number": 37,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-3-v0-82-f69ab0fd\\pages\\p0037.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-3-v0-82-f69ab0fd\\mineru\\weiss-de-001-3-v0-82-f69ab0fd\\auto\\images\\f147830ccf1752b43c532fed126e962679d55f5806f002fcf258236d587f5230.jpg"
+      },
+      {
+        "document_name": "통합관제(사용자)_20260702.pdf",
+        "page_number": 40,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-80cc24f0\\pages\\p0040.png",
+        "table_crop_path": ""
+      }
+    ],
+    "process_wall_seconds": 30.844,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "text",
+    "route_match": true,
+    "question_type": "text",
+    "category": "통합관제_자원구성"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "catalog",
+    "qid": "vt_002",
+    "question": "통합관제시스템 완료보고서에 나오는 이용관리 로그인 화면 설명에서, 비밀번호 입력 규칙(글자수 및 포함 문자)은 무엇인가요?",
+    "error": null,
+    "final_answer": "비밀번호는 10자 이상의 영문 대소문자와 숫자가 반드시 포함되어야 하며, 사용 가능한 특수문자는 ! @ # $ % ^ & * ( ) _ + = | / ~ ` 입니다.",
+    "answer_path": "text",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+    "selected_documents": [
+      "이용관리_20260702.pdf",
+      "통합관제 이용기관 전용 매뉴얼_20260702.pdf"
+    ],
+    "selected_pages": [
+      8,
+      72,
+      6
+    ],
+    "doc_match": false,
+    "page_match": false,
+    "keyword_recall": 0.5,
+    "keywords_found": [
+      "숫자",
+      "특수문자"
+    ],
+    "keywords_missing": [
+      "8~12자",
+      "영문자"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 3.578,
+      "answer": 16.078,
+      "total": 19.656
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 1,
+      "vision_answer_calls": 0,
+      "llm_calls_total": 1,
+      "vlm_calls_total": 0,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "통합관제 이용기관 전용 매뉴얼_20260702.pdf",
+        "page_number": 8,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-62c3c925\\pages\\p0008.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "이용관리_20260702.pdf",
+        "page_number": 72,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\pages\\p0072.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "통합관제 이용기관 전용 매뉴얼_20260702.pdf",
+        "page_number": 6,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-62c3c925\\pages\\p0006.png",
+        "table_crop_path": ""
+      }
+    ],
+    "process_wall_seconds": 21.109,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "text",
+    "route_match": true,
+    "question_type": "text",
+    "category": "통합관제_로그인"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "catalog",
+    "qid": "vt_003",
+    "question": "이용관리시스템 완료보고서에서 이용관리시스템의 '부가서비스' 게시판 관리 기능 설명에 따르면, 현재까지 등록된 전체 게시글은 몇 건이며 언제 작성되었나요?",
+    "error": null,
+    "final_answer": "현재까지 등록된 전체 게시글은 1건이며, 2014년에 작성되었습니다.",
+    "answer_path": "text",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+    "selected_documents": [
+      "WEISS-DE-001-(컨설팅)완료보고서-4.이용관리시스템-v0.82.pdf",
+      "이용관리_20260702.pdf"
+    ],
+    "selected_pages": [
+      74,
+      42,
+      40
+    ],
+    "doc_match": true,
+    "page_match": true,
+    "keyword_recall": 0.5,
+    "keywords_found": [
+      "1건",
+      "2014년"
+    ],
+    "keywords_missing": [
+      "부가서비스",
+      "이용률"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 3.703,
+      "answer": 17.078,
+      "total": 20.781
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 1,
+      "vision_answer_calls": 0,
+      "llm_calls_total": 1,
+      "vlm_calls_total": 0,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "이용관리_20260702.pdf",
+        "page_number": 74,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\pages\\p0074.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "WEISS-DE-001-(컨설팅)완료보고서-4.이용관리시스템-v0.82.pdf",
+        "page_number": 42,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-4-v0-82-b9c3bac8\\pages\\p0042.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "WEISS-DE-001-(컨설팅)완료보고서-4.이용관리시스템-v0.82.pdf",
+        "page_number": 40,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-4-v0-82-b9c3bac8\\pages\\p0040.png",
+        "table_crop_path": ""
+      }
+    ],
+    "process_wall_seconds": 22.156,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "text",
+    "route_match": true,
+    "question_type": "text",
+    "category": "이용관리_게시물관리"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "catalog",
+    "qid": "vi_001",
+    "question": "인공지능으로 주식 자동매매 프로그램을 만드는 방법을 알려주세요.",
+    "error": null,
+    "final_answer": "선택된 문서에서 확인 불가",
+    "answer_path": "none",
+    "abstained": true,
+    "skip_reason": "카탈로그에서 관련 문서를 찾지 못함",
+    "selected_documents": [],
+    "selected_pages": [],
+    "doc_match": null,
+    "page_match": null,
+    "keyword_recall": null,
+    "keywords_found": [],
+    "keywords_missing": [],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 1.843,
+      "answer": 0.0,
+      "total": 1.843
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 0,
+      "vision_answer_calls": 0,
+      "llm_calls_total": 0,
+      "vlm_calls_total": 0,
+      "total_model_calls": 1
+    },
+    "evidence": [],
+    "process_wall_seconds": 3.141,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "none",
+    "route_match": true,
+    "question_type": "irrelevant",
+    "category": "무관"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "catalog",
+    "qid": "vi_002",
+    "question": "집에서 홈트레이닝으로 살 빼는 효과적인 운동 루틴을 추천해주세요.",
+    "error": null,
+    "final_answer": "선택된 문서에서 확인 불가",
+    "answer_path": "none",
+    "abstained": true,
+    "skip_reason": "카탈로그에서 관련 문서를 찾지 못함",
+    "selected_documents": [],
+    "selected_pages": [],
+    "doc_match": null,
+    "page_match": null,
+    "keyword_recall": null,
+    "keywords_found": [],
+    "keywords_missing": [],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 1.89,
+      "answer": 0.0,
+      "total": 1.89
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 0,
+      "vision_answer_calls": 0,
+      "llm_calls_total": 0,
+      "vlm_calls_total": 0,
+      "total_model_calls": 1
+    },
+    "evidence": [],
+    "process_wall_seconds": 3.203,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "none",
+    "route_match": true,
+    "question_type": "irrelevant",
+    "category": "무관"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "no_catalog",
+    "qid": "vp_001",
+    "question": "현황분석서의 서울특별시교육청 스윔스(무선) 관제 장비 현황(강남서초교육지원청 등 13개 교육지원청 포함)에서, 가온(제조사) AP 모델 EAP-224x(4,5,6,7,8,9)의 구축 수량은 몇 대이며, 서울특별시교육청 전체 AP 총 구축 수량은 몇 대인가요?",
+    "error": null,
+    "final_answer": "가온 제조사의 AP 모델 EAP-224x(4,5,6,7,8,9)의 구축 수량은 5,972대이며, 서울특별시교육청 전체 AP 총 구축 수량은 13,549대입니다.",
+    "answer_path": "vision",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 스캔+표 -> 숫자 교차확인을 위해 비전 경로",
+    "selected_documents": [
+      "WEISS-DS-001-현황분석서-v0.91.pdf"
+    ],
+    "selected_pages": [
+      24,
+      34,
+      59
+    ],
+    "doc_match": true,
+    "page_match": false,
+    "keyword_recall": 0.4,
+    "keywords_found": [
+      "가온",
+      "EAP-224x"
+    ],
+    "keywords_missing": [
+      "27,054",
+      "83,375",
+      "61대"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 8.422,
+      "answer": 19.953,
+      "total": 28.375
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 0,
+      "vision_answer_calls": 1,
+      "llm_calls_total": 0,
+      "vlm_calls_total": 1,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+        "page_number": 24,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0024.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\mineru\\weiss-ds-001-v0-91-aa83eb15\\auto\\images\\1733ed9941d5008bfe35208584d1c47446596659b151a2d1133c5fab4ed5e12a.jpg"
+      },
+      {
+        "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+        "page_number": 34,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0034.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\mineru\\weiss-ds-001-v0-91-aa83eb15\\auto\\images\\3e4bf771de38e50c91123e23177c95b720b46c3ef678dbe3936807667aa39df1.jpg"
+      },
+      {
+        "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+        "page_number": 59,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0059.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\mineru\\weiss-ds-001-v0-91-aa83eb15\\auto\\images\\6b4cfde54f845f30d30e47a5fc8a5c69f7c0d51c62de4717d8cf29acb5413b89.jpg"
+      }
+    ],
+    "process_wall_seconds": 29.734,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "vision",
+    "route_match": true,
+    "question_type": "scan_table",
+    "category": "현황분석서_AP현황"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "no_catalog",
+    "qid": "vp_002",
+    "question": "현황분석서의 강원특별자치도교육청 스윔스(무선) 관제 장비 현황(원주교육지원청 등 18개 교육지원청 포함)에서, 다보링크(제조사) 3개 모델(DVW-4128, DVW-604i, DVW-624i)의 각 수량과 강원특별자치도교육청 AP 총 구축 수량은 얼마인가요?",
+    "error": null,
+    "final_answer": "제공된 이미지에는 '강원특별자치도교육청'에 관한 정보가 포함되어 있지 않습니다. 해당 표는 '제주특별자치도교육청' 관련 데이터만을 담고 있으며, 질문에서 언급한 다보링크의 세부 모델명(DVW-4128, DVW-604i, DVW-624i)에 대한 구분도 포함되어 있지 않습니다. 따라서 해당 질문에 대한 수치를 확인할 수 없습니다.",
+    "answer_path": "vision",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 스캔+표 -> 숫자 교차확인을 위해 비전 경로",
+    "selected_documents": [
+      "WEISS-DS-001-현황분석서-v0.91.pdf"
+    ],
+    "selected_pages": [
+      54,
+      44,
+      14
+    ],
+    "doc_match": true,
+    "page_match": true,
+    "keyword_recall": 0.5,
+    "keywords_found": [
+      "DVW-4128",
+      "DVW-604i",
+      "DVW-624i"
+    ],
+    "keywords_missing": [
+      "4,356",
+      "1,789",
+      "15,929"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 7.985,
+      "answer": 44.75,
+      "total": 52.735
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 0,
+      "vision_answer_calls": 1,
+      "llm_calls_total": 0,
+      "vlm_calls_total": 1,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+        "page_number": 54,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0054.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\mineru\\weiss-ds-001-v0-91-aa83eb15\\auto\\images\\73612afa794740f04f5764b0b67fa81111555273187469fe030b90f66b5d28ab.jpg"
+      },
+      {
+        "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+        "page_number": 44,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0044.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\mineru\\weiss-ds-001-v0-91-aa83eb15\\auto\\images\\62105c8232194a833663c291800b9011079d79c7bf00e1e493ea1427acbc18d8.jpg"
+      },
+      {
+        "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+        "page_number": 14,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0014.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\mineru\\weiss-ds-001-v0-91-aa83eb15\\auto\\images\\5541ebd98792ea27b8bd7f16d27df326f16902d42fb9a684131890e0c21274d6.jpg"
+      }
+    ],
+    "process_wall_seconds": 54.14,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "vision",
+    "route_match": true,
+    "question_type": "scan_table",
+    "category": "현황분석서_AP현황"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "no_catalog",
+    "qid": "vp_003",
+    "question": "현황분석서의 경상남도교육청 스윔스(무선) 관제 장비 현황(창원교육지원청 등 17개 교육지원청 포함) AP 구축 표에서 AP 구축 수량이 많은 순서(제조사 기준)는 어떻게 되며, 경상남도교육청 AP 총 구축 수량과 학교당 평균 구축 대수는 얼마인가요?",
+    "error": null,
+    "final_answer": "제공된 이미지의 표에는 '경상남도교육청'에 관한 정보가 포함되어 있지 않습니다. 해당 표는 울산광역시교육청, 강남교육지원청, 강북교육지원청의 데이터만 포함하고 있으므로, 질문에서 요구한 경상남도교육청 관련 AP 구축 수량 및 학교당 평균 등의 정보를 확인할 수 없습니다.",
+    "answer_path": "vision",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 스캔+표 -> 숫자 교차확인을 위해 비전 경로",
+    "selected_documents": [
+      "WEISS-DS-001-현황분석서-v0.91.pdf"
+    ],
+    "selected_pages": [
+      39,
+      54,
+      34
+    ],
+    "doc_match": true,
+    "page_match": false,
+    "keyword_recall": 0.0,
+    "keywords_found": [],
+    "keywords_missing": [
+      "가온",
+      "다보링크",
+      "엘텍",
+      "올레디오",
+      "37,171",
+      "37대"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 8.203,
+      "answer": 108.266,
+      "total": 116.469
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 0,
+      "vision_answer_calls": 1,
+      "llm_calls_total": 0,
+      "vlm_calls_total": 1,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+        "page_number": 39,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0039.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\mineru\\weiss-ds-001-v0-91-aa83eb15\\auto\\images\\4b2a13c8aeaee5669da4d19547ce206da63b5cfbc4f6a94b068e05dbab3430d4.jpg"
+      },
+      {
+        "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+        "page_number": 54,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0054.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\mineru\\weiss-ds-001-v0-91-aa83eb15\\auto\\images\\73612afa794740f04f5764b0b67fa81111555273187469fe030b90f66b5d28ab.jpg"
+      },
+      {
+        "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+        "page_number": 34,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0034.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\mineru\\weiss-ds-001-v0-91-aa83eb15\\auto\\images\\3e4bf771de38e50c91123e23177c95b720b46c3ef678dbe3936807667aa39df1.jpg"
+      }
+    ],
+    "process_wall_seconds": 117.86,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "vision",
+    "route_match": true,
+    "question_type": "scan_table",
+    "category": "현황분석서_AP현황"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "no_catalog",
+    "qid": "vp_004",
+    "question": "현황분석서의 경상남도교육청 POE(PoE) 장비 현황(창원교육지원청 등 17개 교육지원청 포함) 표에서, 유비쿼스(제조사) 모델 중 구축 수량이 가장 많은 모델명과 그 수량은 무엇이며, 경상남도교육청 POE 총 구축 수량은 얼마인가요?",
+    "error": null,
+    "final_answer": "제공된 이미지에는 '경상남도교육청'에 관한 정보가 포함되어 있지 않습니다. 해당 표는 '제주특별자치도교육청' 관련 데이터(제주특별자치도교육청, 서귀포시교육지원청, 제주시교육지원청)를 담고 있으므로, 질문하신 경상남도교육청의 유비쿼스 모델 구축 수량 및 총 구축 수량을 확인할 수 없습니다.",
+    "answer_path": "vision",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 스캔+표 -> 숫자 교차확인을 위해 비전 경로",
+    "selected_documents": [
+      "WEISS-DS-001-현황분석서-v0.91.pdf"
+    ],
+    "selected_pages": [
+      55,
+      40,
+      30
+    ],
+    "doc_match": true,
+    "page_match": false,
+    "keyword_recall": 0.25,
+    "keywords_found": [
+      "유비쿼스"
+    ],
+    "keywords_missing": [
+      "E4020-24PS",
+      "4,727",
+      "6,831"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 8.062,
+      "answer": 125.0,
+      "total": 133.062
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 0,
+      "vision_answer_calls": 1,
+      "llm_calls_total": 0,
+      "vlm_calls_total": 1,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+        "page_number": 55,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0055.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\mineru\\weiss-ds-001-v0-91-aa83eb15\\auto\\images\\fb07d76f102cdbe1987c5957dda0a29edd0d54e1395cb13bb01efc0ce8854c55.jpg"
+      },
+      {
+        "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+        "page_number": 40,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0040.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\mineru\\weiss-ds-001-v0-91-aa83eb15\\auto\\images\\9756a612c3e3fe2063a4db67cad3cd236e24afd4b4b788d3563f9fb544c9fcdb.jpg"
+      },
+      {
+        "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+        "page_number": 30,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0030.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\mineru\\weiss-ds-001-v0-91-aa83eb15\\auto\\images\\e3a3465154a4ec08de51cb67323df9ce499880e169f278dade2f35ebff2ceab4.jpg"
+      }
+    ],
+    "process_wall_seconds": 134.469,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "vision",
+    "route_match": true,
+    "question_type": "scan_table",
+    "category": "현황분석서_POE현황"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "no_catalog",
+    "qid": "vp_005",
+    "question": "현황분석서에서 루커스(Ruckus), Xirrus, Extreme, 쏘우웨이브, 시스코, iptime, Netgear 등 다양한 제조사별 AP 구축 현황을 정리한 전국 집계 표에서, 루커스(Ruckus) R710 모델과 가온 EAP2245 모델의 각 구축 수량은 얼마이며, 표 전체의 총 구축 수량은 얼마인가요?",
+    "error": null,
+    "final_answer": "제공된 표에는 '루커스(Ruckus) R710' 모델과 '가온 EAP2245' 모델이 포함되어 있지 않습니다. 따라서 해당 모델들의 구축 수량은 알 수 없으며, 표 전체의 총 구축 수량은 159입니다.",
+    "answer_path": "vision",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 스캔+표 -> 숫자 교차확인을 위해 비전 경로",
+    "selected_documents": [
+      "WEISS-DS-001-현황분석서-v0.91.pdf"
+    ],
+    "selected_pages": [
+      76,
+      63,
+      24
+    ],
+    "doc_match": true,
+    "page_match": false,
+    "keyword_recall": 0.4,
+    "keywords_found": [
+      "R710",
+      "EAP2245"
+    ],
+    "keywords_missing": [
+      "4,395",
+      "6,620",
+      "23,948"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 8.031,
+      "answer": 123.235,
+      "total": 131.266
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 0,
+      "vision_answer_calls": 1,
+      "llm_calls_total": 0,
+      "vlm_calls_total": 1,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+        "page_number": 76,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0076.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\mineru\\weiss-ds-001-v0-91-aa83eb15\\auto\\images\\51e1e632a8e7f2b7d894b84a15cd685198cef5bff8e24645f13f256e21ab2d90.jpg"
+      },
+      {
+        "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+        "page_number": 63,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0063.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\mineru\\weiss-ds-001-v0-91-aa83eb15\\auto\\images\\91f630847966450b11ab95b48d2889e82d6a77af652f335e4ccdec9ce8e35925.jpg"
+      },
+      {
+        "document_name": "WEISS-DS-001-현황분석서-v0.91.pdf",
+        "page_number": 24,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\pages\\p0024.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-ds-001-v0-91-aa83eb15\\mineru\\weiss-ds-001-v0-91-aa83eb15\\auto\\images\\1733ed9941d5008bfe35208584d1c47446596659b151a2d1133c5fab4ed5e12a.jpg"
+      }
+    ],
+    "process_wall_seconds": 132.703,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "vision",
+    "route_match": true,
+    "question_type": "scan_table",
+    "category": "현황분석서_AP현황"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "no_catalog",
+    "qid": "vp_006",
+    "question": "MDM 매뉴얼의 대여 이력 관리 화면에서 처리자 'jhkim2761'이 대여 처리한 단말의 시리얼번호와 반납예정일은 무엇이며, 화면에 표시된 전체 이력 건수는 몇 건인가요?",
+    "error": null,
+    "final_answer": "처리자 'jhkim2761'이 대여 처리한 단말의 시리얼번호는 R54K000TWW이며, 반납예정일은 2022-11-15입니다. 화면에 표시된 전체 이력 건수는 10건입니다.",
+    "answer_path": "vision",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 스캔+표 -> 숫자 교차확인을 위해 비전 경로",
+    "selected_documents": [
+      "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf"
+    ],
+    "selected_pages": [
+      83,
+      82,
+      78
+    ],
+    "doc_match": true,
+    "page_match": true,
+    "keyword_recall": 0.5,
+    "keywords_found": [
+      "jhkim2761",
+      "2022-11-15"
+    ],
+    "keywords_missing": [
+      "R54KB00TXWF",
+      "37건"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 8.047,
+      "answer": 60.282,
+      "total": 68.329
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 0,
+      "vision_answer_calls": 1,
+      "llm_calls_total": 0,
+      "vlm_calls_total": 1,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf",
+        "page_number": 83,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\mdm-argos-edu-v1-5-6061726f\\pages\\p0083.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\mdm-argos-edu-v1-5-6061726f\\mineru\\mdm-argos-edu-v1-5-6061726f\\auto\\images\\10413d92f56df1a4ded28e0d64ec1b5318afb99840a41ce2002dde01380f3f28.jpg"
+      },
+      {
+        "document_name": "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf",
+        "page_number": 82,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\mdm-argos-edu-v1-5-6061726f\\pages\\p0082.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf",
+        "page_number": 78,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\mdm-argos-edu-v1-5-6061726f\\pages\\p0078.png",
+        "table_crop_path": ""
+      }
+    ],
+    "process_wall_seconds": 69.703,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "vision",
+    "route_match": true,
+    "question_type": "scan_table",
+    "category": "MDM_대여관리"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "no_catalog",
+    "qid": "vp_007",
+    "question": "MDM 매뉴얼의 대여자 CSV 업로드 샘플 표에서 '2번 학생'의 연락처와 학년/반/번호는 무엇이며, 대여자 관리 화면에 등록된 대여자는 총 몇 건인가요?",
+    "error": null,
+    "final_answer": "'02번 학생'의 연락처는 010-3000-1234이며, 학년은 1학년, 반은 2반, 번호는 11번입니다. 대여자 관리 화면에 등록된 대여자는 총 5건입니다.",
+    "answer_path": "vision",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 스캔+표 -> 숫자 교차확인을 위해 비전 경로",
+    "selected_documents": [
+      "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf"
+    ],
+    "selected_pages": [
+      88,
+      89,
+      84
+    ],
+    "doc_match": true,
+    "page_match": true,
+    "keyword_recall": 0.6,
+    "keywords_found": [
+      "1학년",
+      "2반",
+      "11번"
+    ],
+    "keywords_missing": [
+      "1030011002",
+      "135건"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 7.875,
+      "answer": 70.546,
+      "total": 78.421
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 0,
+      "vision_answer_calls": 1,
+      "llm_calls_total": 0,
+      "vlm_calls_total": 1,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf",
+        "page_number": 88,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\mdm-argos-edu-v1-5-6061726f\\pages\\p0088.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\mdm-argos-edu-v1-5-6061726f\\mineru\\mdm-argos-edu-v1-5-6061726f\\auto\\images\\ebc612a970392d410f447cf2dea765f06471dcd7a5371566df60a21fa443d9e7.jpg"
+      },
+      {
+        "document_name": "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf",
+        "page_number": 89,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\mdm-argos-edu-v1-5-6061726f\\pages\\p0089.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf",
+        "page_number": 84,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\mdm-argos-edu-v1-5-6061726f\\pages\\p0084.png",
+        "table_crop_path": ""
+      }
+    ],
+    "process_wall_seconds": 79.781,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "vision",
+    "route_match": true,
+    "question_type": "scan_table",
+    "category": "MDM_대여관리"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "no_catalog",
+    "qid": "vp_008",
+    "question": "이용관리 화면의 회선 서비스 신규 이용신청 상세(접수대기) 예시(신청기관: 테스트고등학교, 신청번호 2026010800002)에서 신청된 서비스 종류, 속도, 설치장소, 개통 희망일은 각각 무엇인가요?",
+    "error": null,
+    "final_answer": "신청번호 2026010800002(신청기관: 테스트고등학교)의 예시에서 확인되는 정보는 다음과 같습니다.\n\n*   **서비스 종류**: 인터넷서비스\n*   **속도**: 10G\n*   **설치장소**: 제공된 근거에서 확인할 수 없습니다.\n*   **개통 희망일**: 제공된 근거에서 확인할 수 없습니다.",
+    "answer_path": "text",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+    "selected_documents": [
+      "이용관리_20260702.pdf"
+    ],
+    "selected_pages": [
+      21,
+      78,
+      47
+    ],
+    "doc_match": true,
+    "page_match": false,
+    "keyword_recall": 0.5,
+    "keywords_found": [
+      "인터넷서비스",
+      "10G"
+    ],
+    "keywords_missing": [
+      "대강당",
+      "2026-01-30"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 8.0,
+      "answer": 121.516,
+      "total": 129.516
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 1,
+      "vision_answer_calls": 0,
+      "llm_calls_total": 1,
+      "vlm_calls_total": 0,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "이용관리_20260702.pdf",
+        "page_number": 21,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\pages\\p0021.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\mineru\\20260702-336b732d\\auto\\images\\381e2911cdd5ac542aa41c33e7fb4e7627b0fb4683de25d794a3fc8c8c33bdf1.jpg"
+      },
+      {
+        "document_name": "이용관리_20260702.pdf",
+        "page_number": 78,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\pages\\p0078.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\mineru\\20260702-336b732d\\auto\\images\\39332cc61495aaa153cfb55b12aa8f2ba2364dd66411ae3a657f3d1a7cc555a6.jpg"
+      },
+      {
+        "document_name": "이용관리_20260702.pdf",
+        "page_number": 47,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\pages\\p0047.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\mineru\\20260702-336b732d\\auto\\images\\bf21026820a34e6e261a62113ba873dec0e9a22c698be83e7fef68a5fdd009c6.jpg"
+      }
+    ],
+    "process_wall_seconds": 130.859,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "vision",
+    "route_match": false,
+    "question_type": "scan_table",
+    "category": "이용관리_신청현황"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "no_catalog",
+    "qid": "vp_009",
+    "question": "무선랜 구축운영 가이드라인에서 소개하는, 학교 무선 채널 및 신호 세기를 측정하는 무료 모바일 앱의 이름은 무엇이며 어디서 다운로드할 수 있나요?",
+    "error": null,
+    "final_answer": "무선 채널 및 신호 세기를 측정하는 무료 모바일 앱의 이름은 'WIFI 캐너 360'이며, 앱 스토어에서 다운로드할 수 있습니다.",
+    "answer_path": "vision",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 그림 위주(figure_area_ratio=0.62)",
+    "selected_documents": [
+      "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf"
+    ],
+    "selected_pages": [
+      13,
+      12,
+      11
+    ],
+    "doc_match": true,
+    "page_match": true,
+    "keyword_recall": 0.0,
+    "keywords_found": [],
+    "keywords_missing": [
+      "WiFi 개요 360",
+      "갤럭시 앱 스토어"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 7.907,
+      "answer": 12.14,
+      "total": 20.047
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 0,
+      "vision_answer_calls": 1,
+      "llm_calls_total": 0,
+      "vlm_calls_total": 1,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+        "page_number": 13,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\pages\\p0013.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+        "page_number": 12,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\pages\\p0012.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+        "page_number": 11,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\pages\\p0011.png",
+        "table_crop_path": ""
+      }
+    ],
+    "process_wall_seconds": 21.375,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "vision",
+    "route_match": true,
+    "question_type": "figure",
+    "category": "무선랜_장애진단"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "no_catalog",
+    "qid": "vp_010",
+    "question": "무선랜 구축운영 가이드라인의 '4. 학교내 무선망 장애 진단 및 해결방안(1/3)' 구성도에서 방화벽부터 AP까지 순서대로 나열된 4개 장비는 무엇이며, PingTools 예시에서 정상 연결과 연결 장애 상태로 각각 제시된 IP 주소는 무엇인가요?",
+    "error": null,
+    "final_answer": "방화벽부터 AP까지 순서대로 나열된 4개 장비는 방화벽, 무선 확장 스위치, PoE 스위치, AP입니다. PingTools 예시에서 정상 연결 상태로 제시된 IP 주소는 192.168.0.1, 192.168.0.10, 192.168.0.3이며, 연결 장애 상태로 제시된 IP 주소도 192.168.0.1, 192.168.0.10, 192.168.0.3입니다.",
+    "answer_path": "vision",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 그림 위주(figure_area_ratio=0.59)",
+    "selected_documents": [
+      "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "학교 무선인터넷 자가진단 체크리스트(안).pdf"
+    ],
+    "selected_pages": [
+      11,
+      2,
+      13
+    ],
+    "doc_match": true,
+    "page_match": true,
+    "keyword_recall": 0.8,
+    "keywords_found": [
+      "방화벽",
+      "PoE 스위치",
+      "192.168.0.1",
+      "192.168.0.10"
+    ],
+    "keywords_missing": [
+      "무선 집선 스위치"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 7.953,
+      "answer": 68.797,
+      "total": 76.75
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 0,
+      "vision_answer_calls": 1,
+      "llm_calls_total": 0,
+      "vlm_calls_total": 1,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+        "page_number": 11,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\pages\\p0011.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+        "page_number": 2,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\0-1v-20p-2023-a874b961\\pages\\p0002.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "학교 무선인터넷 자가진단 체크리스트(안).pdf",
+        "page_number": 13,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\doc-8bc422d9\\pages\\p0013.png",
+        "table_crop_path": ""
+      }
+    ],
+    "process_wall_seconds": 77.968,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "vision",
+    "route_match": true,
+    "question_type": "figure",
+    "category": "무선랜_장애진단"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "no_catalog",
+    "qid": "vp_011",
+    "question": "23년 학교 유무선 운영·관리 안내서의 스쿨넷 서비스 이용 관리 시스템 신규 기관 등록 방법에서, 접속 사이트 주소와 등록 절차 3단계는 각각 무엇인가요?",
+    "error": null,
+    "final_answer": "질문하신 내용에 대해 제공된 근거를 바탕으로 답변드립니다.\n\n**1. 접속 사이트 주소:** https://weiss.or.kr/\n**2. 등록 절차 3단계:** 제공된 근거에서 확인할 수 없습니다.",
+    "answer_path": "text",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+    "selected_documents": [
+      "이용관리_20260702.pdf",
+      "(첨부)_5단계_스쿨넷서비스_제공_가이드.pdf"
+    ],
+    "selected_pages": [
+      8,
+      12,
+      24
+    ],
+    "doc_match": false,
+    "page_match": false,
+    "keyword_recall": 0.0,
+    "keywords_found": [],
+    "keywords_missing": [
+      "school-net.or.kr",
+      "이용기관 등록신청",
+      "신청",
+      "관리자 승인",
+      "이메일"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 5.485,
+      "answer": 118.719,
+      "total": 124.204
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 1,
+      "vision_answer_calls": 0,
+      "llm_calls_total": 1,
+      "vlm_calls_total": 0,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "이용관리_20260702.pdf",
+        "page_number": 8,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\pages\\p0008.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "이용관리_20260702.pdf",
+        "page_number": 12,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\pages\\p0012.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "(첨부)_5단계_스쿨넷서비스_제공_가이드.pdf",
+        "page_number": 24,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\5-c9ff266c\\pages\\p0024.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\5-c9ff266c\\mineru\\5-c9ff266c\\auto\\images\\e8134a080ef1da920864f91ef99f7f5b6d828fde0254899b1c461f027d2b5d56.jpg"
+      }
+    ],
+    "process_wall_seconds": 125.312,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "vision",
+    "route_match": false,
+    "question_type": "figure",
+    "category": "23년안내서_이용관리"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "no_catalog",
+    "qid": "vp_012",
+    "question": "23년 학교 유무선 운영·관리 안내서의 'PC의 IP 주소 및 DNS 주소 변경 방법'(윈도우 11 기준) 안내에서, IP/DNS 주소를 변경하기 위한 4단계 절차는 무엇인가요?",
+    "error": null,
+    "final_answer": "'PC의 IP 주소 및 DNS 주소 변경방법' 안내에서 제시하는 4단계 절차는 다음과 같습니다.\n\n① ‘네트워크연결’ 입력 후 엔터\n② ‘이더넷’ 마우스 오른쪽 버튼\n③ 속성\n④ ‘인터넷 프로토콜 버전 4(TCP/IPv4)’ 더블클릭",
+    "answer_path": "text",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+    "selected_documents": [
+      "★23년 학교 유무선 운영·관리 안내서_최종.pdf"
+    ],
+    "selected_pages": [
+      45,
+      44,
+      87
+    ],
+    "doc_match": true,
+    "page_match": true,
+    "keyword_recall": 0.8,
+    "keywords_found": [
+      "이더넷",
+      "속성",
+      "인터넷 프로토콜 버전 4",
+      "TCP/IPv4"
+    ],
+    "keywords_missing": [
+      "네트워크 연결"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 5.766,
+      "answer": 24.375,
+      "total": 30.141
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 1,
+      "vision_answer_calls": 0,
+      "llm_calls_total": 1,
+      "vlm_calls_total": 0,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "★23년 학교 유무선 운영·관리 안내서_최종.pdf",
+        "page_number": 45,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\23-b3bffb22\\pages\\p0045.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\23-b3bffb22\\mineru\\23-b3bffb22\\auto\\images\\a91679717cbb61423e0d090b14748ec8c09700c891b9a9eac5a54af7b35d2919.jpg"
+      },
+      {
+        "document_name": "★23년 학교 유무선 운영·관리 안내서_최종.pdf",
+        "page_number": 44,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\23-b3bffb22\\pages\\p0044.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "★23년 학교 유무선 운영·관리 안내서_최종.pdf",
+        "page_number": 87,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\23-b3bffb22\\pages\\p0087.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\23-b3bffb22\\mineru\\23-b3bffb22\\auto\\images\\14e26311b50f7feaed4e921d958a2bf16132f92ba29345c6a6ecb295b6ada909.jpg"
+      }
+    ],
+    "process_wall_seconds": 31.484,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "vision",
+    "route_match": false,
+    "question_type": "figure",
+    "category": "23년안내서_IP설정"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "no_catalog",
+    "qid": "vp_013",
+    "question": "MDM 매뉴얼의 '5.2. 화면 표시 설정' 단말현황 화면 예시(iPad_시험단말 카드 포함)에서, '단말 명/시리얼번호' 기준으로 표시된 카드의 시리얼번호와 용량은 무엇이며, '사용자 명/Wi-Fi Mac주소' 기준 카드의 MAC 주소와 용량은 무엇인가요?",
+    "error": null,
+    "final_answer": "제공된 근거에서 확인할 수 없습니다.",
+    "answer_path": "text",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+    "selected_documents": [
+      "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf"
+    ],
+    "selected_pages": [
+      22,
+      9,
+      7
+    ],
+    "doc_match": true,
+    "page_match": false,
+    "keyword_recall": 0.0,
+    "keywords_found": [],
+    "keywords_missing": [
+      "DMPZN8Q7MF3R",
+      "8%",
+      "10:8e:e0:77:16:84",
+      "39%"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 5.969,
+      "answer": 23.203,
+      "total": 29.172
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 1,
+      "vision_answer_calls": 0,
+      "llm_calls_total": 1,
+      "vlm_calls_total": 0,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf",
+        "page_number": 22,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\mdm-argos-edu-v1-5-6061726f\\pages\\p0022.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf",
+        "page_number": 9,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\mdm-argos-edu-v1-5-6061726f\\pages\\p0009.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "스마트 단말 관리 시스템[MDM]_교육 매뉴얼_Argos Edu v1.5.pdf",
+        "page_number": 7,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\mdm-argos-edu-v1-5-6061726f\\pages\\p0007.png",
+        "table_crop_path": ""
+      }
+    ],
+    "process_wall_seconds": 30.485,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "vision",
+    "route_match": false,
+    "question_type": "figure",
+    "category": "MDM_단말현황"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "no_catalog",
+    "qid": "vp_014",
+    "question": "통합관제시스템 완료보고서의 '4. 개선과제 - 4.1 영역별 주요 과제' 구성도(과제 영역과 주요 과제를 정리한 표)에서, '공동플랫폼' 영역의 4가지 구성요소와 '네트워크' 영역의 주요 과제 2가지는 무엇인가요?",
+    "error": null,
+    "final_answer": "'공동플랫폼' 영역의 4가지 구성요소는 수집/분석, 빅데이터, AI, 운영이며, '네트워크' 영역의 주요 과제 2가지는 노드 규모 확대 및 통신 대역폭 확대와 상호체계 간의 다대체입니다.",
+    "answer_path": "vision",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 그림 위주(figure_area_ratio=0.52)",
+    "selected_documents": [
+      "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf"
+    ],
+    "selected_pages": [
+      71,
+      29,
+      3
+    ],
+    "doc_match": true,
+    "page_match": true,
+    "keyword_recall": 0.5,
+    "keywords_found": [
+      "수집/분석",
+      "빅데이터",
+      "AI"
+    ],
+    "keywords_missing": [
+      "인증",
+      "노후 네트워크 장비",
+      "망중계"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 5.843,
+      "answer": 18.954,
+      "total": 24.797
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 0,
+      "vision_answer_calls": 1,
+      "llm_calls_total": 0,
+      "vlm_calls_total": 1,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+        "page_number": 71,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-3-v0-82-f69ab0fd\\pages\\p0071.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+        "page_number": 29,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-3-v0-82-f69ab0fd\\pages\\p0029.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+        "page_number": 3,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-3-v0-82-f69ab0fd\\pages\\p0003.png",
+        "table_crop_path": ""
+      }
+    ],
+    "process_wall_seconds": 26.141,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "vision",
+    "route_match": true,
+    "question_type": "figure",
+    "category": "통합관제_개선과제"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "no_catalog",
+    "qid": "vp_015",
+    "question": "이용관리시스템 완료보고서의 '이용신청서 작성(신규신청)' 챕터에 나오는 <회선 서비스 신규 신청> 화면 예시에서, ⑤번 '서비스' 항목에서 선택 가능한 4가지 서비스 종류는 무엇인가요?",
+    "error": null,
+    "final_answer": "제공된 근거에서 확인할 수 없습니다.",
+    "answer_path": "text",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+    "selected_documents": [
+      "이용관리_20260702.pdf"
+    ],
+    "selected_pages": [
+      20,
+      78,
+      74
+    ],
+    "doc_match": false,
+    "page_match": false,
+    "keyword_recall": 0.0,
+    "keywords_found": [],
+    "keywords_missing": [
+      "회선",
+      "인터넷",
+      "IPsec-VPN",
+      "재해복구",
+      "DR"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 5.578,
+      "answer": 17.203,
+      "total": 22.781
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 1,
+      "vision_answer_calls": 0,
+      "llm_calls_total": 1,
+      "vlm_calls_total": 0,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "이용관리_20260702.pdf",
+        "page_number": 20,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\pages\\p0020.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "이용관리_20260702.pdf",
+        "page_number": 78,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\pages\\p0078.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\mineru\\20260702-336b732d\\auto\\images\\39332cc61495aaa153cfb55b12aa8f2ba2364dd66411ae3a657f3d1a7cc555a6.jpg"
+      },
+      {
+        "document_name": "이용관리_20260702.pdf",
+        "page_number": 74,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\pages\\p0074.png",
+        "table_crop_path": ""
+      }
+    ],
+    "process_wall_seconds": 23.953,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "vision",
+    "route_match": false,
+    "question_type": "figure",
+    "category": "이용관리_신청화면"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "no_catalog",
+    "qid": "vt_001",
+    "question": "통합관제시스템 완료보고서의 주요 자원 구성 표에서 가상화서버(HCI)의 CPU 코어 수, RAM 용량, HDD 용량은 각각 얼마이며, 방화벽 장비의 총 수량은 몇 대인가요?",
+    "error": null,
+    "final_answer": "통합관제시스템 완료보고서의 주요 자원 구성 표에 따른 정보는 다음과 같습니다.\n\n*   **가상화서버(HCI)**\n    *   **CPU 코어 수:** 128Core\n    *   **RAM 용량:** 6,144GB\n    *   **HDD 용량:** 122.88TB(Physical)\n*   **방화벽 장비의 총 수량:** 11대",
+    "answer_path": "text",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+    "selected_documents": [
+      "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf"
+    ],
+    "selected_pages": [
+      30,
+      37,
+      29
+    ],
+    "doc_match": true,
+    "page_match": true,
+    "keyword_recall": 1.0,
+    "keywords_found": [
+      "128Core",
+      "6,144GB",
+      "122.88TB",
+      "11대"
+    ],
+    "keywords_missing": [],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 5.547,
+      "answer": 40.5,
+      "total": 46.047
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 1,
+      "vision_answer_calls": 0,
+      "llm_calls_total": 1,
+      "vlm_calls_total": 0,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+        "page_number": 30,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-3-v0-82-f69ab0fd\\pages\\p0030.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-3-v0-82-f69ab0fd\\mineru\\weiss-de-001-3-v0-82-f69ab0fd\\auto\\images\\fea38fe5496274b0e6bf6b17bdc1fe7884f7d00273eed2599d27c6b00af89ce2.jpg"
+      },
+      {
+        "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+        "page_number": 37,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-3-v0-82-f69ab0fd\\pages\\p0037.png",
+        "table_crop_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-3-v0-82-f69ab0fd\\mineru\\weiss-de-001-3-v0-82-f69ab0fd\\auto\\images\\f147830ccf1752b43c532fed126e962679d55f5806f002fcf258236d587f5230.jpg"
+      },
+      {
+        "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+        "page_number": 29,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-3-v0-82-f69ab0fd\\pages\\p0029.png",
+        "table_crop_path": ""
+      }
+    ],
+    "process_wall_seconds": 47.235,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "text",
+    "route_match": true,
+    "question_type": "text",
+    "category": "통합관제_자원구성"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "no_catalog",
+    "qid": "vt_002",
+    "question": "통합관제시스템 완료보고서에 나오는 이용관리 로그인 화면 설명에서, 비밀번호 입력 규칙(글자수 및 포함 문자)은 무엇인가요?",
+    "error": null,
+    "final_answer": "통합관제시스템 완료보고서의 이용관리 로그인 화면 설명에 따른 비밀번호 입력 규칙은 **8~12자의 비밀번호를 입력하며, 영문자, 숫자, 특수문자가 포함**되어야 합니다.",
+    "answer_path": "text",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+    "selected_documents": [
+      "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+      "이용관리_20260702.pdf"
+    ],
+    "selected_pages": [
+      50,
+      72,
+      12
+    ],
+    "doc_match": true,
+    "page_match": true,
+    "keyword_recall": 1.0,
+    "keywords_found": [
+      "8~12자",
+      "영문자",
+      "숫자",
+      "특수문자"
+    ],
+    "keywords_missing": [],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 5.594,
+      "answer": 17.921,
+      "total": 23.515
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 1,
+      "vision_answer_calls": 0,
+      "llm_calls_total": 1,
+      "vlm_calls_total": 0,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "WEISS-DE-001-(컨설팅)완료보고서-3.통합관제시스템-v0.82.pdf",
+        "page_number": 50,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-3-v0-82-f69ab0fd\\pages\\p0050.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "이용관리_20260702.pdf",
+        "page_number": 72,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\pages\\p0072.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "이용관리_20260702.pdf",
+        "page_number": 12,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\20260702-336b732d\\pages\\p0012.png",
+        "table_crop_path": ""
+      }
+    ],
+    "process_wall_seconds": 24.734,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "text",
+    "route_match": true,
+    "question_type": "text",
+    "category": "통합관제_로그인"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "no_catalog",
+    "qid": "vt_003",
+    "question": "이용관리시스템 완료보고서에서 이용관리시스템의 '부가서비스' 게시판 관리 기능 설명에 따르면, 현재까지 등록된 전체 게시글은 몇 건이며 언제 작성되었나요?",
+    "error": null,
+    "final_answer": "현재까지 등록된 전체 게시글은 1건이며, 2014년에 작성되었습니다.",
+    "answer_path": "text",
+    "abstained": false,
+    "skip_reason": "1순위 페이지가 텍스트/구조화 표 -> 텍스트 경로(기본)",
+    "selected_documents": [
+      "WEISS-DE-001-(컨설팅)완료보고서-4.이용관리시스템-v0.82.pdf"
+    ],
+    "selected_pages": [
+      42,
+      40,
+      5
+    ],
+    "doc_match": true,
+    "page_match": true,
+    "keyword_recall": 0.5,
+    "keywords_found": [
+      "1건",
+      "2014년"
+    ],
+    "keywords_missing": [
+      "부가서비스",
+      "이용률"
+    ],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 5.562,
+      "answer": 12.922,
+      "total": 18.484
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 1,
+      "vision_answer_calls": 0,
+      "llm_calls_total": 1,
+      "vlm_calls_total": 0,
+      "total_model_calls": 2
+    },
+    "evidence": [
+      {
+        "document_name": "WEISS-DE-001-(컨설팅)완료보고서-4.이용관리시스템-v0.82.pdf",
+        "page_number": 42,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-4-v0-82-b9c3bac8\\pages\\p0042.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "WEISS-DE-001-(컨설팅)완료보고서-4.이용관리시스템-v0.82.pdf",
+        "page_number": 40,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-4-v0-82-b9c3bac8\\pages\\p0040.png",
+        "table_crop_path": ""
+      },
+      {
+        "document_name": "WEISS-DE-001-(컨설팅)완료보고서-4.이용관리시스템-v0.82.pdf",
+        "page_number": 5,
+        "page_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test_2\\rag2\\cache\\parsed\\weiss-de-001-4-v0-82-b9c3bac8\\pages\\p0005.png",
+        "table_crop_path": ""
+      }
+    ],
+    "process_wall_seconds": 19.672,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "text",
+    "route_match": true,
+    "question_type": "text",
+    "category": "이용관리_게시물관리"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "no_catalog",
+    "qid": "vi_001",
+    "question": "인공지능으로 주식 자동매매 프로그램을 만드는 방법을 알려주세요.",
+    "error": null,
+    "final_answer": "선택된 문서에서 확인 불가",
+    "answer_path": "none",
+    "abstained": true,
+    "skip_reason": "전역 검색 결과의 관련성 부족(dense gate)",
+    "selected_documents": [],
+    "selected_pages": [],
+    "doc_match": null,
+    "page_match": null,
+    "keyword_recall": null,
+    "keywords_found": [],
+    "keywords_missing": [],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 5.563,
+      "answer": 0.0,
+      "total": 5.563
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 0,
+      "vision_answer_calls": 0,
+      "llm_calls_total": 0,
+      "vlm_calls_total": 0,
+      "total_model_calls": 1
+    },
+    "evidence": [],
+    "process_wall_seconds": 6.75,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "none",
+    "route_match": true,
+    "question_type": "irrelevant",
+    "category": "무관"
+  },
+  {
+    "pipeline": "test2",
+    "mode": "no_catalog",
+    "qid": "vi_002",
+    "question": "집에서 홈트레이닝으로 살 빼는 효과적인 운동 루틴을 추천해주세요.",
+    "error": null,
+    "final_answer": "선택된 문서에서 확인 불가",
+    "answer_path": "none",
+    "abstained": true,
+    "skip_reason": "전역 검색 결과의 관련성 부족(dense gate)",
+    "selected_documents": [],
+    "selected_pages": [],
+    "doc_match": null,
+    "page_match": null,
+    "keyword_recall": null,
+    "keywords_found": [],
+    "keywords_missing": [],
+    "is_answer_supported": null,
+    "stage_timings_seconds": {
+      "retrieve": 5.531,
+      "answer": 0.0,
+      "total": 5.531
+    },
+    "model_calls": {
+      "embed_calls": 1,
+      "text_answer_calls": 0,
+      "vision_answer_calls": 0,
+      "llm_calls_total": 0,
+      "vlm_calls_total": 0,
+      "total_model_calls": 1
+    },
+    "evidence": [],
+    "process_wall_seconds": 6.719,
+    "subprocess_returncode": 0,
+    "expected_answer_path": "none",
+    "route_match": true,
+    "question_type": "irrelevant",
+    "category": "무관"
+  }
+]

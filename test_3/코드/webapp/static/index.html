@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RAG3 데모 — 문서 기반 질의응답</title>
+<style>
+  :root {
+    --bg: #f4f6f9; --card: #ffffff; --line: #e3e8ef;
+    --text: #1a2332; --muted: #64748b; --accent: #2563eb;
+    --ok: #16a34a; --warn: #d97706; --bad: #dc2626;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font-family: "Malgun Gothic", "Segoe UI", sans-serif; font-size: 15px; }
+  header { background: #0f172a; color: #fff; padding: 14px 28px;
+           display: flex; align-items: baseline; gap: 14px; }
+  header h1 { font-size: 19px; margin: 0; }
+  header .sub { color: #94a3b8; font-size: 13px; }
+  #status { margin-left: auto; font-size: 13px; color: #4ade80; }
+  main { display: grid; grid-template-columns: 1fr 340px; gap: 20px;
+         max-width: 1280px; margin: 22px auto; padding: 0 20px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+          padding: 18px 20px; margin-bottom: 18px; }
+  .card h2 { font-size: 14px; margin: 0 0 12px; color: var(--muted);
+             text-transform: uppercase; letter-spacing: .04em; }
+  /* 질문 폼 */
+  #ask-form { display: flex; gap: 10px; }
+  #question { flex: 1; padding: 12px 14px; font-size: 16px; border: 1px solid var(--line);
+              border-radius: 8px; outline: none; }
+  #question:focus { border-color: var(--accent); }
+  button { padding: 12px 22px; font-size: 15px; border: 0; border-radius: 8px;
+           background: var(--accent); color: #fff; cursor: pointer; }
+  button:disabled { background: #94a3b8; cursor: not-allowed; }
+  button.ghost { background: #eef2f7; color: var(--text); font-size: 13px; padding: 8px 14px; }
+  /* 로딩 */
+  #loading { display: none; align-items: center; gap: 14px; }
+  .spinner { width: 26px; height: 26px; border: 3px solid var(--line);
+             border-top-color: var(--accent); border-radius: 50%;
+             animation: spin 0.9s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  #elapsed { font-variant-numeric: tabular-nums; color: var(--muted); }
+  /* 답변 */
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 999px;
+           font-size: 12.5px; font-weight: 600; margin-right: 6px; }
+  .badge.high { background: #dcfce7; color: var(--ok); }
+  .badge.low, .badge.unknown { background: #fef3c7; color: var(--warn); }
+  .badge.abstain, .badge.none { background: #fee2e2; color: var(--bad); }
+  .badge.path { background: #dbeafe; color: var(--accent); }
+  #answer-text { white-space: pre-wrap; line-height: 1.65; margin-top: 12px; }
+  /* 근거 이미지 */
+  .ev-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+  .ev-item { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #fafbfc; }
+  .ev-item img { width: 100%; display: block; cursor: zoom-in; }
+  .ev-cap { padding: 8px 10px; font-size: 12.5px; color: var(--muted); line-height: 1.45;
+            border-top: 1px solid var(--line); word-break: break-all; }
+  .ev-cap b { color: var(--text); }
+  /* 파이프라인/성능 표 */
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 600; }
+  td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .kv { display: flex; justify-content: space-between; padding: 6px 0;
+        border-bottom: 1px dashed var(--line); font-size: 13.5px; }
+  .kv b { font-variant-numeric: tabular-nums; }
+  .note { font-size: 12px; color: var(--muted); }
+  #error { display: none; background: #fee2e2; color: var(--bad); border: 1px solid #fecaca;
+           border-radius: 8px; padding: 12px 16px; margin-bottom: 18px; }
+  .hidden { display: none; }
+  /* 이미지 라이트박스 */
+  #lightbox { display: none; position: fixed; inset: 0; background: rgba(15,23,42,.85);
+              z-index: 50; align-items: center; justify-content: center; cursor: zoom-out; }
+  #lightbox img { max-width: 94vw; max-height: 94vh; box-shadow: 0 8px 40px rgba(0,0,0,.5); }
+  @media (max-width: 900px) { main { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>RAG3 문서 질의응답 데모</h1>
+  <span class="sub">MinerU 파싱 · 하이브리드 검색 · 리랭크 · 검증/롤백 — 전 구간 로컬</span>
+  <span id="status">준비 확인 중…</span>
+</header>
+
+<main>
+  <section>
+    <div class="card">
+      <form id="ask-form">
+        <input id="question" type="text" placeholder="문서에 대해 질문하세요 (예: 제주교육청 스쿨넷 5단계 100M 월 요금은?)" autocomplete="off">
+        <button id="ask-btn" type="submit">질문하기</button>
+      </form>
+      <div id="loading" style="margin-top:14px">
+        <div class="spinner"></div>
+        <div>답변 생성 중… <span id="elapsed">0초</span> 경과 <span class="note">(보통 25~90초, 최대 150초)</span></div>
+      </div>
+    </div>
+
+    <div id="error"></div>
+
+    <div id="answer-card" class="card hidden">
+      <h2>답변</h2>
+      <div id="badges"></div>
+      <div id="answer-text"></div>
+    </div>
+
+    <div id="evidence-card" class="card hidden">
+      <h2>근거 문서 페이지 <span class="note">(클릭하면 크게 보기)</span></h2>
+      <div id="ev-grid" class="ev-grid"></div>
+    </div>
+
+    <div id="trace-card" class="card hidden">
+      <h2>파이프라인 추적</h2>
+      <table id="trace-table">
+        <thead><tr><th>단계</th><th>모델</th><th>호출</th><th>비고</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div id="trace-summary" style="margin-top:10px; font-size:13.5px;"></div>
+    </div>
+  </section>
+
+  <aside>
+    <div class="card">
+      <h2>이번 질문 지표</h2>
+      <div id="live-metrics"><div class="note">질문을 실행하면 표시됩니다.</div></div>
+    </div>
+    <div class="card">
+      <h2>모델 성능 (벤치마크)</h2>
+      <div id="bench"></div>
+      <div class="note" id="bench-basis" style="margin-top:8px"></div>
+    </div>
+    <div class="card">
+      <h2>코퍼스 / 모델</h2>
+      <div id="corpus"></div>
+      <button id="warmup-btn" class="ghost" style="margin-top:12px">모델 워밍업 (발표 직전 실행)</button>
+      <span id="warmup-note" class="note"></span>
+    </div>
+  </aside>
+</main>
+
+<div id="lightbox"><img alt=""></div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+let timer = null;
+
+function fmtScore(x) { return x == null ? "-" : Number(x).toFixed(4); }
+
+async function loadStats() {
+  try {
+    const r = await fetch("/api/stats");
+    const s = await r.json();
+    $("status").textContent = "● 준비 완료 (웜 로딩됨)";
+    $("bench").innerHTML = s.benchmark.rows.map(b =>
+      `<div class="kv"><span>${b.label}<div class="note">${b.note}</div></span><b>${b.value}</b></div>`).join("");
+    $("bench-basis").textContent = s.benchmark.basis;
+    const c = s.corpus;
+    $("corpus").innerHTML = [
+      ["문서", c.documents + "개"], ["페이지", c.pages.toLocaleString() + "p"],
+      ["검색 청크", c.chunks.toLocaleString() + "개"],
+      ["답변 LLM", c.models.text], ["임베딩", c.models.embedding],
+      ["리랭커", c.models.reranker.split("/").pop()],
+    ].map(([k, v]) => `<div class="kv"><span>${k}</span><b>${v}</b></div>`).join("");
+  } catch (e) {
+    $("status").textContent = "서버 연결 실패";
+    $("status").style.color = "#f87171";
+  }
+}
+
+function startTimer() {
+  const t0 = Date.now();
+  $("loading").style.display = "flex";
+  timer = setInterval(() => { $("elapsed").textContent = Math.round((Date.now() - t0) / 1000) + "초"; }, 500);
+}
+function stopTimer() { clearInterval(timer); $("loading").style.display = "none"; }
+
+function showError(msg) { const e = $("error"); e.textContent = msg; e.style.display = "block"; }
+
+function render(r) {
+  $("answer-card").classList.remove("hidden");
+  const conf = r.confidence || "unknown";
+  $("badges").innerHTML =
+    `<span class="badge path">경로: ${r.answer_path}</span>` +
+    `<span class="badge ${conf}">신뢰도: ${conf}</span>` +
+    (r.verification ? `<span class="badge ${r.verification.ok ? "high" : "abstain"}">검증: ${r.verification.ok ? "OK" : r.verification.flags.join(" · ")}</span>` : "");
+  $("answer-text").textContent = r.final_answer || "(빈 응답)";
+
+  const evs = (r.evidence || []).filter(e => e.image_url);
+  $("evidence-card").classList.toggle("hidden", evs.length === 0);
+  $("ev-grid").innerHTML = evs.map(e =>
+    `<div class="ev-item">
+       <img src="${e.image_url}" loading="lazy" onclick="zoom('${e.image_url}')" alt="p${e.page_number}">
+       <div class="ev-cap"><b>${e.document_name}</b><br>p${e.page_number} · rerank ${fmtScore(e.page_score)}</div>
+     </div>`).join("");
+
+  $("trace-card").classList.remove("hidden");
+  $("trace-table").querySelector("tbody").innerHTML = r.trace.rows.map(t =>
+    `<tr><td>${t.stage}</td><td>${t.model}</td><td class="num">${t.calls == null ? "—" : "×" + t.calls}</td><td class="note">${t.note}</td></tr>`).join("");
+  const tm = r.trace.timings || {};
+  $("trace-summary").innerHTML =
+    `합계: LLM ${r.trace.llm_total}회` +
+    (r.trace.length_retry ? ` (+length재발행 ${r.trace.length_retry})` : "") +
+    ` · 리랭커 ${r.trace.rerank}회 · 임베딩 ${r.trace.embed}회`;
+
+  const top = evs[0];
+  $("live-metrics").innerHTML = [
+    ["총 소요", r.elapsed_seconds + "초"],
+    ["검색 시간", (tm.retrieve ?? "-") + "초"],
+    ["답변 생성", (tm.answer ?? "-") + "초"],
+    ["리랭크 최고점수", fmtScore(r.rerank_top_score)],
+    ["근거 페이지", top ? `${top.document_name.slice(0, 18)}… p${top.page_number}` : "없음"],
+    ["LLM 호출", r.trace.llm_total + "회"],
+  ].map(([k, v]) => `<div class="kv"><span>${k}</span><b>${v}</b></div>`).join("");
+}
+
+$("ask-form").addEventListener("submit", async (ev) => {
+  ev.preventDefault();
+  const q = $("question").value.trim();
+  if (!q) return;
+  $("error").style.display = "none";
+  $("ask-btn").disabled = true;
+  startTimer();
+  try {
+    const resp = await fetch("/api/ask", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question: q }),
+    });
+    if (!resp.ok) {
+      const d = await resp.json().catch(() => ({}));
+      throw new Error(d.detail || `서버 오류 (${resp.status})`);
+    }
+    render(await resp.json());
+  } catch (e) {
+    showError("실패: " + e.message);
+  } finally {
+    stopTimer();
+    $("ask-btn").disabled = false;
+  }
+});
+
+$("warmup-btn").addEventListener("click", async () => {
+  $("warmup-btn").disabled = true;
+  $("warmup-note").textContent = " 워밍업 중…";
+  try {
+    const r = await fetch("/api/warmup", { method: "POST" });
+    const d = await r.json();
+    $("warmup-note").textContent = r.ok ? ` 완료 (${d.elapsed_seconds}초)` : " 실패";
+  } catch { $("warmup-note").textContent = " 실패"; }
+  $("warmup-btn").disabled = false;
+});
+
+function zoom(url) {
+  const lb = $("lightbox");
+  lb.querySelector("img").src = url;
+  lb.style.display = "flex";
+}
+$("lightbox").addEventListener("click", () => { $("lightbox").style.display = "none"; });
+
+loadStats();
+</script>
+</body>
+</html>

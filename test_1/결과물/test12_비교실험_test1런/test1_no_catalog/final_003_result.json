@@ -1,0 +1,86 @@
+{
+  "pipeline": "test1",
+  "mode": "no_catalog",
+  "qid": "final_003",
+  "question": "무선랜 구축운영 가이드라인에서 설명하는 802.11ac와 802.11ax 무선랜 표준의 주파수 대역·속도 특성은 각각 무엇이며, 802.11ax를 160MHz 대역폭으로 사용할 때 제공 가능한 최대 속도는 얼마인가요?",
+  "run_id": "20260714T035049Z_fc0e8b",
+  "error": null,
+  "final_answer": "802.11ac 무선랜 표준은 주파수 대역이 5GHz이며 최대 전송률은 6.933Gbps이고, 802.11ax 무선랜 표준은 주파수 대역이 1GHz ~ 6GHz이며 최대 전송률은 9.6Gbps입니다. 또한 802.11ax를 160MHz 대역폭으로 사용할 때 제공 가능한 최대 속도는 9.6Gbps입니다.",
+  "abstained": false,
+  "skip_reason": null,
+  "selected_documents": [
+    "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+    "★23년 학교 유무선 운영·관리 안내서_최종.pdf",
+    "학교 무선인터넷 자가진단 체크리스트(안).pdf"
+  ],
+  "selected_pages": [
+    5,
+    70,
+    7,
+    73,
+    76
+  ],
+  "doc_match": true,
+  "page_match": true,
+  "keyword_recall": 0.667,
+  "keywords_found": [
+    "802.11ac",
+    "5GHz",
+    "6Gbps",
+    "802.11ax",
+    "160MHz",
+    "9.6Gbps"
+  ],
+  "keywords_missing": [
+    "WiFi 5",
+    "WiFi 6",
+    "2.4GHz"
+  ],
+  "is_answer_supported": true,
+  "unsupported_claims": [],
+  "stage_timings_seconds": {
+    "query_analyzer": 28.078,
+    "page_summary": 358.203,
+    "visual_chunk": 271.469,
+    "retrieval_search": 1.422,
+    "retrieval_total": 659.172,
+    "answer": 57.578,
+    "evidence": 0.125,
+    "verify": 24.344,
+    "total": 741.219
+  },
+  "model_calls": {
+    "query_analyzer_calls": 1,
+    "summary_calls": 24,
+    "chunk_calls": 4,
+    "answer_vlm_calls": 1,
+    "verify_llm_calls": 1,
+    "embed_calls": 33,
+    "llm_calls_total": 2,
+    "vlm_calls_total": 29
+  },
+  "vlm_pages_required_cache_independent": {
+    "summary_pages_required": 24,
+    "chunk_pages_required": 4
+  },
+  "evidence": [
+    {
+      "image_index": 1,
+      "document_name": "★. 무선랜 구축운영 가이드라인_0.1v_20p수정_2023년.pdf",
+      "page_number": 5,
+      "confidence": 1.0,
+      "why_relevant": "무선 LAN 규격 표에서 802.11ac와 802.11ax의 주파수 대역 및 최대 전송률을 확인할 수 있으며, 상단 문구에서 802.11ax(160MHz)의 최대 속도를 확인할 수 있습니다.",
+      "bbox": {
+        "x1": 0.0,
+        "y1": 0.0,
+        "x2": 1.0,
+        "y2": 1.0
+      },
+      "crop_image_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test12_total_test\\_work_test1\\output\\evidence\\20260714T035049Z_fc0e8b\\0-1v-20p-2023-a874b961_p0005_ev1_crop.jpg",
+      "highlighted_page_path": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test12_total_test\\_work_test1\\output\\evidence\\20260714T035049Z_fc0e8b\\0-1v-20p-2023-a874b961_p0005_highlighted.jpg"
+    }
+  ],
+  "process_wall_seconds": 742.578,
+  "subprocess_returncode": 0,
+  "evidence_dir": "C:\\Users\\minsoo\\Desktop\\아이티지엔 인턴\\챗봇\\test12_total_test\\test1_no_catalog\\final_003_evidence"
+}
