@@ -61,7 +61,14 @@ class OllamaBackend(Backend):
         self.config = config
         self.backend_id = f"ollama-{config.embedding_model}"
 
-    def _options(self) -> dict:
+    #: length-retry 시 섭동 온도(첫 호출은 여전히 temp=0). temp=0 그리디가 특정 프롬프트에서
+    #: 공백으로 붕괴(빈 응답)하는데, 작은 temperature가 이를 깨고 실제 답변을 복원함(2026-07-21 실측).
+    _LENGTH_RETRY_TEMPERATURE = 0.3
+    #: length-retry 시 출력 토큰 상한(정당하게 긴 답변이 num_predict에 잘리는 경우 완성시킴).
+    #: wifi 문항 실측: 완결에 ~1600토큰 필요(1536 상한에 걸림) -> 재발행은 여유 있게 3072.
+    _LENGTH_RETRY_NUM_PREDICT = 3072
+
+    def _options(self, *, overrides: dict | None = None) -> dict:
         opts = {
             "num_ctx": self.config.ollama_num_ctx,
             "temperature": 0.0,
@@ -70,21 +77,24 @@ class OllamaBackend(Backend):
         npredict = getattr(self.config, "ollama_num_predict", 0)
         if npredict and npredict > 0:
             opts["num_predict"] = npredict  # 출력 토큰 상한(장문 생성 폭주로 인한 지연 방지)
+        if overrides:
+            opts.update(overrides)
         return opts
 
-    def _call(self, model: str, messages: list[dict]) -> dict:
+    def _call(self, model: str, messages: list[dict], *, options: dict | None = None) -> dict:
         """ollama.chat 1회(모델 실패 시 fallback_model로 1회 대체). 전체 resp를 반환한다."""
+        opts = options if options is not None else self._options()
         try:
             return self._ollama.chat(
                 model=model, messages=messages,
-                options=self._options(), keep_alive=self.config.ollama_keep_alive,
+                options=opts, keep_alive=self.config.ollama_keep_alive,
             )
         except Exception as e:
             if model != self.config.fallback_model:
                 logger.warning("모델 %s 호출 실패(%s) -> fallback %s로 재시도", model, e, self.config.fallback_model)
                 return self._ollama.chat(
                     model=self.config.fallback_model, messages=messages,
-                    options=self._options(), keep_alive=self.config.ollama_keep_alive,
+                    options=opts, keep_alive=self.config.ollama_keep_alive,
                 )
             raise
 
@@ -104,21 +114,33 @@ class OllamaBackend(Backend):
     def _chat(self, model: str, messages: list[dict]) -> str:
         resp = self._call(model, messages)
         self._log_meta(resp)
-        # 콜드스타트 whitespace 런어웨이 방어: done_reason=length는 자연 종료(stop)가 아니라
-        # 미완/폭주다(콜드 KV에서 답변 도중 공백 토큰을 num_predict까지 폭주 -> 답변 잘림).
-        # 동일 호출을 1회 재발행하면 서버 KV 캐시가 웜이라 정상 완성됨을 실측(2026-07-16).
-        # temp=0 그리디를 유지하므로 숫자 충실도는 보존된다.
+        # done_reason=length는 자연 종료(stop)가 아니라 미완이다. 원인은 두 가지가 겹친다(2026-07-21 실측):
+        #  ① temp=0 그리디가 특정 프롬프트에서 답변 도중 공백 토큰으로 붕괴 -> 빈/조각 응답 (wifi 문항).
+        #  ② 정당하게 긴 답변(다항목 조치 목록 등)이 num_predict 상한에 그대로 잘림 (~1600토큰 필요).
+        # "동일 호출 재발행"은 그리디 결정론이라 ①을 재현할 뿐이라(실측: 재발행 2회 모두 length) 실패했다.
+        # 그래서 재발행은 temperature를 소폭 올려(붕괴 탈출) + num_predict를 키워(장문 완성) 섭동한다.
+        # 섭동은 이미 length로 망가진 실패 경로에서만 발동하므로 정상(stop) 답변에는 영향이 없다.
         if resp.get("done_reason") == "length" and getattr(self.config, "ollama_retry_on_length", True):
             from . import metrics
             m = metrics.current()
             budget = getattr(self.config, "ollama_max_length_retries", 2)
             # 문항당 예산 내에서만 재발행(병리적 문맥의 지연 폭발 차단). 예산은 length_retry_count로 계측.
             if m is None or m.length_retry_count < budget:
-                resp2 = self._call(model, messages)
+                attempt = 0 if m is None else m.length_retry_count
+                base_np = getattr(self.config, "ollama_num_predict", 0) or 0
+                perturbed = self._options(overrides={
+                    "temperature": self._LENGTH_RETRY_TEMPERATURE,
+                    "seed": getattr(self.config, "ollama_seed", 0) + attempt + 1,
+                    "num_predict": max(base_np * 2, self._LENGTH_RETRY_NUM_PREDICT),
+                })
+                resp2 = self._call(model, messages, options=perturbed)
                 self._log_meta(resp2)
                 metrics.record_length_retry()
-                # 재발행이 자연 종료(stop)했을 때만 채택. 여전히 length면(진짜 장문/병리) 원답 유지.
-                if resp2.get("done_reason") == "stop":
+                # 재발행이 완성(stop)했거나, 여전히 length여도 원답보다 실질 내용이 더 많으면 채택.
+                # (원답이 temp=0 공백 붕괴로 비어있는 경우가 잦아 내용 길이 비교가 유효한 판별이 된다.)
+                c1 = (resp.get("message", {}).get("content") or "").strip()
+                c2 = (resp2.get("message", {}).get("content") or "").strip()
+                if resp2.get("done_reason") == "stop" or len(c2) > len(c1):
                     resp = resp2
         return resp["message"]["content"]
 
