@@ -16,6 +16,7 @@ venv/
 **/index/
 **/parsed_v25/
 **/chroma/
+쓰잘데기/
 
 # --- 실행 로그 / 임시 ---
 *.log
