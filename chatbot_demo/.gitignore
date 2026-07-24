@@ -1,0 +1,13 @@
+# 환경변수(비밀 포함)
+.env
+
+# 근거 이미지 사본(런타임 생성물)
+runtime/evidence/*
+!runtime/evidence/.gitkeep
+
+# 파이썬 캐시/테스트
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/

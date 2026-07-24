@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>학교 유무선 장애상담 챗봇 데모</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">🏫 학교 유무선 장애상담 챗봇 <span class="tag">데모</span></div>
+    <div id="status" class="status">● 연결 확인 중…</div>
+  </header>
+
+  <main class="split">
+    <!-- ============ 좌측: 챗봇 대화 (세로 컬럼) ============ -->
+    <section class="chat-col">
+      <div class="chat-head">
+        <div>
+          <div class="chat-title">상담 대화</div>
+          <div id="scenario-prompt" class="chat-sub"></div>
+        </div>
+        <button id="btn-home" class="link-btn">처음으로</button>
+      </div>
+
+      <div id="chat" class="chat"></div>
+
+      <div id="busy" class="busy hidden">
+        <span class="spinner"></span>
+        <span id="busy-text">답변 생성 중…</span>
+        <span id="busy-timer" class="timer"></span>
+      </div>
+
+      <!-- 시나리오 선택지: 입력창 바로 위, 가로 배열 -->
+      <div class="scenario-strip">
+        <div id="scenario-options" class="chips"></div>
+      </div>
+
+      <form id="chat-form" class="composer">
+        <input id="chat-input" type="text" autocomplete="off"
+               placeholder="궁금한 내용을 입력하여 주십시오" />
+        <button id="btn-send" type="submit" title="전송" aria-label="전송">➤</button>
+      </form>
+    </section>
+
+    <!-- ============ 우측: 근거 · 파이프라인 인스펙터 ============ -->
+    <aside class="inspector">
+      <div class="insp-head">
+        <div class="insp-title">답변 근거 · 처리 과정</div>
+        <div id="insp-badges" class="badges"></div>
+      </div>
+
+      <div id="insp-body" class="insp-body">
+        <div id="insp-empty" class="insp-empty">
+          <div class="insp-empty-icon">🔎</div>
+          <p>왼쪽에서 질문하거나 시나리오를 선택하면<br>여기에 <b>처리 파이프라인 · 소요 시간 · 근거 이미지</b>가 표시됩니다.</p>
+        </div>
+
+        <!-- 파이프라인 -->
+        <section id="sec-pipeline" class="insp-sec hidden">
+          <h3>LangGraph 처리 경로</h3>
+          <ol id="pipeline" class="pipeline"></ol>
+        </section>
+
+        <!-- 소요 시간 / 메타 -->
+        <section id="sec-meta" class="insp-sec hidden">
+          <h3>소요 시간 · 메타</h3>
+          <div id="insp-kv" class="kv"></div>
+        </section>
+
+        <!-- 근거 이미지 -->
+        <section id="sec-evi" class="insp-sec hidden">
+          <h3>근거 이미지</h3>
+          <div id="insp-evi" class="evi-grid"></div>
+        </section>
+
+        <!-- 검증 / 경고 -->
+        <section id="sec-flags" class="insp-sec hidden">
+          <h3>검증 · 경고</h3>
+          <div id="insp-flags"></div>
+        </section>
+      </div>
+
+      <div class="insp-foot">
+        <div id="engine-status" class="muted small">상태 확인 중…</div>
+        <div class="insp-foot-row">
+          <button id="btn-warmup" class="secondary">RAG 엔진 예열(warmup)</button>
+          <span id="warmup-msg" class="muted small"></span>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

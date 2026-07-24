@@ -1,0 +1,19 @@
+# chatbot_demo 데모에 추가로 필요한 패키지만 기록.
+# rag3x/rag3 자체 의존성(torch, sentence-transformers, chromadb, ollama, mineru 등)은
+# 기존 test_3 환경(conda: intern_chatbot)을 그대로 사용하며 여기서 중복 설치하지 않는다.
+#
+# 아래 버전은 intern_chatbot 환경(2026-07-22)에 설치된 실측 버전을 하한으로 기록.
+
+# --- 이미 설치되어 있던 것들 (webapp/rag3 공유) ---
+fastapi>=0.139
+uvicorn>=0.51
+openpyxl>=3.1
+rapidfuzz>=3.14
+python-dotenv>=1.2
+python-pptx>=1.0        # scripts에서 PPT 파싱(선택)
+
+# --- 이번 데모에서 새로 설치한 것들 ---
+langgraph>=1.2
+langsmith>=0.10
+pytest>=9.1             # 개발/테스트
+httpx>=0.27             # FastAPI TestClient
