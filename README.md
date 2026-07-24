@@ -24,6 +24,12 @@
 │   ├── 결과물/                   probes_results(PHASE0~6) · rag3 outputs · 설계·config·Gemini 보고서 · scripts
 │   ├── final.md
 │   └── CHANGES_from_test2.md
+├── chatbot_demo/               학교 유무선 장애상담 실험용 챗봇 데모 (LangGraph/LangSmith)
+│   ├── app/                    FastAPI 웹 API · LangGraph 라우팅
+│   ├── scenario/               PPT 시나리오 트리 · 엑셀 FAQ 유사도 매칭
+│   ├── rag/                    rag3x RAG 엔진 연동 어댑터
+│   ├── observability/          LangSmith 트레이싱 연동
+│   └── static/                 정적 웹 UI (HTML/JS/CSS)
 ├── 최종_결과_보고서.md           3세대 종합 보고서
 ├── .gitignore
 ├── .env                        GEMINI_API_KEY (git 제외)
@@ -41,6 +47,7 @@
 1. [최종_결과_보고서.md](최종_결과_보고서.md) — 3세대 전체 조망.
 2. 각 세대 `final.md`(파이프라인 단계별 모델·프로그램) → `CHANGES_from_*.md`(세대 전환 이유).
 3. 세부 지표: `test_3/결과물/probes_results/` · `test_3/결과물/rag3_참고_실험팩트정리.md`.
+4. [chatbot_demo](chatbot_demo/README.md) — LangGraph·LangSmith 기반 장애상담 챗봇 데모 실행 및 상세 구조.
 
 > ⚠️ **경로 주의**: 각 RAG 패키지의 `config.yaml`은 사전데이터를 `../데이터…` 상대경로로 참조하므로,
 > 사전데이터를 `사전데이터/`로 분리한 현 구조에서 **재-ingest 경로는 조정이 필요**하다. 쿼리·데모는
