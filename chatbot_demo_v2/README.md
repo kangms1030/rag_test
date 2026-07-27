@@ -265,7 +265,7 @@ verify_node ─┬─ text 빈응답 ────→ rollback_top1   ┐
 | `RAG_DEEP_WARMUP` | **`true`** | 기동 시 임베딩·LLM까지 예열 → 첫 질문 콜드로드(23s) 제거 |
 | `SCENARIO_MATCH_BACKEND` | **`semantic`** | `semantic`(임베딩+리랭커) \| `fuzz`(문자 편집거리) |
 | `SCENARIO_MATCH_THRESHOLD` / `_MARGIN` | **`0.80` / `0.30`** | FAQ 의미 유사도 채택 기준 |
-| `CLARIFY_ENABLED` / `CLARIFY_MIN_SCORE` | `true` / **`0.40`** | 애매할 때 되묻기(HITL) |
+| `CLARIFY_ENABLED` / `CLARIFY_MIN_SCORE` | `true` / **`0.35`** | 애매할 때 되묻기(HITL) |
 | `COMPOSER_RAG_ENABLED` / `COMPOSER_FAQ_ENABLED` | `true` / `true` | 답변 종합·정리 |
 | `CONTEXTUALIZE_ENABLED` | `true` | 후속질문 재작성 |
 | `GRADER_ENABLED` | `true` | 해결도 판정 (FAQ=에스컬레이션 / RAG=경고만) |
@@ -275,7 +275,7 @@ verify_node ─┬─ text 빈응답 ────→ rollback_top1   ┐
 | `DEMO_PORT` | `8002` | v1(8001)과 병행 |
 
 > ⚠ **FAQ 매칭 임계는 스케일 의존적입니다.** `semantic`(크로스인코더)과 `fuzz`(문자 편집거리)는
-> 점수 분포가 완전히 달라 임계값이 호환되지 않습니다(semantic 0.80/0.30/0.40 ↔ fuzz 0.90/0.05/0.75).
+> 점수 분포가 완전히 달라 임계값이 호환되지 않습니다(semantic 0.80/0.30/0.35 ↔ fuzz 0.90/0.05/0.75).
 > `data/faq_embeddings.json` 이 없으면 매처가 자동으로 `fuzz` 로 폴백하면서 **임계도 함께 되돌립니다**.
 > 임계를 직접 조정할 때는 `scripts/calibrate_faq_threshold.py` 로 분포를 먼저 확인하세요.
 >
