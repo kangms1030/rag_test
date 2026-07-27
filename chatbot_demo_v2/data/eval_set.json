@@ -189,12 +189,11 @@
     {
       "id": "rag_05",
       "question": "스쿨넷 이용관리시스템은 무슨 목적으로 만든 시스템인가요?",
-      "category": "rag",
-      "expected_route": "rag3x",
-      "expected_doc": "이용관리시스템",
-      "expected_pages": [6],
+      "category": "faq_exact",
+      "expected_route": "faq",
+      "expected_faq_id": "스쿨넷:7",
       "must_include": [],
-      "note": "개념 설명형"
+      "note": "2026-07-27 기대값 정정: 처음 rag3x 로 잡았으나 FAQ '스쿨넷:7'(스쿨넷 이용관리시스템은 뭐하는 곳인가요?)이 거의 같은 질문이라 FAQ 즉답이 옳다. 의미 매칭 도입 후 best 0.998/margin 0.368 로 정확히 잡았다 — 평가셋 쪽이 틀렸다."
     },
     {
       "id": "rag_06",

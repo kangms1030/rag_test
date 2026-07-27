@@ -262,37 +262,43 @@ def render_v2():
 
     # ---------- RAG 서브그래프 ----------
     c.group(960, 96, 570, 1000, "RAG 서브그래프  ·  rag_subgraph / RagState", color="#6d28d9")
-    c.text(978, 42, "controller_x 의 S0~S8 을 9개 노드로 재편성 (rag3 로직 무수정 재사용)",
+    c.text(978, 42, "controller_x 의 S0~S8 을 10개 노드로 재편성 "
+                    "(★ grade_evidence 는 2026-07-27 신설)",
            size=12.5, color="#6b7280")
 
     SX, SW = 1120, 250
     smid = SX + SW / 2
-    c.box(SX, 148, SW, 46, "prepare", "질문·예산·deadline 초기화")
-    c.box(SX, 220, SW, 52, "retrieve", "임베딩 → 청크검색 → 리랭킹")
-    c.box(SX, 300, SW, 46, "after_retrieve", "crag / no_answer / answer", kind="dec")
-    c.box(975, 380, 210, 56, "crag_rewrite", "질의 재작성 (judge)\ncrag_budget 1 → 0")
-    c.box(1250, 380, 250, 52, "answer_node", "text / vision 답변 생성")
-    c.box(1250, 460, 250, 52, "verify_node", "근거 정합성 · 숫자 대조")
-    c.box(1250, 540, 250, 46, "after_verify", "rollback A/B/C / done", kind="dec")
-    c.box(1250, 620, 250, 66, "rollback_top1 / _vision / _ocr",
-          "A 빈응답 · B 스캔면 전환 · C 전사 불일치\n각 1회 재생성", kind="rag")
-    c.box(SX, 730, SW, 52, "finalize", "근거 해석 · 이미지 사본 · 정규화")
-    c.pill(smid, 820, "END", "end")
+    c.box(SX, 128, SW, 42, "prepare", "질문·예산·deadline 초기화")
+    c.box(SX, 190, SW, 48, "retrieve", "임베딩 → 청크검색 → 리랭킹 (top 6)")
+    # 2026-07-27 신설 — 검색 랭킹만으로 못 고치는 실패를 의미 판정으로 잡는다
+    c.box(SX, 258, SW, 56, "grade_evidence ★",
+          "근거 3등급 판정 (LLM 1회)\nprimary / supporting / irrelevant", kind="llm")
+    c.box(SX, 334, SW, 44, "after_grade", "crag / no_answer / answer", kind="dec")
+    c.box(975, 406, 210, 56, "crag_rewrite", "질의 재작성 (judge)\n결과가 더 나쁘면 원본 유지")
+    c.box(1250, 406, 250, 56, "answer_node",
+          "등급별 예산 배분 후 답변\nprimary 전문 · supporting 축약")
+    c.box(1250, 482, 250, 48, "verify_node", "근거 정합성 · 숫자 대조")
+    c.box(1250, 550, 250, 44, "after_verify", "rollback A/B/C / done", kind="dec")
+    c.box(1250, 614, 250, 62, "rollback_top1 / _vision / _ocr",
+          "등급 통과 1순위로 재생성\n(오답 1순위 재사용 문제 해소)", kind="rag")
+    c.box(SX, 720, SW, 48, "finalize", "근거 해석 · 이미지 사본 · 정규화")
+    c.pill(smid, 806, "END", "end")
 
-    c.arrow(smid, 194, smid, 220)
-    c.arrow(smid, 272, smid, 300)
-    c.arrow(SX + 40, 346, 1090, 378, "근거 부족", lx=1030, ly=368)
-    c.arrow(SX + SW - 40, 346, 1375, 380, "근거 있음", lx=1425, ly=352)
-    c.arrow(1375, 432, 1375, 460)
-    c.arrow(1375, 512, 1375, 540)
-    c.arrow(1375, 586, 1375, 620, "롤백", lx=1412, ly=608)
-    c.path("M 1250 563 L 1218 563 L 1218 728", "정상 종료", color=FLOW, lx=1218, ly=690)
-    c.path("M 1375 686 L 1375 706 L 1300 706 L 1300 728", "", color=FLOW)
-    c.path("M 1120 323 L 1075 323 L 1075 706 L 1160 706 L 1160 728", "근거 없음 → 보류",
-           color=FLOW, lx=1075, ly=660)
-    c.path("M 1080 380 C 1035 336 1040 252 1116 246", "⟲ CRAG 사이클 (1회)", color=CYCLE,
-           lx=1000, ly=300)
-    c.arrow(smid, 782, smid, 803)
+    c.arrow(smid, 170, smid, 190)
+    c.arrow(smid, 238, smid, 258)
+    c.arrow(smid, 314, smid, 334)
+    c.arrow(SX + 40, 378, 1090, 404, "근거 무관", lx=1028, ly=396)
+    c.arrow(SX + SW - 40, 378, 1375, 406, "근거 있음", lx=1428, ly=384)
+    c.arrow(1375, 462, 1375, 482)
+    c.arrow(1375, 530, 1375, 550)
+    c.arrow(1375, 594, 1375, 614, "롤백", lx=1412, ly=608)
+    c.path("M 1250 572 L 1218 572 L 1218 718", "정상 종료", color=FLOW, lx=1218, ly=680)
+    c.path("M 1375 676 L 1375 698 L 1300 698 L 1300 718", "", color=FLOW)
+    c.path("M 1120 356 L 1075 356 L 1075 698 L 1160 698 L 1160 718", "근거 없음 → 보류",
+           color=FLOW, lx=1075, ly=650)
+    c.path("M 1080 406 C 1035 362 1040 222 1116 216", "⟲ CRAG 사이클 (1회)", color=CYCLE,
+           lx=996, ly=300)
+    c.arrow(smid, 768, smid, 789)
 
     # 스트리밍 패널
     c.box(975, 850, 525, 66, "get_stream_writer() → SSE progress",

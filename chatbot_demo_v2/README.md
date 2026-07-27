@@ -9,8 +9,11 @@ v1(`chatbot_demo`)이 LangGraph를 **전진 DAG(관측용 라우터)** 로만 �
 > 다른 폴더(`test_3`, `chatbot_demo` 등)를 읽기만 하고 수정하지 않습니다.
 
 **함께 볼 문서**
-- [최종_구축_보고서.md](최종_구축_보고서.md) — 계획 대비 이행 점검 · 검증 결과 · 설계 판단 근거
+- [최종_구축_보고서.md](최종_구축_보고서.md) — 초기 구축 시점 기록(계획 대비 이행 점검 · 설계 판단 근거)
+- [**2차_개선_보고서.md**](2차_개선_보고서.md) — 2026-07-27 품질 개선. **무엇이 생기고/바뀌고/없어졌는지**와
+  실측으로 **기각한 가설**까지. 검색을 손대기 전에 §3 을 꼭 읽으세요
 - [docs/파이프라인_비교.md](docs/파이프라인_비교.md) — v1 vs v2 파이프라인 그림 3장 + 실측 트레이스 해설
+- [docs/개선작업_진행상황.md](docs/개선작업_진행상황.md) — 작업 진행 이력 · 다음 할 일
 
 ---
 
@@ -55,6 +58,32 @@ python -X utf8 -m pytest chatbot_demo_v2\tests\test_rag_subgraph.py -q
 python -m chatbot_demo_v2.scripts.render_pipeline
 ```
 
+### 품질 측정 · 데이터 도구 (2026-07-27 추가)
+```bat
+:: 골든셋 37문항으로 그래프 전체 평가 → runtime/reports/eval_<tag>_*.json
+python -X utf8 chatbot_demo_v2\scripts\run_eval.py --tag mytest --no-cache
+python -X utf8 chatbot_demo_v2\scripts\run_eval.py --category ambiguous --limit 5
+
+:: 평가 리포트 A/B 비교 (개선/악화 문항까지 표시)
+python -X utf8 chatbot_demo_v2\scripts\ab_compare.py baseline mytest
+
+:: FAQ 의미 매칭용 임베딩 생성 (FAQ 를 고쳤으면 다시 실행)
+python -X utf8 chatbot_demo_v2\scripts\build_faq_embeddings.py
+
+:: FAQ 매칭 임계값 캘리브레이션 (점수 분포 → 권고 임계)
+python -X utf8 chatbot_demo_v2\scripts\calibrate_faq_threshold.py
+
+:: 색인 재구축 — 원자적 교체. 기존 index 를 절대 덮어쓰지 않는다
+python -X utf8 chatbot_demo_v2\scripts\reindex.py            :: index_new 에 빌드
+python -X utf8 chatbot_demo_v2\scripts\reindex.py --promote  :: 검증 통과 후 교체
+python -X utf8 chatbot_demo_v2\scripts\reindex.py --rollback :: 되돌리기
+```
+
+> ⚠ **골든셋 없이 검색 파라미터를 바꾸지 마세요.** 개선 착수 전 조사에서 유력해 보이던
+> 4가지를 리랭커로 실측했더니 **3가지가 오히려 악화**였습니다(카탈로그 프리픽스 제거 ·
+> 표 행단위 분할 · 질의 재작성). 어떤 설정 변경도 `run_eval.py` → `ab_compare.py` 로
+> 판정한 뒤에만 채택하세요. 자세한 내용은 [2차_개선_보고서.md](2차_개선_보고서.md) §3.
+
 > **PowerShell** 을 쓴다면 `set RUN_RAG_INTEGRATION=1` 대신 `$env:RUN_RAG_INTEGRATION="1"`,
 > 주석은 `::` 대신 `#` 입니다. 나머지 명령은 동일합니다.
 >
@@ -94,19 +123,36 @@ compose_answer → answer_grader ─┬─ 미해결 & 예산>0 & FAQ → rag3x_
                                 └─ 그 외 ───────────────→ final_formatter → END
 ```
 
-### RAG 서브그래프 (`controller_x.py` S0~S8 재편성)
+### RAG 서브그래프 (`controller_x.py` S0~S8 재편성 · 노드 10개)
 ```
-prepare → retrieve ─┬─ 근거없음 & 경계점수 → crag_rewrite ⟲ retrieve   (CRAG 사이클, 1회)
-                    ├─ 근거없음 ─────────→ finalize
-                    └─ 근거있음 ─────────→ answer_node → verify_node
+prepare → retrieve ─┬─ 리랭크 점수 바닥 → crag_rewrite ⟲ retrieve   (CRAG 사이클, 1회)
+                    ├─ 근거없음 ───────→ finalize
+                    └─ 근거있음 ───────→ grade_evidence ★
+grade_evidence ─┬─ 남은 근거 있음 ──→ answer_node → verify_node
+                ├─ 전부 무관 & 예산 → crag_rewrite ⟲ retrieve
+                └─ 전부 무관 & 소진 → finalize
 verify_node ─┬─ text 빈응답 ────→ rollback_top1   ┐
              ├─ 숫자 미지원 ────→ rollback_vision ├→ finalize → END
              ├─ 전사-OCR 불일치 → rollback_ocr    ┘
              └─ 정상 ──────────→ finalize
 ```
+
+**★ `grade_evidence`** (2026-07-27 신설) — 회수된 페이지를 LLM 1회로 3등급 판정합니다.
+
+| 등급 | 뜻 | 컨텍스트 대우 |
+|---|---|---|
+| `primary` | 이 근거만으로 답할 수 있음 | 페이지 전문 |
+| `supporting` | 주제는 맞으나 핵심은 없음 | 검색이 고른 청크만 축약 |
+| `irrelevant` | 질문과 다른 상황 | 제외 |
+
+- `primary` 가 0개여도 버리지 않고 **최상위 `supporting` 을 승격**합니다(판정 오류 안전장치).
+- 전부 `irrelevant` 면 CRAG 재질의로 갑니다 → CRAG 가 "리랭크 점수가 바닥일 때"가 아니라
+  **"의미상 근거가 없을 때"** 발동하게 됩니다.
+- 이 노드가 붙어 무관 페이지가 걸러지므로 회수를 `final_pages 3 → 6` 으로 넓혔습니다.
+
 노드 본문은 vendored 원시함수(`run_retrieval`/`answer_text_from_pages_x`/`verify_answer`/
-`rewrite_query`/`_finalize`)만 호출합니다 — **rag3 로직 무수정**.
-등가성은 원본 `Rag3xEngine.ask()`와 비교하는 통합 테스트로 검증했습니다.
+`rewrite_query`/`_finalize`)만 호출합니다 — **rag3 로직 무수정**(예외 1건: `verify.is_abstain`,
+아래 §3 참조). 등가성은 원본 `Rag3xEngine.ask()`와 비교하는 통합 테스트로 검증했습니다.
 
 ### LangGraph 기능 사용처
 | 기능 | 사용처 |
@@ -147,9 +193,34 @@ verify_node ─┬─ text 빈응답 ────→ rollback_top1   ┐
   구축되어 있으며, 제조사별 구축 수량은 다보링크, 가온, 올레디오, 대유플러스 순입니다.`
   → 초안이 빠뜨린 근거(89,464대·순위)를 종합했고 해당 수치는 근거에 실재해 검증 통과.
 
+### 근거 3등급 + 등급별 예산 (2026-07-27 신설)
+검색은 청크 단위로 하고 답변은 페이지 전문으로 되돌리는 구조라, 예산이 **선착순**으로 소진되며
+관련도와 무관하게 배분됐습니다. 실측(LangSmith `8e0815cd`)에서 컨텍스트 5,949자 중 **정답 근거는
+9.6%**, 무관한 3순위 페이지가 **64.6%**, 한 문서가 **90.1%** 를 독점했습니다.
+
+`grade_evidence` 등급에 따라 예산을 배분합니다.
+- `primary` → 페이지 전문(장당 상한 4,000자)
+- `supporting` → 매칭된 청크만, 장당 800자 · **합계는 primary 분량의 50%** (절대 상한 2,000자)
+  - 상대 예산이 중요합니다. 절대 상한만 두면 primary 가 574자일 때 supporting 2,000자가
+    정답을 묻어버립니다(실측: `final_pages` 확대 후 정답 비중 61% → 45% 희석).
+- 한 문서가 supporting 예산의 60% 를 넘지 못합니다(문서 다양성).
+
+### abstain 판정 — vendoring 무수정 원칙의 유일한 예외
+`ragcore/rag3/verify.py` 의 회피 마커에 `"제공된 근거"` 가 있어, **정상 답변이
+"제공된 근거에 따르면…" 으로 시작한다는 이유로 회피로 오판**됐습니다. 피해는 세 겹이었습니다.
+① groundedness 검증이 통째로 스킵되고 ② 30.4초짜리 롤백이 발동한 뒤 같은 오탐으로 폐기되고
+③ 멀쩡한 답변에 "신뢰도 낮음" 경고가 붙었습니다.
+
+→ 마커를 `"제공된 근거에서 확인"`(프롬프트가 지시한 회피 문구)으로 좁히고, 마커가 있어도
+답변이 160자를 넘으면 '부분 유보'로 보는 길이 가드를 넣었습니다.
+
 ### 무한루프 방지
 모든 사이클에 예산이 있습니다 — CRAG `crag_budget=1`, 롤백은 전용 노드 단발(A/B/C 각 1회),
 에스컬레이션 `escalate_budget=1`. 여기에 rag3 원본의 모델호출 상한(<5)·deadline이 그대로 적용됩니다.
+
+**CRAG 재작성 안전가드** — 재작성이 항상 나은 게 아닙니다. 실측에서 재작성 질의는 정답 근거를
+1위 → 7위로 악화시켰는데, 서브그래프는 결과를 무조건 덮어쓰고 있었습니다. 이제 재작성 결과의
+리랭크 점수가 더 낮거나 근거를 못 찾으면 **원본 검색 결과를 유지**하고 사유를 `history` 에 남깁니다.
 
 ---
 
@@ -191,15 +262,25 @@ verify_node ─┬─ text 빈응답 ────→ rollback_top1   ┐
 |---|---|---|
 | `RAG_BACKEND` | `gemini` | `gemini` \| `ollama` |
 | `RAGCORE_CONFIG` | `ragcore/rag3/config.yaml` | vendored 설정(경로만 v2화) |
-| `SCENARIO_MATCH_THRESHOLD` / `_MARGIN` | `0.90` / `0.05` | FAQ 유사도 채택 기준 |
-| `CLARIFY_ENABLED` / `CLARIFY_MIN_SCORE` | `true` / `0.75` | 애매할 때 되묻기(HITL) |
+| `RAG_DEEP_WARMUP` | **`true`** | 기동 시 임베딩·LLM까지 예열 → 첫 질문 콜드로드(23s) 제거 |
+| `SCENARIO_MATCH_BACKEND` | **`semantic`** | `semantic`(임베딩+리랭커) \| `fuzz`(문자 편집거리) |
+| `SCENARIO_MATCH_THRESHOLD` / `_MARGIN` | **`0.80` / `0.30`** | FAQ 의미 유사도 채택 기준 |
+| `CLARIFY_ENABLED` / `CLARIFY_MIN_SCORE` | `true` / **`0.40`** | 애매할 때 되묻기(HITL) |
 | `COMPOSER_RAG_ENABLED` / `COMPOSER_FAQ_ENABLED` | `true` / `true` | 답변 종합·정리 |
 | `CONTEXTUALIZE_ENABLED` | `true` | 후속질문 재작성 |
-| `GRADER_ENABLED` | `true` | 해결도 판정 + 에스컬레이션 |
+| `GRADER_ENABLED` | `true` | 해결도 판정 (FAQ=에스컬레이션 / RAG=경고만) |
 | `RAG_CACHE_TTL_S` | `3600` | 같은 질문 재요청 시 즉답(0=비활성) |
 | `WEB_SEARCH_ENABLED` / `_SCOPE` | `false` / `in_domain_unresolved` | 웹검색(구조만) |
 | `LANGSMITH_TRACING` / `_API_KEY` / `_PROJECT` | `false` / — / `…-v2` | 추적·피드백 |
 | `DEMO_PORT` | `8002` | v1(8001)과 병행 |
+
+> ⚠ **FAQ 매칭 임계는 스케일 의존적입니다.** `semantic`(크로스인코더)과 `fuzz`(문자 편집거리)는
+> 점수 분포가 완전히 달라 임계값이 호환되지 않습니다(semantic 0.80/0.30/0.40 ↔ fuzz 0.90/0.05/0.75).
+> `data/faq_embeddings.json` 이 없으면 매처가 자동으로 `fuzz` 로 폴백하면서 **임계도 함께 되돌립니다**.
+> 임계를 직접 조정할 때는 `scripts/calibrate_faq_threshold.py` 로 분포를 먼저 확인하세요.
+>
+> 실측 요약: 모호 질문은 점수가 높아도(best 0.971) **margin(1·2위 차)이 0.272 이하**라
+> margin 이 핵심 판별자입니다. 범위 밖 질문은 best 최대 0.004 로 확실히 분리됩니다.
 
 ---
 
@@ -215,6 +296,12 @@ verify_node ─┬─ text 빈응답 ────→ rollback_top1   ┐
 | `contextualize.md` | `$history $question` | 후속질문 → 독립 질문 |
 | `answer_grader.md` | `$question $answer` | RESOLVED/UNRESOLVED |
 | `clarify.md` | `$candidates` | 되묻기 안내 문구 |
+| `evidence_grader.md` | `$question $candidates` | **근거 3등급 판정**(primary/supporting/irrelevant) |
+
+> `evidence_grader.md` 는 RAG 서브그래프가 씁니다. 응답 형식은 `1=primary` 처럼 한 줄에 하나이며,
+> 파싱에 실패한 항목은 **`supporting` 으로 안전하게 유지**됩니다(판정 실패가 근거 유실로 이어지지 않게).
+> 프롬프트에 "용어가 겹친다는 이유로 primary 를 주지 마라"는 지시가 들어 있는데, 이는 실측에서
+> 리랭커가 "AP 설치"라는 표현만 겹치는 장애조치표를 1순위로 올렸기 때문입니다.
 
 ---
 
@@ -230,6 +317,7 @@ chat_turn
 │  └ rag3x.ask
 │     └ rag_subgraph            ← compile(name=...) 로 이름을 준 서브그래프
 │        ├ prepare · retrieve · after_retrieve
+│        ├ grade_evidence · after_grade   ← 2026-07-27 신설(근거 3등급 판정)
 │        ├ crag_rewrite · retrieve        (사이클이 돌면 retrieve 가 2번 찍힘)
 │        ├ answer_node · verify_node · after_verify · rollback_*
 │        └ finalize
@@ -241,12 +329,46 @@ chat_turn
 - 태그: `route:*`, `match:*`, `composed:ok|fallback`, `grader:*`, `clarify_resolved:*`, `turn_route:*`
 - 👍/👎는 턴 `run_id`에 `user_score` 피드백으로 기록
 
+**결과 dict 에 실리는 관측용 필드** (2026-07-27 추가)
+- `evidence_grades` — 회수된 페이지별 `{document_name, page_number, page_score, grade}`.
+  어떤 근거가 왜 빠졌는지 사후에 확인할 수 있습니다.
+- `context_pages_used` — 실제 답변 컨텍스트에 들어간 페이지와 **글자 수·등급·승격 여부**.
+  근거 정밀도가 낮게 나올 때 어디서 예산이 샜는지 바로 보입니다.
+- `rollback_history` 에 `crag_rewrite_accepted` / `crag_rewrite_rejected` 가 남아
+  재작성 결과를 채택했는지 기각했는지 알 수 있습니다.
+- `metrics.gemini_tokens_think` — 사고 토큰. 이전에는 집계에서 누락돼 비용이 과소계상됐습니다.
+
+**공개 트레이스를 코드로 내려받기** — 이번 진단에 쓴 방법입니다.
+```bash
+curl -X POST "https://api.smith.langchain.com/public/<share-id>/runs/query" \
+     -H "Content-Type: application/json" -d '{"trace":"<trace-id>","limit":200}'
+curl "https://api.smith.langchain.com/public/<share-id>/run/<run-id>"   # 개별 run 전문
+```
+루트 run 의 `child_run_ids` 로 자식들을 순회하면 트리 전체를 얻을 수 있습니다.
+
 ---
 
 ## 8. 데이터
 
 ### 코퍼스
-13문서·969페이지(MinerU 파싱 캐시 + 청크 색인). `ragdata/`에 복사본 보유(590MB, gitignore).
+13문서·969페이지·2,562청크(MinerU 파싱 캐시 + 청크 색인). `ragdata/`에 복사본 보유(590MB, gitignore).
+스캔 페이지 199개(20.5%) · 표 포함 페이지 326개(33.6%).
+
+**색인 위생** (2026-07-27, `ragcore/rag3/chunk_hygiene.py`) — 서빙 색인을 직접 열어 실측한 결과
+완전중복 138개(5.4%), 줄 반복 노이즈 65개(2.5%), 임베딩 컨텍스트(2,048토큰) 초과 151개(5.9%)가
+있었고 초과분은 **조용히 잘린 채** 색인돼 있었습니다. 노이즈 청크가 가장 길다는 점이 문제였습니다
+(9,587자×5, 12,775자×10 — 웹 UI 스크린샷 OCR 에서 브라우저 북마크바와 887개 학교명 세로 나열).
+`ingest` 가 flat 색인을 만들기 직전에 중복 제거 · 반복줄 압축 · 초과 경고를 수행합니다.
+
+### 평가 데이터
+| 파일 | 내용 |
+|---|---|
+| `data/eval_set.json` | 골든셋 37문항 — `faq_exact`(5) `faq_paraphrase`(10) `rag`(12) `ambiguous`(5) `out_of_scope`(5) |
+| `data/faq_embeddings.json` | FAQ 236행 질문 임베딩(embeddinggemma, 2.5MB). 의미 매칭용 |
+
+골든셋은 `expected_route` 외에 `expected_doc`/`expected_pages` 를 갖고 있어 **근거 정밀도**
+(컨텍스트 중 정답 근거가 차지하는 비중)를 측정할 수 있습니다. FAQ 를 수정했다면
+`build_faq_embeddings.py` 를 다시 실행하세요.
 
 ### FAQ 근거링크 (`scripts/build_faq_doc_links.py` → `runtime/reports/corpus_gap.md`)
 
@@ -280,26 +402,33 @@ FAQ 236행의 `source_files`("문서명 N쪽")를 파싱해 코퍼스 문서와 
 ```
 chatbot_demo_v2/
   config/settings.py          설정(dotenv 우선순위 + 토글)
-  prompts/                    외부화 프롬프트 5종 + loader(핫리로드)
+  prompts/                    외부화 프롬프트 6종 + loader(핫리로드)
   graph/
     state.py                  ChatState(+messages) / RagState
     routing.py                순수 분기 함수(테스트 용이)
     nodes.py                  메인그래프 노드 14개
-    rag_nodes.py              RAG 서브그래프 노드 9개
+    rag_nodes.py              RAG 서브그래프 노드 10개(+grade_evidence·등급별 예산)
     builder.py                메인그래프 + RAG 서브그래프 조립
-  ragcore/rag3, rag3x         vendored 엔진(무수정 — config.yaml 경로만 v2화)
+  ragcore/rag3, rag3x         vendored 엔진(예외 2건: verify.is_abstain, chunk_hygiene 신설)
+    rag3/chunk_hygiene.py     색인 직전 청크 위생(중복·노이즈·길이)
   ragdata/index, parsed_v25   복사 데이터(gitignore, bootstrap으로 재생성)
   rag/
     adapter_util.py           SubgraphRagAdapter(+TTL캐시·락·근거사본) / Fake / 유틸
     llm_helper.py             소형 LLM 전용 채팅 백엔드(RAG 엔진과 분리)
-  scenario/                   FAQ·시나리오 트리·유사도 매처
+  scenario/                   FAQ·시나리오 트리·매처(Semantic + fuzz 폴백)
   observability/langsmith.py  추적·metadata·피드백
   app/                        FastAPI(main/api/dependencies/schemas)
-  static/                     대화 UI + 근거·파이프라인 인스펙터(SSE 소비)
+  static/                     대화 UI + 근거·파이프라인 인스펙터(SSE 소비, [p53] 출처 칩)
   docs/                       파이프라인_비교.md + 다이어그램 3장(SVG)
+                              개선작업_진행상황.md
+  data/                       faq · scenarios · faq_doc_links
+                              eval_set(골든셋 37) · faq_embeddings(의미 매칭)
+  _backup/                    원복 스냅샷 + RESTORE.md (gitignore)
   scripts/                    bootstrap_data · build_faq_doc_links · render_pipeline
+                              run_eval · ab_compare · reindex
+                              build_faq_embeddings · calibrate_faq_threshold
                               run_demo.cmd · share_tunnel.cmd (시연용)
-  tests/                      111개(+통합 1, 기본 skip)
+  tests/                      147개(+통합 1, 기본 skip)
 ```
 
 ---
@@ -317,10 +446,20 @@ chatbot_demo_v2/
 | 독립성 | test_3 참조 | 코드·데이터 자체 보유 |
 
 ## 11. 후속 실험 후보 (미구현)
-- `Send` 팬아웃으로 분해검색 하위질문 병렬화 — 현재 GPU 단일 처리(`_ask_lock`)라 이득 제한적
-- `content_list_v2`의 bbox를 이용한 근거 이미지 하이라이트
-- 코퍼스 갭 문서 증분 색인(§8)
-- 영속 체크포인터(SQLite)로 서버 재시작 후 대화 유지 — 현재는 재시작 시 초기화(의도된 선택)
+
+검토했으나 이번 범위에서 제외한 것들입니다. 근거와 예상 효과는
+[2차_개선_보고서.md](2차_개선_보고서.md) §8 에 정리돼 있습니다.
+
+| 후보 | 기대 효과 | 왜 안 했나 |
+|---|---|---|
+| **Contextual Retrieval**(Anthropic) | 청크별 LLM 컨텍스트 부착 → top-20 실패율 67% 감소 보고 | 오프라인 2,562콜 + 재색인. 현재 프리픽스가 문서 공통이라 청크 변별에 기여 0인 점은 확인됨 |
+| **임베딩 모델 교체** | embeddinggemma → BGE-M3(MTEB 63.0)/Qwen3-Embedding(70.6). 컨텍스트도 넓어 5.9% 잘림 해소 | 재색인 + 골든셋 A/B 필수 |
+| **ColPali/ColQwen 시각 검색** | 스캔 199p·표 326p(코퍼스 54%)를 OCR 없이 페이지 이미지로 검색 | 새 GPU 모델·별도 색인·멀티벡터 검색기 필요(아키텍처 변경) |
+| **답변 토큰 스트리밍** | 체감 지연 감소(실제 속도는 동일) | 우선순위 밖 |
+| 실제 웹검색 provider | 코퍼스 밖 질문 대응 | 현재 Disabled/Mock 만. 그래프·라우팅은 이미 준비됨 |
+| 영속 체크포인터(SQLite) | 서버 재시작 후 대화 유지 | 현재 "새로고침 전까지만 기억"이 의도된 사양 |
+| `Send` 팬아웃 병렬화 | 분해검색 하위질문 동시 실행 | GPU 단일 처리(`_ask_lock`)라 이득 제한적 |
+| `content_list_v2` bbox 하이라이트 | 근거 이미지에서 인용 영역 강조 | 문장별 출처 표기(`[p53]` 칩)로 1차 대응함 |
 
 ## 12. 팀원에게 시연하기 (Cloudflare Quick Tunnel)
 
@@ -376,3 +515,15 @@ cloudflared tunnel --url http://127.0.0.1:8002
 - 실험용 데모이며 상용 서비스가 아닙니다.
 - RAG는 GPU 단일 처리라 동시 요청을 429로 제한합니다.
 - 체크포인터가 `InMemorySaver` 라 **서버를 재시작하면 모든 대화가 초기화**됩니다(의도된 선택).
+
+### 손대기 전에 읽을 것 (2026-07-27 추가)
+- **골든셋 없이 검색 파라미터를 바꾸지 마세요.** 유력해 보이는 개선안이 실측에서 악화인 경우가
+  흔합니다(착수 전 조사에서 4개 중 3개). `run_eval.py` → `ab_compare.py` 로 판정하세요.
+- **재색인은 `scripts/reindex.py` 로만.** 기존 `ragdata/index` 를 직접 덮어쓰지 마세요.
+  이 스크립트는 `index_new` 에 만든 뒤 검증 후 rename 으로 교체하고, `--rollback` 을 제공합니다.
+- **`ragdata/` 와 `.env` 는 git 에 없습니다.** 복원 경로는 [_backup/RESTORE.md](_backup/RESTORE.md).
+  `.env` 는 다른 사본이 없는 **유일본**입니다.
+- **원본(`test_3/사전데이터`)은 읽기 전용입니다.** 여기가 `ragdata/` 의 최후 복구 원천이므로
+  재색인 전후로 파일 수·크기를 대조하세요(`reindex.py` 가 자동 출력).
+- **FAQ 를 수정하면 `build_faq_embeddings.py` 를 다시 실행**해야 의미 매칭에 반영됩니다.
+- 진행 이력·다음 할 일은 [docs/개선작업_진행상황.md](docs/개선작업_진행상황.md).

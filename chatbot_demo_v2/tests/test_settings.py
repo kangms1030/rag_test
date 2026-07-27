@@ -15,7 +15,7 @@ def test_defaults():
     assert s.scenario_match_threshold == 0.80
     assert s.scenario_match_margin == 0.30
     assert s.clarify_enabled is True
-    assert s.clarify_min_score == 0.40
+    assert s.clarify_min_score == 0.35
     assert s.composer_rag_enabled is True
     assert s.grader_enabled is True
     assert s.rag_cache_ttl_s == 3600

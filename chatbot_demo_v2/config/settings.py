@@ -178,14 +178,16 @@ def load_settings(env: Mapping[str, str] | None = None) -> Settings:
         #   margin >= 0.30 → 확실한 매칭(자동채택)   ambiguous 는 최대 0.272 라 걸리지 않는다
         #   best   <  0.40 → 되묻지 않고 RAG 로
         #
-        # clarify 하한을 0.40 으로 둔 이유: 처음 0.05 로 잡았더니 **명확한 RAG 질문이
-        # 되묻기로 샜다**(rag_01 0.087 · rag_07 0.184 · rag_04 0.326). 실측상 모호 질문
-        # 3/5 는 0.78 이상이라 0.40 이면 모호 질문은 잡고 RAG 질문은 통과시킨다.
+        # clarify 하한 조정 이력:
+        #   0.05 → 명확한 RAG 질문이 되묻기로 샜다(rag_01 0.087 · rag_07 0.184)
+        #   0.40 → 골든셋에서 이번 개선의 발단 질문(ambig_01 "학교에서 새로운 ap를 설치하고
+        #          싶어")이 best 0.386 으로 **아슬아슬하게 놓쳤다**
+        #   0.35 → 채택. RAG 질문들의 best 는 0.2 이하에 몰려 있어 여유가 남는다.
         scenario_match_backend=_get(env, "SCENARIO_MATCH_BACKEND", "semantic"),
         scenario_match_threshold=_get_float(env, "SCENARIO_MATCH_THRESHOLD", 0.80),
         scenario_match_margin=_get_float(env, "SCENARIO_MATCH_MARGIN", 0.30),
         clarify_enabled=_get_bool(env, "CLARIFY_ENABLED", True),
-        clarify_min_score=_get_float(env, "CLARIFY_MIN_SCORE", 0.40),
+        clarify_min_score=_get_float(env, "CLARIFY_MIN_SCORE", 0.35),
         composer_rag_enabled=_get_bool(env, "COMPOSER_RAG_ENABLED", True),
         composer_faq_enabled=_get_bool(env, "COMPOSER_FAQ_ENABLED", True),
         contextualize_enabled=_get_bool(env, "CONTEXTUALIZE_ENABLED", True),
