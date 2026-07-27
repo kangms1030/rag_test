@@ -4,6 +4,10 @@
 # 복사 데이터(590MB) — bootstrap_data.py 로 재생성
 ragdata/
 
+# 원복용 스냅샷(색인 69MB · .env 유일본). 절대 커밋하지 않는다 — .env 가 들어 있다.
+# 복원 절차는 _backup/RESTORE.md 참조.
+_backup/
+
 # 런타임 생성물
 runtime/evidence/*
 !runtime/evidence/.gitkeep
