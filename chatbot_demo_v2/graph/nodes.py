@@ -9,6 +9,7 @@ Phase 2 에서 rag3x_answer 가 RAG 서브그래프 호출로 교체된다.
 
 from __future__ import annotations
 
+import re
 import time
 from typing import Any, Callable
 
@@ -31,6 +32,34 @@ def _format_history(messages: list, limit_chars: int = 2000) -> str:
             rows.append(f"{role}: {content}")
     text = "\n".join(rows)
     return text[-limit_chars:] if len(text) > limit_chars else text
+
+_CITE_RE = re.compile(r"\[\s*[pP]\s*(\d{1,4})\s*\]")
+
+
+def _clean_citations(answer: str, evidence: list[dict]) -> tuple[str, list[int]]:
+    """답변의 `[p53]` 출처 표기를 실제 근거 페이지와 대조해 정리한다 (2026-07-27 작업 9).
+
+    모델이 근거에 없는 쪽번호를 지어내면 그 표기만 제거한다(문장은 남긴다 — 내용 자체는
+    다른 근거에서 왔을 수 있다). 유효한 표기는 그대로 두고 목록을 반환해 프론트가
+    근거 이미지 링크로 렌더링할 수 있게 한다.
+    """
+    valid = {int(e.get("page_number")) for e in (evidence or [])
+             if str(e.get("page_number") or "").isdigit()}
+    used: list[int] = []
+
+    def _sub(m: re.Match) -> str:
+        pg = int(m.group(1))
+        if pg in valid:
+            if pg not in used:
+                used.append(pg)
+            return f"[p{pg}]"
+        return ""      # 근거에 없는 쪽번호 표기는 제거
+
+    cleaned = _CITE_RE.sub(_sub, answer)
+    cleaned = re.sub(r"[ \t]{2,}", " ", cleaned)
+    cleaned = re.sub(r" +([.,)])", r"\1", cleaned)
+    return cleaned.strip(), used
+
 
 ABSTAIN_MESSAGE = (
     "죄송합니다. 현재 내부 자료로는 정확한 답변을 드리기 어렵습니다. "
@@ -617,12 +646,20 @@ def make_nodes(ctx: Any) -> dict[str, Callable[[ChatState], dict]]:
                 "trace": _trace(state, "compose_answer",
                                 f"합성 폐기(근거 밖 수치 {unsupported[:3]}) → 원문 유지"),
             }
+        # 2026-07-27(작업 9): RAG 경로는 문장별 출처 표기 [p53] 을 실제 근거와 대조해 정리한다.
+        citations: list[int] = []
+        if route == "rag3x":
+            rag = state.get("rag_result") or {}
+            out, citations = _clean_citations(out, rag.get("evidence") or [])
+            meta["citations"] = citations
         _node_meta(meta, tags=["composed:ok"])
         return {
             "composed": True,
             "composed_answer": out,
+            "citations": citations,
             "timings": timings,
-            "trace": _trace(state, "compose_answer", f"{name} 합성 채택(len={len(out)})"),
+            "trace": _trace(state, "compose_answer",
+                            f"{name} 합성 채택(len={len(out)}, 출처 {len(citations)}쪽)"),
         }
 
     # ---------- 9.6 answer_grader (Phase 4, 해결도 판정 + 에스컬레이션) ----------

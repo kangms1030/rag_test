@@ -312,3 +312,20 @@ details.orig > summary:hover { color: var(--accent); }
 .clarify-btn.none { color: var(--text-2); font-style: italic; }
 
 .badge.ok { background: var(--ok-bg); color: var(--ok); border-color: #b7e4c3; }
+
+/* 답변 문장 안의 출처 표기 [p53] 칩 (2026-07-27 작업 9) */
+.answer .cite {
+  display: inline-block;
+  margin: 0 .12em;
+  padding: 0 .38em;
+  font: inherit;
+  font-size: .78em;
+  line-height: 1.5;
+  vertical-align: baseline;
+  color: #2563eb;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.answer .cite:hover { background: #dbeafe; border-color: #93c5fd; }

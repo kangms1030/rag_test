@@ -70,6 +70,7 @@ class ChatState(TypedDict, total=False):
     composed: bool
     composed_answer: Optional[str]   # 합성 결과(채택된 경우만). final_formatter 가 우선 적용
     composer_fallback: Optional[str]
+    citations: list                  # 답변에 [p53] 로 인용된 쪽번호(근거와 대조 검증됨)
     original_answer: Optional[str]
     grader_verdict: Optional[str]  # "resolved" | "unresolved" | None
     escalate_budget: int

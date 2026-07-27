@@ -272,3 +272,37 @@ def test_RagState_에_started_ts_가_선언돼_있다():
     assert "started_ts" in RagState.__annotations__
     assert "graded_pages" in RagState.__annotations__
     assert "budgeted_pages" in RagState.__annotations__
+
+
+# ---------------------------------------------------------------- 작업 9: 출처 표기
+class TestCitations:
+    """답변의 [p53] 표기를 실제 근거와 대조해 정리한다(모델이 지어낸 쪽번호 제거)."""
+
+    def _clean(self, answer, pages):
+        from chatbot_demo_v2.graph.nodes import _clean_citations
+        return _clean_citations(answer, [{"page_number": p} for p in pages])
+
+    def test_근거에_있는_쪽번호는_유지된다(self):
+        out, cites = self._clean("엑셀업로드로 추가합니다[p53]. 중복은 체크하세요[p80].", [53, 80])
+        assert "[p53]" in out and "[p80]" in out
+        assert cites == [53, 80]
+
+    def test_근거에_없는_쪽번호_표기는_제거한다(self):
+        """모델이 없는 쪽을 지어내도 문장 자체는 남긴다 — 내용은 다른 근거에서 왔을 수 있다."""
+        out, cites = self._clean("엑셀업로드로 추가합니다[p999].", [53])
+        assert "[p999]" not in out
+        assert "엑셀업로드로 추가합니다" in out
+        assert cites == []
+
+    def test_중복_인용은_한_번만_집계한다(self):
+        out, cites = self._clean("A입니다[p53]. B입니다[p53].", [53])
+        assert cites == [53]
+
+    def test_표기가_없으면_원문_그대로(self):
+        out, cites = self._clean("출처 없는 일반 안내입니다.", [53])
+        assert out == "출처 없는 일반 안내입니다."
+        assert cites == []
+
+    def test_공백_변형도_인식한다(self):
+        out, cites = self._clean("내용입니다[ P53 ].", [53])
+        assert "[p53]" in out and cites == [53]

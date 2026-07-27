@@ -139,6 +139,7 @@ def _shape_response(session_id: str, run_id: str, result: dict) -> ChatResponse:
         original_answer=result.get("original_answer"),
         composed=bool(result.get("composed")),
         grader_verdict=result.get("grader_verdict"),
+        citations=result.get("citations") or [],
     )
 
 

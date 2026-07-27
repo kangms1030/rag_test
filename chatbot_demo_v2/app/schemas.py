@@ -76,6 +76,8 @@ class ChatResponse(BaseModel):
     original_answer: Optional[str] = None  # FAQ 합성 시 원문
     composed: bool = False
     grader_verdict: Optional[str] = None
+    #: 답변 문장에 [p53] 로 인용된 쪽번호(근거와 대조 검증됨). 2026-07-27 작업 9.
+    citations: list[int] = []
 
 
 class HealthResponse(BaseModel):

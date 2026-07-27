@@ -240,6 +240,14 @@ def run_ingest(config: Config, backend: Backend, *, force: bool = False, limit_d
                     doc_info.page_count, len(chunk_ids),
                     type_counts.get("text", 0), type_counts.get("table", 0))
 
+    # chatbot_demo_v2 2026-07-27(작업 8): 색인 직전 청크 위생.
+    # 완전중복 제거 · 반복줄 노이즈 압축 · 임베딩 컨텍스트 초과 경고. 실측 근거는
+    # chunk_hygiene 모듈 docstring 참조(중복 5.4% · 노이즈 2.5% · 초과 5.9%).
+    from .chunk_hygiene import sanitize_chunks
+    all_chunk_ids, all_chunk_texts, all_chunk_metas, hygiene_report = sanitize_chunks(
+        all_chunk_ids, all_chunk_texts, all_chunk_metas)
+    total_chunks = len(all_chunk_ids)
+
     # 청크 flat 인덱스 1회 빌드(전 문서 누적 -> 임베딩 -> npz+json 저장)
     flat_chunks.build(all_chunk_ids, all_chunk_texts, all_chunk_metas)
     # 페이지 텍스트 flat KV 저장(small-to-big 'big' 조회, B6 회피)
@@ -260,6 +268,7 @@ def run_ingest(config: Config, backend: Backend, *, force: bool = False, limit_d
         "figure_pages": figure_pages,
         "page_index_count": page_index.count(),
         "chunk_index_count": flat_chunks.count(),
+        "chunk_hygiene": hygiene_report,      # chatbot_demo_v2 2026-07-27
         "elapsed_seconds": round(total_elapsed, 2),
     }
     with open(config.output_dir / "ingest_summary.json", "w", encoding="utf-8") as f:

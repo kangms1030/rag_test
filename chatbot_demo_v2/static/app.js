@@ -31,8 +31,24 @@ function escapeHtml(s) {
   return String(s)
     .replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 }
+// 답변에 실린 출처 표기 [p53] → 해당 근거 이미지로 가는 칩. 2026-07-27(작업 9).
+// 서버가 근거 페이지와 대조해 유효한 표기만 남기므로 여기서는 렌더링만 한다.
+let evidenceByPage = {};   // page_number -> image_url
+function setEvidenceIndex(resp) {
+  evidenceByPage = {};
+  [...(resp.evidence || []), ...(resp.faq_evidence || [])].forEach((e) => {
+    if (e && e.page_number != null && e.image_url) evidenceByPage[e.page_number] = e.image_url;
+  });
+}
 function inlineFmt(s) {
-  return escapeHtml(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+  let html = escapeHtml(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+  html = html.replace(/\[p(\d{1,4})\]/g, (m, pg) => {
+    const url = evidenceByPage[Number(pg)];
+    if (!url) return "";                       // 근거 이미지가 없으면 표기를 감춘다
+    return '<button class="cite" data-img="' + escapeHtml(url) + '" title="근거 보기">p'
+      + escapeHtml(pg) + "</button>";
+  });
+  return html;
 }
 function renderAnswer(container, text) {
   const lines = String(text || "").split("\n");
@@ -72,7 +88,12 @@ function confLabel(c) {
 function addBot(resp) {
   const wrap = el("div", "msg bot");
   const ansBox = el("div", "answer");
+  setEvidenceIndex(resp);                       // [p53] 칩이 참조할 근거 인덱스
   renderAnswer(ansBox, resp.answer || "(응답 없음)");
+  ansBox.addEventListener("click", (ev) => {
+    const btn = ev.target.closest(".cite");
+    if (btn) openLightbox(btn.dataset.img);
+  });
   wrap.appendChild(ansBox);
 
   // 합성된 답변이면 원문(저장된 모범답변) 접기로 함께 제공
