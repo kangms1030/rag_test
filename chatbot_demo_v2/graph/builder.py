@@ -53,7 +53,7 @@ def build_rag_subgraph(deps: RagDeps):
     # 주의: 메인그래프의 LLM 노드(compose/grader)는 LlmHelper 가 예외를 삼키고 None 을
     # 반환해 pass-through 하므로 RetryPolicy 가 발동하지 않는다(그래서 붙이지 않음).
     # Gemini 자체의 429/5xx 지수백오프는 GeminiBackend 안에 이미 있다.
-    _retry_nodes = {"retrieve", "answer_node", "verify_node"}
+    _retry_nodes = {"retrieve", "grade_evidence", "answer_node", "verify_node"}
     try:
         from langgraph.types import RetryPolicy
 
@@ -70,8 +70,15 @@ def build_rag_subgraph(deps: RagDeps):
 
     g.add_edge(START, "prepare")
     g.add_edge("prepare", "retrieve")
+    # 2026-07-27: retrieve 와 answer 사이에 grade_evidence(근거 3등급 판정)를 넣는다.
+    # 검색 랭킹만으로는 못 고치는 실패를 의미 판정으로 잡고, "의미상 근거가 없을 때"
+    # CRAG 재질의가 발동하게 한다(기존에는 리랭크 점수가 바닥일 때만 발동).
     g.add_conditional_edges(
         "retrieve", routers["after_retrieve"],
+        {"crag": "crag_rewrite", "no_answer": "finalize", "grade": "grade_evidence"},
+    )
+    g.add_conditional_edges(
+        "grade_evidence", routers["after_grade"],
         {"crag": "crag_rewrite", "no_answer": "finalize", "answer": "answer_node"},
     )
     g.add_edge("crag_rewrite", "retrieve")            # ← 사이클(1회, crag_budget 게이트)

@@ -167,7 +167,15 @@ def test_grader_escalates_faq_to_rag_once(tmp_path):
     assert rag.ask_calls == 1                 # RAG 재시도 1회
     assert r["answer_source"] == "rag3x"      # 최종은 RAG 답변
     assert r["escalate_budget"] == 0          # 예산 소진(무한루프 방지)
-    assert llm.grade_calls == 1               # RAG 경로에선 grader 생략
+    # 2026-07-27(작업 4): RAG 경로에도 grader 를 적용하도록 바꿨다. 원래 주석은
+    # "rag3x 내부 verify 가 신뢰도를 판정하므로 생략"이었으나, 그 verify 는 abstain
+    # 오탐으로 무력화돼 있어 RAG 답변에 의미 수준 검증이 전혀 없었다(작업 1 참조).
+    # 따라서 FAQ 판정 1회 + RAG 판정 1회 = 2회가 정상이다.
+    assert llm.grade_calls == 2
+    # 다만 RAG 경로는 **재시도하지 않는다** — 같은 질문으로 RAG 를 또 돌리면 결과가 같고
+    # 지연만 2배가 된다. 판정은 경고·confidence 로만 반영한다.
+    assert r["confidence"] == "low"
+    assert any("핵심을 충분히" in w for w in (r.get("warnings") or []))
 
 
 def test_grader_resolved_keeps_faq_answer(tmp_path):

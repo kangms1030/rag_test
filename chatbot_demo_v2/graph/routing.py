@@ -66,14 +66,23 @@ def decide_route(state: ChatState, *, clarify_enabled: bool = False,
 
     match = state.get("scenario_match") or {}
     decision = match.get("decision")
+    best = match.get("best_score") or 0.0
     if decision in ("exact", "accept"):
         return "faq", f"모범 질답 유사도 통과({decision})"
-    if (clarify_enabled and decision == "reject_ambiguous"
-            and (match.get("best_score") or 0.0) >= clarify_min_score):
-        return "clarify", (
-            f"애매 매칭(best={match.get('best_score')}, "
-            f"margin={match.get('margin_observed')}) → 되묻기"
-        )
+
+    # 2026-07-27: 되묻기 진입을 **회색지대까지** 확장한다.
+    #   기존: reject_ambiguous(1·2위 차가 작을 때)일 때만 되묻었다.
+    #   문제: 점수가 애매하게 낮은(자동채택 미만·완전 무관 이상) 질문은 전부 RAG 로 직행해
+    #         한 가지 해석만 골라 답했다. 발단 질문 "학교에서 새로운 ap를 설치하고 싶어" 가
+    #         정확히 이 구간이다(도입신청/시스템등록/물리설치 중 무엇인지 모호).
+    #   변경: clarify_min_score <= best < threshold 도 되묻기로 보낸다.
+    if clarify_enabled and best >= clarify_min_score:
+        if decision == "reject_ambiguous":
+            return "clarify", (f"애매 매칭(best={round(best, 3)}, "
+                               f"margin={match.get('margin_observed')}) → 되묻기")
+        if decision == "reject_low_score":
+            return "clarify", (f"회색지대(best={round(best, 3)} < 임계 "
+                               f"{match.get('threshold')}) → 되묻기")
     return "rag3x", f"모범 질답 미통과({decision or 'none'}) → RAG"
 
 

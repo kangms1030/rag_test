@@ -143,12 +143,22 @@ class RagState(TypedDict, total=False):
     path_switch_budget: int
     rewritten_query: Optional[str]
 
+    # S5a 근거 등급 판정 (2026-07-27 작업 2)
+    graded_pages: list             # irrelevant 를 제외한 페이지(_grade 키 부착)
+    grade_detail: list             # [{document_name, page_number, page_score, grade}] — 관측용
+    grade_raw: str                 # 그레이딩 LLM 원문(디버깅용, 앞 400자)
+    budgeted_pages: list           # 등급별 예산을 적용해 text 를 잘라 둔 실제 답변 컨텍스트
+
     # S6-7
     answer: Optional[dict]         # {final_answer, raw, context, transcription?}
     answer_path: str               # "text" | "vision" | "none"
     verify: Optional[dict]
 
     # 제어
+    #: prepare 가 기록하는 시작 시각. **RagState 에 선언돼 있어야 LangGraph 가 보존한다** —
+    #: 미선언 시 조용히 버려져 finalize 의 metrics.timings_seconds.total 이 항상 0.0 이 됐다
+    #: (LangSmith 8e0815cd 에서 확인). 2026-07-27 추가.
+    started_ts: float
     deadline_ts: float
     history: Annotated[list[dict], operator.add]
 

@@ -83,22 +83,27 @@ class GeminiBackend(Backend):
     def _record_usage(self, usage: dict, *, kind: str) -> None:
         pin = int(usage.get("promptTokenCount", 0) or 0)
         pout = int(usage.get("candidatesTokenCount", 0) or 0)
-        cost = pin / 1e6 * _PRICE_IN_PER_M + pout / 1e6 * _PRICE_OUT_PER_M
+        # chatbot_demo_v2 수정(2026-07-27): thoughtsTokenCount 누락으로 비용이 과소계상됐다.
+        # 사고 토큰은 candidatesTokenCount 에 포함되지 않으면서 출력 요율로 과금되고,
+        # 지연의 상당 부분을 차지하는데도 계측에 전혀 잡히지 않았다.
+        pthink = int(usage.get("thoughtsTokenCount", 0) or 0)
+        cost = pin / 1e6 * _PRICE_IN_PER_M + (pout + pthink) / 1e6 * _PRICE_OUT_PER_M
         from rag3 import metrics
         m = metrics.current()
         if m is not None:
             acc = getattr(m, "_gemini", None)
             if acc is None:
-                acc = {"in": 0, "out": 0, "cost": 0.0, "calls": 0}
+                acc = {"in": 0, "out": 0, "think": 0, "cost": 0.0, "calls": 0}
                 setattr(m, "_gemini", acc)  # controller_x가 결과 dict에 surface
             acc["in"] += pin
             acc["out"] += pout
+            acc["think"] = acc.get("think", 0) + pthink
             acc["cost"] += cost
             acc["calls"] += 1
         if self._cost_log:
             try:
                 with open(self._cost_log, "a", encoding="utf-8") as f:
-                    f.write(json.dumps({"kind": kind, "in": pin, "out": pout,
+                    f.write(json.dumps({"kind": kind, "in": pin, "out": pout, "think": pthink,
                                         "cost": round(cost, 6)}, ensure_ascii=False) + "\n")
             except Exception:
                 pass

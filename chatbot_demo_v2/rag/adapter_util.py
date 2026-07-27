@@ -50,6 +50,26 @@ def _sanitize_error(exc: BaseException) -> str:
 _RUNID_RE = re.compile(r"^[A-Za-z0-9_\-]{1,64}$")
 
 
+def _x_overrides(settings: Settings) -> dict:
+    """rag3x 실험 플래그 오버라이드. **ragcore 기본값은 건드리지 않고 v2 에서만 덮는다.**
+
+    2026-07-27 개선:
+    - x_gemini_timeout_s 60→25 · x_gemini_max_retries 4→2
+      동일 프롬프트 재측정 기준선이 1.6~3.6초인데, 트레이스 8e0815cd 에서는 호출당 32.8초가
+      걸렸다(무료 티어 혼잡 추정). 기존 설정(60초×5회)은 최악 4분+까지 늘어질 수 있어
+      상한을 1분 미만으로 낮춘다.
+    - x_conditional_verify_skip=True
+      작업 1 로 abstain 오탐이 풀리면 groundedness LLM 이 매번 실행된다. 숫자대조 통과 ∧
+      리랭크 고점 ∧ 단일문서인 확실한 케이스만 스킵해 호출 수를 상쇄한다(controller_x._decide_ground).
+    """
+    return {
+        "x_backend": settings.rag_backend,
+        "x_gemini_timeout_s": 25,
+        "x_gemini_max_retries": 2,
+        "x_conditional_verify_skip": True,
+    }
+
+
 def prepare_ragcore_imports(settings: Settings) -> None:
     """vendored ragcore 를 sys.path 에 넣고 GEMINI 키를 통과시킨다(값 노출 금지)."""
     root = str(settings.ragcore_root)
@@ -234,7 +254,7 @@ class Rag3xAdapter:
 
                 engine = Rag3xEngine(
                     config_path=str(self._settings.ragcore_config),
-                    x_overrides={"x_backend": self._settings.rag_backend},
+                    x_overrides=_x_overrides(self._settings),
                     preload=True,
                 )
                 self._engine = engine
@@ -301,6 +321,10 @@ class SubgraphRagAdapter:
         self._ask_lock = threading.Lock()
         self._deep_warmed = False
         self._copy_evidence = make_evidence_copier(settings.evidence_root)
+        # RAG 서브그래프의 grade_evidence 노드가 쓰는 프롬프트 로더(핫리로드).
+        # 메인그래프의 ctx.prompts 와 별개 인스턴스지만 같은 폴더를 보므로 동작은 동일하다.
+        from ..prompts.loader import PromptLoader
+        self._prompts = PromptLoader(settings.prompts_dir)
         # 질문 → (저장시각, 정규화 결과) TTL 캐시. 같은 질문 재요청 시 25~150초를 아낀다.
         self._cache: dict[str, tuple[float, dict]] = {}
         self._cache_lock = threading.Lock()
@@ -367,11 +391,12 @@ class SubgraphRagAdapter:
 
                 engine = Rag3xEngine(
                     config_path=str(self._settings.ragcore_config),
-                    x_overrides={"x_backend": self._settings.rag_backend},
+                    x_overrides=_x_overrides(self._settings),
                     preload=True,
                 )
                 self._engine = engine
-                self._deps = RagDeps(config=engine.config, backend=engine.backend, scratch={})
+                self._deps = RagDeps(config=engine.config, backend=engine.backend,
+                                     prompts=self._prompts, scratch={})
                 self._subgraph = build_rag_subgraph(self._deps)
                 self._status = STATUS_READY
             except Exception as exc:  # noqa: BLE001

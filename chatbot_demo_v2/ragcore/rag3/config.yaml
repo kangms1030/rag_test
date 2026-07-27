@@ -60,7 +60,11 @@ rerank_device: "cuda"
 # 무관질문 거절 τ_low. Phase 1 캘리브레이션: 관련 문항 리랭크 min=0.688 vs 무관 max=0.013 ->
 # 0.1이면 무관 5/5 거절하고 관련은 전부 통과.
 rerank_score_floor: 0.1
-final_pages: 3               # small-to-big로 승격할 최대 페이지 수
+# chatbot_demo_v2 2026-07-27: 3 → 6.
+# 3으로 묶어 둘 수밖에 없었던 이유는 무관 페이지가 그대로 답변 컨텍스트에 들어가기 때문이었다.
+# grade_evidence(근거 3등급 판정)가 붙어 무관 페이지가 걸러지므로 회수를 넓히는 것이 안전해졌다.
+# 실측 근거: 발단 질문에서 정답 근거가 2순위였다 = 4~6순위에 더 나은 근거가 있을 수 있다.
+final_pages: 6               # small-to-big로 승격할 최대 페이지 수
 
 # 문서 선정 컷오프 (use_catalog_gate=true일 때만 사용; Phase 1 기본 경로에선 무시)
 min_doc_score: 0.35          # RRF 정규화 점수(0~1)가 이 미만이면 selected_documents = []

@@ -627,14 +627,22 @@ def make_nodes(ctx: Any) -> dict[str, Callable[[ChatState], dict]]:
 
     # ---------- 9.6 answer_grader (Phase 4, 해결도 판정 + 에스컬레이션) ----------
     def answer_grader(state: ChatState) -> dict:
-        """답변이 질문을 해결했는지 판정. 미해결이면 FAQ→RAG 로 1회 에스컬레이션.
+        """답변이 질문을 해결했는지 판정.
 
-        RAG 경로는 rag3x 내부 verify 가 이미 신뢰도를 판정하므로 grader 를 생략한다(호출 절약).
+        - FAQ 경로: 미해결이면 RAG 로 1회 에스컬레이션(기존 동작).
+        - RAG 경로(2026-07-27 신설): 판정만 하고 **재시도는 하지 않는다**(지연·루프 방지).
+          미해결이면 경고 문구를 덧붙이고 confidence 를 낮춘다.
+
+        왜 RAG 에도 붙였나 — 원래 주석은 "rag3x 내부 verify 가 이미 신뢰도를 판정한다"였으나,
+        그 verify 는 abstain 오탐 때문에 무력화돼 있었다(작업 1). 결과적으로 RAG 답변에는
+        어떤 의미 수준 검증도 걸리지 않았다. answer_grader.md 의 UNRESOLVED 정의
+        ("주제는 비슷하나 요구한 핵심 정보가 빠졌거나")가 이번 실패 유형과 정확히 일치한다.
         """
         route = state.get("route")
         # 건너뛸 때는 grader_verdict 를 덮어쓰지 않는다 — 에스컬레이션으로 RAG 재시도 중이면
         # 1차(FAQ) 판정 기록이 최종 상태에 남아야 관측 가능하다.
-        if not settings.grader_enabled or route != "faq" or ctx.llm is None or ctx.prompts is None:
+        if (not settings.grader_enabled or route not in ("faq", "rag3x")
+                or ctx.llm is None or ctx.prompts is None):
             return {"_escalate": False}
 
         answer = (state.get("composed_answer") or state.get("final_answer") or "").strip()
@@ -652,6 +660,22 @@ def make_nodes(ctx: Any) -> dict[str, Callable[[ChatState], dict]]:
             verdict = "resolved"
         else:
             verdict = None
+
+        # RAG 경로는 에스컬레이션하지 않는다 — 같은 질문으로 RAG 를 다시 돌리면 결과가 같고
+        # 지연만 2배가 된다(캐시가 있으면 완전히 동일). 판정 결과만 사용자에게 surface 한다.
+        if route == "rag3x":
+            _node_meta({"grader_verdict": verdict, "escalate": False},
+                       tags=[f"grader:{verdict or 'unknown'}"])
+            out: dict = {"grader_verdict": verdict, "_escalate": False,
+                         "trace": _trace(state, "answer_grader", f"RAG 판정={verdict or 'unknown'}")}
+            if verdict == "unresolved":
+                out["confidence"] = "low"
+                out["warnings"] = list(state.get("warnings") or []) + [
+                    "이 답변이 질문의 핵심을 충분히 다루지 못했을 수 있습니다. "
+                    "질문을 더 구체적으로 다시 물어보시거나, 담당 선생님 또는 "
+                    "스쿨넷 서비스 지원센터(1899-0979)로 문의해 주세요."
+                ]
+            return out
 
         escalate = verdict == "unresolved" and int(state.get("escalate_budget") or 0) > 0
         _node_meta({"grader_verdict": verdict, "escalate": escalate},
@@ -687,11 +711,17 @@ def make_nodes(ctx: Any) -> dict[str, Callable[[ChatState], dict]]:
                 out["final_answer"] = composed_answer
         elif route == "rag3x":
             rag = state.get("rag_result") or {}
+            # 2026-07-27: answer_grader(RAG 경로)가 unresolved 로 판정하면 그 결과가 우선한다.
+            # rag3x 내부 confidence 는 근거 정합성(숫자대조·groundedness)만 보고, 질문을
+            # 실제로 해결했는지는 보지 않기 때문이다.
+            conf = rag.get("confidence") or "unknown"
+            if state.get("grader_verdict") == "unresolved":
+                conf = "low"
             out.update(
                 final_answer=composed_answer or rag.get("final_answer"),
                 answer_path=rag.get("answer_path") or "none",
                 answer_source="rag3x",
-                confidence=rag.get("confidence") or "unknown",
+                confidence=conf,
                 evidence=rag.get("evidence") or [],
                 verification=rag.get("verification"),
                 options=[],

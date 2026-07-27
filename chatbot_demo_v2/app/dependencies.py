@@ -15,7 +15,7 @@ from langgraph.checkpoint.memory import InMemorySaver
 
 from ..config.settings import Settings, load_settings
 from ..scenario.loader import load_faq, load_scenarios
-from ..scenario.matcher import ScenarioMatcher
+from ..scenario.matcher import ScenarioMatcher, SemanticScenarioMatcher
 from ..scenario.models import FaqStore
 from ..scenario.tree import ScenarioTree
 from ..web_search.disabled import DisabledWebSearchProvider
@@ -72,11 +72,21 @@ def build_context(
 
     faq = load_faq(settings.faq_path)
     tree = load_scenarios(settings.scenarios_path, faq)
-    matcher = ScenarioMatcher(
-        faq,
-        threshold=settings.scenario_match_threshold,
-        margin=settings.scenario_match_margin,
-    )
+    # 2026-07-27: 기본은 의미 매칭(임베딩+리랭커). 임베딩 파일/백엔드가 없으면
+    # SemanticScenarioMatcher 내부에서 문자 유사도로 조용히 폴백한다.
+    if settings.scenario_match_backend == "semantic":
+        matcher = SemanticScenarioMatcher(
+            faq,
+            threshold=settings.scenario_match_threshold,
+            margin=settings.scenario_match_margin,
+            settings=settings,
+        )
+    else:
+        matcher = ScenarioMatcher(
+            faq,
+            threshold=settings.scenario_match_threshold,
+            margin=settings.scenario_match_margin,
+        )
 
     if rag_adapter is None:
         # 프로덕션: RAG 서브그래프 어댑터(지연 초기화 — 여기서 엔진을 만들지 않음).

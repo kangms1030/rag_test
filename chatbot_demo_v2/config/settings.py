@@ -79,6 +79,7 @@ class Settings:
     rag_deep_warmup: bool
 
     # 유사도 매칭
+    scenario_match_backend: str   # "semantic"(임베딩+리랭커) | "fuzz"(문자 편집거리)
     scenario_match_threshold: float
     scenario_match_margin: float
 
@@ -163,6 +164,10 @@ def load_settings(env: Mapping[str, str] | None = None) -> Settings:
         ragcore_config=ragcore_config,
         rag_backend=_get(env, "RAG_BACKEND", "gemini"),
         rag_deep_warmup=_get_bool(env, "RAG_DEEP_WARMUP", False),
+        # 2026-07-27: 문자 유사도(fuzz.ratio) → 의미 유사도(임베딩+리랭커)로 기본값 전환.
+        # 임계값은 스케일이 완전히 다르므로 함께 교체해야 한다. 값은
+        # scripts/calibrate_faq_threshold.py 실측으로 정한다.
+        scenario_match_backend=_get(env, "SCENARIO_MATCH_BACKEND", "semantic"),
         scenario_match_threshold=_get_float(env, "SCENARIO_MATCH_THRESHOLD", 0.90),
         scenario_match_margin=_get_float(env, "SCENARIO_MATCH_MARGIN", 0.05),
         clarify_enabled=_get_bool(env, "CLARIFY_ENABLED", True),

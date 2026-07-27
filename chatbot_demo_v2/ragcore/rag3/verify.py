@@ -20,7 +20,18 @@ logger = logging.getLogger(__name__)
 _NUM_RE = re.compile(r"\d[\d,]*(?:\.\d+)?")
 _CODE_RE = re.compile(r"\b(?=[A-Z0-9]*[A-Z])(?=[A-Z0-9]*\d)[A-Z0-9]{4,}\b")
 
-_ABSTAIN_MARKERS = ("확인 불가", "확인할 수 없", "제공된 근거", "찾을 수 없", "알 수 없")
+# === chatbot_demo_v2 수정 (2026-07-27) — vendoring 무수정 원칙의 예외 ===
+# 원본은 "제공된 근거" 를 회피 마커로 뒀는데, 이는 answer.py PROMPT_TEXT_ANSWER 가 지시한
+# 회피 문구("제공된 근거에서 확인할 수 없습니다")를 잡으려던 것이다. 그런데 모델이 정상 답변을
+# **"제공된 근거에 따르면, ..."** 으로 시작하는 일이 잦아 정답이 통째로 회피로 오판됐다.
+# 실측(LangSmith 8e0815cd): 정상 답변이 abstain 판정 → ① groundedness 검증 스킵(아래 L118)
+# ② rollback_top1 발동 30.4초 낭비 후 같은 오탐으로 폐기 ③ 사용자에게 "신뢰도 낮음" 경고.
+# → 프롬프트가 지시한 문구만 잡도록 좁히고, 길이 가드를 더한다.
+_ABSTAIN_MARKERS = ("확인 불가", "확인할 수 없", "제공된 근거에서 확인", "찾을 수 없", "알 수 없")
+
+# 마커가 있어도 답변이 이 길이를 넘으면 '전면 회피'가 아니라 '부분 유보'로 본다.
+# ("...나머지 항목은 제공된 근거에서 확인할 수 없습니다" 로 끝나는 정상 답변 보호)
+_ABSTAIN_MAX_CHARS = 160
 
 PROMPT_GROUND = """아래 [근거]만 보고 [답변]이 근거로 뒷받침되는지 판정해라.
 - 답변의 모든 수치·사실이 근거에서 확인되면: SUPPORTED
@@ -68,8 +79,17 @@ def check_claims_supported(answer: str, context: str) -> list[str]:
 
 
 def is_abstain(answer: str) -> bool:
+    """답변이 '근거로 답할 수 없다'고 회피했는가.
+
+    chatbot_demo_v2 수정(2026-07-27): 마커 단순 substring 검사는 오탐이 잦았다(위 주석 참조).
+    마커가 있더라도 답변이 충분히 길면 실질 내용을 담은 것으로 보고 회피가 아니라고 판정한다.
+    """
     a = (answer or "").strip()
-    return (a == "") or any(mk in a for mk in _ABSTAIN_MARKERS)
+    if not a:
+        return True
+    if not any(mk in a for mk in _ABSTAIN_MARKERS):
+        return False
+    return len(a) <= _ABSTAIN_MAX_CHARS
 
 
 def groundedness(answer: str, context: str, backend: Backend, config: Config) -> str:

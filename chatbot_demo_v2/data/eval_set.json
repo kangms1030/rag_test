@@ -1,0 +1,372 @@
+{
+  "version": "1.0",
+  "generated_at": "2026-07-27",
+  "note": "chatbot_demo_v2 골든 평가셋. scripts/run_eval.py 가 v2 그래프 전체를 태워 채점한다. expected_route 는 route_decider/rag_result_evaluator 가 남기는 최종 route 값이다. expected_doc 은 근거 정밀도 계산용(부분 문자열 매칭). must_include 는 답변에 반드시 등장해야 하는 문자열.",
+  "route_values": {
+    "faq": "모범 질답 자동 채택",
+    "clarify": "모호 → 되묻기(HITL 인터럽트)",
+    "rag3x": "RAG 검색으로 답변",
+    "abstain": "근거 없음 → 보류"
+  },
+  "items": [
+    {
+      "id": "faq_exact_01",
+      "question": "스쿨넷이 뭐예요? 우리 학교 와이파이랑 같은 건가요?",
+      "category": "faq_exact",
+      "expected_route": "faq",
+      "expected_faq_id": "스쿨넷:2",
+      "must_include": ["스쿨넷"],
+      "note": "FAQ 원문 그대로 — 정확 일치 경로가 살아있는지"
+    },
+    {
+      "id": "faq_exact_02",
+      "question": "우리 학교 와이파이는 누가 설치하고 관리하는 건가요?",
+      "category": "faq_exact",
+      "expected_route": "faq",
+      "expected_faq_id": "무선망:29",
+      "must_include": [],
+      "note": "FAQ 원문 그대로"
+    },
+    {
+      "id": "faq_exact_03",
+      "question": "전산실(통신실)에 아무나 들어가도 되나요?",
+      "category": "faq_exact",
+      "expected_route": "faq",
+      "expected_faq_id": "학내망:36",
+      "must_include": [],
+      "note": "FAQ 원문 그대로"
+    },
+    {
+      "id": "faq_exact_04",
+      "question": "AP가 뜨거운데 정상인가요?",
+      "category": "faq_exact",
+      "expected_route": "faq",
+      "expected_faq_id": "무선망:57",
+      "must_include": [],
+      "note": "FAQ 원문 그대로 — 짧은 질문"
+    },
+    {
+      "id": "faq_exact_05",
+      "question": "시스템 공지사항은 어디서 확인하나요?",
+      "category": "faq_exact",
+      "expected_route": "faq",
+      "expected_faq_id": "유무선통합관제:29",
+      "must_include": [],
+      "note": "FAQ 원문 그대로"
+    },
+
+    {
+      "id": "faq_para_01",
+      "question": "스쿨넷이랑 학교 와이파이는 서로 다른 건가요?",
+      "category": "faq_paraphrase",
+      "expected_route": "faq",
+      "expected_faq_id": "스쿨넷:2",
+      "must_include": [],
+      "note": "패러프레이즈 — 문자 유사도로는 절대 못 잡음(작업 3 검증 핵심)"
+    },
+    {
+      "id": "faq_para_02",
+      "question": "교실 천장에 있는 무선 공유기는 어디서 달아준 건가요?",
+      "category": "faq_paraphrase",
+      "expected_route": "faq",
+      "expected_faq_id": "무선망:29",
+      "must_include": [],
+      "note": "패러프레이즈(AP를 '무선 공유기'로)"
+    },
+    {
+      "id": "faq_para_03",
+      "question": "통신실 출입은 아무 제한이 없나요?",
+      "category": "faq_paraphrase",
+      "expected_route": "faq",
+      "expected_faq_id": "학내망:36",
+      "must_include": [],
+      "note": "패러프레이즈"
+    },
+    {
+      "id": "faq_para_04",
+      "question": "액세스포인트 본체가 만지면 좀 따끈한데 괜찮은 건가요?",
+      "category": "faq_paraphrase",
+      "expected_route": "faq",
+      "expected_faq_id": "무선망:57",
+      "must_include": [],
+      "note": "패러프레이즈(AP를 '액세스포인트'로, '뜨겁다'를 '따끈하다'로)"
+    },
+    {
+      "id": "faq_para_05",
+      "question": "내 컴퓨터만 인터넷이 안 되는데 옆자리는 멀쩡해요",
+      "category": "faq_paraphrase",
+      "expected_route": "faq",
+      "expected_faq_id": "학내망:5",
+      "must_include": [],
+      "note": "패러프레이즈(PC→컴퓨터, 잘 돼요→멀쩡해요)"
+    },
+    {
+      "id": "faq_para_06",
+      "question": "학교 계정 비밀번호가 기억이 안 나요. 다시 설정할 수 있나요?",
+      "category": "faq_paraphrase",
+      "expected_route": "faq",
+      "expected_faq_id": "유무선통합관제:7",
+      "must_include": [],
+      "note": "패러프레이즈(잊어버렸다→기억이 안 난다, 초기화→다시 설정)"
+    },
+    {
+      "id": "faq_para_07",
+      "question": "와이파이 목록에 우리 학교 게 뭔지 모르겠어요",
+      "category": "faq_paraphrase",
+      "expected_route": "faq",
+      "expected_faq_id": "무선망:6",
+      "must_include": [],
+      "note": "패러프레이즈(SSID 언급 없이)"
+    },
+    {
+      "id": "faq_para_08",
+      "question": "우리 학교 인터넷은 어느 통신사 건가요?",
+      "category": "faq_paraphrase",
+      "expected_route": "faq",
+      "expected_faq_id": "스쿨넷:6",
+      "must_include": [],
+      "note": "패러프레이즈(스쿨넷→인터넷, 제공하나요→건가요)"
+    },
+    {
+      "id": "faq_para_09",
+      "question": "교실 하나만 와이파이가 먹통이에요",
+      "category": "faq_paraphrase",
+      "expected_route": "faq",
+      "expected_faq_id": "무선망:13",
+      "must_include": [],
+      "note": "패러프레이즈(안 되고→먹통)"
+    },
+    {
+      "id": "faq_para_10",
+      "question": "아이패드로 접속하는 방법은 안드로이드랑 다른가요?",
+      "category": "faq_paraphrase",
+      "expected_route": "faq",
+      "expected_faq_id": "무선망:10",
+      "must_include": [],
+      "note": "패러프레이즈"
+    },
+
+    {
+      "id": "rag_01",
+      "question": "통합관제에서 AP 장비를 엑셀로 한 번에 여러 대 등록하려면 어떻게 하나요?",
+      "category": "rag",
+      "expected_route": "rag3x",
+      "expected_doc": "통합관제(사용자)",
+      "expected_pages": [53],
+      "must_include": ["엑셀"],
+      "note": "정답 근거 확정(p53 엑셀업로드). 근거 정밀도 측정의 기준 문항"
+    },
+    {
+      "id": "rag_02",
+      "question": "AP 다중 추가 화면에서 MAC중복체크 버튼은 무슨 기능인가요?",
+      "category": "rag",
+      "expected_route": "rag3x",
+      "expected_doc": "통합관제",
+      "expected_pages": [53, 80],
+      "must_include": ["중복"],
+      "note": "구체 UI 기능 — 표/본문 혼재 페이지"
+    },
+    {
+      "id": "rag_03",
+      "question": "MDM에서 스마트 단말의 비밀번호를 초기화하면 어떻게 되나요?",
+      "category": "rag",
+      "expected_route": "rag3x",
+      "expected_doc": "스마트 단말 관리 시스템",
+      "expected_pages": [23],
+      "must_include": [],
+      "note": "다른 문서로 라우팅되는지(문서 변별력)"
+    },
+    {
+      "id": "rag_04",
+      "question": "무선망이 느릴 때 자가진단 체크리스트는 어떤 순서로 점검하나요?",
+      "category": "rag",
+      "expected_route": "rag3x",
+      "expected_doc": "자가진단 체크리스트",
+      "expected_pages": [2, 3],
+      "must_include": [],
+      "note": "절차형 질문"
+    },
+    {
+      "id": "rag_05",
+      "question": "스쿨넷 이용관리시스템은 무슨 목적으로 만든 시스템인가요?",
+      "category": "rag",
+      "expected_route": "rag3x",
+      "expected_doc": "이용관리시스템",
+      "expected_pages": [6],
+      "must_include": [],
+      "note": "개념 설명형"
+    },
+    {
+      "id": "rag_06",
+      "question": "AP관리 화면에서 볼 수 있는 항목에는 어떤 것들이 있나요?",
+      "category": "rag",
+      "expected_route": "rag3x",
+      "expected_doc": "통합관제",
+      "expected_pages": [51],
+      "must_include": [],
+      "note": "열거형 — 컨텍스트가 잘리면 항목이 누락됨"
+    },
+    {
+      "id": "rag_07",
+      "question": "스쿨넷서비스 지원센터 전화번호가 몇 번인가요?",
+      "category": "rag",
+      "expected_route": "rag3x",
+      "expected_doc": "",
+      "expected_pages": [],
+      "must_include": ["1899-0979"],
+      "note": "숫자 정확도 — 결정론 숫자대조가 오탐하지 않는지도 확인"
+    },
+    {
+      "id": "rag_08",
+      "question": "학교 유무선 통합 로그인 센터 주소가 어디인가요?",
+      "category": "rag",
+      "expected_route": "rag3x",
+      "expected_doc": "이용관리",
+      "expected_pages": [6],
+      "must_include": ["weiss"],
+      "note": "URL 정확도"
+    },
+    {
+      "id": "rag_09",
+      "question": "현황분석은 어떤 방식으로 진행했고 무엇을 조사했나요?",
+      "category": "rag",
+      "expected_route": "rag3x",
+      "expected_doc": "현황분석서",
+      "expected_pages": [4, 5],
+      "must_include": [],
+      "note": "장문 표 페이지 — 컨텍스트 예산 배분 검증"
+    },
+    {
+      "id": "rag_10",
+      "question": "통합관제 시스템에서 AP 펌웨어는 어떻게 관리하나요?",
+      "category": "rag",
+      "expected_route": "rag3x",
+      "expected_doc": "",
+      "expected_pages": [],
+      "must_include": ["펌웨어"],
+      "note": "여러 문서에 흩어진 주제 — 문서 다양성 상한 검증"
+    },
+    {
+      "id": "rag_11",
+      "question": "SWIMS가 무슨 시스템이고 어떤 기능을 제공하나요?",
+      "category": "rag",
+      "expected_route": "rag3x",
+      "expected_doc": "무선랜 구축운영 가이드라인",
+      "expected_pages": [14, 15, 16],
+      "must_include": ["SWIMS"],
+      "note": "약어 질의"
+    },
+    {
+      "id": "rag_12",
+      "question": "AP 상태가 OFF로 나올 때는 어떻게 조치하나요?",
+      "category": "rag",
+      "expected_route": "rag3x",
+      "expected_doc": "무선랜 구축운영 가이드라인",
+      "expected_pages": [22],
+      "must_include": [],
+      "note": "p22 장애조치표가 '정답'인 문항 — 그레이딩이 이걸 잘못 버리면 안 된다(회귀 감시)"
+    },
+
+    {
+      "id": "ambig_01",
+      "question": "학교에서 새로운 ap를 설치하고 싶어.",
+      "category": "ambiguous",
+      "expected_route": "clarify",
+      "expected_doc": "통합관제(사용자)",
+      "expected_pages": [53],
+      "must_include": [],
+      "note": "★ 이번 개선의 발단 문항. LangSmith 8e0815cd. 도입신청/시스템등록/물리설치 중 어느 것인지 모호. 되묻기가 정답이나, RAG로 갔다면 근거는 p53이어야 한다"
+    },
+    {
+      "id": "ambig_02",
+      "question": "인터넷이 안 돼요",
+      "category": "ambiguous",
+      "expected_route": "clarify",
+      "expected_doc": "",
+      "expected_pages": [],
+      "must_include": [],
+      "note": "극단적으로 모호 — 유선/무선/개별PC 구분 불가"
+    },
+    {
+      "id": "ambig_03",
+      "question": "비밀번호를 바꾸고 싶어요",
+      "category": "ambiguous",
+      "expected_route": "clarify",
+      "expected_doc": "",
+      "expected_pages": [],
+      "must_include": [],
+      "note": "와이파이 비번 / 시스템 계정 비번 / AP 관리자 비번 — 셋 다 코퍼스에 있음"
+    },
+    {
+      "id": "ambig_04",
+      "question": "속도가 너무 느린데요",
+      "category": "ambiguous",
+      "expected_route": "clarify",
+      "expected_doc": "",
+      "expected_pages": [],
+      "must_include": [],
+      "note": "회선 문제 / 무선 문제 / 단말 문제 구분 불가"
+    },
+    {
+      "id": "ambig_05",
+      "question": "신청은 어디서 하나요?",
+      "category": "ambiguous",
+      "expected_route": "clarify",
+      "expected_doc": "",
+      "expected_pages": [],
+      "must_include": [],
+      "note": "회선 신청 / AP 증설 신청 / 장애 접수 구분 불가"
+    },
+
+    {
+      "id": "oos_01",
+      "question": "오늘 서울 날씨 어때요?",
+      "category": "out_of_scope",
+      "expected_route": "abstain",
+      "expected_doc": "",
+      "expected_pages": [],
+      "must_include": [],
+      "note": "완전 무관 — 리랭크 floor 로 거절되어야"
+    },
+    {
+      "id": "oos_02",
+      "question": "파이썬으로 웹 크롤러 만드는 법 알려줘",
+      "category": "out_of_scope",
+      "expected_route": "abstain",
+      "expected_doc": "",
+      "expected_pages": [],
+      "must_include": [],
+      "note": "완전 무관"
+    },
+    {
+      "id": "oos_03",
+      "question": "학교 급식 메뉴는 어디서 확인해요?",
+      "category": "out_of_scope",
+      "expected_route": "abstain",
+      "expected_doc": "",
+      "expected_pages": [],
+      "must_include": [],
+      "note": "'학교'는 겹치지만 네트워크와 무관 — 도메인 인접 무관 질문"
+    },
+    {
+      "id": "oos_04",
+      "question": "교사 연수 신청은 어떻게 하나요?",
+      "category": "out_of_scope",
+      "expected_route": "abstain",
+      "expected_doc": "",
+      "expected_pages": [],
+      "must_include": [],
+      "note": "'신청'이 겹쳐 오검색 유발 가능 — 무관거절 견고성"
+    },
+    {
+      "id": "oos_05",
+      "question": "학교 정수기 필터는 언제 교체하나요?",
+      "category": "out_of_scope",
+      "expected_route": "abstain",
+      "expected_doc": "",
+      "expected_pages": [],
+      "must_include": [],
+      "note": "'교체'가 겹침 — 무관거절 견고성"
+    }
+  ]
+}
