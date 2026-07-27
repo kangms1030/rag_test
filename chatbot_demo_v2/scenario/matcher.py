@@ -176,9 +176,18 @@ class SemanticScenarioMatcher(ScenarioMatcher):
     임베딩/리랭커 준비에 실패하면 부모(문자 유사도)로 자동 폴백한다.
     """
 
+    #: 폴백(문자 유사도) 전용 임계. 의미 유사도 임계(0.80/0.30)를 fuzz 점수에 그대로 쓰면
+    #: 스케일이 달라 오작동한다 — fuzz 는 무관한 질문도 0.4~0.5 가 나온다.
+    FUZZ_THRESHOLD = 0.90
+    FUZZ_MARGIN = 0.05
+    #: 폴백 시 되묻기 하한(decide_route 가 scenario_match["clarify_floor"] 로 읽는다).
+    FUZZ_CLARIFY_FLOOR = 0.75
+
     def __init__(self, faq: FaqStore, threshold: float, margin: float,
                  *, settings=None, topk: int = 10):
         super().__init__(faq, threshold, margin)
+        self._semantic_threshold = threshold
+        self._semantic_margin = margin
         self._topk = int(topk)
         self._settings = settings
         self._ready = False
@@ -232,8 +241,13 @@ class SemanticScenarioMatcher(ScenarioMatcher):
                 return True
             except Exception as exc:  # noqa: BLE001
                 self._failed = True
-                logger.warning("의미 매칭 준비 실패(%s: %s) — 문자 유사도로 폴백합니다.",
-                               type(exc).__name__, exc)
+                # 폴백 시에는 **fuzz 스케일 임계**로 되돌린다. 의미 유사도 임계(0.80/0.30)를
+                # 그대로 쓰면 무관한 질문도 0.4~0.5 가 나오는 fuzz 에서 오작동한다.
+                self._threshold = self.FUZZ_THRESHOLD
+                self._margin = self.FUZZ_MARGIN
+                logger.warning("의미 매칭 준비 실패(%s: %s) — 문자 유사도로 폴백합니다"
+                               "(임계 %.2f/%.2f 로 전환).",
+                               type(exc).__name__, exc, self._threshold, self._margin)
                 return False
 
     # ---------- 점수 계산 ----------
@@ -299,6 +313,7 @@ class SemanticScenarioMatcher(ScenarioMatcher):
             matched_question=entry.question if entry else best_q,
             matched_sheet=entry.sheet if entry else None,
             matched_row=entry.row if entry else None,
+            scale="semantic",     # decide_route 가 되묻기 하한 스케일을 고르는 데 쓴다
         )
         if best < self._threshold:
             return MatchResult(

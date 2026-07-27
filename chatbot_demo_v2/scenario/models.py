@@ -69,6 +69,10 @@ class MatchResult:
     matched_question: Optional[str] = None
     matched_sheet: Optional[str] = None
     matched_row: Optional[int] = None
+    #: 점수 스케일. "semantic"(임베딩+리랭커) | "fuzz"(문자 편집거리).
+    #: 두 스케일은 임계값이 호환되지 않으므로 라우팅이 어느 쪽인지 알아야 한다.
+    #: 2026-07-27 추가.
+    scale: str = "fuzz"
 
     @property
     def accepted(self) -> bool:
@@ -87,6 +91,7 @@ class MatchResult:
             "matched_question": self.matched_question,
             "matched_sheet": self.matched_sheet,
             "matched_row": self.matched_row,
+            "scale": self.scale,
         }
 
 

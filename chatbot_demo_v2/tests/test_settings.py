@@ -8,9 +8,14 @@ from chatbot_demo_v2.config.settings import load_settings, PKG_ROOT
 def test_defaults():
     s = load_settings(env={})
     assert s.rag_backend == "gemini"
-    assert s.scenario_match_threshold == 0.90
+    # 2026-07-27(작업 3): FAQ 매칭이 문자 유사도 → 의미 유사도로 바뀌면서 임계 스케일이
+    # 완전히 달라졌다(fuzz 0.90/0.75 → semantic 0.80/0.40). 근거는 settings.py 주석과
+    # scripts/calibrate_faq_threshold.py 실측 참조.
+    assert s.scenario_match_backend == "semantic"
+    assert s.scenario_match_threshold == 0.80
+    assert s.scenario_match_margin == 0.30
     assert s.clarify_enabled is True
-    assert s.clarify_min_score == 0.75
+    assert s.clarify_min_score == 0.40
     assert s.composer_rag_enabled is True
     assert s.grader_enabled is True
     assert s.rag_cache_ttl_s == 3600

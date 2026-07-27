@@ -48,7 +48,12 @@ class RagDeps:
 # ---------------------------------------------------------------------------
 PRIMARY_PAGE_CAP = 4000       # primary 페이지 1장이 쓸 수 있는 최대 글자수
 SUPPORTING_PAGE_CAP = 800     # supporting 페이지 1장 상한
-SUPPORTING_TOTAL_CAP = 2000   # supporting 전체 합계 상한
+SUPPORTING_TOTAL_MAX = 2000   # supporting 전체 합계 절대 상한
+#: supporting 합계는 **primary 대비 비율**로도 묶는다.
+#: 절대 상한만 두면 primary 가 짧을 때(예 574자) supporting 2,000자가 정답을 묻어버린다.
+#: 실측: final_pages 3→6 확대 후 rag_02 의 정답 근거 비중이 61%→45% 로 희석됐다.
+SUPPORTING_RATIO_OF_PRIMARY = 0.5
+SUPPORTING_TOTAL_MIN = 400    # primary 가 아주 짧아도 최소한의 배경은 남긴다
 SUPPORTING_DOC_SHARE = 0.6    # supporting 예산 안에서 한 문서가 차지할 수 있는 최대 비율
 GRADE_SNIPPET_CHARS = 320     # 그레이딩 프롬프트에 넣는 페이지당 발췌 길이(비용 억제)
 
@@ -244,10 +249,16 @@ def make_rag_nodes(deps: RagDeps) -> tuple[dict[str, Callable], dict[str, Callab
         for p in primary:
             out.append(dict(p, text=(p.get("text") or "")[:PRIMARY_PAGE_CAP]))
 
+        # supporting 총예산 = primary 분량에 비례(절대 상·하한 안에서).
+        # 정답 근거가 배경 설명에 묻히지 않게 하는 핵심 장치다.
+        primary_chars = sum(len(p.get("text") or "") for p in out)
+        sup_total = int(min(SUPPORTING_TOTAL_MAX,
+                            max(SUPPORTING_TOTAL_MIN, primary_chars * SUPPORTING_RATIO_OF_PRIMARY)))
+
         used, by_doc = 0, {}
-        doc_cap = int(SUPPORTING_TOTAL_CAP * SUPPORTING_DOC_SHARE)
+        doc_cap = int(sup_total * SUPPORTING_DOC_SHARE)
         for p in support:
-            room = min(SUPPORTING_PAGE_CAP, SUPPORTING_TOTAL_CAP - used,
+            room = min(SUPPORTING_PAGE_CAP, sup_total - used,
                        doc_cap - by_doc.get(p.get("document_name"), 0))
             if room <= 120:                     # 남은 예산이 의미 없을 만큼 작으면 건너뛴다
                 continue

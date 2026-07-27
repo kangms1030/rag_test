@@ -76,6 +76,11 @@ def decide_route(state: ChatState, *, clarify_enabled: bool = False,
     #         한 가지 해석만 골라 답했다. 발단 질문 "학교에서 새로운 ap를 설치하고 싶어" 가
     #         정확히 이 구간이다(도입신청/시스템등록/물리설치 중 무엇인지 모호).
     #   변경: clarify_min_score <= best < threshold 도 되묻기로 보낸다.
+    #
+    # 하한은 스케일마다 다르다 — 의미 유사도(0.40)와 문자 유사도(0.75)는 호환되지 않는다.
+    # 매처가 fuzz 로 폴백하면 match["scale"] 이 "fuzz" 로 오므로 그 값을 쓴다.
+    if (match.get("scale") or "fuzz") == "fuzz":
+        clarify_min_score = max(clarify_min_score, 0.75)
     if clarify_enabled and best >= clarify_min_score:
         if decision == "reject_ambiguous":
             return "clarify", (f"애매 매칭(best={round(best, 3)}, "

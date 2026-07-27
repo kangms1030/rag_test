@@ -165,13 +165,27 @@ def load_settings(env: Mapping[str, str] | None = None) -> Settings:
         rag_backend=_get(env, "RAG_BACKEND", "gemini"),
         rag_deep_warmup=_get_bool(env, "RAG_DEEP_WARMUP", False),
         # 2026-07-27: 문자 유사도(fuzz.ratio) → 의미 유사도(임베딩+리랭커)로 기본값 전환.
-        # 임계값은 스케일이 완전히 다르므로 함께 교체해야 한다. 값은
-        # scripts/calibrate_faq_threshold.py 실측으로 정한다.
+        # 임계값은 스케일이 완전히 달라 함께 교체해야 한다. 아래 값은
+        # scripts/calibrate_faq_threshold.py + 골든셋 실측으로 정했다.
+        #
+        #   표본            best(중앙)   margin(중앙, 최대)
+        #   faq_paraphrase   0.957      0.342
+        #   ambiguous        0.780      0.053 / 0.272   ← 점수만으로는 구분 불가
+        #   out_of_scope     0.001      0.001 / 0.003
+        #
+        # 크로스인코더 점수는 0/1 로 몰려 best 만으로는 모호 질문과 정답 매칭이 겹친다
+        # ("비밀번호를 바꾸고 싶어요" best 0.971). **margin(1·2위 차)이 핵심 판별자**다.
+        #   margin >= 0.30 → 확실한 매칭(자동채택)   ambiguous 는 최대 0.272 라 걸리지 않는다
+        #   best   <  0.40 → 되묻지 않고 RAG 로
+        #
+        # clarify 하한을 0.40 으로 둔 이유: 처음 0.05 로 잡았더니 **명확한 RAG 질문이
+        # 되묻기로 샜다**(rag_01 0.087 · rag_07 0.184 · rag_04 0.326). 실측상 모호 질문
+        # 3/5 는 0.78 이상이라 0.40 이면 모호 질문은 잡고 RAG 질문은 통과시킨다.
         scenario_match_backend=_get(env, "SCENARIO_MATCH_BACKEND", "semantic"),
-        scenario_match_threshold=_get_float(env, "SCENARIO_MATCH_THRESHOLD", 0.90),
-        scenario_match_margin=_get_float(env, "SCENARIO_MATCH_MARGIN", 0.05),
+        scenario_match_threshold=_get_float(env, "SCENARIO_MATCH_THRESHOLD", 0.80),
+        scenario_match_margin=_get_float(env, "SCENARIO_MATCH_MARGIN", 0.30),
         clarify_enabled=_get_bool(env, "CLARIFY_ENABLED", True),
-        clarify_min_score=_get_float(env, "CLARIFY_MIN_SCORE", 0.75),
+        clarify_min_score=_get_float(env, "CLARIFY_MIN_SCORE", 0.40),
         composer_rag_enabled=_get_bool(env, "COMPOSER_RAG_ENABLED", True),
         composer_faq_enabled=_get_bool(env, "COMPOSER_FAQ_ENABLED", True),
         contextualize_enabled=_get_bool(env, "CONTEXTUALIZE_ENABLED", True),

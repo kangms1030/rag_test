@@ -182,13 +182,8 @@ class TestBudget:
         assert by[16] <= 800, "supporting 은 상한(800)을 넘으면 안 된다"
         assert by[53] > by[16], "정답 근거가 노이즈보다 많이 들어가야 한다"
 
-    def test_supporting_총합_상한(self, nodes_and_routers):
-        graded = [dict(_page("정답.pdf", 1, "P" * 500, 0.5), _grade="primary")]
-        for i in range(2, 8):
-            graded.append(dict(_page(f"보조{i}.pdf", i, "S" * 3000, 0.3), _grade="supporting"))
-        pages = self._budget(nodes_and_routers, graded)
-        sup = sum(len(p["text"]) for p in pages if p.get("_grade") == "supporting")
-        assert sup <= 2000, f"supporting 합계 상한 초과: {sup}"
+    def test_supporting_총합은_primary_대비_비율로_묶인다(self):
+        pass  # 아래 파라미터화 테스트로 대체
 
     def test_한_문서가_supporting_예산을_독점하지_못한다(self, nodes_and_routers):
         graded = [dict(_page("정답.pdf", 1, "P" * 300, 0.5), _grade="primary")]
@@ -306,3 +301,47 @@ class TestCitations:
     def test_공백_변형도_인식한다(self):
         out, cites = self._clean("내용입니다[ P53 ].", [53])
         assert "[p53]" in out and cites == [53]
+
+
+# ---------------------------------------------------------------- 작업 2: 상대 예산
+class TestRelativeSupportingBudget:
+    """supporting 절대상한(2000)만 두면 primary 가 짧을 때 정답이 묻힌다.
+
+    실측: final_pages 3→6 확대 후 rag_02 의 정답 근거 비중이 61% → 45% 로 희석됐다
+    (primary 574자 vs supporting 1,430자). 그래서 primary 대비 비율로도 묶는다.
+    """
+
+    def _budget(self, nodes_and_routers, graded):
+        (nodes, _), _ = nodes_and_routers
+        out = nodes["answer_node"]({"retrieval": {"selected_pages": [], "answer_path": "text"},
+                                    "graded_pages": graded, "question": "q"})
+        return out["budgeted_pages"]
+
+    def test_짧은_primary_는_supporting_도_짧게_묶인다(self, nodes_and_routers):
+        graded = [dict(_page("정답.pdf", 53, "P" * 600, 0.35), _grade="primary")]
+        for i in range(2, 8):
+            graded.append(dict(_page(f"보조{i}.pdf", i, "S" * 3000, 0.3), _grade="supporting"))
+        pages = self._budget(nodes_and_routers, graded)
+        pri = sum(len(p["text"]) for p in pages if p.get("_grade") == "primary")
+        sup = sum(len(p["text"]) for p in pages if p.get("_grade") == "supporting")
+        assert pri == 600
+        # 계약: supporting 총합 <= max(최소보장 400, primary * 0.5)
+        assert sup <= max(400, 600 * 0.5) + 1, f"supporting 이 과도: {sup} vs primary {pri}"
+        assert pri / (pri + sup) > 0.55, "정답 근거가 배경에 묻히면 안 된다"
+        # 개선 전(절대 상한 2000)이었다면 비중이 600/2600 = 23% 로 떨어졌을 것이다
+        assert pri / (pri + sup) > 600 / 2600
+
+    def test_긴_primary_는_supporting_도_넉넉히_받되_절대상한을_넘지_않는다(self, nodes_and_routers):
+        graded = [dict(_page("정답.pdf", 1, "P" * 4000, 0.5), _grade="primary")]
+        for i in range(2, 10):
+            graded.append(dict(_page(f"보조{i}.pdf", i, "S" * 3000, 0.3), _grade="supporting"))
+        pages = self._budget(nodes_and_routers, graded)
+        sup = sum(len(p["text"]) for p in pages if p.get("_grade") == "supporting")
+        assert sup <= 2000, f"절대 상한 초과: {sup}"
+
+    def test_primary_가_아주_짧아도_최소_배경은_남긴다(self, nodes_and_routers):
+        graded = [dict(_page("정답.pdf", 1, "P" * 100, 0.5), _grade="primary"),
+                  dict(_page("보조.pdf", 2, "S" * 3000, 0.3), _grade="supporting")]
+        pages = self._budget(nodes_and_routers, graded)
+        sup = sum(len(p["text"]) for p in pages if p.get("_grade") == "supporting")
+        assert sup > 0, "primary 가 짧다고 배경을 통째로 버리면 안 된다"
