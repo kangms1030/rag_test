@@ -1,0 +1,25 @@
+# 환경변수(비밀 포함)
+.env
+
+# 복사 데이터(590MB) — bootstrap_data.py 로 재생성
+ragdata/
+
+# 런타임 생성물
+runtime/evidence/*
+!runtime/evidence/.gitkeep
+runtime/rag_outputs/
+runtime/rag_cache/
+runtime/reports/*
+!runtime/reports/.gitkeep
+
+# vendored ragcore 의 데이터 하위폴더가 실수로 생성될 경우
+ragcore/rag3/index/
+ragcore/rag3/cache/
+ragcore/rag3/outputs/
+
+# 파이썬 캐시/테스트
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
