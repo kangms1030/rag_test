@@ -195,24 +195,35 @@ def render_v1():
 # 2. v2 파이프라인
 # ======================================================================
 def render_v2():
-    c = Canvas(1560, 1385, "chatbot_demo_v2 파이프라인")
+    """v2 파이프라인.
+
+    2026-07-28 수정 — 도식이 코드와 어긋나던 6곳을 바로잡았다.
+      1. after_retrieve(검색 직후 3분기)를 빠뜨려 crag/no_answer 진입점이 하나뿐인 것처럼 보였다.
+      2. 롤백 3종이 박스 하나로 뭉쳐 트리거 조건이 각각 다르다는 사실이 가려졌다.
+      3. LangSmith 주석의 "9노드"가 grade_evidence 신설 후 갱신되지 않았다(실제 10노드).
+      4. scenario_answer → final_formatter(시나리오 원문 직행) 엣지가 그려지지 않았다.
+      5. scenario_action_handler → route_decider 화살표가 박스에 닿지 않고 허공에서 끊겼다.
+      6. 에스컬레이션 사이클이 FAQ 경로 전용이라는 게이트가 표기되지 않았다.
+    아울러 회색 박스 중 '노드가 아닌 것'(순수 라우팅 함수)을 명시했다.
+    """
+    c = Canvas(1820, 1400, "chatbot_demo_v2 파이프라인")
     c.text(40, 46, "v2 · chatbot_demo_v2 — 사이클 · HITL · 대화메모리 · 서브그래프", size=22, weight="700")
     c.text(40, 72, "LangGraph 를 제어구조로 사용. 결정론 경로(버튼·FAQ 정확일치)는 여전히 LLM 0회, "
                    "신규 LLM 노드는 전부 토글 + 실패 시 pass-through", size=13, color="#6b7280")
 
     # ---------- 메인그래프 ----------
-    c.group(30, 96, 900, 1130, "메인그래프  ·  ChatState (+ messages)", color="#1d4ed8")
+    c.group(30, 96, 900, 1130, "메인그래프  ·  ChatState (+ messages)   —   노드 14개", color="#1d4ed8")
 
     MX, MW = 350, 250              # 중앙 컬럼
     mid = MX + MW / 2
     c.pill(mid, 140, "START", "det")
     c.box(MX, 172, MW, 52, "normalize_input", "정규화 + HumanMessage 적재")
     c.box(MX, 250, MW, 52, "load_or_update_session", "세션·시나리오 상태 (messages 는 보존)")
-    c.box(MX, 328, MW, 46, "select_input_kind", "버튼 / 자유입력", kind="dec")
+    c.box(MX, 328, MW, 46, "select_input_kind", "버튼 / 자유입력   · 라우팅 함수", kind="dec")
     c.box(70, 328, 230, 46, "scenario_action_handler", "버튼 이동 (LLM 0회)")
     c.box(MX, 400, MW, 54, "contextualize_query", "후속질문 → 독립질문 재작성", kind="llm")
-    c.box(MX, 478, MW, 52, "scenario_matcher", "FAQ 유사도 (점수·격차)")
-    c.box(MX, 556, MW, 46, "route_decider", "select_route: scenario / faq / clarify / rag", kind="dec")
+    c.box(MX, 478, MW, 52, "scenario_matcher", "FAQ 의미 유사도 (점수·격차)")
+    c.box(MX, 556, MW, 46, "route_decider", "scenario / faq / clarify / rag", kind="dec")
 
     c.box(60, 640, 230, 62, "clarify_node", "interrupt() — 후보 2개 되묻기\nCommand(resume) 로 재개", kind="hitl")
     c.box(340, 640, 230, 62, "scenario_answer", "시나리오·FAQ 원문 + 근거링크")
@@ -221,7 +232,7 @@ def render_v2():
     c.box(620, 740, 250, 50, "rag_result_evaluator", "채택 / 웹검색 / 보류", kind="dec")
     c.box(620, 830, 250, 48, "web_search_answer", "(기본 비활성)")
     c.box(330, 830, 250, 56, "compose_answer", "근거 종합·상담체 재구성\n+ 숫자 대조 환각가드", kind="llm")
-    c.box(330, 920, 250, 52, "answer_grader", "RESOLVED / UNRESOLVED", kind="llm")
+    c.box(330, 920, 250, 56, "answer_grader", "RESOLVED / UNRESOLVED\nFAQ→재시도 · RAG→신뢰도 강등", kind="llm")
     c.box(330, 1010, 250, 54, "final_formatter", "응답 조립 + AIMessage 적재")
     c.pill(455, 1110, "END", "end")
 
@@ -230,28 +241,34 @@ def render_v2():
         c.arrow(mid, y1, mid, y2)
     c.arrow(MX, 351, 300, 351, "버튼", lx=322, ly=344)
     c.arrow(mid, 374, mid, 400, "자유입력", lx=mid + 52, ly=392)
-    c.arrow(185, 374, 185, 556, "", FLOW)
-    c.arrow(mid, 602, 175, 640, "애매(고점)", lx=228, ly=622)
+    # 수정 5 — 버튼 경로가 route_decider 왼쪽 변에 실제로 닿게 한다(기존엔 허공에서 끊겼다)
+    c.path("M 185 374 L 185 579 L 345 579", "", color=FLOW)
+    c.arrow(mid, 602, 175, 640, "애매·회색지대", lx=222, ly=622)
     c.arrow(mid, 602, mid + 20, 640, "시나리오/FAQ", lx=mid + 78, ly=632)
     c.arrow(mid, 602, 700, 640, "RAG", lx=650, ly=615)
     c.arrow(745, 702, 745, 740)
     c.arrow(745, 790, 745, 830, "웹검색", lx=790, ly=815)
     c.arrow(660, 790, 580, 838, "답변 있음", lx=612, ly=808)
-    c.arrow(455, 702, 455, 830, "FAQ 합성", lx=505, ly=770)
+    c.arrow(455, 702, 455, 830, "FAQ 합성", lx=505, ly=772)
     c.arrow(455, 886, 455, 920)
-    c.arrow(455, 972, 455, 1010)
+    c.arrow(455, 976, 455, 1010)
     c.arrow(455, 1064, 455, 1093)
-    # abstain / 시나리오 버튼 종단 → 곧바로 최종
-    c.path("M 870 765 L 900 765 L 900 1037 L 585 1037", "보류(abstain) · 시나리오 원문",
-           color=FLOW, lx=752, ly=1030)
+    # 수정 4 — 시나리오 버튼 종단답변은 합성을 건너뛰고 곧바로 최종으로 간다(전용 엣지)
+    c.path("M 340 690 L 314 690 L 314 1032 L 325 1032", "시나리오 원문 — 합성 안 함",
+           color=FLOW, lx=205, ly=1004)
+    # abstain → 최종
+    c.path("M 870 765 L 900 765 L 900 1037 L 585 1037", "보류(abstain) → 최종",
+           color=FLOW, lx=770, ly=1030)
     c.path("M 870 854 L 895 854 L 895 1030 L 585 1030", "", color=FLOW)
     # HITL 재개 분기
     c.arrow(290, 668, 340, 668, "후보 선택", lx=315, ly=628)
-    c.path("M 175 702 L 175 760 L 610 760 L 700 740", "해당 없음 → RAG",
-           color=FLOW, lx=330, ly=754)
-    # 에스컬레이션 사이클
-    c.path("M 580 946 C 700 946 690 720 745 704", "⟲ 에스컬레이션 (미해결 · 예산 1회)",
-           color=CYCLE, lx=700, ly=900)
+    c.path("M 175 702 L 175 762 L 610 762 L 700 740", "해당 없음 → RAG",
+           color=FLOW, lx=372, ly=756)
+    # 수정 6 — 에스컬레이션은 FAQ 경로에서만 발동한다.
+    # 경로는 compose/grader 컬럼(~580)과 rag 컬럼(620~) 사이의 빈 통로(x=600)로 올린다
+    # (기존 곡선은 web_search_answer 박스를 관통했다).
+    c.path("M 580 948 L 600 948 L 600 712 L 696 704",
+           "⟲ 에스컬레이션 (FAQ 경로만 · 미해결 · 예산 1회)", color=CYCLE, lx=712, ly=972)
 
     # 메모리 패널
     c.box(60, 1120, 250, 76, "InMemorySaver", "thread_id = 세션:epoch\nmessages(add_messages) 누적\n새로고침/reset → 새 epoch",
@@ -261,52 +278,71 @@ def render_v2():
     c.label(430, 1168, "체크포인터가 턴 사이 대화를 유지", AUX)
 
     # ---------- RAG 서브그래프 ----------
-    c.group(960, 96, 570, 1000, "RAG 서브그래프  ·  rag_subgraph / RagState", color="#6d28d9")
+    c.group(960, 96, 830, 1130, "RAG 서브그래프  ·  rag_subgraph / RagState   —   노드 10개",
+            color="#6d28d9")
     c.text(978, 42, "controller_x 의 S0~S8 을 10개 노드로 재편성 "
-                    "(★ grade_evidence 는 2026-07-27 신설)",
+                    "(★ grade_evidence 는 2026-07-27 신설). 회색 중 after_* 는 노드가 아닌 라우팅 함수.",
            size=12.5, color="#6b7280")
 
-    SX, SW = 1120, 250
-    smid = SX + SW / 2
+    SX, SW = 1250, 250
+    smid = SX + SW / 2             # 1375
     c.box(SX, 128, SW, 42, "prepare", "질문·예산·deadline 초기화")
     c.box(SX, 190, SW, 48, "retrieve", "임베딩 → 청크검색 → 리랭킹 (top 6)")
+    # 수정 1 — 검색 직후에도 3분기가 있다(도식에서 빠져 있었다)
+    c.box(SX, 258, SW, 44, "after_retrieve", "grade / crag / no_answer  · 라우팅 함수", kind="dec")
     # 2026-07-27 신설 — 검색 랭킹만으로 못 고치는 실패를 의미 판정으로 잡는다
-    c.box(SX, 258, SW, 56, "grade_evidence ★",
+    c.box(SX, 322, SW, 58, "grade_evidence ★",
           "근거 3등급 판정 (LLM 1회)\nprimary / supporting / irrelevant", kind="llm")
-    c.box(SX, 334, SW, 44, "after_grade", "crag / no_answer / answer", kind="dec")
-    c.box(975, 406, 210, 56, "crag_rewrite", "질의 재작성 (judge)\n결과가 더 나쁘면 원본 유지")
-    c.box(1250, 406, 250, 56, "answer_node",
+    c.box(SX, 400, SW, 44, "after_grade", "answer / crag / no_answer  · 라우팅 함수", kind="dec")
+    c.box(SX, 464, SW, 58, "answer_node",
           "등급별 예산 배분 후 답변\nprimary 전문 · supporting 축약")
-    c.box(1250, 482, 250, 48, "verify_node", "근거 정합성 · 숫자 대조")
-    c.box(1250, 550, 250, 44, "after_verify", "rollback A/B/C / done", kind="dec")
-    c.box(1250, 614, 250, 62, "rollback_top1 / _vision / _ocr",
-          "등급 통과 1순위로 재생성\n(오답 1순위 재사용 문제 해소)", kind="rag")
-    c.box(SX, 720, SW, 48, "finalize", "근거 해석 · 이미지 사본 · 정규화")
-    c.pill(smid, 806, "END", "end")
+    c.box(SX, 542, SW, 48, "verify_node", "근거 정합성 · 숫자 대조")
+    c.box(SX, 610, SW, 44, "after_verify", "rollback A/B/C / done  · 라우팅 함수", kind="dec")
+    c.box(1005, 300, 205, 62, "crag_rewrite", "질의 재작성 (judge)\n결과가 더 나쁘면 원본 유지")
+    # 수정 2 — 롤백 3종은 트리거가 각각 다른 독립 노드다
+    c.box(1005, 690, 240, 78, "rollback_top1", "A · 회피 ∧ top ≥ 0.5\n등급 통과 1순위로 재생성", kind="rag")
+    c.box(1255, 690, 240, 78, "rollback_vision", "B · 숫자 미지원 ∧ 스캔본\ntext → vision 교차확인", kind="rag")
+    c.box(1505, 690, 240, 78, "rollback_ocr", "C · 전사 ≠ OCR\nvision → 텍스트 재구성", kind="rag")
+    c.box(SX, 830, SW, 48, "finalize", "근거 해석 · 이미지 사본 · 정규화")
+    c.pill(smid, 916, "END", "end")
 
+    # 스파인
     c.arrow(smid, 170, smid, 190)
     c.arrow(smid, 238, smid, 258)
-    c.arrow(smid, 314, smid, 334)
-    c.arrow(SX + 40, 378, 1090, 404, "근거 무관", lx=1028, ly=396)
-    c.arrow(SX + SW - 40, 378, 1375, 406, "근거 있음", lx=1428, ly=384)
-    c.arrow(1375, 462, 1375, 482)
-    c.arrow(1375, 530, 1375, 550)
-    c.arrow(1375, 594, 1375, 614, "롤백", lx=1412, ly=608)
-    c.path("M 1250 572 L 1218 572 L 1218 718", "정상 종료", color=FLOW, lx=1218, ly=680)
-    c.path("M 1375 676 L 1375 698 L 1300 698 L 1300 718", "", color=FLOW)
-    c.path("M 1120 356 L 1075 356 L 1075 698 L 1160 698 L 1160 718", "근거 없음 → 보류",
-           color=FLOW, lx=1075, ly=650)
-    c.path("M 1080 406 C 1035 362 1040 222 1116 216", "⟲ CRAG 사이클 (1회)", color=CYCLE,
-           lx=996, ly=300)
-    c.arrow(smid, 768, smid, 789)
+    c.arrow(smid, 302, smid, 322, "근거 있음", lx=smid + 62, ly=316)
+    c.arrow(smid, 380, smid, 400)
+    c.arrow(smid, 444, smid, 464, "근거 남음", lx=smid + 62, ly=458)
+    c.arrow(smid, 522, smid, 542)
+    c.arrow(smid, 590, smid, 610)
+    # CRAG 진입 2곳 (검색 직후 · 등급 직후)
+    c.arrow(1248, 294, 1214, 302, "경계 점수", lx=1120, ly=288)
+    c.arrow(1248, 408, 1162, 366, "전부 무관", lx=1198, ly=392)
+    c.path("M 1107 300 C 1052 250 1062 198 1244 212", "⟲ CRAG 사이클 (1회)", color=CYCLE,
+           lx=1062, ly=196)
+    # 보류(no_answer) — 왼쪽 통로로 finalize 직행. 두 판정 지점이 같은 통로를 쓴다.
+    c.path("M 1250 268 L 985 268 L 985 854 L 1245 854", "근거 없음 → 보류", color=FLOW,
+           lx=1062, ly=560)
+    c.parts.append(f'<line x1="1250" y1="438" x2="985" y2="438" stroke="{FLOW}" stroke-width="2"/>')
+    # 롤백 3종 진입
+    c.arrow(1290, 654, 1160, 688, "A", lx=1198, ly=676)
+    c.arrow(smid, 654, smid, 688, "B", lx=smid + 20, ly=676)
+    c.arrow(1460, 654, 1600, 688, "C", lx=1556, ly=676)
+    # 정상 종료(done) — 오른쪽 통로
+    c.path("M 1500 632 L 1768 632 L 1768 854 L 1505 854", "정상 종료", color=FLOW,
+           lx=1632, ly=624)
+    # 롤백 → finalize (셋 다 단발, 되돌아가지 않는다)
+    c.path("M 1125 768 L 1125 800 L 1300 800 L 1300 828", "", color=FLOW)
+    c.arrow(smid, 768, smid, 828)
+    c.path("M 1625 768 L 1625 800 L 1450 800 L 1450 828", "", color=FLOW)
+    c.arrow(smid, 878, smid, 899)
 
     # 스트리밍 패널
-    c.box(975, 850, 525, 66, "get_stream_writer() → SSE progress",
-          "retrieve / crag / answer / verify / rollback / compose 단계가 브라우저에 실시간 표시",
+    c.box(980, 1000, 790, 62, "get_stream_writer() → SSE progress",
+          "retrieve / grade / crag / answer / verify / rollback / compose 단계가 브라우저에 실시간 표시",
           kind="note")
-
-    c.box(975, 940, 525, 66, "LangSmith child run",
-          "v1 은 rag3x.ask 1개만 보였지만 v2 는 위 9노드가 개별 run 으로 기록된다\n"
+    # 수정 3 — grade_evidence 신설 반영(9 → 10)
+    c.box(980, 1080, 790, 76, "LangSmith child run",
+          "v1 은 rag3x.ask 1개만 보였지만 v2 는 위 10개 노드가 개별 run 으로 기록된다\n"
           "(실측: chat_turn → rag3x_answer → rag3x.ask → rag_subgraph → prepare/retrieve/…)",
           kind="note")
 
@@ -317,13 +353,18 @@ def render_v2():
         ("rag", "RAG 서브그래프"),
         ("hitl", "HITL — interrupt() 로 사람에게 되묻기"),
     ])
-    c.parts.append(f'<line x1="560" y1="1258" x2="620" y2="1258" stroke="{CYCLE}" stroke-width="2"/>')
-    c.text(630, 1263, "사이클 (예산으로 상한)", size=12, color="#334155")
-    c.parts.append(f'<line x1="560" y1="1284" x2="620" y2="1284" stroke="{AUX}" stroke-width="2" '
+    legend(c, 620, 1248, [
+        ("dec", "분기 판정 — ‘라우팅 함수’ 표기는 노드가 아님(run·SSE 미기록)"),
+        ("note", "부가 설명 — 제어흐름 아님"),
+    ])
+    c.parts.append(f'<line x1="620" y1="1302" x2="680" y2="1302" stroke="{CYCLE}" stroke-width="2"/>')
+    c.text(690, 1307, "사이클 (예산으로 상한)", size=12, color="#334155")
+    c.parts.append(f'<line x1="620" y1="1324" x2="680" y2="1324" stroke="{AUX}" stroke-width="2" '
                    f'stroke-dasharray="5 4"/>')
-    c.text(630, 1289, "체크포인터 메모리 (제어흐름 아님)", size=12, color="#334155")
-    c.text(60, 1362, "사이클 예산 — CRAG 1회 · 롤백 A/B/C 각 1회 · 에스컬레이션 1회. "
-                     "여기에 rag3 원본의 모델호출 상한(<5)·deadline 이 그대로 적용된다.",
+    c.text(690, 1329, "체크포인터 메모리 (제어흐름 아님)", size=12, color="#334155")
+    c.text(60, 1372, "사이클 예산 — CRAG 1회 · 롤백 A/B/C 각 1회 · 에스컬레이션 1회(FAQ 경로만). "
+                     "여기에 rag3 원본의 모델호출 상한(<5)·deadline(240초) 이 그대로 적용된다. "
+                     "되돌아가는 엣지는 CRAG·에스컬레이션 둘뿐이고, 롤백은 단발 후 finalize 로 빠진다.",
            size=12.5, color="#6b7280")
     c.save(DOCS / "pipeline_v2.svg")
 
@@ -361,7 +402,7 @@ TRACE2 = [
     ("└ rag_subgraph · finalize  → confidence=high", 0.00, 1, "rag"),
     ("rag_result_evaluator → 채택", 0.00, 0, "dec"),
     ("compose_answer  → composed=true (891자)", 5.03, 0, "llm"),
-    ("answer_grader  (RAG 경로는 생략 — 설계대로)", 0.00, 0, "dec"),
+    ("answer_grader  (당시엔 RAG 경로 생략 — 현재는 판정함)", 0.00, 0, "dec"),
     ("final_formatter", 0.00, 0, "det"),
 ]
 BAR = {"det": "#3b82f6", "llm": "#f59e0b", "rag": "#8b5cf6",
@@ -414,7 +455,8 @@ def render_trace():
           "② 대화 메모리가 작동한다 — 턴2의 “나는 …선생님이야” 한 마디가 이전 턴 주제와 합쳐져 독립 질문으로 재작성됨\n"
           "③ RAG 내부가 관측된다 — v1 에서 1개 블랙박스였던 구간이 prepare/retrieve/crag/answer/verify/finalize 로 분해되어 기록됨\n"
           "④ 환각가드가 통과했다 — verify unsupported_claims=[] · composer 합성 채택(composed=true, fallback 없음)\n"
-          "⑤ 병목이 드러난다 — 턴2의 64.16s 는 verify_node 단일 Gemini 호출(백오프 추정). 턴1의 38s 중 31s 는 엔진 콜드 초기화",
+          "⑤ 병목이 드러난다 — 턴2의 64.16s 는 verify_node 단일 Gemini 호출(백오프 추정). 턴1의 38s 중 31s 는 엔진 콜드 초기화\n"
+          "⑥ 주의 — 이 트레이스는 2026-07-24 기록이라 grade_evidence(07-27 신설) 이전이다. 현재 서브그래프는 10노드다",
           kind="note", rx=10, fs=15)
     c.save(DOCS / "trace_timeline.svg")
 
