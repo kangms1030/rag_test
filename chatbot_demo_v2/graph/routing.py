@@ -46,9 +46,23 @@ def select_after_scenario_answer(state: ChatState) -> str:
     return "compose_answer" if state.get("answer_source") == "faq_match" else "final_formatter"
 
 
-def select_after_grader(state: ChatState) -> str:
-    """answer_grader 이후: 미해결이면 RAG 재시도(사이클), 아니면 최종."""
-    return "rag3x_answer" if state.get("_escalate") else "final_formatter"
+def select_after_grader(state: ChatState, *, web_enabled: bool = False) -> str:
+    """answer_grader 이후 3분기.
+
+      FAQ 미해결(예산 남음)      → rag3x_answer   (에스컬레이션 사이클)
+      RAG 미해결 ∧ 웹검색 ON     → web_search_answer  (마지막 보루)
+      그 외                      → final_formatter
+
+    2026-08-03 추가 — 실사용의 반려는 "빈 답변"보다 **"자료에서 확인할 수 없습니다" 류 답변**으로
+    나타난다. 그 경우 rag_result_evaluator 는 답변이 있다고 보고 통과시키므로, 웹검색은
+    grader 가 UNRESOLVED 를 낸 뒤에 붙어야 실제로 발동한다.
+    """
+    if state.get("_escalate"):
+        return "rag3x_answer"
+    if (web_enabled and state.get("route") == "rag3x"
+            and state.get("grader_verdict") == "unresolved"):
+        return "web_search_answer"
+    return "final_formatter"
 
 
 def decide_route(state: ChatState, *, clarify_enabled: bool = False,
@@ -137,3 +151,18 @@ def evaluate_rag_result(state: ChatState, *, web_enabled: bool, web_scope: str) 
         "내부 자료(RAG)에서 답변을 찾지 못했고 웹검색이 비활성화되어 있어 답변을 보류합니다."
     )
     return "abstain", f"RAG 무응답(confidence={confidence}), 웹검색 비활성 → 보류", warnings
+
+
+def parse_domain_verdict(raw: str | None) -> bool | None:
+    """도메인 게이트 LLM 출력 → True(범위 안) / False(범위 밖) / None(판정 불가).
+
+    주의: "OUT_OF_DOMAIN" 을 먼저 검사한다(부분 문자열 오탐 방지 — answer_grader 와 같은 이유).
+    """
+    if not raw:
+        return None
+    up = raw.upper()
+    if "OUT_OF_DOMAIN" in up:
+        return False
+    if "IN_DOMAIN" in up:
+        return True
+    return None

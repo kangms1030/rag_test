@@ -93,7 +93,13 @@ def test_rag_abstain_web_enabled_calls_mock(tmp_path):
         "evidence": [], "metrics": {}, "selected_pages": [],
     })
     mock_web = MockWebSearchProvider(canned_answer="웹 답변")
-    ctx = build_context(settings, rag_adapter=abstain_rag, web_provider=mock_web)
+
+    class _InDomainLlm:            # 도메인 게이트 통과용(범위 안 질문으로 간주)
+        def chat(self, prompt: str) -> str:
+            return "IN_DOMAIN"
+
+    ctx = build_context(settings, rag_adapter=abstain_rag, web_provider=mock_web,
+                        llm=_InDomainLlm())
     r = _run(ctx, _text("아무거나 답 못하는 질문 12345", "s6", "t7"), "t7")
     assert r["route"] == "web_search"
     assert mock_web.call_count == 1

@@ -6,6 +6,7 @@ Phase 2 에서 rag_config/rag_backend/rag_lock/current_metrics 팩토리와 RAG 
 
 from __future__ import annotations
 
+import logging
 import threading
 import uuid
 from dataclasses import dataclass
@@ -20,6 +21,8 @@ from ..scenario.models import FaqStore
 from ..scenario.tree import ScenarioTree
 from ..web_search.disabled import DisabledWebSearchProvider
 from ..graph.builder import build_graph
+
+logger = logging.getLogger("chatbot_demo_v2.deps")
 
 
 class SessionRegistry:
@@ -41,6 +44,38 @@ class SessionRegistry:
         with self._lock:
             self._epochs[session_id] = self._epochs.get(session_id, 0) + 1
         return self.thread_id(session_id)
+
+
+def build_web_provider(settings: Settings) -> Any:
+    """설정에 따라 웹검색 provider 를 만든다. 기본은 Disabled(외부 호출 0).
+
+    WEB_SEARCH_ENABLED=false 이거나 provider 초기화가 실패하면(키 없음 등) Disabled 로 내려간다 —
+    웹검색은 보완재이므로, 못 쓰는 상황에서도 챗봇 나머지 경로는 그대로 동작해야 한다.
+    """
+    if not settings.web_search_enabled:
+        return DisabledWebSearchProvider()
+
+    kind = (settings.web_search_provider or "").strip().lower()
+    if kind == "mock":
+        from ..web_search.mock import MockWebSearchProvider
+
+        return MockWebSearchProvider()
+    if kind in ("gemini", "gemini_grounding"):
+        try:
+            from ..web_search.gemini_grounding import GeminiGroundingProvider
+
+            return GeminiGroundingProvider(
+                model=settings.web_search_model,
+                timeout_s=settings.web_search_timeout_s,
+                max_sources=settings.web_search_max_sources,
+                daily_budget=settings.web_search_daily_budget,
+            )
+        except Exception as e:  # noqa: BLE001 - 키 없음/requests 없음 등
+            logger.warning("웹검색 provider 초기화 실패(%s) → 웹검색 비활성으로 동작합니다.", e)
+            return DisabledWebSearchProvider()
+    if kind not in ("", "disabled"):
+        logger.warning("알 수 없는 WEB_SEARCH_PROVIDER=%r → 웹검색 비활성", kind)
+    return DisabledWebSearchProvider()
 
 
 @dataclass
@@ -96,7 +131,7 @@ def build_context(
         rag_adapter = SubgraphRagAdapter(settings)
 
     if web_provider is None:
-        web_provider = DisabledWebSearchProvider()
+        web_provider = build_web_provider(settings)
 
     if checkpointer is None:
         checkpointer = InMemorySaver()

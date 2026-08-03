@@ -58,6 +58,13 @@ def health(request: Request) -> HealthResponse:
             "enabled": s.web_search_enabled,
             "scope": s.web_search_scope,
             "provider": getattr(ctx.web_provider, "name", "unknown"),
+            "model": getattr(ctx.web_provider, "model", None),
+            # 어느 키를 쓰는지(값이 아니라 환경변수 이름만) — 유료 키 분리 확인용
+            "key_source": getattr(ctx.web_provider, "key_source", None),
+            "dedicated_key": s.web_search_api_key_present,
+            # 오늘 호출/검색 수와 추정비용(provider 가 제공할 때만)
+            "usage": (ctx.web_provider.usage()
+                      if hasattr(ctx.web_provider, "usage") else None),
         },
         routing={
             "backend": s.rag_backend,

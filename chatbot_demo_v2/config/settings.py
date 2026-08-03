@@ -97,9 +97,14 @@ class Settings:
     # RAG 결과 캐시
     rag_cache_ttl_s: int
 
-    # 웹검색
+    # 웹검색 (마지막 보루 — 내부 자료로 못 답한 '범위 안' 질문만)
     web_search_enabled: bool
-    web_search_scope: str         # "in_domain_unresolved" | "any_unresolved"
+    web_search_scope: str         # "in_domain_unresolved"(도메인 게이트 ON) | "any_unresolved"
+    web_search_provider: str      # "gemini_grounding" | "mock" | "disabled"
+    web_search_model: str         # grounding 호출에 쓰는 Gemini 모델
+    web_search_timeout_s: int
+    web_search_max_sources: int
+    web_search_daily_budget: int  # 프로세스 기준 하루 최대 호출 수(0=무제한). 과금 폭주 방지
 
     # LangSmith
     langsmith_tracing: bool
@@ -119,6 +124,9 @@ class Settings:
 
     # GEMINI 키 존재 여부(값 미저장)
     gemini_api_key_present: bool = field(default=False)
+    #: 웹검색 전용 키(WEB_SEARCH_GEMINI_API_KEY) 존재 여부. 검색 grounding 은 유료 티어에서만
+    #: 동작하므로 RAG 용 무료 키와 분리할 수 있게 했다. 없으면 GEMINI_API_KEY 로 폴백한다.
+    web_search_api_key_present: bool = field(default=False)
 
     @property
     def faq_path(self) -> Path:
@@ -197,6 +205,12 @@ def load_settings(env: Mapping[str, str] | None = None) -> Settings:
         rag_cache_ttl_s=_get_int(env, "RAG_CACHE_TTL_S", 3600),
         web_search_enabled=_get_bool(env, "WEB_SEARCH_ENABLED", False),
         web_search_scope=_get(env, "WEB_SEARCH_SCOPE", "in_domain_unresolved"),
+        web_search_provider=_get(env, "WEB_SEARCH_PROVIDER", "gemini_grounding"),
+        # RAG 백엔드와 같은 모델(저가·고한도 lite tier). Google 검색 grounding 지원 모델이어야 한다.
+        web_search_model=_get(env, "WEB_SEARCH_MODEL", "gemini-3.1-flash-lite"),
+        web_search_timeout_s=_get_int(env, "WEB_SEARCH_TIMEOUT_S", 30),
+        web_search_max_sources=_get_int(env, "WEB_SEARCH_MAX_SOURCES", 5),
+        web_search_daily_budget=_get_int(env, "WEB_SEARCH_DAILY_BUDGET", 100),
         langsmith_tracing=_get_bool(env, "LANGSMITH_TRACING", False),
         langsmith_project=_get(env, "LANGSMITH_PROJECT", "school-network-chatbot-demo-v2"),
         langsmith_endpoint=_get(env, "LANGSMITH_ENDPOINT", ""),
@@ -208,4 +222,5 @@ def load_settings(env: Mapping[str, str] | None = None) -> Settings:
         evidence_root=evidence_root,
         ragdata_dir=ragdata_dir,
         gemini_api_key_present=bool(env.get("GEMINI_API_KEY")),
+        web_search_api_key_present=bool(env.get("WEB_SEARCH_GEMINI_API_KEY")),
     )

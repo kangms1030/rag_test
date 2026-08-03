@@ -253,8 +253,33 @@ function renderInspector(resp) {
       addKV("생성 시간(초)", sm.metrics.timings_seconds.answer);
     }
   }
-  if (sm.type === "web") addKV("provider", sm.provider);
-  $("sec-meta").classList.toggle("hidden", kv.children.length === 0);
+  if (sm.type === "web") {
+    addKV("provider", sm.provider);
+    addKV("모델", sm.model);
+    if (sm.search_queries && sm.search_queries.length) addKV("검색어", sm.search_queries.join(" · "));
+    if (sm.usage) addKV("검색 횟수", sm.usage.searches);
+    if (sm.sources && sm.sources.length) {
+      kv.appendChild(el("div", "k", "출처"));
+      const box = el("div", "v");
+      sm.sources.forEach((s) => {
+        const a = el("a", null, s.title || s.url);
+        a.href = s.url; a.target = "_blank"; a.rel = "noopener noreferrer";
+        box.appendChild(a);
+        box.appendChild(el("div"));
+      });
+      kv.appendChild(box);
+    }
+  }
+  // Google 검색 grounding 이용약관: 응답과 함께 '검색 추천'을 표시해야 한다.
+  const sugg = $("insp-search-suggest");
+  if (sm.type === "web" && sm.search_entry_point) {
+    sugg.innerHTML = sm.search_entry_point;
+    sugg.classList.remove("hidden");
+  } else {
+    sugg.innerHTML = "";
+    sugg.classList.add("hidden");
+  }
+  $("sec-meta").classList.toggle("hidden", kv.children.length === 0 && sugg.classList.contains("hidden"));
 
   // 근거 이미지 (RAG evidence + FAQ 근거 페이지)
   const eviBox = $("insp-evi");

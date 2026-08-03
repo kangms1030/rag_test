@@ -205,8 +205,22 @@ def render_v2():
       5. scenario_action_handler → route_decider 화살표가 박스에 닿지 않고 허공에서 끊겼다.
       6. 에스컬레이션 사이클이 FAQ 경로 전용이라는 게이트가 표기되지 않았다.
     아울러 회색 박스 중 '노드가 아닌 것'(순수 라우팅 함수)을 명시했다.
+
+    2026-08-03 수정 — 웹검색이 실제 provider(Gemini Grounding)로 구현되면서 생긴 차이 반영.
+    노드·엣지 개수는 그대로이고(메인 14 · 서브 10), 바뀐 것은 web_search_answer 한 노드다.
+      7. web_search_answer 가 결정론 박스로 그려져 있었으나 실제로는 도메인 게이트(LLM 1회)를
+         내장한 LLM 노드다(.env 토글 · 실패 시 pass-through) → 색을 llm 으로.
+      8. 출력이 '웹 답변 / 보류' 2갈래가 됐다(범위 밖·판정 불가면 route=abstain). 이번 작업으로
+         새로 생긴 유일한 제어 흐름인데 화살표가 없었다.
+      9. 진입 조건 라벨이 "웹검색" 뿐이라 'RAG 무응답 ∧ 웹검색 ON' 두 조건이 드러나지 않았다.
+     10. SSE 단계 목록에 web(게이트·검색)이 빠져 있었고, 과금 성격 각주가 없었다.
+
+    2026-08-03 (2차) — 웹검색 진입점이 하나 늘었다(엣지 1개 추가, 노드 수는 그대로).
+     11. 실사용의 반려는 빈 답변이 아니라 "자료에서 확인할 수 없습니다" 류 **답변**으로 나온다.
+         그래서 answer_grader 가 UNRESOLVED 를 낸 뒤에도 웹검색으로 갈 수 있어야 한다
+         (그전에는 rag_result_evaluator 의 '무응답' 조건에서만 진입해 사실상 발동하지 않았다).
     """
-    c = Canvas(1820, 1400, "chatbot_demo_v2 파이프라인")
+    c = Canvas(1820, 1430, "chatbot_demo_v2 파이프라인")
     c.text(40, 46, "v2 · chatbot_demo_v2 — 사이클 · HITL · 대화메모리 · 서브그래프", size=22, weight="700")
     c.text(40, 72, "LangGraph 를 제어구조로 사용. 결정론 경로(버튼·FAQ 정확일치)는 여전히 LLM 0회, "
                    "신규 LLM 노드는 전부 토글 + 실패 시 pass-through", size=13, color="#6b7280")
@@ -230,7 +244,9 @@ def render_v2():
     c.box(620, 640, 250, 62, "rag3x_answer", "→ RAG 서브그래프 호출\nTTL 캐시 · 동시요청 락", kind="rag")
 
     c.box(620, 740, 250, 50, "rag_result_evaluator", "채택 / 웹검색 / 보류", kind="dec")
-    c.box(620, 830, 250, 48, "web_search_answer", "(기본 비활성)")
+    # 수정 7 — 게이트 LLM 을 품은 노드이므로 결정론(det)이 아니라 llm 으로 칠한다
+    c.box(620, 826, 250, 62, "web_search_answer",
+          "① 도메인 게이트 (LLM 1회)\n② Gemini Grounding 검색 · 기본 OFF", kind="llm")
     c.box(330, 830, 250, 56, "compose_answer", "근거 종합·상담체 재구성\n+ 숫자 대조 환각가드", kind="llm")
     c.box(330, 920, 250, 56, "answer_grader", "RESOLVED / UNRESOLVED\nFAQ→재시도 · RAG→신뢰도 강등", kind="llm")
     c.box(330, 1010, 250, 54, "final_formatter", "응답 조립 + AIMessage 적재")
@@ -247,7 +263,8 @@ def render_v2():
     c.arrow(mid, 602, mid + 20, 640, "시나리오/FAQ", lx=mid + 78, ly=632)
     c.arrow(mid, 602, 700, 640, "RAG", lx=650, ly=615)
     c.arrow(745, 702, 745, 740)
-    c.arrow(745, 790, 745, 830, "웹검색", lx=790, ly=815)
+    # 수정 9 — 웹검색 진입은 두 조건의 논리곱이다
+    c.arrow(745, 790, 745, 826, "무응답 ∧ 웹검색 ON", lx=792, ly=812)
     c.arrow(660, 790, 580, 838, "답변 있음", lx=612, ly=808)
     c.arrow(455, 702, 455, 830, "FAQ 합성", lx=505, ly=772)
     c.arrow(455, 886, 455, 920)
@@ -256,10 +273,16 @@ def render_v2():
     # 수정 4 — 시나리오 버튼 종단답변은 합성을 건너뛰고 곧바로 최종으로 간다(전용 엣지)
     c.path("M 340 690 L 314 690 L 314 1032 L 325 1032", "시나리오 원문 — 합성 안 함",
            color=FLOW, lx=205, ly=1004)
-    # abstain → 최종
-    c.path("M 870 765 L 900 765 L 900 1037 L 585 1037", "보류(abstain) → 최종",
-           color=FLOW, lx=770, ly=1030)
-    c.path("M 870 854 L 895 854 L 895 1030 L 585 1030", "", color=FLOW)
+    # 최종으로 들어가는 3선 — 평가 보류 / 웹 답변 / 게이트 차단(수정 8). 겹치지 않게 y 를 나눈다.
+    c.path("M 870 765 L 905 765 L 905 1046 L 585 1046", "보류(abstain) → 최종",
+           color=FLOW, lx=752, ly=1040)
+    c.path("M 870 857 L 880 857 L 880 1018 L 585 1018", "웹 답변 + 출처",
+           color=FLOW, lx=742, ly=1012)
+    c.path("M 700 888 L 700 992 L 600 992 L 600 1032 L 585 1032",
+           "범위 밖 · 판정 불가 · 검색 실패 → 직전 답변/보류", color=FLOW, lx=720, ly=990)
+    # 수정 11 — 두 번째 진입점: 답변은 나왔지만 질문을 해결 못 했을 때(UNRESOLVED)
+    c.path("M 580 934 L 612 934 L 612 857 L 616 857",
+           "미해결(UNRESOLVED) → 웹검색", color=FLOW, lx=706, ly=912)
     # HITL 재개 분기
     c.arrow(290, 668, 340, 668, "후보 선택", lx=315, ly=628)
     c.path("M 175 702 L 175 762 L 610 762 L 700 740", "해당 없음 → RAG",
@@ -268,13 +291,13 @@ def render_v2():
     # 경로는 compose/grader 컬럼(~580)과 rag 컬럼(620~) 사이의 빈 통로(x=600)로 올린다
     # (기존 곡선은 web_search_answer 박스를 관통했다).
     c.path("M 580 948 L 600 948 L 600 712 L 696 704",
-           "⟲ 에스컬레이션 (FAQ 경로만 · 미해결 · 예산 1회)", color=CYCLE, lx=712, ly=972)
+           "⟲ 에스컬레이션 (FAQ 경로만 · 미해결 · 예산 1회)", color=CYCLE, lx=712, ly=964)
 
     # 메모리 패널
     c.box(60, 1120, 250, 76, "InMemorySaver", "thread_id = 세션:epoch\nmessages(add_messages) 누적\n새로고침/reset → 새 epoch",
           kind="note")
     c.arrow(185, 1120, 185, 1090, "", AUX, dashed=True)
-    c.path("M 310 1150 L 620 1150 L 620 1064 L 585 1050", "", color=AUX, dashed=True)
+    c.path("M 310 1150 L 620 1150 L 620 1064 L 585 1058", "", color=AUX, dashed=True)
     c.label(430, 1168, "체크포인터가 턴 사이 대화를 유지", AUX)
 
     # ---------- RAG 서브그래프 ----------
@@ -338,8 +361,8 @@ def render_v2():
 
     # 스트리밍 패널
     c.box(980, 1000, 790, 62, "get_stream_writer() → SSE progress",
-          "retrieve / grade / crag / answer / verify / rollback / compose 단계가 브라우저에 실시간 표시",
-          kind="note")
+          "retrieve / grade / crag / answer / verify / rollback / compose / web(게이트·검색) 단계가 "
+          "브라우저에 실시간 표시", kind="note")
     # 수정 3 — grade_evidence 신설 반영(9 → 10)
     c.box(980, 1080, 790, 76, "LangSmith child run",
           "v1 은 rag3x.ask 1개만 보였지만 v2 는 위 10개 노드가 개별 run 으로 기록된다\n"
@@ -365,6 +388,12 @@ def render_v2():
     c.text(60, 1372, "사이클 예산 — CRAG 1회 · 롤백 A/B/C 각 1회 · 에스컬레이션 1회(FAQ 경로만). "
                      "여기에 rag3 원본의 모델호출 상한(<5)·deadline(240초) 이 그대로 적용된다. "
                      "되돌아가는 엣지는 CRAG·에스컬레이션 둘뿐이고, 롤백은 단발 후 finalize 로 빠진다.",
+           size=12.5, color="#6b7280")
+    # 수정 10 — 웹검색의 발동 조건과 과금 성격을 각주로 남긴다(도식만 보고 켜지 않도록)
+    c.text(60, 1396, "웹검색(마지막 보루) — 진입점 2개: ① RAG 무응답(rag_result_evaluator) "
+                     "② 답변은 나왔으나 미해결(answer_grader). 두 경우 모두 도메인 게이트가 "
+                     "'범위 안'으로 판정할 때만 호출된다. 검색 1회당 과금 · 하루 상한(기본 100회) · "
+                     "게이트 차단·검색 실패 시 직전 답변(있으면)으로 되돌아가고 없으면 보류.",
            size=12.5, color="#6b7280")
     c.save(DOCS / "pipeline_v2.svg")
 

@@ -116,10 +116,12 @@ route_decider ─┬─ "scenario"(버튼) ─→ scenario_answer ─→ final_f
                ├─ "clarify"(애매+고점) → clarify_node ⟦interrupt⟧
                │        재개 시 Command(goto): 후보선택→scenario_answer / 해당없음→rag3x_answer
                └─ "rag3x" ───────────→ rag3x_answer → rag_result_evaluator
-                                          ├→ web_search_answer → final_formatter
+                                          ├→ web_search_answer ─┬ 범위 안 → 웹검색 → final_formatter
+                                          │   (도메인 게이트)     └ 범위 밖/판정불가 → final_formatter(보류)
                                           ├→ compose_answer            (답변 있음)
                                           └→ final_formatter           (abstain)
 compose_answer → answer_grader ─┬─ 미해결 & 예산>0 & FAQ → rag3x_answer   ⟲ 에스컬레이션 사이클
+                                ├─ 미해결 & RAG & 웹검색ON → web_search_answer  (마지막 보루)
                                 └─ 그 외 ───────────────→ final_formatter → END
 ```
 
@@ -270,7 +272,10 @@ verify_node ─┬─ text 빈응답 ────→ rollback_top1   ┐
 | `CONTEXTUALIZE_ENABLED` | `true` | 후속질문 재작성 |
 | `GRADER_ENABLED` | `true` | 해결도 판정 (FAQ=에스컬레이션 / RAG=경고만) |
 | `RAG_CACHE_TTL_S` | `3600` | 같은 질문 재요청 시 즉답(0=비활성) |
-| `WEB_SEARCH_ENABLED` / `_SCOPE` | `false` / `in_domain_unresolved` | 웹검색(구조만) |
+| `WEB_SEARCH_ENABLED` / `_SCOPE` | **`false`** / `in_domain_unresolved` | 마지막 보루 웹검색. `_SCOPE=in_domain_unresolved` 면 도메인 게이트 통과 질문만 |
+| `WEB_SEARCH_PROVIDER` / `_MODEL` | `gemini_grounding` / `gemini-3.1-flash-lite` | Gemini + Google 검색 grounding (`mock`/`disabled` 선택 가능) |
+| `WEB_SEARCH_DAILY_BUDGET` / `_MAX_SOURCES` / `_TIMEOUT_S` | `100` / `5` / `30` | 하루 호출 상한(과금 방지) · 출처 표시 수 · 타임아웃 |
+| `WEB_SEARCH_GEMINI_API_KEY` | — | **웹검색 전용 키**. 검색 grounding 은 결제(유료) 티어에서만 동작하므로 무료 `GEMINI_API_KEY`(RAG용)와 분리해 쓴다. 비우면 `GEMINI_API_KEY` 로 폴백 |
 | `LANGSMITH_TRACING` / `_API_KEY` / `_PROJECT` | `false` / — / `…-v2` | 추적·피드백 |
 | `DEMO_PORT` | `8002` | v1(8001)과 병행 |
 
@@ -456,7 +461,7 @@ chatbot_demo_v2/
 | **임베딩 모델 교체** | embeddinggemma → BGE-M3(MTEB 63.0)/Qwen3-Embedding(70.6). 컨텍스트도 넓어 5.9% 잘림 해소 | 재색인 + 골든셋 A/B 필수 |
 | **ColPali/ColQwen 시각 검색** | 스캔 199p·표 326p(코퍼스 54%)를 OCR 없이 페이지 이미지로 검색 | 새 GPU 모델·별도 색인·멀티벡터 검색기 필요(아키텍처 변경) |
 | **답변 토큰 스트리밍** | 체감 지연 감소(실제 속도는 동일) | 우선순위 밖 |
-| 실제 웹검색 provider | 코퍼스 밖 질문 대응 | 현재 Disabled/Mock 만. 그래프·라우팅은 이미 준비됨 |
+| ~~실제 웹검색 provider~~ | 코퍼스 밖 질문 대응 | **구현됨** — Gemini Grounding(§ `WEB_SEARCH_*`). 기본은 꺼져 있고, 켜면 검색 호출당 과금 |
 | 영속 체크포인터(SQLite) | 서버 재시작 후 대화 유지 | 현재 "새로고침 전까지만 기억"이 의도된 사양 |
 | `Send` 팬아웃 병렬화 | 분해검색 하위질문 동시 실행 | GPU 단일 처리(`_ask_lock`)라 이득 제한적 |
 | `content_list_v2` bbox 하이라이트 | 근거 이미지에서 인용 영역 강조 | 문장별 출처 표기(`[p53]` 칩)로 1차 대응함 |

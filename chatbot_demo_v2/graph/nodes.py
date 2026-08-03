@@ -18,7 +18,7 @@ from langgraph.types import Command, interrupt
 
 from ..scenario.matcher import normalize_text
 from ..scenario.tree import InvalidActionError
-from .routing import decide_route, evaluate_rag_result
+from .routing import decide_route, evaluate_rag_result, parse_domain_verdict
 from .state import ChatState, new_turn_defaults
 
 
@@ -591,18 +591,79 @@ def make_nodes(ctx: Any) -> dict[str, Callable[[ChatState], dict]]:
         }
 
     # ---------- 9. web_search_answer ----------
+    def _domain_gate(question: str) -> bool | None:
+        """이 질문이 상담봇 담당 범위인지 소형 LLM 1회로 판정(True/False/None=판정불가)."""
+        if ctx.llm is None or ctx.prompts is None:
+            return None
+        raw = ctx.llm.chat(ctx.prompts.render("web_domain_gate", question=question))
+        return parse_domain_verdict(raw)
+
     def web_search_answer(state: ChatState) -> dict:
+        """마지막 보루 — 내부 자료로 못 답한 질문을 웹검색(Gemini Grounding)으로 보완.
+
+        두 곳에서 들어온다.
+          ① rag_result_evaluator — RAG 가 **답변 자체를 못 만든 경우**(빈 답/path=none)
+          ② answer_grader — 답변은 나왔지만 **질문을 해결하지 못한 경우**(UNRESOLVED).
+             "제공된 자료에서 확인할 수 없습니다" 류가 여기다. 실사용에서 훨씬 흔한 반려 형태라,
+             ①만으로는 웹검색이 사실상 발동하지 않았다(2026-08-03 실측).
+
+        **범위 안 질문에만** 호출한다. 웹검색은 유료(검색 1회당 과금)이고 잡담·타분야 질문까지
+        웹에서 답하면 상담봇의 역할 경계가 무너지기 때문이다. 그래서 provider 호출 전에
+        도메인 게이트(LLM 1회)를 둔다. WEB_SEARCH_SCOPE=any_unresolved 면 게이트를 건너뛴다.
+
+        게이트가 막거나 웹검색이 빈손이면 **직전 답변으로 되돌아간다**(②경로) — 있는 답을 버리고
+        보류로 떨어뜨리지 않는다. 직전 답변이 아예 없으면(①경로) 보류(abstain).
+        """
         question = (state.get("standalone_question") or state.get("user_input") or "").strip()
+        # ②경로로 들어온 경우에만 값이 있다(①경로는 애초에 답변이 없어서 여기 왔다).
+        prior_answer = (state.get("composed_answer")
+                        or (state.get("rag_result") or {}).get("final_answer") or "").strip()
+        fallback_route = "rag3x" if prior_answer else "abstain"
+
+        if settings.web_search_scope != "any_unresolved":
+            _progress("web", "웹에서 찾아봐도 되는 질문인지 확인하고 있어요…")
+            verdict = _domain_gate(question)
+            if verdict is not True:
+                # 판정 불가(LLM 미응답)도 호출하지 않는다 — 확인되지 않은 지출을 만들지 않는다.
+                reason = ("상담 범위 밖 질문 → 웹검색 안 함" if verdict is False
+                          else "도메인 판정 불가(LLM 미응답) → 웹검색 안 함")
+                _node_meta({"web_domain_gate": verdict, "web_called": False},
+                           tags=["web_gate:blocked"])
+                return {
+                    "route": fallback_route,
+                    "route_reason": reason,
+                    "trace": _trace(state, "web_search_answer", reason),
+                }
+            _node_meta({"web_domain_gate": True}, tags=["web_gate:pass"])
+
+        _progress("web", "웹에서 관련 정보를 찾고 있어요…")
+        system = ctx.prompts.render_optional("web_search") if ctx.prompts is not None else ""
         t0 = time.time()
-        res = ctx.web_provider.search_and_answer(question, context={})
+        res = ctx.web_provider.search_and_answer(question, context={"system": system or None})
         timings = dict(state.get("timings") or {})
         timings["web_s"] = time.time() - t0
+        _node_meta(
+            {
+                "web_provider": res.get("provider"),
+                "web_model": res.get("model"),
+                "web_sources": len(res.get("sources") or []),
+                "web_usage": res.get("usage"),
+                "web_note": res.get("note"),
+            },
+            tags=[f"web_answer:{'ok' if (res.get('answer') or '').strip() else 'empty'}"],
+        )
+        got = bool((res.get("answer") or "").strip())
+        route = "web_search" if got else fallback_route
         return {
             "web_result": res,
+            "route": route,
+            "route_reason": ("웹검색 답변 채택" if got
+                             else f"웹검색 무응답({res.get('note')}) → {fallback_route}"),
             "timings": timings,
             "trace": _trace(
                 state, "web_search_answer",
-                f"web provider={res.get('provider')}, enabled={res.get('enabled')}",
+                f"web provider={res.get('provider')}, enabled={res.get('enabled')}, "
+                f"출처 {len(res.get('sources') or [])}건 → route={route}",
             ),
         }
 
@@ -812,21 +873,47 @@ def make_nodes(ctx: Any) -> dict[str, Callable[[ChatState], dict]]:
             )
         elif route == "web_search":
             web = state.get("web_result") or {}
-            out.update(
-                final_answer=web.get("answer") or "",
-                answer_path="web",
-                answer_source="web",
-                confidence="unknown",
-                evidence=[],
-                verification=None,
-                options=[],
-                source_meta={
-                    "type": "web",
-                    "provider": web.get("provider"),
-                    "sources": web.get("sources"),
-                    "note": web.get("note"),
-                },
-            )
+            web_answer = (web.get("answer") or "").strip()
+            if not web_answer:
+                # 웹검색까지 실패/무응답 — 빈 말풍선 대신 보류 안내를 낸다.
+                out.update(
+                    final_answer=ABSTAIN_MESSAGE,
+                    answer_path="none",
+                    answer_source="none",
+                    confidence="abstain",
+                    evidence=[],
+                    verification=None,
+                    options=[],
+                    source_meta={"type": "abstain", "web_note": web.get("note")},
+                )
+            else:
+                out.update(
+                    final_answer=web_answer,
+                    answer_path="web",
+                    answer_source="web",
+                    confidence="unknown",
+                    evidence=[],
+                    verification=None,
+                    options=[],
+                    # 이전 경고(저신뢰·미해결)는 **버려진 RAG 초안**에 대한 것이라 그대로 두면
+                    # 지금 보여 주는 웹 답변을 잘못 설명하게 된다 → 웹 경고로 교체한다.
+                    warnings=[
+                        "이 답변은 내부 자료가 아닌 **웹 검색 결과**를 근거로 작성되었습니다. "
+                        "학교 실제 환경·규정과 다를 수 있으니 아래 출처를 확인하시고, 정확한 조치는 "
+                        "담당 선생님이나 스쿨넷 서비스 지원센터(1899-0979)에 확인하시기 바랍니다."
+                    ],
+                    source_meta={
+                        "type": "web",
+                        "provider": web.get("provider"),
+                        "model": web.get("model"),
+                        "sources": web.get("sources"),
+                        "search_queries": web.get("search_queries"),
+                        # Google 검색 grounding 약관상 함께 표시해야 하는 '검색 추천' HTML
+                        "search_entry_point": web.get("search_entry_point"),
+                        "usage": web.get("usage"),
+                        "note": web.get("note"),
+                    },
+                )
         else:  # abstain
             out.update(
                 final_answer=ABSTAIN_MESSAGE,
