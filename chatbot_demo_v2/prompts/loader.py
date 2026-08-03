@@ -44,9 +44,22 @@ class PromptLoader:
             logger.debug("프롬프트 로드/갱신: %s.md", name)
             return tmpl
 
+    def load_optional(self, name: str) -> string.Template | None:
+        """선택적 프롬프트를 로드한다."""
+        try:
+            return self.load(name)
+        except (FileNotFoundError, OSError):
+            logger.debug("선택적 프롬프트 없음: %s.md", name)
+            return None
+
     def render(self, name: str, **variables) -> str:
         """프롬프트를 렌더링한다. 파일이 없으면 예외(설정 오류로 취급)."""
         return self.load(name).safe_substitute(**variables)
+
+    def render_optional(self, name: str, **variables) -> str:
+        """선택적 프롬프트를 렌더링한다. 파일이 없으면 빈 문자열을 반환한다."""
+        tmpl = self.load_optional(name)
+        return tmpl.safe_substitute(**variables) if tmpl is not None else ""
 
     def meta(self, name: str) -> dict:
         """LangSmith 기록용 — 어떤 프롬프트 파일/버전(mtime)으로 답했는지."""

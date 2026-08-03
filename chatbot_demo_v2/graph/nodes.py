@@ -33,6 +33,37 @@ def _format_history(messages: list, limit_chars: int = 2000) -> str:
     text = "\n".join(rows)
     return text[-limit_chars:] if len(text) > limit_chars else text
 
+
+_PERSONA_PROMPT_NAMES = (
+    "persona/persona",
+    "persona/response_policy",
+    "persona/response_examples",
+)
+
+
+def _render_persona_prompts(ctx: Any, route: str) -> tuple[str, list[str]]:
+    """독립 페르소나 프롬프트를 합성 프롬프트 앞에 선택적으로 붙인다.
+
+    파일이 없거나 ``PERSONA_PROMPTS_ENABLED=false``이면 빈 문자열을 반환한다.
+    따라서 이 확장 파일을 수정·삭제해도 기존 composer 프롬프트와 LangGraph
+    경로는 그대로 사용할 수 있다.
+    """
+    settings = getattr(ctx, "settings", None)
+    if settings is not None and not getattr(settings, "persona_prompts_enabled", True):
+        return "", []
+    prompts = getattr(ctx, "prompts", None)
+    if prompts is None:
+        return "", []
+
+    parts: list[str] = []
+    loaded: list[str] = []
+    for name in _PERSONA_PROMPT_NAMES:
+        text = prompts.render_optional(name, route=route).strip()
+        if text:
+            parts.append(text)
+            loaded.append(f"{name}.md")
+    return "\n\n".join(parts), loaded
+
 _CITE_RE = re.compile(r"\[\s*[pP]\s*(\d{1,4})\s*\]")
 
 
@@ -615,6 +646,12 @@ def make_nodes(ctx: Any) -> dict[str, Callable[[ChatState], dict]]:
                 evidence_text=evidence_text, history_summary=history_summary,
             )
 
+        # 추가 페르소나/응답정책은 기존 composer 파일과 분리된 선택적 확장이다.
+        # 파일이 없거나 환경변수로 끄면 위에서 만든 기존 prompt를 그대로 사용한다.
+        persona_text, persona_files = _render_persona_prompts(ctx, route)
+        if persona_text:
+            prompt = f"{persona_text}\n\n{prompt}"
+
         _progress("compose", "찾은 근거를 종합해 답변을 정리하고 있어요…")
         t0 = time.time()
         out = ctx.llm.chat(prompt)
@@ -636,6 +673,8 @@ def make_nodes(ctx: Any) -> dict[str, Callable[[ChatState], dict]]:
             template_text = ""
         unsupported = _unsupported_claims(out, f"{evidence_text}\n{base}\n{template_text}")
         meta = {"composer": name, "route": route, "unsupported": unsupported[:5]}
+        meta["persona_prompts_enabled"] = bool(persona_files)
+        meta["persona_prompt_files"] = persona_files
         meta.update(ctx.prompts.meta(name) if ctx.prompts else {})
         if unsupported:
             _node_meta(meta, tags=["composed:fallback"])

@@ -90,6 +90,7 @@ class Settings:
     # composer / contextualize / grader
     composer_rag_enabled: bool
     composer_faq_enabled: bool
+    persona_prompts_enabled: bool
     contextualize_enabled: bool
     grader_enabled: bool
 
@@ -190,6 +191,7 @@ def load_settings(env: Mapping[str, str] | None = None) -> Settings:
         clarify_min_score=_get_float(env, "CLARIFY_MIN_SCORE", 0.35),
         composer_rag_enabled=_get_bool(env, "COMPOSER_RAG_ENABLED", True),
         composer_faq_enabled=_get_bool(env, "COMPOSER_FAQ_ENABLED", True),
+        persona_prompts_enabled=_get_bool(env, "PERSONA_PROMPTS_ENABLED", True),
         contextualize_enabled=_get_bool(env, "CONTEXTUALIZE_ENABLED", True),
         grader_enabled=_get_bool(env, "GRADER_ENABLED", True),
         rag_cache_ttl_s=_get_int(env, "RAG_CACHE_TTL_S", 3600),
