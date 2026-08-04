@@ -267,7 +267,7 @@ verify_node ─┬─ text 빈응답 ────→ rollback_top1   ┐
 | `RAG_DEEP_WARMUP` | **`true`** | 기동 시 임베딩·LLM까지 예열 → 첫 질문 콜드로드(23s) 제거 |
 | `SCENARIO_MATCH_BACKEND` | **`semantic`** | `semantic`(임베딩+리랭커) \| `fuzz`(문자 편집거리) |
 | `SCENARIO_MATCH_THRESHOLD` / `_MARGIN` | **`0.80` / `0.30`** | FAQ 의미 유사도 채택 기준 |
-| `CLARIFY_ENABLED` / `CLARIFY_MIN_SCORE` | `true` / **`0.35`** | 애매할 때 되묻기(HITL) |
+| `CLARIFY_ENABLED` / `CLARIFY_MIN_SCORE` | `true` / **`0.80`** | 되묻기(HITL). **1·2위 후보가 모두** 이 점수 이상일 때만 발동 = "둘 다 정답급인데 못 고를 때" |
 | `COMPOSER_RAG_ENABLED` / `COMPOSER_FAQ_ENABLED` | `true` / `true` | 답변 종합·정리 |
 | `CONTEXTUALIZE_ENABLED` | `true` | 후속질문 재작성 |
 | `GRADER_ENABLED` | `true` | 해결도 판정 (FAQ=에스컬레이션 / RAG=경고만) |

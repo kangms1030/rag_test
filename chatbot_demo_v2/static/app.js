@@ -256,12 +256,17 @@ function renderInspector(resp) {
   if (sm.type === "web") {
     addKV("provider", sm.provider);
     addKV("모델", sm.model);
-    if (sm.search_queries && sm.search_queries.length) addKV("검색어", sm.search_queries.join(" · "));
     if (sm.usage) addKV("검색 횟수", sm.usage.searches);
-    if (sm.sources && sm.sources.length) {
-      kv.appendChild(el("div", "k", "출처"));
+  }
+  // 웹검색은 답변 채택 여부와 무관하게 표시한다 — 실패해도 무엇을 조사했는지/왜 반영 안 됐는지.
+  if (sm.web) {
+    const w = sm.web;
+    if (w.search_queries && w.search_queries.length) addKV("웹 검색어", w.search_queries.join(" · "));
+    if (!w.adopted) addKV("웹검색 결과", w.note || "답변에 반영하지 않았습니다.");
+    if (w.sources && w.sources.length) {
+      kv.appendChild(el("div", "k", w.adopted ? "출처" : "웹 참고 사이트"));
       const box = el("div", "v");
-      sm.sources.forEach((s) => {
+      w.sources.forEach((s) => {
         const a = el("a", null, s.title || s.url);
         a.href = s.url; a.target = "_blank"; a.rel = "noopener noreferrer";
         box.appendChild(a);

@@ -58,8 +58,8 @@ class TestClarifyScale:
 
     def _route(self, best, margin, scale, decision="reject_low_score"):
         state = {"input_type": "text", "scenario_match": {
-            "decision": decision, "best_score": best, "margin_observed": margin,
-            "threshold": 0.80, "scale": scale}}
+            "decision": decision, "best_score": best, "second_score": best - margin,
+            "margin_observed": margin, "threshold": 0.80, "scale": scale}}
         return decide_route(state, clarify_enabled=True, clarify_min_score=0.40)[0]
 
     def test_의미스케일_모호질문은_되묻는다(self):
@@ -80,3 +80,36 @@ class TestClarifyScale:
         state = {"input_type": "text", "scenario_match": {
             "decision": "reject_low_score", "best_score": 0.45, "margin_observed": 0.02}}
         assert decide_route(state, clarify_enabled=True, clarify_min_score=0.40)[0] == "rag3x"
+
+
+class TestClarifyNeedsTwoCandidates:
+    """2026-08-04 — 후보가 사실상 1건이면 되묻지 않는다.
+
+    되묻기 화면은 "비슷한 문의가 여러 건 있어요"라고 말한다. 2위가 0.00 인데 그 문구를
+    띄우면 사용자에게 거짓말이 된다(실사용 제보). 점수는 전부 골든셋 실측값이다.
+    """
+
+    def _route(self, best, second, decision="reject_low_score", floor=0.80):
+        state = {"input_type": "text", "scenario_match": {
+            "decision": decision, "best_score": best, "second_score": second,
+            "margin_observed": best - second, "threshold": 0.80, "scale": "semantic"}}
+        return decide_route(state, clarify_enabled=True, clarify_min_score=floor)[0]
+
+    def test_2위가_바닥이면_되묻지_않는다(self):
+        # 제보 사례: "무선 AP 배치 시 2.4GHz/5GHz 채널 간섭…" — 1위만 애매하게 높다.
+        assert self._route(0.642, 0.002) == "rag3x"
+        assert self._route(0.563, 0.133) == "rag3x"   # rag_04 자가진단 체크리스트
+        assert self._route(0.351, 0.000) == "rag3x"   # para_04
+
+    def test_회색지대_점수는_되묻지_않는다(self):
+        """0.65~0.78 은 골든셋 표본이 0개인 빈 구간 — 여기 걸리면 키워드만 겹친 것이다."""
+        assert self._route(0.928, 0.644) == "rag3x"   # para_08 "어느 통신사?" ↔ "누가 설치?"
+        assert self._route(0.780, 0.613) == "rag3x"   # ambig_04 "속도가 너무 느린데요"
+
+    def test_후보_둘_다_정답급이면_되묻는다(self):
+        assert self._route(0.942, 0.889, "reject_ambiguous") == "clarify"   # ambig_02
+        assert self._route(0.971, 0.964, "reject_ambiguous") == "clarify"   # ambig_03
+        assert self._route(0.931, 0.891, "reject_ambiguous") == "clarify"   # para_10
+
+    def test_자동채택은_영향받지_않는다(self):
+        assert self._route(0.99, 0.01, "accept") == "faq"

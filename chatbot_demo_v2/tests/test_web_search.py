@@ -394,6 +394,26 @@ def test_web_failure_keeps_prior_rag_answer(tmp_path):
     assert r["final_answer"] == WEAK_ANSWER
 
 
+def test_web_attempt_visible_even_when_not_adopted(tmp_path):
+    """웹검색이 반려돼도 무엇을 조사했는지·왜 반영 안 됐는지는 남는다(2026-08-04)."""
+    settings = load_settings(env=_web_env(tmp_path))
+    ctx = build_context(settings, rag_adapter=_weak_rag(), web_provider=EmptyWebProvider(),
+                        llm=GraderLlm())
+    r = ctx.graph.invoke(_text("분당 지역 AP 공급사가 어디인가요", "s", "t"),
+                         {"configurable": {"thread_id": "t"}})
+    assert r["route"] == "rag3x"                      # 답변은 RAG 초안 그대로
+    assert r["source_meta"]["type"] == "rag3x"        # 기존 메타를 덮어쓰지 않는다
+    assert r["source_meta"]["web"]["adopted"] is False
+    assert r["source_meta"]["web"]["note"]            # 반영되지 않은 사유가 보인다
+
+    web = MockWebSearchProvider(canned_answer="웹에서 찾은 답변")
+    ctx2 = build_context(settings, rag_adapter=_weak_rag(), web_provider=web, llm=GraderLlm())
+    r2 = ctx2.graph.invoke(_text("분당 지역 AP 공급사가 어디인가요", "s", "t2"),
+                           {"configurable": {"thread_id": "t2"}})
+    assert r2["source_meta"]["web"]["adopted"] is True
+    assert [s["url"] for s in r2["source_meta"]["web"]["sources"]] == ["https://example.org/mock"]
+
+
 def test_gate_block_keeps_prior_rag_answer(tmp_path):
     """범위 밖 판정이면 웹검색을 부르지 않고, 직전 답변이 있으면 그대로 제시한다."""
     settings = load_settings(env=_web_env(tmp_path))

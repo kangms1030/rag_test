@@ -72,7 +72,7 @@ def decide_route(state: ChatState, *, clarify_enabled: bool = False,
     반환: (route, reason)
       - 버튼/시나리오 액션 → "scenario"
       - 유사도 매칭 채택(exact/accept) → "faq"(결정론 저장답변)
-      - 애매(reject_ambiguous) ∧ clarify 활성 ∧ 최고점수≥임계 → "clarify"(HITL 되묻기)
+      - 후보 **2건 모두** 하한 이상 ∧ clarify 활성 → "clarify"(HITL 되묻기)
       - 그 외 → "rag3x"
     """
     if state.get("input_type") == "action":
@@ -81,6 +81,11 @@ def decide_route(state: ChatState, *, clarify_enabled: bool = False,
     match = state.get("scenario_match") or {}
     decision = match.get("decision")
     best = match.get("best_score") or 0.0
+    margin_obs = match.get("margin_observed") or 0.0
+    # 2위 점수. 정의상 best - margin 이므로 키가 없는 호출자(구 테스트)도 복원된다.
+    second = match.get("second_score")
+    if second is None:
+        second = best - margin_obs
     if decision in ("exact", "accept"):
         return "faq", f"모범 질답 유사도 통과({decision})"
 
@@ -91,17 +96,34 @@ def decide_route(state: ChatState, *, clarify_enabled: bool = False,
     #         정확히 이 구간이다(도입신청/시스템등록/물리설치 중 무엇인지 모호).
     #   변경: clarify_min_score <= best < threshold 도 되묻기로 보낸다.
     #
-    # 하한은 스케일마다 다르다 — 의미 유사도(0.40)와 문자 유사도(0.75)는 호환되지 않는다.
+    # 2026-08-04: 그 회색지대가 **너무 넓어** 무관한 질문까지 되묻고 있었다. 제보 사례
+    #   "무선 AP 배치 시 2.4GHz/5GHz 채널 간섭을 줄이는 채널 분배 원리는?" → best 0.642,
+    #   **second 0.002**. 되묻기 화면은 "비슷한 문의가 여러 건 있어요"라고 말하면서 유사도
+    #   0.00 짜리 후보를 함께 띄운다 — 후보가 사실상 1건뿐이면 되묻기가 성립하지 않는다.
+    #   변경: best 뿐 아니라 **2위도 하한 이상**일 때만 되묻는다(= 진짜로 여러 해석이 경합).
+    #   하한도 자동채택 임계와 같은 0.80 으로 올렸다 → 되묻기의 정의가 한 문장이 된다:
+    #   **"후보 2건이 둘 다 정답급인데 어느 쪽인지 못 고를 때"**.
+    #   골든셋 실측(scripts/calibrate_faq_threshold.py 와 같은 매처로 40문항 재측정):
+    #     되묻기 유지  ambig_02 0.942/0.889 · ambig_03 0.971/0.964
+    #                  para_07 0.985/0.968 · para_10 0.931/0.891
+    #     되묻기 차단  제보사례 0.642/0.002 · rag_04 0.563/0.133 · para_04 0.351/0.000
+    #                  para_08 0.928/0.644 · ambig_04 0.780/0.613
+    #     대가         ambig_01 0.386/0.077 은 이제 RAG 로 간다(1건뿐인 후보라 구분 불가)
+    #
+    # 하한은 스케일마다 다르다 — 의미 유사도(0.80)와 문자 유사도(0.75)는 호환되지 않는다.
     # 매처가 fuzz 로 폴백하면 match["scale"] 이 "fuzz" 로 오므로 그 값을 쓴다.
     if (match.get("scale") or "fuzz") == "fuzz":
         clarify_min_score = max(clarify_min_score, 0.75)
     if clarify_enabled and best >= clarify_min_score:
+        if second < clarify_min_score:
+            return "rag3x", (f"후보 1건뿐(best={round(best, 3)}, "
+                             f"2위={round(second, 3)} < 하한 {clarify_min_score}) → RAG")
         if decision == "reject_ambiguous":
             return "clarify", (f"애매 매칭(best={round(best, 3)}, "
                                f"margin={match.get('margin_observed')}) → 되묻기")
         if decision == "reject_low_score":
             return "clarify", (f"회색지대(best={round(best, 3)} < 임계 "
-                               f"{match.get('threshold')}) → 되묻기")
+                               f"{match.get('threshold')}, 2위={round(second, 3)}) → 되묻기")
     return "rag3x", f"모범 질답 미통과({decision or 'none'}) → RAG"
 
 

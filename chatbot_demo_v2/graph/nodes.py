@@ -926,6 +926,22 @@ def make_nodes(ctx: Any) -> dict[str, Callable[[ChatState], dict]]:
                 source_meta={"type": "abstain"},
             )
 
+        # 웹검색이 실제로 돌았으면 **채택 여부와 무관하게** 무엇을 조사했는지 남긴다.
+        # 실패(429·근거 없음·빈 답)하면 route 가 rag3x/abstain 으로 되돌아가는데, 위 분기는
+        # route=="web_search" 일 때만 web_result 를 싣는다 → 사용자는 웹검색이 무엇을 찾았고
+        # 왜 답변에 반영되지 않았는지 전혀 볼 수 없었다(2026-08-04).
+        web = state.get("web_result")
+        if web:
+            out["source_meta"] = {
+                **(out.get("source_meta") or state.get("source_meta") or {}),
+                "web": {
+                    "adopted": out.get("answer_source") == "web",
+                    "sources": web.get("sources") or [],
+                    "search_queries": web.get("search_queries") or [],
+                    "note": web.get("note"),
+                },
+            }
+
         timings = dict(state.get("timings") or {})
         started = state.get("_turn_started_at") or time.time()
         total = time.time() - started

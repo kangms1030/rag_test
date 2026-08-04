@@ -599,9 +599,21 @@
           <tbody>
             <tr><td>게이트 통과 · 검색 성공</td><td>웹 답변 + 출처 링크 + “웹 검색 결과” 경고</td></tr>
             <tr><td>OUT_OF_DOMAIN · 판정 불가</td><td>검색 <strong>호출 없이</strong> — 직전 답변이 있으면 그대로, 없으면 정중한 거절</td></tr>
-            <tr><td>검색 실패 · 출처 0건</td><td>웹 답변 폐기 후 위와 동일</td></tr>
+            <tr><td>검색 실패 · 출처 0건</td><td>웹 답변 폐기 후 위와 동일 — 단 <strong>반려 사유는 인스펙터에 표시</strong></td></tr>
           </tbody>
         </table></div>
+        <div class="note warn"><span class="tag">반려 모양이 3가지 — 예전엔 화면에서 구분이 안 됐다 (2026-08-04 수정)</span>
+          <div class="tw"><table>
+            <thead><tr><th>반려</th><th>인스펙터에 뜨는 사유</th></tr></thead>
+            <tbody>
+              <tr><td>HTTP 429 등 호출 실패</td><td><code>웹검색 호출 실패(HTTP 429)</code></td></tr>
+              <tr><td>200 이지만 <strong>출처 0건</strong> — 모델이 검색을 타지 않고 내부지식으로 답한 경우라 근거가 없어 답변을 통째로 버린다</td><td><code>웹 검색 근거를 확보하지 못해 답변을 보류했습니다.</code></td></tr>
+              <tr><td>검색은 했지만 빈 답</td><td><code>웹 검색에서도 답변을 찾지 못했습니다.</code></td></tr>
+            </tbody>
+          </table></div>
+          <p>원인은 <code>route == "web_search"</code> 일 때만 <code>web_result</code> 를 응답에 실은 것이었습니다.
+          반려되면 route 가 <code>rag3x</code> 로 되돌아가면서 <strong>시도 자체가 통째로 사라져</strong>, 로그를 봐야만 알 수 있었습니다.
+          지금은 <span class="n det">final_formatter</span> 가 채택 여부와 무관하게 <code>source_meta.web</code> 을 붙입니다.</p></div>
         <div class="note why"><span class="tag">왜 직전 답변으로 되돌아가나</span>
           <p>②경로로 들어오면 이미 저신뢰 RAG 답변이 손에 있습니다. 웹검색이 실패했다고 그 답변까지 버리면 사용자에겐 <strong>개선이 아니라 후퇴</strong>입니다.
           웹검색은 <strong>덧붙이는 시도</strong>라 실패해도 손해가 없습니다.</p></div>
@@ -678,14 +690,18 @@
             <tr><td>시나리오</td><td>원문 그대로</td><td>없음</td></tr>
             <tr><td>FAQ</td><td><strong>합성본이 있으면 합성본</strong>, 없으면 원문 (원문도 함께 동봉)</td><td>FAQ 근거 이미지</td></tr>
             <tr><td>RAG</td><td>합성본 또는 초안 · 해결도 미달이면 <strong>신뢰도 강등</strong></td><td>페이지 이미지</td></tr>
+            <tr><td>웹검색</td><td>웹 답변 + “내부 자료가 아님” 경고</td><td>출처 링크</td></tr>
             <tr><td>보류</td><td>지원센터 안내 문구</td><td>없음</td></tr>
           </tbody>
         </table></div>
         <dl class="kv">
-          <dt>마무리 3종</dt><dd>
-            ① 총 소요시간 계산<br>
-            ② <strong>답변을 대화 이력에 추가</strong> → 다음 턴의 <span class="n llm">contextualize_query</span>가 이걸 읽습니다<br>
-            ③ LangSmith 메타데이터 부착
+          <dt>마무리 4종</dt><dd>
+            ① <strong>웹검색 흔적</strong> — <code>web_result</code> 가 있으면 경로와 무관하게 <code>source_meta.web</code>
+            (<code>adopted</code> · 방문 사이트 · 검색어 · 반려 사유)을 붙입니다. 기존 메타는 덮어쓰지 않습니다.
+            인스펙터는 채택됐으면 “출처”, 반려됐으면 <strong>“웹 참고 사이트” + “웹검색 결과: 〈사유〉”</strong> 로 렌더합니다<br>
+            ② 총 소요시간 계산<br>
+            ③ <strong>답변을 대화 이력에 추가</strong> → 다음 턴의 <span class="n llm">contextualize_query</span>가 이걸 읽습니다<br>
+            ④ LangSmith 메타데이터 부착
           </dd>
         </dl>
       </div>

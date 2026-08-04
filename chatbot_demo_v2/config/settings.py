@@ -192,11 +192,22 @@ def load_settings(env: Mapping[str, str] | None = None) -> Settings:
         #   0.40 → 골든셋에서 이번 개선의 발단 질문(ambig_01 "학교에서 새로운 ap를 설치하고
         #          싶어")이 best 0.386 으로 **아슬아슬하게 놓쳤다**
         #   0.35 → 채택. RAG 질문들의 best 는 0.2 이하에 몰려 있어 여유가 남는다.
+        #   0.80 → 2026-08-04 상향(0.35 → 0.60 → 0.80). 0.35 는 무관한 기술 질문까지
+        #          되묻기로 보냈다(제보: 채널 간섭 질문 0.642 / rag_04 0.563).
+        #          **자동채택 임계와 같은 값**으로 맞춘 것이 핵심이다 — 되묻기는
+        #          "후보 2건이 둘 다 정답급인데 못 고르겠다"일 때만 성립하기 때문이다.
+        #          같은 커밋에서 decide_route 가 **2위도 하한 이상**일 것을 요구한다.
+        #
+        #          왜 0.80 이어도 안전한가: 크로스인코더 점수는 0/1 로 몰려 중간이 비어
+        #          있다. 골든셋 84개 후보 점수 중 0.65~0.78 구간은 **표본이 0개**다.
+        #            사람이 봐도 같은 질문  0.780 0.863 0.889 0.891 0.895 0.927 …
+        #            키워드만 겹치는 오탐   0.644 0.642 0.630 0.613 0.563 0.520 …
+        #          하한 0.70/0.80/0.85 는 골든셋에서 결과가 완전히 동일하다.
         scenario_match_backend=_get(env, "SCENARIO_MATCH_BACKEND", "semantic"),
         scenario_match_threshold=_get_float(env, "SCENARIO_MATCH_THRESHOLD", 0.80),
         scenario_match_margin=_get_float(env, "SCENARIO_MATCH_MARGIN", 0.30),
         clarify_enabled=_get_bool(env, "CLARIFY_ENABLED", True),
-        clarify_min_score=_get_float(env, "CLARIFY_MIN_SCORE", 0.35),
+        clarify_min_score=_get_float(env, "CLARIFY_MIN_SCORE", 0.80),
         composer_rag_enabled=_get_bool(env, "COMPOSER_RAG_ENABLED", True),
         composer_faq_enabled=_get_bool(env, "COMPOSER_FAQ_ENABLED", True),
         persona_prompts_enabled=_get_bool(env, "PERSONA_PROMPTS_ENABLED", True),

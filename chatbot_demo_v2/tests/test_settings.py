@@ -15,7 +15,10 @@ def test_defaults():
     assert s.scenario_match_threshold == 0.80
     assert s.scenario_match_margin == 0.30
     assert s.clarify_enabled is True
-    assert s.clarify_min_score == 0.35
+    # 2026-08-04: 0.35 는 무관한 질문까지 되묻기로 보냈다 → 자동채택 임계와 동일한
+    # 0.80 으로 상향(+ 1·2위 모두 하한 이상 조건).
+    assert s.clarify_min_score == 0.80
+    assert s.clarify_min_score == s.scenario_match_threshold
     assert s.composer_rag_enabled is True
     assert s.grader_enabled is True
     assert s.rag_cache_ttl_s == 3600
