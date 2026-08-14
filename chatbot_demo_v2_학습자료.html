@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>chatbot_demo_v2 파이프라인 학습자료</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bg: #0f172a;
+    --bg-card: #1e293b;
+    --bg-card-hover: #273548;
+    --bg-code: #0d1117;
+    --text: #e2e8f0;
+    --text-dim: #94a3b8;
+    --text-bright: #f8fafc;
+    --accent: #3b82f6;
+    --accent-glow: rgba(59,130,246,0.2);
+    --green: #10b981;
+    --yellow: #f59e0b;
+    --red: #ef4444;
+    --purple: #8b5cf6;
+    --teal: #14b8a6;
+    --orange: #f97316;
+    --pink: #ec4899;
+    --border: #334155;
+    --border-light: #475569;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) var(--bg);
+  }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    font-size: 15px;
+  }
+
+  /* ===== 헤더 ===== */
+  .hero {
+    background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 40%, #1a1035 100%);
+    padding: 60px 40px 50px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 800px 400px at 70% 30%, rgba(59,130,246,0.08), transparent);
+    pointer-events: none;
+  }
+  .hero h1 {
+    font-size: 2rem; font-weight: 700;
+    background: linear-gradient(90deg, #60a5fa, #a78bfa, #34d399);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 10px; position: relative;
+  }
+  .hero .subtitle {
+    font-size: 1rem; color: var(--text-dim); max-width: 900px;
+    position: relative;
+  }
+  .hero .version-badge {
+    display: inline-block; font-size: 0.75rem;
+    background: rgba(59,130,246,0.15); color: var(--accent);
+    border: 1px solid rgba(59,130,246,0.3);
+    padding: 2px 10px; border-radius: 20px;
+    margin-bottom: 12px; position: relative;
+  }
+
+  /* ===== 내비게이션 ===== */
+  .toc {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(15,23,42,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 20px;
+    display: flex; flex-wrap: wrap; gap: 6px;
+    justify-content: center;
+  }
+  .toc a {
+    font-size: 0.8rem; color: var(--text-dim);
+    text-decoration: none; padding: 5px 12px;
+    border-radius: 6px; transition: all 0.2s;
+    border: 1px solid transparent;
+    white-space: nowrap;
+  }
+  .toc a:hover {
+    color: var(--accent); background: var(--accent-glow);
+    border-color: rgba(59,130,246,0.3);
+  }
+
+  /* ===== 컨테이너 ===== */
+  .container { max-width: 1200px; margin: 0 auto; padding: 40px 30px; }
+
+  /* ===== 섹션 ===== */
+  .section {
+    margin-bottom: 60px;
+    animation: fadeIn 0.6s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-title {
+    font-size: 1.5rem; font-weight: 700;
+    color: var(--text-bright);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--accent);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-title .badge {
+    font-size: 0.7rem; padding: 3px 10px;
+    border-radius: 20px; font-weight: 500;
+  }
+  .badge-blue { background: rgba(59,130,246,0.15); color: var(--accent); border: 1px solid rgba(59,130,246,0.3); }
+  .badge-green { background: rgba(16,185,129,0.15); color: var(--green); border: 1px solid rgba(16,185,129,0.3); }
+  .badge-yellow { background: rgba(245,158,11,0.15); color: var(--yellow); border: 1px solid rgba(245,158,11,0.3); }
+  .badge-red { background: rgba(239,68,68,0.15); color: var(--red); border: 1px solid rgba(239,68,68,0.3); }
+  .badge-purple { background: rgba(139,92,246,0.15); color: var(--purple); border: 1px solid rgba(139,92,246,0.3); }
+
+  h3 {
+    font-size: 1.15rem; color: var(--text-bright);
+    margin: 30px 0 12px;
+    padding-left: 12px;
+    border-left: 3px solid var(--accent);
+  }
+  h4 {
+    font-size: 1rem; color: #93c5fd;
+    margin: 20px 0 10px;
+  }
+
+  p { margin-bottom: 12px; }
+
+  /* ===== 카드 ===== */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: all 0.3s;
+  }
+  .card:hover {
+    border-color: var(--border-light);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+  }
+  .card-title {
+    font-size: 1.1rem; font-weight: 600;
+    color: var(--text-bright);
+    margin-bottom: 12px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .card-title .icon {
+    width: 28px; height: 28px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; flex-shrink: 0;
+  }
+
+  /* ===== 노드 카드 (파이프라인 단계) ===== */
+  .node-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .node-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 4px; height: 100%;
+  }
+  .node-card.deterministic::before { background: var(--accent); }
+  .node-card.llm::before { background: var(--yellow); }
+  .node-card.rag::before { background: var(--purple); }
+  .node-card.hitl::before { background: var(--red); }
+  .node-card.routing::before { background: var(--border-light); }
+
+  .node-header {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 16px; flex-wrap: wrap;
+  }
+  .node-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem; font-weight: 600;
+    color: var(--text-bright);
+  }
+  .node-desc {
+    font-size: 0.85rem; color: var(--text-dim);
+  }
+  .node-body { margin-top: 8px; }
+  .node-body ul { padding-left: 20px; margin-bottom: 10px; }
+  .node-body li { margin-bottom: 6px; }
+
+  /* ===== 코드 블록 ===== */
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85em;
+    background: rgba(0,0,0,0.3);
+    padding: 2px 6px; border-radius: 4px;
+    color: #93c5fd;
+  }
+  pre {
+    background: var(--bg-code);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    overflow-x: auto;
+    margin: 12px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: #c9d1d9;
+  }
+
+  /* ===== 테이블 ===== */
+  table {
+    width: 100%; border-collapse: collapse;
+    margin: 16px 0; font-size: 0.9rem;
+  }
+  th {
+    background: rgba(59,130,246,0.1);
+    color: var(--text-bright);
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 2px solid var(--border);
+    font-weight: 600;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+
+  /* ===== 플로우 화살표 ===== */
+  .flow-arrow {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 1.5rem;
+    margin: 8px 0;
+    opacity: 0.6;
+  }
+
+  /* ===== 팁/경고 박스 ===== */
+  .tip-box {
+    border-radius: 10px; padding: 16px 20px;
+    margin: 16px 0;
+    border-left: 4px solid;
+    font-size: 0.9rem;
+  }
+  .tip-box.info {
+    background: rgba(59,130,246,0.08);
+    border-color: var(--accent);
+  }
+  .tip-box.warning {
+    background: rgba(245,158,11,0.08);
+    border-color: var(--yellow);
+  }
+  .tip-box.success {
+    background: rgba(16,185,129,0.08);
+    border-color: var(--green);
+  }
+  .tip-box.danger {
+    background: rgba(239,68,68,0.08);
+    border-color: var(--red);
+  }
+  .tip-box strong {
+    display: block; margin-bottom: 6px;
+    color: var(--text-bright);
+  }
+
+  /* ===== 접기/펼치기 ===== */
+  details {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin: 12px 0;
+    overflow: hidden;
+  }
+  summary {
+    padding: 14px 20px;
+    cursor: pointer;
+    font-weight: 600; font-size: 0.95rem;
+    color: var(--text-bright);
+    background: rgba(0,0,0,0.15);
+    user-select: none;
+    display: flex; align-items: center; gap: 8px;
+  }
+  summary:hover { background: rgba(0,0,0,0.25); }
+  summary::marker { color: var(--accent); }
+  details[open] summary { border-bottom: 1px solid var(--border); }
+  details > div, details > pre, details > p, details > table {
+    padding: 16px 20px;
+  }
+  details > div { padding: 16px 20px; }
+
+  /* ===== 그리드 ===== */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 768px) {
+    .grid-2 { grid-template-columns: 1fr; }
+  }
+
+  /* ===== 파일 트리 ===== */
+  .file-tree {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    line-height: 1.9;
+    background: var(--bg-code);
+    padding: 16px 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    margin: 12px 0;
+  }
+  .file-tree .dir { color: #60a5fa; font-weight: 500; }
+  .file-tree .file { color: #94a3b8; }
+  .file-tree .highlight { color: #34d399; font-weight: 500; }
+
+  /* ===== 연결선 (흐름도 연결) ===== */
+  .connector {
+    width: 2px; height: 30px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+    margin: 0 auto;
+  }
+
+  /* ===== 스크롤 탑 ===== */
+  .scroll-top {
+    position: fixed; bottom: 30px; right: 30px;
+    width: 44px; height: 44px;
+    background: var(--accent);
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.2rem;
+    display: none; align-items: center; justify-content: center;
+    box-shadow: 0 4px 16px rgba(59,130,246,0.4);
+    transition: all 0.3s;
+    z-index: 200;
+  }
+  .scroll-top:hover { transform: translateY(-3px); }
+
+  /* ===== 키워드 하이라이트 ===== */
+  .kw { color: #60a5fa; font-weight: 500; }
+  .kw-green { color: #34d399; font-weight: 500; }
+  .kw-yellow { color: #fbbf24; font-weight: 500; }
+  .kw-red { color: #f87171; font-weight: 500; }
+  .kw-purple { color: #a78bfa; font-weight: 500; }
+
+  /* ===== 다이어그램 박스 ===== */
+  .diagram-box {
+    background: var(--bg-code);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 16px 0;
+    overflow-x: auto;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    line-height: 2;
+    white-space: pre;
+    color: #c9d1d9;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--border);
+    margin-top: 60px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="version-badge">v2 · LangGraph Pipeline</div>
+  <h1>chatbot_demo_v2 파이프라인 완전 분석 학습자료</h1>
+  <p class="subtitle">
+    학교 유·무선 네트워크(스쿨넷) 장애상담 챗봇의 파이프라인 구조를 단계별로 완전 해부합니다.<br>
+    LangGraph 기반 메인그래프(14개 노드) + RAG 서브그래프(10개 노드)의 전체 동작 원리를 상세히 설명합니다.<br>
+    <strong style="color: #93c5fd;">최종 목표:</strong> Docker 통합 → 독립 챗봇 프로토타입 제작
+  </p>
+</div>
+
+<!-- ============ TOC ============ -->
+<nav class="toc" id="toc">
+  <a href="#overview">📋 전체 개요</a>
+  <a href="#architecture">🏗️ 아키텍처</a>
+  <a href="#maingraph">🔵 메인그래프</a>
+  <a href="#stage1">① 입력 처리</a>
+  <a href="#stage2">② 질문 분석</a>
+  <a href="#stage3">③ 라우팅</a>
+  <a href="#stage4">④ 답변 생성</a>
+  <a href="#stage5">⑤ 답변 후처리</a>
+  <a href="#ragsub">🟣 RAG 서브그래프</a>
+  <a href="#fullflow">🔄 전체 흐름</a>
+  <a href="#data">📂 데이터/설정</a>
+  <a href="#frontend">🖥️ 프론트엔드</a>
+  <a href="#mobileapp">📱 모바일앱</a>
+  <a href="#docker">🐳 Docker 통합 가이드</a>
+</nav>
+
+<!-- ============ CONTENT ============ -->
+<div class="container">
+
+<!-- ===== 1. 전체 개요 ===== -->
+<section class="section" id="overview">
+  <h2 class="section-title">📋 전체 개요 <span class="badge badge-blue">Foundation</span></h2>
+
+  <div class="card">
+    <div class="card-title">
+      <span class="icon" style="background:rgba(59,130,246,0.2); color:var(--accent);">📌</span>
+      chatbot_demo_v2란?
+    </div>
+    <p>
+      <code>chatbot_demo_v2</code>는 <span class="kw">학교 유·무선 네트워크(스쿨넷) 장애상담</span>을 위한 AI 챗봇입니다.
+      <span class="kw-purple">LangGraph</span>를 제어구조로 사용하여, 사용자의 질문을 분석하고 적절한 경로(시나리오/FAQ/RAG/웹검색)로 
+      라우팅하여 최적의 답변을 생성합니다.
+    </p>
+    <p>
+      <code>v1</code>(chatbot_demo)에서 <code>v2</code>로 진화하면서 다음 핵심 기능이 추가되었습니다:
+    </p>
+    <ul>
+      <li>🔄 <strong>사이클(CRAG/에스컬레이션)</strong> — 첫 시도에서 만족스럽지 않으면 다시 시도</li>
+      <li>🙋 <strong>HITL(Human-In-The-Loop)</strong> — 애매한 질문은 사용자에게 되묻기</li>
+      <li>💬 <strong>대화 메모리</strong> — 후속 질문의 맥락을 기억</li>
+      <li>🧩 <strong>서브그래프</strong> — RAG 엔진을 LangGraph 서브그래프로 분해하여 각 단계를 관측 가능</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">
+      <span class="icon" style="background:rgba(16,185,129,0.2); color:var(--green);">⚡</span>
+      핵심 설계 원칙
+    </div>
+    <div class="grid-2">
+      <div>
+        <h4>🎯 결정론 경로 LLM 0회</h4>
+        <p>버튼 클릭(시나리오) 및 FAQ 정확일치 경로는 LLM을 한 번도 호출하지 않습니다. 미리 저장된 답변을 그대로 반환하여 속도와 비용을 모두 절약합니다.</p>
+      </div>
+      <div>
+        <h4>🛡️ LLM 노드 안전 설계</h4>
+        <p>모든 LLM 노드는 <code>.env</code>로 개별 토글 가능하며, 실패 시 예외를 던지지 않고 pass-through(원문 유지)합니다. LLM이 죽어도 챗봇은 동작합니다.</p>
+      </div>
+      <div>
+        <h4>💰 예산(Budget) 제어</h4>
+        <p>CRAG 재검색 1회, 롤백 A/B/C 각 1회, 에스컬레이션 1회 — 모든 사이클에 예산 상한이 있어 무한루프가 구조적으로 불가능합니다.</p>
+      </div>
+      <div>
+        <h4>🔍 관측 가능성</h4>
+        <p>모든 노드가 LangSmith에 개별 run으로 기록됩니다. SSE 스트리밍으로 브라우저에 실시간 진행상황이 표시됩니다.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip-box info">
+    <strong>💡 파이프라인 다이어그램 범례</strong>
+    <table>
+      <tr><td style="width:30px;background:rgba(59,130,246,0.3);border-radius:4px;">&nbsp;</td><td><strong>파란색</strong> — 결정론 노드 (LLM 0회)</td></tr>
+      <tr><td style="background:rgba(245,158,11,0.3);border-radius:4px;">&nbsp;</td><td><strong>노란색</strong> — LLM 노드 (토글 가능, 실패 시 pass-through)</td></tr>
+      <tr><td style="background:rgba(139,92,246,0.3);border-radius:4px;">&nbsp;</td><td><strong>보라색</strong> — RAG 서브그래프</td></tr>
+      <tr><td style="background:rgba(239,68,68,0.3);border-radius:4px;">&nbsp;</td><td><strong>빨간색</strong> — HITL (interrupt()로 사람에게 되묻기)</td></tr>
+      <tr><td style="background:rgba(148,163,184,0.3);border-radius:4px;">&nbsp;</td><td><strong>회색</strong> — 분기 판정 (라우팅 함수, 노드가 아님)</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 2. 아키텍처 ===== -->
+<section class="section" id="architecture">
+  <h2 class="section-title">🏗️ 시스템 아키텍처 <span class="badge badge-green">Architecture</span></h2>
+
+  <h3>프로젝트 디렉토리 구조</h3>
+  <div class="file-tree">
+<span class="dir">chatbot_demo_v2/</span>
+├── <span class="dir">app/</span>                    <span class="file"># FastAPI 웹 애플리케이션</span>
+│   ├── <span class="highlight">main.py</span>             <span class="file"># 앱 팩토리 (lifespan, 예외 핸들러)</span>
+│   ├── <span class="highlight">api.py</span>              <span class="file"># API 라우터 (/api/chat, /api/chat/stream 등)</span>
+│   ├── <span class="highlight">dependencies.py</span>     <span class="file"># AppContext 조립 (의존성 주입 컨테이너)</span>
+│   └── <span class="highlight">schemas.py</span>          <span class="file"># Pydantic 요청/응답 스키마</span>
+│
+├── <span class="dir">graph/</span>                  <span class="file"># LangGraph 파이프라인 핵심</span>
+│   ├── <span class="highlight">state.py</span>            <span class="file"># ChatState(메인) + RagState(서브) 정의</span>
+│   ├── <span class="highlight">builder.py</span>          <span class="file"># 그래프 구성 및 컴파일</span>
+│   ├── <span class="highlight">nodes.py</span>            <span class="file"># 메인그래프 14개 노드 구현</span>
+│   ├── <span class="highlight">rag_nodes.py</span>        <span class="file"># RAG 서브그래프 10개 노드 구현</span>
+│   └── <span class="highlight">routing.py</span>          <span class="file"># 순수 분기 함수 (조건부 엣지)</span>
+│
+├── <span class="dir">scenario/</span>               <span class="file"># 시나리오 트리 + FAQ 매칭</span>
+│   ├── <span class="highlight">matcher.py</span>          <span class="file"># ScenarioMatcher + SemanticScenarioMatcher</span>
+│   ├── <span class="highlight">tree.py</span>             <span class="file"># 시나리오 트리 탐색</span>
+│   ├── models.py           <span class="file"># FaqEntry, FaqStore, MatchResult 등</span>
+│   └── loader.py           <span class="file"># JSON 데이터 로딩</span>
+│
+├── <span class="dir">rag/</span>                    <span class="file"># RAG 엔진 어댑터</span>
+│   ├── <span class="highlight">adapter_util.py</span>     <span class="file"># SubgraphRagAdapter + 근거 이미지 복사</span>
+│   └── <span class="highlight">llm_helper.py</span>       <span class="file"># 경량 LLM 헬퍼 (compose/grade용)</span>
+│
+├── <span class="dir">ragcore/</span>                <span class="file"># Vendored RAG 코어 엔진</span>
+│   ├── <span class="dir">rag3/</span>               <span class="file"># 기본 RAG 엔진 (검색/답변/검증)</span>
+│   └── <span class="dir">rag3x/</span>              <span class="file"># 확장 RAG (Gemini 백엔드, 분해 등)</span>
+│
+├── <span class="dir">prompts/</span>                <span class="file"># LLM 프롬프트 템플릿 (.md, 핫리로드)</span>
+│   ├── contextualize.md    <span class="file"># 후속질문 재작성</span>
+│   ├── composer_faq.md     <span class="file"># FAQ 답변 상담체 재구성</span>
+│   ├── composer_rag.md     <span class="file"># RAG 근거 종합 답변</span>
+│   ├── answer_grader.md    <span class="file"># 답변 해결도 판정</span>
+│   ├── evidence_grader.md  <span class="file"># 근거 3등급 판정</span>
+│   ├── web_domain_gate.md  <span class="file"># 웹검색 도메인 게이트</span>
+│   └── <span class="dir">persona/</span>            <span class="file"># 페르소나/응답정책 (선택적)</span>
+│
+├── <span class="dir">web_search/</span>             <span class="file"># 웹검색 provider</span>
+│   ├── gemini_grounding.py <span class="file"># Gemini + Google 검색 grounding</span>
+│   ├── disabled.py         <span class="file"># 비활성 provider</span>
+│   └── mock.py             <span class="file"># 테스트용 mock</span>
+│
+├── <span class="dir">config/</span>                 <span class="file"># 설정</span>
+│   └── <span class="highlight">settings.py</span>         <span class="file"># 환경변수 → frozen dataclass</span>
+│
+├── <span class="dir">data/</span>                   <span class="file"># 정적 데이터</span>
+│   ├── faq.json            <span class="file"># 모범 질답 236건</span>
+│   ├── scenarios.json      <span class="file"># 시나리오 트리</span>
+│   ├── faq_embeddings.json <span class="file"># FAQ 임베딩 벡터</span>
+│   └── faq_doc_links.json  <span class="file"># FAQ↔문서 근거 링크</span>
+│
+├── <span class="dir">static/</span>                 <span class="file"># 프론트엔드 (SPA)</span>
+│   ├── index.html
+│   ├── styles.css
+│   └── app.js
+│
+├── <span class="dir">observability/</span>          <span class="file"># LangSmith 트레이싱</span>
+│   └── langsmith.py
+│
+└── requirements.txt        <span class="file"># Python 의존성</span>
+  </div>
+
+  <h3>기술 스택</h3>
+  <table>
+    <tr><th>계층</th><th>기술</th><th>역할</th></tr>
+    <tr><td>파이프라인 제어</td><td><code>LangGraph</code> ≥1.2</td><td>메인그래프 + RAG 서브그래프 실행 엔진</td></tr>
+    <tr><td>웹 서버</td><td><code>FastAPI</code> + <code>Uvicorn</code></td><td>REST API + SSE 스트리밍</td></tr>
+    <tr><td>LLM 백엔드</td><td><code>Gemini Flash Lite</code> (또는 Ollama)</td><td>답변 생성, 근거 판정, 합성 등</td></tr>
+    <tr><td>임베딩/리랭킹</td><td><code>Ollama</code> + <code>BGE 리랭커</code></td><td>FAQ 의미 매칭, RAG 검색</td></tr>
+    <tr><td>벡터 인덱스</td><td><code>ChromaDB</code> + Flat Index</td><td>문서 청크 검색</td></tr>
+    <tr><td>웹검색</td><td><code>Gemini Grounding</code> (Google 검색)</td><td>마지막 보루 웹검색</td></tr>
+    <tr><td>관측</td><td><code>LangSmith</code></td><td>트레이싱, 피드백 기록</td></tr>
+    <tr><td>대화 메모리</td><td><code>InMemorySaver</code> (체크포인터)</td><td>턴 간 대화 이력 유지</td></tr>
+    <tr><td>프론트엔드</td><td>HTML + Vanilla JS + CSS</td><td>데모 웹 UI</td></tr>
+    <tr><td>모바일 앱</td><td><code>Flutter (Dart)</code></td><td>Android/iOS 클라이언트</td></tr>
+  </table>
+</section>
+
+<!-- ===== 3. 메인그래프 개요 ===== -->
+<section class="section" id="maingraph">
+  <h2 class="section-title">🔵 메인그래프 개요 <span class="badge badge-blue">14개 노드</span></h2>
+
+  <div class="card">
+    <div class="card-title">
+      <span class="icon" style="background:rgba(59,130,246,0.2); color:var(--accent);">🔗</span>
+      ChatState — 메인그래프 상태 스키마
+    </div>
+    <p>메인그래프의 상태는 <code>ChatState</code> TypedDict로 정의됩니다. 크게 세 종류의 필드가 있습니다:</p>
+    <table>
+      <tr><th>종류</th><th>대표 필드</th><th>수명</th></tr>
+      <tr><td><span class="kw-green">세션 유지</span></td><td><code>session_id</code>, <code>scenario_id</code>, <code>current_node_id</code>, <code>scenario_path</code>, <code>messages</code></td><td>체크포인터가 턴 간 보존</td></tr>
+      <tr><td><span class="kw-yellow">입력(per-turn)</span></td><td><code>user_input</code>, <code>input_type</code>, <code>normalized_question</code>, <code>standalone_question</code></td><td>매 턴 초기화</td></tr>
+      <tr><td><span class="kw">결과(per-turn)</span></td><td><code>final_answer</code>, <code>confidence</code>, <code>evidence</code>, <code>composed_answer</code>, <code>grader_verdict</code></td><td>매 턴 초기화</td></tr>
+    </table>
+    <div class="tip-box info">
+      <strong>💡 핵심: messages 필드</strong>
+      <code>messages: Annotated[list, add_messages]</code> — <code>add_messages</code> 리듀서가 이전 이력에 누적합니다. 
+      절대 매 턴 초기화하지 않습니다. 이것이 대화 메모리의 핵심입니다.
+    </div>
+  </div>
+
+  <h3>메인그래프 전체 흐름도</h3>
+  <div class="diagram-box">
+                        ┌─────────┐
+                        │  START  │
+                        └────┬────┘
+                             ▼
+                    ┌─────────────────┐
+                    │ normalize_input │  정규화 + HumanMessage 적재
+                    └────────┬────────┘
+                             ▼
+                 ┌────────────────────────┐
+                 │ load_or_update_session │  세션·시나리오 상태 관리
+                 └───────────┬───────────┘
+                             ▼
+                   ┌──────────────────┐
+                   │ select_input_kind│  ← 라우팅 함수
+                   └──┬──────────┬───┘
+              버튼    │          │  자유입력
+                      ▼          ▼
+     ┌──────────────────────┐  ┌──────────────────┐
+     │scenario_action_handler│  │contextualize_query│  후속질문→독립질문
+     └──────────┬───────────┘  └────────┬─────────┘
+                │                       ▼
+                │              ┌─────────────────┐
+                │              │ scenario_matcher │  FAQ 의미 유사도
+                │              └────────┬────────┘
+                │                       │
+                └───────────┬───────────┘
+                            ▼
+                    ┌──────────────┐
+                    │ route_decider│  scenario/faq/clarify/rag
+                    └──────┬──────┘
+           ┌───────────────┼───────────────┐
+           ▼               ▼               ▼
+    ┌─────────────┐ ┌──────────────┐ ┌──────────────┐
+    │ clarify_node│ │scenario_answer│ │ rag3x_answer │
+    │  (HITL)     │ │              │ │ →서브그래프    │
+    └──────┬──────┘ └──────┬───────┘ └──────┬───────┘
+           │               │               │
+           └──┬────────────┘               ▼
+              │                   ┌────────────────────┐
+              │                   │rag_result_evaluator│
+              ▼                   └───────┬────────────┘
+      ┌───────────────┐          ┌────────┼───────────┐
+      │compose_answer │ ◀────────┘        ▼           ▼
+      └───────┬───────┘         ┌──────────────┐  ┌─────────┐
+              ▼                 │web_search_answer│  │final_  │
+      ┌──────────────┐         └──────┬────────┘  │formatter│
+      │answer_grader │                │            └─────────┘
+      └──────┬───────┘                └──────────────┘
+             │                                   │
+             └──→  ⟲ 에스컬레이션(1회) ──→ rag3x_answer
+             └──→  미해결+웹ON ──→ web_search_answer
+             └──→  final_formatter ──→ END
+  </div>
+</section>
+
+<!-- ===== Stage 1: 입력 처리 ===== -->
+<section class="section" id="stage1">
+  <h2 class="section-title">① 입력 처리 단계 <span class="badge badge-blue">결정론</span></h2>
+
+  <div class="node-card deterministic">
+    <div class="node-header">
+      <span class="node-name">normalize_input</span>
+      <span class="badge badge-blue">LLM 0회</span>
+      <span class="node-desc">정규화 + HumanMessage 적재</span>
+    </div>
+    <div class="node-body">
+      <h4>무엇을 하는가?</h4>
+      <p>사용자 입력을 받아 첫 번째로 처리하는 관문입니다. 두 가지 입력 유형을 구분합니다:</p>
+
+      <div class="grid-2">
+        <div class="card" style="margin:0;">
+          <h4>📱 버튼 입력 (action)</h4>
+          <ul>
+            <li><code>input_type = "action"</code></li>
+            <li><code>action_type</code>이 <code>"scenario_option"</code>인지 검증</li>
+            <li><code>node_id</code>, <code>option_id</code> 필수 확인</li>
+            <li>정규화 불필요 (정해진 버튼 ID 사용)</li>
+          </ul>
+        </div>
+        <div class="card" style="margin:0;">
+          <h4>⌨️ 자유 입력 (text)</h4>
+          <ul>
+            <li><code>input_type = "text"</code></li>
+            <li>빈 입력이면 <code>EmptyInputError</code> → HTTP 400</li>
+            <li><code>normalize_text()</code>로 정규화 (NFKC, 소문자, 공백 정리)</li>
+            <li><code>HumanMessage(content=raw)</code>를 <code>messages</code>에 추가 (대화 메모리)</li>
+          </ul>
+        </div>
+      </div>
+
+      <h4>핵심 코드 동작</h4>
+      <pre>
+def normalize_input(state: ChatState) -> dict:
+    out = new_turn_defaults()          # per-turn 필드 전부 초기화
+    out["_turn_started_at"] = time.time()  # 응답 시간 측정 시작
+
+    if input_type == "action":
+        # 버튼 입력: node_id/option_id 검증만 수행
+        ...
+    else:
+        raw = state["user_input"].strip()
+        out["normalized_question"] = normalize_text(raw)  # NFKC + 소문자 + 공백 정리
+        out["messages"] = [HumanMessage(content=raw)]     # 대화 메모리에 추가
+    return out</pre>
+
+      <div class="tip-box warning">
+        <strong>⚠️ new_turn_defaults()의 역할</strong>
+        매 턴 시작 시 per-turn 필드(rag_result, final_answer, confidence 등)를 전부 초기화합니다. 
+        단, <code>messages</code>(대화 메모리)와 <code>scenario_*</code>(시나리오 위치)는 건드리지 않습니다.
+      </div>
+    </div>
+  </div>
+
+  <div class="flow-arrow">▼</div>
+
+  <div class="node-card deterministic">
+    <div class="node-header">
+      <span class="node-name">load_or_update_session</span>
+      <span class="badge badge-blue">LLM 0회</span>
+      <span class="node-desc">세션·시나리오 상태 관리</span>
+    </div>
+    <div class="node-body">
+      <p>입력 유형에 따라 시나리오 세션 상태를 관리합니다:</p>
+      <ul>
+        <li><strong>자유 입력(text)</strong>: 이전 시나리오 위치를 <strong>중단</strong>합니다 (<code>scenario_id=None</code>, <code>current_node_id=None</code>). 자유 입력은 시나리오 트리와 무관한 새로운 질문이기 때문입니다.</li>
+        <li><strong>버튼 입력(action)</strong>: 시나리오 상태를 <strong>유지</strong>합니다. 사용자가 시나리오 트리를 탐색 중이기 때문입니다.</li>
+      </ul>
+      <div class="tip-box success">
+        <strong>🔑 핵심 원칙</strong>
+        <code>messages</code>(대화 메모리)는 어떤 경우에도 절대 초기화하지 않습니다. 대화 이력이 유지되어야 후속 질문 재작성(contextualize)이 가능합니다.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Stage 2: 질문 분석 ===== -->
+<section class="section" id="stage2">
+  <h2 class="section-title">② 질문 분석 단계 <span class="badge badge-yellow">LLM 포함</span></h2>
+
+  <div class="node-card routing">
+    <div class="node-header">
+      <span class="node-name">select_input_kind</span>
+      <span class="badge" style="background:rgba(148,163,184,0.15);color:#94a3b8;border:1px solid rgba(148,163,184,0.3);">라우팅 함수</span>
+      <span class="node-desc">버튼 / 자유입력 분기</span>
+    </div>
+    <div class="node-body">
+      <p>이것은 <strong>노드가 아니라 라우팅 함수</strong>입니다. LangGraph의 <code>add_conditional_edges</code>에서 사용됩니다.</p>
+      <ul>
+        <li><code>input_type == "action"</code> → <code>scenario_action_handler</code> (버튼 경로)</li>
+        <li><code>input_type == "text"</code> → <code>contextualize_query</code> (자유입력 경로)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="node-card deterministic">
+      <div class="node-header">
+        <span class="node-name">scenario_action_handler</span>
+        <span class="badge badge-blue">LLM 0회</span>
+      </div>
+      <div class="node-body">
+        <p><strong>버튼 클릭 시</strong> 시나리오 트리에서 다음 노드로 이동합니다.</p>
+        <ul>
+          <li><code>tree.resolve_option(node_id, option_id)</code>로 다음 노드 결정</li>
+          <li><code>__restart__</code> 옵션이면 경로 초기화</li>
+          <li>종단 노드(terminal)면 <code>scenario_completed = True</code></li>
+          <li>이동 경로(<code>scenario_path</code>)에 선택한 라벨 추가</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="node-card llm">
+      <div class="node-header">
+        <span class="node-name">contextualize_query</span>
+        <span class="badge badge-yellow">LLM 최대 1회</span>
+      </div>
+      <div class="node-body">
+        <p><strong>후속 질문을 독립 질문으로 재작성</strong>합니다. "그거"를 구체적 대상으로 바꿉니다.</p>
+        <h4>게이트 조건 (모두 만족해야 실행)</h4>
+        <ul>
+          <li><code>settings.contextualize_enabled = true</code></li>
+          <li>입력이 자유 텍스트</li>
+          <li>이전 사용자 발화가 1건 이상 (= 후속 질문)</li>
+        </ul>
+        <h4>동작</h4>
+        <ul>
+          <li>최근 대화 이력 2000자를 추출</li>
+          <li><code>contextualize.md</code> 프롬프트로 LLM 호출</li>
+          <li>재작성 결과의 첫 줄만 사용 (모델이 설명을 덧붙이는 것 방어)</li>
+          <li>실패 시 원문 유지 (pass-through)</li>
+        </ul>
+        <pre>예시:
+이전 대화: "비밀번호 변경 방법이요?" → "관리자 메뉴에서 변경 가능합니다"
+후속 질문: "그거 어디서 해요?"
+재작성 결과: "비밀번호 변경은 어디서 하나요?"</pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="flow-arrow">▼</div>
+
+  <div class="node-card deterministic">
+    <div class="node-header">
+      <span class="node-name">scenario_matcher</span>
+      <span class="badge badge-blue">LLM 0회</span>
+      <span class="node-desc">FAQ 의미 유사도 매칭</span>
+    </div>
+    <div class="node-body">
+      <p>정규화된 질문을 <strong>236건의 모범 질답(FAQ)</strong>과 비교하여 가장 유사한 것을 찾습니다.</p>
+
+      <h4>매칭 엔진: SemanticScenarioMatcher</h4>
+      <ol>
+        <li><strong>정확 일치 검사</strong> — 정규화된 질문이 FAQ와 완전 일치하면 즉시 반환 (비용 0)</li>
+        <li><strong>임베딩 코사인 유사도</strong> — 사전 계산된 FAQ 임베딩 벡터와 질문 벡터의 코사인 거리로 상위 10개 후보 회수</li>
+        <li><strong>크로스인코더 리랭킹</strong> — BGE 리랭커로 상위 후보를 재점수하여 최종 순위 결정</li>
+      </ol>
+
+      <h4>매칭 결과 판정</h4>
+      <table>
+        <tr><th>판정</th><th>조건</th><th>의미</th></tr>
+        <tr><td><code>exact</code></td><td>정규화 문자열 완전 일치</td><td>100% 확신, FAQ 원문 반환</td></tr>
+        <tr><td><code>accept</code></td><td>best ≥ 0.80 AND margin ≥ 0.30</td><td>유사도 충분 + 1위 확실, FAQ 채택</td></tr>
+        <tr><td><code>reject_ambiguous</code></td><td>best ≥ 0.80 BUT margin < 0.30</td><td>상위 2개 비슷 → 되묻기 후보</td></tr>
+        <tr><td><code>reject_low_score</code></td><td>best < 0.80</td><td>유사한 FAQ 없음 → RAG</td></tr>
+      </table>
+
+      <div class="tip-box info">
+        <strong>💡 왜 의미 유사도인가?</strong>
+        v1의 문자 유사도(fuzz.ratio)로는 한국어 패러프레이즈가 임계 0.90을 절대 못 넘었습니다.
+        예: "AP를 설치하고 싶어" ↔ "와이파이는 누가 설치하나요" = 0.4167 (문자) vs 0.957 (의미).
+        골든셋 기준 FAQ 라우트 정확도: 0%(v1) → 100%(v2).
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Stage 3: 라우팅 ===== -->
+<section class="section" id="stage3">
+  <h2 class="section-title">③ 라우팅 결정 <span class="badge badge-blue">핵심 분기점</span></h2>
+
+  <div class="node-card deterministic">
+    <div class="node-header">
+      <span class="node-name">route_decider</span>
+      <span class="badge badge-blue">LLM 0회</span>
+      <span class="node-desc">scenario / faq / clarify / rag 4분기</span>
+    </div>
+    <div class="node-body">
+      <p><code>decide_route()</code> 함수가 매칭 결과를 보고 다음 경로를 결정합니다:</p>
+
+      <table>
+        <tr><th>경로</th><th>조건</th><th>다음 노드</th><th>LLM 호출 수</th></tr>
+        <tr>
+          <td><span class="kw-green">scenario</span></td>
+          <td>버튼 입력 (시나리오 트리 탐색)</td>
+          <td><code>scenario_answer</code></td>
+          <td>0회</td>
+        </tr>
+        <tr>
+          <td><span class="kw-green">faq</span></td>
+          <td>의미 유사도 accept/exact</td>
+          <td><code>scenario_answer</code></td>
+          <td>0~1회 (합성 시)</td>
+        </tr>
+        <tr>
+          <td><span class="kw-red">clarify</span></td>
+          <td>후보 2건 모두 ≥ 0.80 + 차이 < 0.30</td>
+          <td><code>clarify_node</code></td>
+          <td>0회 (사람이 선택)</td>
+        </tr>
+        <tr>
+          <td><span class="kw-purple">rag3x</span></td>
+          <td>위 조건 모두 불충족</td>
+          <td><code>rag3x_answer</code></td>
+          <td>2~5회</td>
+        </tr>
+      </table>
+
+      <div class="tip-box warning">
+        <strong>⚠️ 되묻기(clarify)의 정의</strong>
+        <strong>"후보 2건이 둘 다 정답급인데 어느 쪽인지 못 고를 때"</strong> — 1위만 높고 2위가 낮으면(후보가 사실상 1건) 되묻기가 성립하지 않아 RAG로 보냅니다.
+      </div>
+    </div>
+  </div>
+
+  <div class="flow-arrow">▼</div>
+
+  <div class="node-card hitl">
+    <div class="node-header">
+      <span class="node-name">clarify_node</span>
+      <span class="badge badge-red">HITL interrupt()</span>
+      <span class="node-desc">애매·회색지대 → 후보 2개 되묻기</span>
+    </div>
+    <div class="node-body">
+      <p>LangGraph의 <code>interrupt()</code>를 사용하여 <strong>실행을 일시정지</strong>하고 사용자에게 되묻습니다.</p>
+
+      <h4>동작 과정</h4>
+      <ol>
+        <li>상위 2개 FAQ 후보를 <code>matcher.top_candidates()</code>로 조회</li>
+        <li><code>interrupt({"type": "clarify", "candidates": [...]})</code> 호출 → 실행 중단</li>
+        <li>프론트엔드가 후보 버튼을 렌더링하여 사용자에게 표시</li>
+        <li>사용자가 선택하면 <code>Command(resume={"choice": faq_id})</code>로 재개</li>
+        <li>후보 선택 → <code>route="faq"</code> → <code>scenario_answer</code>로 이동</li>
+        <li>"해당없음" 선택 → <code>route="rag3x"</code> → <code>rag3x_answer</code>로 이동</li>
+      </ol>
+
+      <div class="tip-box info">
+        <strong>💡 Command(goto=...)로 재개</strong>
+        <code>clarify_node</code>는 <code>Command</code> 객체를 반환하여 다음 노드를 직접 지정합니다 (정적 엣지 불필요). 
+        재개 후 <code>scenario_answer</code> 또는 <code>rag3x_answer</code>로 즉시 점프합니다.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Stage 4: 답변 생성 ===== -->
+<section class="section" id="stage4">
+  <h2 class="section-title">④ 답변 생성 단계 <span class="badge badge-purple">핵심 경로</span></h2>
+
+  <div class="node-card deterministic">
+    <div class="node-header">
+      <span class="node-name">scenario_answer</span>
+      <span class="badge badge-blue">LLM 0회</span>
+      <span class="node-desc">시나리오·FAQ 원문 + 근거링크</span>
+    </div>
+    <div class="node-body">
+      <p>두 가지 경우를 처리합니다:</p>
+      <div class="grid-2">
+        <div class="card" style="margin:0;">
+          <h4>📱 버튼 입력 → 시나리오 트리</h4>
+          <ul>
+            <li>현재 노드(<code>tree.get_node()</code>)의 텍스트를 반환</li>
+            <li>종단 노드면 <code>answer_text</code> (저장된 답변)</li>
+            <li>중간 노드면 <code>text</code> + 다음 선택지 버튼</li>
+            <li><code>answer_source = "scenario_tree"</code></li>
+          </ul>
+        </div>
+        <div class="card" style="margin:0;">
+          <h4>⌨️ 자유 입력 → FAQ 모범답변</h4>
+          <ul>
+            <li>매칭된 FAQ의 <code>entry.answer</code>를 그대로 반환</li>
+            <li>근거 이미지(<code>_faq_evidence()</code>)를 파일 복사하여 URL 생성</li>
+            <li><code>answer_source = "faq_match"</code></li>
+            <li><code>original_answer</code>에 원문 보존 (합성 비교용)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tip-box success">
+        <strong>🔑 이후 분기</strong>
+        <code>select_after_scenario_answer</code> 라우팅 함수가 판단합니다:
+        <ul>
+          <li>FAQ 답변(<code>answer_source == "faq_match"</code>) → <code>compose_answer</code> (상담체 재구성)</li>
+          <li>시나리오 버튼 종단답변 → <code>final_formatter</code> (원문 그대로 최종)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="flow-arrow">▼</div>
+
+  <div class="node-card rag">
+    <div class="node-header">
+      <span class="node-name">rag3x_answer</span>
+      <span class="badge badge-purple">RAG 서브그래프</span>
+      <span class="node-desc">→ RAG 서브그래프 호출 / TTL 캐시 · 동시요청 락</span>
+    </div>
+    <div class="node-body">
+      <p>FAQ로 답할 수 없는 질문을 <strong>내부 문서에서 검색하여 답변을 생성</strong>합니다.</p>
+      <ul>
+        <li><code>SubgraphRagAdapter.ask()</code>를 통해 RAG 서브그래프를 실행</li>
+        <li><strong>TTL 캐시</strong>: 같은 질문이 다시 오면 저장된 결과를 즉시 반환 (기본 1시간)</li>
+        <li><strong>동시요청 락</strong>: 한 번에 하나의 RAG 질문만 처리 (Lock 기반). 다른 요청이 오면 429 반환</li>
+        <li>SSE writer를 콜백으로 넘겨 서브그래프 내부 진행상황도 스트리밍</li>
+      </ul>
+      <p>→ <strong>RAG 서브그래프 상세 분석은 <a href="#ragsub" style="color:var(--accent);">아래 섹션</a>에서</strong></p>
+    </div>
+  </div>
+
+  <div class="flow-arrow">▼</div>
+
+  <div class="node-card routing">
+    <div class="node-header">
+      <span class="node-name">rag_result_evaluator</span>
+      <span class="badge" style="background:rgba(148,163,184,0.15);color:#94a3b8;border:1px solid rgba(148,163,184,0.3);">분기 판정</span>
+      <span class="node-desc">채택 / 웹검색 / 보류</span>
+    </div>
+    <div class="node-body">
+      <p>RAG 결과를 평가하여 3가지 경로로 분기합니다:</p>
+      <table>
+        <tr><th>판정</th><th>조건</th><th>다음 경로</th></tr>
+        <tr><td><span class="kw-green">답변 채택</span></td><td>답변이 있고 path ≠ "none"</td><td><code>compose_answer</code></td></tr>
+        <tr><td><span class="kw-yellow">웹검색</span></td><td>답변 없음 + 웹검색 ON</td><td><code>web_search_answer</code></td></tr>
+        <tr><td><span class="kw-red">보류</span></td><td>답변 없음 + 웹검색 OFF</td><td><code>final_formatter</code> (보류 안내)</td></tr>
+      </table>
+      <p>저신뢰 답변(confidence가 low/abstain)은 <strong>폐기하지 않고 경고 문구를 덧붙여 제시</strong>합니다.</p>
+    </div>
+  </div>
+
+  <div class="flow-arrow">▼</div>
+
+  <div class="node-card llm">
+    <div class="node-header">
+      <span class="node-name">web_search_answer</span>
+      <span class="badge badge-yellow">LLM 1~2회</span>
+      <span class="node-desc">마지막 보루 웹검색</span>
+    </div>
+    <div class="node-body">
+      <p>내부 자료로 답할 수 없는 질문을 <strong>Gemini Grounding(Google 검색)</strong>으로 보완합니다.</p>
+      <h4>진입점 2곳</h4>
+      <ol>
+        <li><strong>rag_result_evaluator</strong> — RAG가 답변 자체를 못 만든 경우</li>
+        <li><strong>answer_grader</strong> — 답변은 나왔지만 UNRESOLVED 판정</li>
+      </ol>
+      <h4>도메인 게이트</h4>
+      <p>웹검색 전에 LLM 1회로 "이 질문이 상담봇 범위인가?"를 판정합니다. 잡담·타분야 질문은 웹에서 답하지 않습니다.</p>
+      <ul>
+        <li><code>IN_DOMAIN</code> → Gemini Grounding 호출</li>
+        <li><code>OUT_OF_DOMAIN</code> / 판정불가 → 직전 답변으로 되돌아가거나 보류</li>
+      </ul>
+      <h4>비용 관리</h4>
+      <ul>
+        <li>검색 1회당 과금 ($0.014/회)</li>
+        <li>하루 상한(기본 100회) 초과 시 자동 차단</li>
+        <li>근거 출처 없는 답변(모델 내부지식만)은 채택하지 않음</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Stage 5: 답변 후처리 ===== -->
+<section class="section" id="stage5">
+  <h2 class="section-title">⑤ 답변 후처리 단계 <span class="badge badge-yellow">품질 보증</span></h2>
+
+  <div class="node-card llm">
+    <div class="node-header">
+      <span class="node-name">compose_answer</span>
+      <span class="badge badge-yellow">LLM 1회</span>
+      <span class="node-desc">근거 종합 · 상담체 재구성 + 숫자 대조 환각가드</span>
+    </div>
+    <div class="node-body">
+      <p>FAQ 원문 또는 RAG 초안을 <strong>자연스러운 상담 대화체로 재구성</strong>합니다.</p>
+      <div class="grid-2">
+        <div class="card" style="margin:0;">
+          <h4>FAQ 합성 (<code>composer_faq.md</code>)</h4>
+          <ul>
+            <li>검증된 모범답변을 상담체로 풀어 씀</li>
+            <li>사실·수치·연락처 하나도 빠뜨리지 않고 유지</li>
+            <li>원문에 없는 내용 추가 금지</li>
+          </ul>
+        </div>
+        <div class="card" style="margin:0;">
+          <h4>RAG 합성 (<code>composer_rag.md</code>)</h4>
+          <ul>
+            <li>여러 근거를 종합해 하나의 답변 작성</li>
+            <li><code>[p53]</code> 형식의 출처 표기 포함</li>
+            <li>근거에 없는 수치 생성 금지</li>
+          </ul>
+        </div>
+      </div>
+      <h4>환각 가드 (LLM 0회, 결정론 대조)</h4>
+      <p>합성문에 <strong>근거에 없는 숫자/코드</strong>가 새로 생겼는지 <code>check_claims_supported()</code>로 대조합니다. 근거 밖 수치가 발견되면 <strong>합성을 폐기하고 원문을 유지</strong>합니다.</p>
+      <p>RAG 경로에서는 <code>[p53]</code> 출처 표기를 실제 근거 페이지와 대조하여 없는 쪽번호 표기를 제거합니다.</p>
+    </div>
+  </div>
+
+  <div class="flow-arrow">▼</div>
+
+  <div class="node-card llm">
+    <div class="node-header">
+      <span class="node-name">answer_grader</span>
+      <span class="badge badge-yellow">LLM 1회</span>
+      <span class="node-desc">RESOLVED / UNRESOLVED 판정</span>
+    </div>
+    <div class="node-body">
+      <p>답변이 질문을 <strong>실질적으로 해결했는지</strong> LLM 1회로 판정합니다.</p>
+
+      <table>
+        <tr><th>판정</th><th>의미</th><th>후속 동작</th></tr>
+        <tr>
+          <td><span class="kw-green">RESOLVED</span></td>
+          <td>질문의 핵심 정보를 구체적으로 제공함</td>
+          <td>→ <code>final_formatter</code></td>
+        </tr>
+        <tr>
+          <td><span class="kw-red">UNRESOLVED</span></td>
+          <td>핵심 정보 누락 / "확인 불가" 류 회피</td>
+          <td>경로에 따라 다름 ↓</td>
+        </tr>
+      </table>
+
+      <h4>UNRESOLVED 후속 동작</h4>
+      <ul>
+        <li><strong>FAQ 경로 + 예산 남음</strong>: → <code>rag3x_answer</code> 에스컬레이션 (1회 제한)</li>
+        <li><strong>RAG 경로 + 웹검색 ON</strong>: → <code>web_search_answer</code></li>
+        <li><strong>그 외</strong>: 경고 문구만 덧붙이고 → <code>final_formatter</code></li>
+      </ul>
+
+      <div class="tip-box danger">
+        <strong>⟲ 에스컬레이션 사이클 (FAQ 경로만 · 1회)</strong>
+        FAQ 모범답변이 UNRESOLVED일 때, 같은 질문을 RAG로 다시 시도합니다.
+        <code>escalate_budget</code>를 0으로 소진하여 <strong>최대 1회</strong>만 허용됩니다.
+      </div>
+    </div>
+  </div>
+
+  <div class="flow-arrow">▼</div>
+
+  <div class="node-card deterministic">
+    <div class="node-header">
+      <span class="node-name">final_formatter</span>
+      <span class="badge badge-blue">LLM 0회</span>
+      <span class="node-desc">응답 조립 + AIMessage 적재</span>
+    </div>
+    <div class="node-body">
+      <p>모든 경로의 결과를 <strong>최종 응답으로 조립</strong>하는 마지막 노드입니다.</p>
+      <h4>경로별 처리</h4>
+      <ul>
+        <li><strong>scenario/faq</strong>: 합성 답변이 있으면 교체, 없으면 원문 유지</li>
+        <li><strong>rag3x</strong>: RAG 결과에서 답변·근거·검증 정보 추출</li>
+        <li><strong>web_search</strong>: 웹 답변 + 출처 + 경고 문구 조립</li>
+        <li><strong>abstain</strong>: 보류 안내 메시지 ("담당 선생님께 문의하세요")</li>
+      </ul>
+      <h4>공통 처리</h4>
+      <ul>
+        <li><code>AIMessage(content=answer)</code>를 <code>messages</code>에 추가 (대화 메모리)</li>
+        <li>전체 소요 시간(<code>total_s</code>) 기록</li>
+        <li>LangSmith에 최종 메타데이터 첨부</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RAG 서브그래프 ===== -->
+<section class="section" id="ragsub">
+  <h2 class="section-title">🟣 RAG 서브그래프 상세 <span class="badge badge-purple">10개 노드</span></h2>
+
+  <div class="card">
+    <div class="card-title">
+      <span class="icon" style="background:rgba(139,92,246,0.2); color:var(--purple);">🧩</span>
+      RagState — 서브그래프 전용 상태
+    </div>
+    <p>RAG 서브그래프는 <code>RagState</code> TypedDict를 사용합니다. 체크포인터 없이 단발 실행됩니다.</p>
+    <table>
+      <tr><th>필드</th><th>타입</th><th>역할</th></tr>
+      <tr><td><code>question</code></td><td>str</td><td>원본 또는 재작성된 질문</td></tr>
+      <tr><td><code>retrieval</code></td><td>dict</td><td>검색 결과 (페이지, 점수, 경로)</td></tr>
+      <tr><td><code>graded_pages</code></td><td>list</td><td>등급 판정 통과 페이지</td></tr>
+      <tr><td><code>budgeted_pages</code></td><td>list</td><td>예산 배분 후 실제 컨텍스트</td></tr>
+      <tr><td><code>answer</code></td><td>dict</td><td>생성된 답변</td></tr>
+      <tr><td><code>verify</code></td><td>dict</td><td>검증 결과</td></tr>
+      <tr><td><code>crag_budget</code></td><td>int</td><td>CRAG 재검색 예산 (1)</td></tr>
+      <tr><td><code>deadline_ts</code></td><td>float</td><td>타임아웃 시각 (240초)</td></tr>
+      <tr><td><code>result</code></td><td>dict</td><td>최종 출력 (ask() 동일 스키마)</td></tr>
+    </table>
+  </div>
+
+  <h3>RAG 서브그래프 흐름도</h3>
+  <div class="diagram-box">
+        ┌──────────┐
+        │ prepare  │ 질문·예산·deadline 초기화
+        └────┬─────┘
+             ▼
+     ┌───────────────┐
+     │   retrieve    │ 임베딩→청크검색→리랭킹 (top 6)
+     └───────┬───────┘
+             ▼
+     ┌────────────────┐
+     │ after_retrieve │ ← 라우팅 함수
+     └──┬────┬────┬───┘
+        │    │    │
+  경계점수  근거없음  근거있음
+        │    │    │
+        ▼    ▼    ▼
+  ┌──────────┐  │  ┌─────────────────┐
+  │crag_rewrite│  │  │ grade_evidence ★│ 근거 3등급 판정
+  └──────┬───┘  │  └────────┬────────┘
+         │      │           ▼
+  ⟲ retrieve  │  ┌─────────────────┐
+  (1회 제한)   │  │  after_grade    │ ← 라우팅 함수
+               │  └──┬──────┬──┬───┘
+               │     │      │  │
+             근거없음 전부무관  남음
+               │     │      │
+               ▼     ▼      ▼
+            finalize  crag  ┌──────────────┐
+                            │  answer_node │ 등급별 예산 배분 후 답변
+                            └──────┬───────┘
+                                   ▼
+                            ┌──────────────┐
+                            │  verify_node │ 근거 정합성·숫자 대조
+                            └──────┬───────┘
+                                   ▼
+                            ┌──────────────┐
+                            │ after_verify │ ← 라우팅 함수
+                            └──┬──┬──┬──┬──┘
+                               A  B  C  정상
+                               │  │  │   │
+                               ▼  ▼  ▼   ▼
+                         rollback  │  │  finalize → END
+                         _top1  _vision  _ocr
+                            │     │     │
+                            └─────┴─────┘
+                                  ▼
+                              finalize → END
+  </div>
+
+  <details>
+    <summary>🔍 prepare — 초기화</summary>
+    <div>
+      <p>시작 시각, 데드라인(240초), CRAG 예산(1), 롤백 예산(각 1)을 설정합니다.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>🔍 retrieve — 임베딩 → 청크검색 → 리랭킹</summary>
+    <div>
+      <p>질문을 임베딩하여 ChromaDB/Flat Index에서 관련 청크를 검색하고, BGE 리랭커로 상위 6개 페이지를 선별합니다.</p>
+      <h4>CRAG 재검색 안전가드</h4>
+      <p>재작성 질문으로 다시 검색했을 때, 결과가 더 나쁘면(top score 하락 또는 path=="none") <strong>원본 검색 결과를 유지</strong>합니다.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>⭐ grade_evidence — 근거 3등급 판정 (2026-07-27 신설)</summary>
+    <div>
+      <h4>왜 필요한가?</h4>
+      <p>검색 랭킹만으로는 "AP 설치"라는 표현이 겹친다는 이유로 장애조치표를 1순위로 올리는 실패를 잡을 수 없습니다. 의미 판정만이 유효합니다.</p>
+
+      <h4>3등급 판정</h4>
+      <table>
+        <tr><th>등급</th><th>기준</th><th>컨텍스트 예산</th></tr>
+        <tr><td><span class="kw-green">primary</span></td><td>이 근거만으로 답할 수 있음</td><td>페이지 전문 (최대 4000자)</td></tr>
+        <tr><td><span class="kw-yellow">supporting</span></td><td>주제는 맞으나 핵심은 없음</td><td>매칭 청크만 축약 (최대 800자/페이지)</td></tr>
+        <tr><td><span class="kw-red">irrelevant</span></td><td>질문과 다른 주제</td><td>제외</td></tr>
+      </table>
+
+      <h4>예산 배분 핵심</h4>
+      <p>supporting 총예산 = primary 분량의 50% (절대 상한 2000자). 정답 근거가 배경 설명에 묻히지 않게 하는 핵심 장치입니다.</p>
+      <p>primary가 0개여도 버리지 않고 최상위 supporting을 승격합니다 (그레이딩 오판 안전장치).</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>🔍 crag_rewrite — CRAG 질의 재작성 (사이클 1회)</summary>
+    <div>
+      <p>근거를 찾지 못했을 때 질문을 다르게 써서 다시 검색합니다. <code>crag_budget</code>를 0으로 소진하여 최대 1회만 실행됩니다. 이것이 서브그래프의 유일한 사이클입니다.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>🔍 answer_node — 답변 생성</summary>
+    <div>
+      <p>등급 통과 페이지(<code>budgeted_pages</code>)를 컨텍스트로 LLM에 답변 생성을 요청합니다.</p>
+      <ul>
+        <li><strong>text 경로</strong>: 페이지 텍스트 기반 답변 (<code>answer_text_from_pages_x</code>)</li>
+        <li><strong>vision 경로</strong>: 1순위 페이지가 figure(표/도표)이면 이미지 직접 분석 (<code>answer_vision_from_page</code>)</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>🔍 verify_node — 근거 정합성 검증</summary>
+    <div>
+      <p>생성된 답변이 근거와 일치하는지 검증합니다:</p>
+      <ul>
+        <li><code>unsupported_claims</code> — 근거에 없는 숫자/코드가 답변에 있는가?</li>
+        <li><code>abstain</code> — "확인할 수 없습니다" 류의 회피 답변인가?</li>
+        <li><code>transcription_ocr_mismatch</code> — vision 경로에서 전사와 OCR이 불일치하는가?</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>🔍 rollback A/B/C — 롤백 복구 전략</summary>
+    <div>
+      <table>
+        <tr><th>롤백</th><th>트리거</th><th>전략</th></tr>
+        <tr><td><span class="kw-green">A: rollback_top1</span></td><td>text 회피 + top ≥ 0.5</td><td>등급 통과 1순위 페이지만으로 재생성</td></tr>
+        <tr><td><span class="kw-yellow">B: rollback_vision</span></td><td>숫자 미지원 + 스캔본</td><td>text → vision 교차확인</td></tr>
+        <tr><td><span class="kw-red">C: rollback_ocr</span></td><td>전사 ≠ OCR</td><td>vision → 텍스트 재구성</td></tr>
+      </table>
+      <p>각 롤백은 단발 실행 후 <code>finalize</code>로 빠집니다 (루프 없음).</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>🔍 finalize — 결과 정리 및 출력</summary>
+    <div>
+      <p>근거 해석, 이미지 사본, 메트릭 정규화를 수행하고 <code>result</code> dict를 생성합니다. 이 dict가 메인그래프의 <code>rag_result</code>로 전달됩니다.</p>
+    </div>
+  </details>
+</section>
+
+<!-- ===== 전체 흐름 ===== -->
+<section class="section" id="fullflow">
+  <h2 class="section-title">🔄 전체 흐름 통합 분석 <span class="badge badge-green">End-to-End</span></h2>
+
+  <h3>경로별 E2E 시나리오</h3>
+
+  <details>
+    <summary>🟢 경로 1: 버튼 입력 (시나리오 트리) — 가장 빠른 경로</summary>
+    <div>
+      <pre>
+사용자: [장애신고] 버튼 클릭
+    ▼
+normalize_input → input_type="action", 검증
+    ▼
+load_or_update_session → 시나리오 상태 유지
+    ▼
+select_input_kind → "action"
+    ▼
+scenario_action_handler → tree.resolve_option() → 다음 노드로 이동
+    ▼
+route_decider → route="scenario"
+    ▼
+scenario_answer → node.answer_text (저장된 답변) + 다음 선택지 버튼
+    ▼
+select_after_scenario_answer → "final_formatter" (시나리오는 합성 안 함)
+    ▼
+final_formatter → 응답 조립 + AIMessage 적재
+    ▼
+END
+
+⏱ LLM 호출: 0회 | 예상 소요: < 100ms</pre>
+    </div>
+  </details>
+
+  <details>
+    <summary>🔵 경로 2: FAQ 정확 매칭 — 결정론 고속 경로</summary>
+    <div>
+      <pre>
+사용자: "스쿨넷에 로그인이 안 돼요"
+    ▼
+normalize_input → 정규화 + HumanMessage 적재
+    ▼
+load_or_update_session → 시나리오 상태 중단
+    ▼
+select_input_kind → "text"
+    ▼
+contextualize_query → 첫 질문이므로 pass-through
+    ▼
+scenario_matcher → exact match 또는 accept (유사도 ≥ 0.80, 여유 ≥ 0.30)
+    ▼
+route_decider → route="faq"
+    ▼
+scenario_answer → FAQ 모범답변 원문 반환
+    ▼
+select_after_scenario_answer → "compose_answer" (FAQ는 합성 경로)
+    ▼
+compose_answer → 상담체로 재구성 (LLM 1회) + 환각 가드
+    ▼
+answer_grader → RESOLVED/UNRESOLVED 판정 (LLM 1회)
+    ▼ (RESOLVED)
+final_formatter → 합성 답변 채택 + AIMessage 적재
+    ▼
+END
+
+⏱ LLM 호출: 2회 | 예상 소요: 2~5초</pre>
+    </div>
+  </details>
+
+  <details>
+    <summary>🟡 경로 3: 되묻기 (HITL) — 애매한 질문</summary>
+    <div>
+      <pre>
+사용자: "학교에서 새로운 AP를 설치하고 싶어"
+    ▼
+... (normalize → contextualize → scenario_matcher)
+    ▼
+scenario_matcher → reject_ambiguous (best=0.942, second=0.889)
+    ▼
+route_decider → route="clarify"
+    ▼
+clarify_node → interrupt() ← 실행 일시정지!
+    ▼
+[프론트엔드에 후보 2개 표시]
+"1. 무선 AP 설치 신청 절차가 궁금하신가요?"
+"2. 스쿨넷 장비 등록 방법이 궁금하신가요?"
+"3. 해당없음"
+    ▼
+사용자: 1번 선택 → Command(resume={"choice": "faq_id_123"})
+    ▼
+clarify_node 재개 → route="faq", goto="scenario_answer"
+    ▼
+scenario_answer → 선택된 FAQ 답변 반환
+    ▼
+compose_answer → answer_grader → final_formatter → END</pre>
+    </div>
+  </details>
+
+  <details>
+    <summary>🟣 경로 4: RAG 풀 파이프라인 — 가장 무거운 경로</summary>
+    <div>
+      <pre>
+사용자: "VLAN 설정에서 트렁크 포트와 액세스 포트의 차이가 뭐야?"
+    ▼
+... (normalize → contextualize → scenario_matcher)
+    ▼
+scenario_matcher → reject_low_score (유사한 FAQ 없음)
+    ▼
+route_decider → route="rag3x"
+    ▼
+rag3x_answer → SubgraphRagAdapter.ask()
+    │
+    │  ┌─── RAG 서브그래프 ───────────────────────┐
+    │  │ prepare → 예산/deadline 초기화           │
+    │  │    ▼                                     │
+    │  │ retrieve → 임베딩 검색 → 리랭킹          │
+    │  │    ▼                                     │
+    │  │ grade_evidence → 3등급 판정              │
+    │  │    ▼                                     │
+    │  │ answer_node → 예산 배분 + 답변 생성      │
+    │  │    ▼                                     │
+    │  │ verify_node → 근거 검증                  │
+    │  │    ▼                                     │
+    │  │ finalize → 결과 정리                     │
+    │  └──────────────────────────────────────────┘
+    ▼
+rag_result_evaluator → route="rag3x" (답변 채택)
+    ▼
+compose_answer → 근거 종합 답변 재구성 (LLM 1회)
+    ▼
+answer_grader → RESOLVED 판정 (LLM 1회)
+    ▼
+final_formatter → 최종 답변 + 근거 이미지 + AIMessage 적재
+    ▼
+END
+
+⏱ LLM 호출: 4~7회 | 예상 소요: 10~60초</pre>
+    </div>
+  </details>
+
+  <details>
+    <summary>🔴 경로 5: 에스컬레이션 + 웹검색 — 최대 폴백</summary>
+    <div>
+      <pre>
+사용자: "우리 학교 와이파이가 갑자기 안 터지는데 SK브로드밴드에서 뭘 해야 하나요?"
+    ▼
+... (FAQ 매칭 성공했지만 모범답변이 해당 ISP 정보를 안 다룸)
+    ▼
+answer_grader → UNRESOLVED + escalate_budget > 0
+    ▼
+⟲ rag3x_answer (에스컬레이션 — 같은 질문으로 RAG 시도)
+    ▼
+rag_result_evaluator → RAG도 답변 못 함 → route="web_search"
+    ▼
+web_search_answer
+    ├─ 도메인 게이트: IN_DOMAIN ✓
+    └─ Gemini Grounding → 웹에서 답변 + 출처 확보
+    ▼
+final_formatter → 웹 답변 + 경고("웹 검색 결과 기반") + 출처 링크
+    ▼
+END
+
+⏱ LLM 호출: 6~10회 | 예상 소요: 30~120초</pre>
+    </div>
+  </details>
+
+  <h3>대화 메모리 동작</h3>
+  <div class="card">
+    <table>
+      <tr><th>시점</th><th>동작</th><th>코드 위치</th></tr>
+      <tr><td>턴 시작</td><td><code>HumanMessage(content=raw)</code> 추가</td><td><code>normalize_input</code></td></tr>
+      <tr><td>턴 종료</td><td><code>AIMessage(content=answer)</code> 추가</td><td><code>final_formatter</code></td></tr>
+      <tr><td>후속 질문</td><td>이전 이력 2000자를 LLM에 전달하여 독립 질문 재작성</td><td><code>contextualize_query</code></td></tr>
+      <tr><td>리셋</td><td>epoch 증가 → 새 체크포인터 스레드 → 이력 초기화</td><td><code>/api/reset</code></td></tr>
+    </table>
+    <p><code>InMemorySaver</code>가 <code>thread_id = session:epoch</code> 단위로 상태를 보존합니다. 새로고침/reset 시 epoch만 올려 이전 대화를 "잊습니다".</p>
+  </div>
+
+  <h3>SSE 스트리밍 동작</h3>
+  <div class="card">
+    <p><code>/api/chat/stream</code> 엔드포인트는 <code>graph.stream()</code>을 사용하여 실시간 진행상황을 전송합니다:</p>
+    <table>
+      <tr><th>이벤트</th><th>데이터</th><th>의미</th></tr>
+      <tr><td><code>progress</code></td><td><code>{"stage": "retrieve", "msg": "검색 중..."}</code></td><td>노드 내부 진행상황</td></tr>
+      <tr><td><code>node</code></td><td><code>{"node": "scenario_matcher"}</code></td><td>노드 완료 알림</td></tr>
+      <tr><td><code>clarify</code></td><td><code>{"candidates": [...]}</code></td><td>HITL 되묻기</td></tr>
+      <tr><td><code>final</code></td><td>ChatResponse 전체</td><td>최종 응답</td></tr>
+      <tr><td><code>error</code></td><td><code>{"detail": "...", "status": 500}</code></td><td>오류</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 데이터/설정 ===== -->
+<section class="section" id="data">
+  <h2 class="section-title">📂 데이터 및 설정 <span class="badge badge-green">Configuration</span></h2>
+
+  <h3>핵심 데이터 파일</h3>
+  <table>
+    <tr><th>파일</th><th>크기</th><th>내용</th></tr>
+    <tr><td><code>data/faq.json</code></td><td>~200KB</td><td>모범 질답 236건 (질문, 답변, 시트, 행번호, 장애유형 등)</td></tr>
+    <tr><td><code>data/scenarios.json</code></td><td>~19KB</td><td>시나리오 트리 구조 (노드, 선택지, 종단답변)</td></tr>
+    <tr><td><code>data/faq_embeddings.json</code></td><td>~2.4MB</td><td>FAQ 236건의 사전 계산된 임베딩 벡터</td></tr>
+    <tr><td><code>data/faq_doc_links.json</code></td><td>~47KB</td><td>FAQ ↔ 근거 문서 페이지 매핑</td></tr>
+  </table>
+
+  <h3>주요 환경변수 (.env)</h3>
+  <details>
+    <summary>📋 전체 환경변수 목록</summary>
+    <div>
+      <table>
+        <tr><th>변수</th><th>기본값</th><th>설명</th></tr>
+        <tr><td><code>RAG_BACKEND</code></td><td>gemini</td><td>LLM 백엔드 (gemini/ollama)</td></tr>
+        <tr><td><code>SCENARIO_MATCH_BACKEND</code></td><td>semantic</td><td>매칭 방식 (semantic/fuzz)</td></tr>
+        <tr><td><code>SCENARIO_MATCH_THRESHOLD</code></td><td>0.80</td><td>FAQ 자동채택 임계</td></tr>
+        <tr><td><code>SCENARIO_MATCH_MARGIN</code></td><td>0.30</td><td>1·2위 점수 차 최소 여유</td></tr>
+        <tr><td><code>CLARIFY_ENABLED</code></td><td>true</td><td>되묻기(HITL) 활성화</td></tr>
+        <tr><td><code>CLARIFY_MIN_SCORE</code></td><td>0.80</td><td>되묻기 진입 하한 점수</td></tr>
+        <tr><td><code>COMPOSER_RAG_ENABLED</code></td><td>true</td><td>RAG 답변 합성</td></tr>
+        <tr><td><code>COMPOSER_FAQ_ENABLED</code></td><td>true</td><td>FAQ 답변 합성</td></tr>
+        <tr><td><code>CONTEXTUALIZE_ENABLED</code></td><td>true</td><td>후속질문 재작성</td></tr>
+        <tr><td><code>GRADER_ENABLED</code></td><td>true</td><td>답변 해결도 판정</td></tr>
+        <tr><td><code>RAG_CACHE_TTL_S</code></td><td>3600</td><td>RAG 캐시 TTL (초)</td></tr>
+        <tr><td><code>WEB_SEARCH_ENABLED</code></td><td>false</td><td>웹검색 활성화</td></tr>
+        <tr><td><code>WEB_SEARCH_SCOPE</code></td><td>in_domain_unresolved</td><td>범위 (도메인 게이트 ON/OFF)</td></tr>
+        <tr><td><code>WEB_SEARCH_DAILY_BUDGET</code></td><td>100</td><td>하루 최대 웹검색 횟수</td></tr>
+        <tr><td><code>DEMO_PORT</code></td><td>8002</td><td>서버 포트</td></tr>
+        <tr><td><code>GEMINI_API_KEY</code></td><td>(없음)</td><td>Gemini API 키</td></tr>
+        <tr><td><code>LANGSMITH_TRACING</code></td><td>false</td><td>LangSmith 추적</td></tr>
+      </table>
+    </div>
+  </details>
+
+  <h3>프롬프트 템플릿 시스템</h3>
+  <div class="card">
+    <p><code>PromptLoader</code>는 <code>prompts/*.md</code> 파일을 <code>string.Template</code>으로 로드합니다.</p>
+    <ul>
+      <li><strong>핫리로드</strong>: 파일의 mtime을 캐시하여, 파일이 바뀌면 서버 재시작 없이 즉시 반영</li>
+      <li><strong>안전 치환</strong>: <code>safe_substitute()</code>를 사용하여 누락 변수는 원문(<code>$var</code>)으로 남김</li>
+      <li><strong>주석 제거</strong>: <code>&lt;!-- ... --&gt;</code> 형태의 HTML 주석은 렌더 시 자동 제거</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 프론트엔드 ===== -->
+<section class="section" id="frontend">
+  <h2 class="section-title">🖥️ 프론트엔드 (웹 UI) <span class="badge badge-blue">SPA</span></h2>
+
+  <div class="card">
+    <p>프론트엔드는 <code>static/</code> 폴더에 있는 단일 페이지 애플리케이션(SPA)입니다:</p>
+    <ul>
+      <li><code>index.html</code> — 기본 HTML 구조</li>
+      <li><code>styles.css</code> — 채팅 UI 스타일</li>
+      <li><code>app.js</code> — 채팅 로직, SSE 처리, 버튼/되묻기 렌더링</li>
+    </ul>
+    <h4>주요 기능</h4>
+    <ul>
+      <li><strong>SSE 스트리밍</strong>: <code>/api/chat/stream</code>에 접속하여 실시간 진행상황 표시</li>
+      <li><strong>시나리오 버튼</strong>: 서버에서 받은 <code>options</code> 배열을 동적 버튼으로 렌더링</li>
+      <li><strong>되묻기 UI</strong>: <code>clarify</code> 이벤트 수신 시 후보 선택 버튼 표시</li>
+      <li><strong>근거 이미지</strong>: <code>evidence[].image_url</code>을 클릭 가능한 이미지로 렌더링</li>
+      <li><strong>경고 배너</strong>: <code>warnings</code> 배열을 경고 박스로 표시</li>
+      <li><strong>피드백</strong>: 👍/👎 버튼 → <code>/api/feedback</code> → LangSmith 기록</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 모바일앱 ===== -->
+<section class="section" id="mobileapp">
+  <h2 class="section-title">📱 모바일 앱 (Flutter) <span class="badge badge-green">Cross-Platform</span></h2>
+
+  <div class="card">
+    <p><code>mobile_app/</code>은 Flutter(Dart)로 만든 크로스플랫폼 모바일 클라이언트입니다.</p>
+    <div class="file-tree">
+<span class="dir">mobile_app/</span>
+├── <span class="dir">lib/</span>
+│   ├── <span class="highlight">main.dart</span>           <span class="file"># 앱 진입점</span>
+│   ├── <span class="dir">config/</span>              <span class="file"># API URL 등 설정</span>
+│   ├── <span class="dir">models/</span>              <span class="file"># 데이터 모델</span>
+│   ├── <span class="dir">screens/</span>             <span class="file"># 화면 위젯</span>
+│   ├── <span class="dir">services/</span>            <span class="file"># API 호출 서비스</span>
+│   └── <span class="dir">widgets/</span>             <span class="file"># 재사용 위젯</span>
+├── <span class="dir">android/</span>
+├── <span class="dir">ios/</span>
+└── pubspec.yaml
+    </div>
+    <h4>백엔드 연동</h4>
+    <p>모바일 앱은 <code>chatbot_demo_v2</code>의 REST API(<code>/api/chat</code>, <code>/api/chat/stream</code> 등)를 HTTP로 호출합니다. 
+    현재 <code>config/</code>에 API URL이 하드코딩되어 있어, Docker 통합 시 환경변수로 교체해야 합니다.</p>
+  </div>
+</section>
+
+<!-- ===== Docker 통합 가이드 ===== -->
+<section class="section" id="docker">
+  <h2 class="section-title">🐳 Docker 통합 및 독립 프로토타입 가이드 <span class="badge badge-red">최종 목표</span></h2>
+
+  <div class="card">
+    <div class="card-title">
+      <span class="icon" style="background:rgba(239,68,68,0.2); color:var(--red);">🎯</span>
+      통합 전략 개요
+    </div>
+    <p>현재 <code>chatbot_demo_v2</code>(백엔드)와 <code>mobile_app</code>(프론트)가 분리되어 있습니다.
+    Docker Compose로 통합하여 단일 명령(<code>docker compose up</code>)으로 전체 시스템을 실행하는 것이 목표입니다.</p>
+  </div>
+
+  <h3>Step 1: 서비스 분리 계획</h3>
+  <div class="card">
+    <table>
+      <tr><th>서비스</th><th>역할</th><th>이미지 베이스</th><th>포트</th></tr>
+      <tr><td><code>backend</code></td><td>chatbot_demo_v2 (FastAPI)</td><td><code>python:3.11-slim</code></td><td>8002</td></tr>
+      <tr><td><code>ollama</code></td><td>임베딩 + 리랭킹</td><td><code>ollama/ollama</code></td><td>11434</td></tr>
+      <tr><td><code>mobile-web</code></td><td>Flutter Web 빌드</td><td><code>nginx:alpine</code></td><td>80</td></tr>
+    </table>
+  </div>
+
+  <h3>Step 2: 주요 고려사항</h3>
+  <div class="grid-2">
+    <div class="card">
+      <h4>🔑 API 키 관리</h4>
+      <ul>
+        <li><code>GEMINI_API_KEY</code>는 Docker Compose의 <code>env_file</code> 또는 secrets로 주입</li>
+        <li>이미지에 API 키를 포함하지 말 것</li>
+        <li>웹검색 전용 키(<code>WEB_SEARCH_GEMINI_API_KEY</code>)가 별도면 분리 주입</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>📁 볼륨 마운트</h4>
+      <ul>
+        <li><code>ragcore/</code> — Vendored RAG 엔진 (빌드 시 COPY)</li>
+        <li><code>data/</code> — FAQ/시나리오/임베딩 (빌드 시 COPY)</li>
+        <li><code>ragdata/</code> — 인덱스/파싱 캐시 (볼륨 마운트)</li>
+        <li><code>runtime/evidence/</code> — 근거 이미지 사본 (볼륨 마운트)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>🌐 네트워크</h4>
+      <ul>
+        <li>Ollama는 내부 네트워크에서만 접근</li>
+        <li>backend → ollama는 <code>http://ollama:11434</code>로 통신</li>
+        <li>mobile-web → backend는 <code>http://backend:8002</code>로 통신</li>
+        <li>외부 노출: mobile-web의 80번 포트만</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>⚙️ ragcore 경로 조정</h4>
+      <ul>
+        <li><code>RAGCORE_ROOT</code>를 컨테이너 내부 경로로 설정</li>
+        <li><code>RAGCORE_CONFIG</code>의 <code>config.yaml</code> 내부 경로도 조정</li>
+        <li><code>sys.path</code> 삽입이 컨테이너 환경에서 동작하는지 확인</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Step 3: Dockerfile 예시 (Backend)</h3>
+  <pre>
+# chatbot_demo_v2/Dockerfile
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# 시스템 패키지 (빌드 도구, OCR 등)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential git && rm -rf /var/lib/apt/lists/*
+
+# Python 의존성
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# 앱 코드 + vendored ragcore + 데이터
+COPY . .
+
+# 환경변수 기본값
+ENV RAGCORE_ROOT=/app/ragcore
+ENV RAGCORE_CONFIG=/app/ragcore/rag3/config.yaml
+ENV DEMO_PORT=8002
+ENV DEMO_DATA_DIR=/app/data
+ENV DEMO_STATIC_DIR=/app/static
+ENV PROMPTS_DIR=/app/prompts
+
+EXPOSE 8002
+
+CMD ["python", "-m", "chatbot_demo_v2"]</pre>
+
+  <h3>Step 4: docker-compose.yml 예시</h3>
+  <pre>
+version: '3.8'
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]  # GPU 있으면
+
+  backend:
+    build:
+      context: ./chatbot_demo_v2
+    ports:
+      - "8002:8002"
+    env_file:
+      - .env
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+      - RAG_BACKEND=gemini
+    volumes:
+      - ./chatbot_demo_v2/ragdata:/app/ragdata
+      - evidence_data:/app/runtime/evidence
+    depends_on:
+      - ollama
+
+  # Flutter Web 빌드 서빙 (선택)
+  mobile-web:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./mobile_app/build/web:/usr/share/nginx/html:ro
+    depends_on:
+      - backend
+
+volumes:
+  ollama_data:
+  evidence_data:</pre>
+
+  <h3>Step 5: 독립 프로토타입 체크리스트</h3>
+  <div class="card">
+    <table>
+      <tr><th>단계</th><th>작업</th><th>확인사항</th></tr>
+      <tr><td>1</td><td>Backend Dockerfile 작성</td><td>ragcore 임포트, config.yaml 경로 정상</td></tr>
+      <tr><td>2</td><td>docker-compose.yml 작성</td><td>ollama + backend 서비스 통신</td></tr>
+      <tr><td>3</td><td>.env 파일 준비</td><td>GEMINI_API_KEY, 각종 토글</td></tr>
+      <tr><td>4</td><td>Ollama 모델 pull</td><td>임베딩/리랭커 모델 사전 다운로드</td></tr>
+      <tr><td>5</td><td>ragdata 볼륨 준비</td><td>인덱스/파싱 캐시 복사</td></tr>
+      <tr><td>6</td><td><code>docker compose up</code></td><td>서비스 시작 + 헬스체크</td></tr>
+      <tr><td>7</td><td>API 테스트</td><td><code>curl http://localhost:8002/api/health</code></td></tr>
+      <tr><td>8</td><td>Flutter Web 빌드 (선택)</td><td><code>flutter build web</code> → nginx 서빙</td></tr>
+      <tr><td>9</td><td>모바일 앱 API URL 교체</td><td>config에서 백엔드 주소를 환경변수화</td></tr>
+      <tr><td>10</td><td>E2E 테스트</td><td>시나리오/FAQ/RAG/웹검색 경로 모두 동작 확인</td></tr>
+    </table>
+  </div>
+</section>
+
+</div><!-- .container -->
+
+<div class="footer">
+  <p>chatbot_demo_v2 파이프라인 학습자료 · 2026-08-14 생성<br>
+  이 자료는 chatbot_demo_v2 소스코드 및 pipeline_v2.svg를 기반으로 자동 분석되었습니다.</p>
+</div>
+
+<button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
+
+<script>
+// 스크롤 탑 버튼
+window.addEventListener('scroll', () => {
+  const btn = document.getElementById('scrollTopBtn');
+  btn.style.display = window.scrollY > 400 ? 'flex' : 'none';
+});
+
+// 섹션 관찰자 (현재 섹션 하이라이트)
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      document.querySelectorAll('.toc a').forEach(a => {
+        a.style.color = '';
+        a.style.background = '';
+        a.style.borderColor = 'transparent';
+      });
+      const id = entry.target.id;
+      const link = document.querySelector(`.toc a[href="#${id}"]`);
+      if (link) {
+        link.style.color = '#3b82f6';
+        link.style.background = 'rgba(59,130,246,0.1)';
+        link.style.borderColor = 'rgba(59,130,246,0.3)';
+      }
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.section[id]').forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

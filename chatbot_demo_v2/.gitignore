@@ -27,3 +27,6 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 *.egg-info/
+
+#모바일 앱 실행 API
+scripts/run_demo_mobile.cmd

@@ -38,6 +38,10 @@
 │   ├── rag/ app/ static/       서브그래프 어댑터 · FastAPI(SSE) · 웹 UI
 │   ├── docs/                   파이프라인 다이어그램 3장 + v1 대비 비교
 │   └── 최종_구축_보고서.md       계획 대비 이행 점검 · 실측 검증 결과
+├── mobile_app/                 [모바일] v2 API를 호출하는 Flutter Android/iOS 앱
+│   ├── lib/                    REST·POST SSE 클라이언트 · 모바일 상담 UI
+│   ├── android/ ios/           플랫폼별 실행·빌드 설정
+│   └── test/                   API 모델·SSE 파서 단위 테스트
 ├── 최종_결과_보고서.md           3세대 종합 보고서
 ├── .gitignore
 ├── .env                        GEMINI_API_KEY (git 제외)
@@ -76,6 +80,7 @@
 5. [chatbot_demo_v2](chatbot_demo_v2/README.md) — v2 실행·API·환경변수·시연 절차.
    → [최종_구축_보고서](chatbot_demo_v2/최종_구축_보고서.md)(계획 대비 점검·검증) ·
    [파이프라인 비교](chatbot_demo_v2/docs/파이프라인_비교.md)(v1↔v2 그림·실측 트레이스).
+6. [mobile_app](mobile_app/README.md) — Flutter Android/iOS 프로토타입 실행·서버 연결 방법.
 
 > ⚠️ **경로 주의**: 각 RAG 패키지의 `config.yaml`은 사전데이터를 `../데이터…` 상대경로로 참조하므로,
 > 사전데이터를 `사전데이터/`로 분리한 현 구조에서 **재-ingest 경로는 조정이 필요**하다. 쿼리·데모는
